@@ -1,0 +1,355 @@
+/* 清除内外边距，全局16px黑体 背景图不重复 */
+
+* {
+  margin: 0;
+  padding: 0;
+  font: 16px "Simhei";
+  background-repeat: no-repeat;
+}
+
+/* a去下划线，块级 */
+
+a {
+  display: block;
+  text-decoration: none;
+}
+
+/* h3样式 */
+
+h3 {
+  font-weight: 400;
+  font-size: 18px;
+}
+
+/* li去点 */
+
+/* li {
+    list-style: none;
+} */
+
+/* placeholder样式 */
+
+::-webkit-input-placeholder {
+  color: #cfcfcf;
+}
+
+/* 办事员 */
+
+/* 顶部字体20px白色居中 */
+
+.header1,
+.header2 {
+  text-align: center;
+  color: #fff;
+  font-size: 20px;
+}
+
+/* 圆角白框主体 */
+
+.main {
+  width: 90%;
+  border-radius: 10px;
+  background-color: #fff;
+  margin: 0 auto;
+}
+
+/* .main h3 line-height设定title高度 */
+
+/* 两条蓝色横线 */
+
+.main h3 span {
+  display: inline-block;
+  width: 10%;
+  height: 2px;
+  background-color: #439efb;
+  /* margin-bottom设置高度 */
+}
+
+.span1 {
+  margin-right: 10px;
+}
+
+.span2 {
+  margin-left: 10px;
+}
+
+/* 主体蓝色圆角按钮 */
+
+.main a {
+  width: 80%;
+  line-height: 55px;
+  background-color: #0070e4;
+  border-radius: 5px;
+  font-size: 18px;
+  color: #fff;
+  margin: 10px auto;
+}
+
+/* 底部菜单 */
+
+.menu {
+  width: 100%;
+  height: 55px;
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+}
+
+/* 菜单按钮宽高 */
+
+.menu a {
+  display: inline-block;
+  width: 48.5%;
+  height: 100%;
+}
+
+/* 菜单按钮图片 */
+
+.menu a div {
+  width: 65px;
+  background-size: 25px;
+  background-position: center 5%;
+  font: 550 14px/80px "Simhei";
+  color: #b8b8b8;
+}
+
+/* 底部首页按钮 */
+
+/* 选择的加一个.checked文字变蓝 */
+
+.menu a .checked {
+  color: #0070e4;
+}
+
+.home {
+  float: left;
+  background-image: url("image/home.png");
+  margin-left: 20%;
+}
+
+.home_checked {
+  float: left;
+  background-image: url("image/home-checked.png");
+  margin-left: 20%;
+}
+
+/* 底部个人中心按钮 */
+
+.personal {
+  float: right;
+  background-image: url("image/personal.png");
+  margin-right: 20%;
+}
+
+.personal_checked {
+  float: right;
+  background-image: url("image/personal-checked.png");
+  margin-right: 20%;
+}
+
+/* 第二种顶部 */
+
+.header2 {
+  height: 55px;
+  width: 100%;
+  background-image: url("image/bg2.png");
+  background-size: 100% 100%;
+  position: fixed;
+  top: 0;
+  /* line-height设定高度 */
+}
+
+.header2 a {
+  float: left;
+  height: 55px;
+  width: 15%;
+  color: #fff;
+  font: 700 22px/65px "Simhei";
+}
+
+.header2 h3 {
+  width: 85%;
+  line-height: 60px;
+  font-size: 20px;
+}
+
+/* 办事员_待办 */
+
+/* 事项 */
+
+.itmes {
+  height: 75px;
+  width: 90%;
+  background-color: #fff;
+  border-radius: 5px;
+  margin: 10px auto 0;
+  padding: 10px;
+}
+
+/* 状态 */
+
+.state {
+  float: left;
+  width: 65px;
+  color: #fff;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+}
+
+/* 状态颜色 */
+
+/* 待办理状态 */
+
+.orange {
+  background-color: #ff986b;
+}
+
+/* 提前完成状态 */
+
+.blue {
+  background-color: #2f96ff;
+}
+
+/* 正常完成状态 */
+
+.orange2 {
+  background-color: #ff9758;
+}
+
+/* 延期完成状态 */
+
+.pink {
+  background-color: #ff6b83;
+}
+
+/* 已完结状态 */
+
+.gray {
+  background-color: #b4b4b4;
+}
+
+/* 日期 */
+
+.date {
+  float: right;
+  width: 60%;
+  height: 20px;
+  text-align: right;
+  color: #aeaeae;
+  margin-right: 5px;
+}
+
+/* 左下 */
+
+.leftbottom {
+  float: left;
+  /* width*/
+  line-height: 44px;
+  font-size: 16px;
+}
+
+/* 右下 */
+
+.rightbottom {
+  float: right;
+  /* width */
+  height: 30px;
+  line-height: 30px;
+  font-size: 16px;
+  margin-top: 6px;
+}
+
+/* 右下开始办理按钮 */
+
+.start {
+  width: 90px;
+  border: #4399f1 solid 1px;
+  border-radius: 5px;
+  background-color: #88c3ff;
+  color: #1d7cdf;
+}
+
+/* 办事员_开始办理 */
+
+form {
+  margin: 70px 20px;
+}
+
+form h3 {
+  color: #666;
+  /* margin-top间距 */
+}
+
+input,
+select {
+  height: 50px;
+  width: 90%;
+  border-radius: 5px;
+  margin: 10px 0;
+  border: #d4d4d4 solid 1px;
+}
+
+/* 输入框 */
+
+input[type="text"] {
+  padding-left: 15px;
+  font-size: 20px;
+}
+
+/* 提交按钮 */
+
+.submit {
+  width: 100%;
+  background-image: url("image/submit.png");
+  background-size: 100% 100%;
+  color: #fff;
+  font-size: 20px;
+  margin-top: 30px;
+  border: none;
+}
+
+/* 办事员_任务详情 */
+
+/* 文本box */
+
+.textbox {
+  width: 90%;
+  background-color: #fff;
+  border-radius: 5px;
+  margin: 5px auto 0;
+  padding: 0 10px;
+  height: 60px;
+}
+
+.textbox span {
+  font-size: 17px;
+  line-height: 60px;
+}
+
+.textleft {
+  float: left;
+}
+
+.textright {
+  float: right;
+  color: #666;
+}
+
+/* 备注 */
+
+.remark {
+  margin-top: 8px;
+  height: 105px;
+  padding-top: 20px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #666;
+}
+
+/* 外出申请 */
+
+select {
+  padding-left: 15px;
+  font-size: 20px;
+}

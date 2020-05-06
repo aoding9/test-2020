@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>手机商品模块</title>
+    <link rel="stylesheet" href="css/base.css">
+    <style>
+        .box{
+            width: 1226px;
+            height: 615px;
+            margin: 100px auto;
+        }
+
+        .left {
+            float:left;
+            width: 234px;
+            height: 615px;
+            background-color: green;
+        }
+
+        .right {
+            float:left;
+            width: 992px;
+            height: 615px;
+            background-color: #ccc;
+        }
+
+        /* 都给一个左边距，这样最后一个就不用单独设置了 */
+        .right li {
+            float: left;
+            width: 234px;
+            height: 300px;
+            background-color: red;
+            margin: 0 0 15px 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="left">
+            <!-- <img src="" alt=""> -->
+        </div>
+        <ul class="right">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+        </ul>
+    </div>
+    
+</body>
+
+</html>

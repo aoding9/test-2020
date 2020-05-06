@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>新浪导航</title>
+    <style>
+      .nav {
+        height: 41px;
+        border-top: 3px #ff8500 solid;
+        border-bottom: 1px #edeef0 solid;
+        background-color: #fcfcfc;
+        line-height: 41px;
+      }
+
+      .nav a {
+        height: 41px;
+        display: inline-block;
+        padding: 0 20px;
+        font-size: 12px;
+        /* 这里有个问题 a和上边框有个白色缝隙，且缝隙随着字体增大而变大*/
+        /* line-height: 41px;  如果不是放在.nav而是a里面，那么就没有这条小缝隙*/
+        /* 最后百度得知，行内块元素排版时的换行符也会当做空白符 https://www.cnblogs.com/phoebeyue/p/9125195.html */
+        color: #4c4c4c;
+        text-decoration: none;
+      }
+
+      .nav a:hover {
+        background-color: #eee;
+        color: #ff8500;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="nav">
+      <a href="#">新浪导航</a>
+      <a href="#">手机新浪网</a>
+      <a href="#">移动客户端</a>
+      <a href="#">微博</a>
+      <a href="#">巴拉巴拉巴拉</a>
+    </div>
+  </body>
+</html>

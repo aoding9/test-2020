@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
+    <title>开始办理</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .header {
+            height: 55px;
+            width: 100%;
+            background: url("image/bg2.png");
+            background-size: 100% 100%;
+            position: fixed;
+            top: 0;
+        }
+        
+        .header a {
+            float: left;
+            height: 55px;
+            width: 15%;
+            color: #fff;
+            font: 700 22px/65px "Simhei";
+        }
+        /* 左边按钮占15%，当h3为85%时，右边也余15%，h3居中 */
+        
+        .header h3 {
+            width: 85%;
+            line-height: 60px;
+            font-size: 20px;
+        }
+        
+        form {
+            margin: 70px 20px;
+        }
+        
+        form h3 {
+            color: #666;
+            margin-top: 10px;
+        }
+        
+        input {
+            height: 50px;
+            width: 90%;
+            border: #d4d4d4 solid 1px;
+            border-radius: 5px;
+            margin: 10px 0;
+            padding-left: 15px;
+            font-size: 20px;
+        }
+        
+        .submit {
+            width: 100%;
+            background-image: url("image/submit.png");
+            background-size: 100%;
+            color: #fff;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <a href="#">&lt;</a>
+        <h3>开始办理</h3>
+    </div>
+
+    <form action="">
+        <h3>获取位置</h3>
+        <input type="text" placeholder="位置上报">
+        <h3>票据</h3>
+        <input type="text" placeholder="票据上传">
+        <h3>企业资料</h3>
+        <input type="text" placeholder="企业资料上传">
+        <input class="submit" type="submit" value="完成">
+    </form>
+</body>
+
+</html>

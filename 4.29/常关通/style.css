@@ -1,0 +1,46 @@
+/* 清除内外边距，全局16px黑体 字间距1px */
+
+* {
+    margin: 0;
+    padding: 0;
+    font: 16px "Simhei";
+}
+
+
+/* a样式 */
+
+a {
+    display: block;
+    text-decoration: none;
+}
+
+
+/* h3样式 */
+
+h3 {
+    font-weight: 400;
+    font-size: 18px;
+}
+
+
+/* li去点 */
+
+li {
+    list-style: normal;
+}
+
+
+/* placeholder样式 */
+
+::-webkit-input-placeholder {
+    color: #cfcfcf;
+}
+
+
+/* 头部字体20px白色 */
+
+.header {
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=false" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<link rel="stylesheet" href="css/base.css" />
+        <title>aa</title>
+        <style>
+            .a{
+                position: relative;
+                margin: 100px auto;
+                width: 500px;
+                height: 500px;
+                background-color: #4dd;
+            }
+
+            /* 水平居中：先绝对定位，left:50%，再margin-left:盒子宽度一半 */
+            /* 垂直居中类似，就是用top */
+            .b {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-left: -50px;
+                margin-top: -50px;
+                width: 100px;
+                height: 100px;
+                background-color: #666;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="a">
+            <div class="b">a</div>
+        </div>
+    </body>
+</html>

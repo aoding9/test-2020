@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>通栏平均分布布局</title>
+    <link rel="stylesheet" href="css/base.css" />
+    <style>
+      div {
+        background-color: gray;
+      }
+      .top {
+        height: 50px;
+      }
+
+      .banner {
+        width: 980px;
+        height: 150px;
+        margin: 10px auto;
+      }
+
+      .main {
+        width: 980px;
+        height: 300px;
+        margin: 10px auto;
+      }
+
+      .main ul li {
+        float: left;
+        width: 237.4px;
+        height: 300px;
+        margin-right: 10px;
+        background-color: skyblue;
+      }
+
+      .main .last {
+        margin-right: 0;
+      }
+
+      .footer {
+        margin-top: 10px;
+        height: 200px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="top">top</div>
+    <div class="banner">banner</div>
+    <div class="main">
+      <ul>
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
+          <li class="last">4</li>
+      </ul>
+    </div>
+    <div class="footer">footer</div>
+  </body>
+</html>

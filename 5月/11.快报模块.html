@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>快报模块</title>
+    <link rel="stylesheet" href="css/base.css" />
+    <style>
+      .flashnews {
+        height: 162px;
+        width: 248px;
+        border: #ccc solid 1px;
+        margin: 100px auto;
+      }
+
+      /* 不能用margin设置左边距，否则虚线边框也会移动 */
+      .newshd {
+        height: 32px;
+        padding-left: 15px;
+        border-bottom: #ccc dotted 1px;
+        line-height: 32px;
+        font-size: 14px;
+        font-weight: 400;
+      }
+
+/* 给ul盒子加边距来排布，由于指定了高，应该用margin-top,因为padding-top会撑开盒子 */
+      .newsbd {
+        margin-top: 7px;
+        padding-left: 20px;
+      }
+
+      .newsbd li {
+        height: 23px;
+        line-height: 23px;
+      }
+
+      .newsbd li a {
+        font-size: 12px;
+        color: #666;
+      }
+
+      .newsbd li a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="flashnews">
+      <h5 class="newshd">品优购快报</h5>
+      <ul class="newsbd">
+        <li><a href="#">【特惠】爆款耳机5折秒！</a></li>
+        <li><a href="#">【特惠】母亲节，健康好礼低至5折！</a></li>
+        <li><a href="#">【特惠】爆款耳机5折秒！</a></li>
+        <li><a href="#">【特惠】9.9元洗100张照片！</a></li>
+        <li><a href="#">【特惠】长虹智能空调立省1000</a></li>
+      </ul>
+    </div>
+  </body>
+</html>

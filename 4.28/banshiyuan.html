@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>办事员</title>
+    <style>
+        body {
+            text-align: center;
+            color: #fff;
+            background-color: #7ac4fb;
+            letter-spacing: 0.1em;
+            margin: 0;
+            background-image: url("image/bg1.png");
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+        
+        button {
+            padding: 0;
+            border: none;
+            border-radius: 10px;
+        }
+        /* div {
+            border: black 2px solid;
+        } */
+        /* 顶部内容 */
+        
+        .header {
+            line-height: 90px;
+        }
+        /* 标题 */
+        
+        .title {
+            margin: auto;
+            color: #000;
+            width: 50%;
+            font: 520 17px/90px "heiti";
+            background-image: url("image/blue_line.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 90% 2%;
+        }
+        /* 主体部分 */
+        
+        .main {
+            background-color: #fff;
+            margin: 0 auto;
+            width: 90%;
+            height: 350px;
+            border-radius: 10px;
+        }
+        /* 主体按钮 */
+        
+        .btn button {
+            color: #fff;
+            font: 17px "heiti";
+            background-color: #0070e4;
+            display: block;
+            margin: 9px auto;
+            width: 85%;
+            height: 55px;
+            letter-spacing: 0.1em;
+        }
+        /* 底部菜单 */
+        
+        .menu {
+            background-color: #fff;
+            width: 100%;
+            height: 50px;
+            position: fixed;
+            bottom: 0;
+        }
+        /* 底部按钮 */
+        
+        .menu button {
+            width: 49%;
+            height: 100%;
+            display: inline-block;
+            background-color: #fff;
+        }
+        /* 重复样式 */
+        
+        .menu button div {
+            font: 600 12px/80px "heiti";
+            letter-spacing: 0.1em;
+            width: 30%;
+            background-position: center 5%;
+            background-repeat: no-repeat;
+            background-size: 25px;
+        }
+        /* 首页按钮图片 */
+        
+        .home {
+            color: #0070e4;
+            margin-left: 25%;
+            float: left;
+            background-image: url("image/home.png");
+        }
+        /* 个人中心按钮图片 */
+        
+        .personal {
+            color: #b8b8b8;
+            margin-right: 25%;
+            float: right;
+            background-image: url("image/personal.png");
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">常关通</div>
+    <div class="main">
+        <div class="title">外勤防控</div>
+        <div class="btn">
+            <button>任务管理</button>
+            <button>待办事项</button>
+            <button>外出申请</button>
+        </div>
+    </div>
+
+    <div class="menu">
+        <button><div class="home">首页</div></button>
+        <button><div class="personal">个人中心</div></button>
+    </div>
+</body>
+
+</html>
