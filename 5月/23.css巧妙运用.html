@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=false" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>css巧妙运用</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+
+        .box1 {
+            height: 250px;
+        }
+
+        .box1 ul li {
+            float: left;
+            width: 100px;
+            height: 200px;
+            border: solid 1px red;
+            /* 边框合并不好看，负margin消除他 */
+            margin-left: -1px;
+            list-style: none;
+        }
+
+        .box1 ul li:hover {
+            /* 边框被压住，需要提高层级，用相对定位或z-index */
+            position: relative;
+            border-color: blue;
+        }
+
+        .box2 {
+            width: 300px;
+            height: 70px;
+            padding: 5px;
+            background-color: greenyellow;
+        }
+
+        .pic {
+            float: left;
+            margin-right: 10px;
+            width: 120px;
+            /* height: 60px; */
+
+        }
+
+        .pic img {
+            width: 100%;
+        }
+
+
+        .box3 {
+            text-align: center;
+
+        }
+
+        .box3 a {
+            display: inline-block;
+            height: 30px;
+            width: 30px;
+            background-color: #e4e4e4;
+            border: solid 1px #ccc;
+            font-size: 14px;
+            color: #000;
+            line-height: 30px;
+            text-decoration: none;
+        }
+
+        .box3 .prev,
+        .box3 .next {
+            width: 80px;
+        }
+
+        .box3 .current,
+        .box3 .elp {
+            background-color: #fff;
+            border: none;
+        }
+
+        .box3 input {
+            height: 36px;
+            width: 45px;
+            border: 1px solid #ccc;
+
+            outline: none;
+        }
+
+        .box3 button {
+            width: 60px;
+            height: 30px;
+            background-color: #f7f7f7;
+            border: 1px solid #ccc;
+        }
+
+        .triangle {
+            height: 0;
+            width: 0;
+            /* 把左边框和下边框设为0，然后把上或右边框设为透明色，然后根据需要调整边框宽度 */
+            /* border-top: 100px transparent solid;
+            border-right: 50px green solid;
+            border-bottom: 0;
+            border-left: 0; */
+            /* 简写 */
+            border-style: solid;
+            border-width: 50px 100px 0 0;
+            /* 只保留右边框颜色 */
+            border-color: transparent red transparent transparent;
+        }
+
+
+        .price {
+            margin: 20px auto;
+            width: 160px;
+            height: 24px;
+            border: solid 1px red;
+            line-height: 24px;
+        }
+
+        /* 左浮动，右边文字会围绕 */
+        .seckill {
+            position: relative;
+            float: left;
+            margin-right: 10px;
+            width: 90px;
+            background-color: red;
+            text-align: center;
+            font-weight: 700;
+            color: #fff;
+
+        }
+
+        .seckill i {
+            position: absolute;
+            right: 0;
+            height: 0;
+            width: 0;
+            border-style: solid;
+            border-width: 24px 10px 0 0;
+            border-color: transparent #fff transparent transparent;
+        }
+
+        .origin {
+            font-size: 12px;
+            color: #666;
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+
+<body>
+    <p>margin负值运用</p>
+    <div class="box1">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <p>文字环绕巧妙运用</p>
+    <div class="box2">
+        <div class="pic"><img src="image/23-1.png" alt=""></div>
+        【集锦】热身赛-巴西0-1秘鲁 内马尔替补两人血染赛场
+        <!-- 此处还可以配合溢出显示省略号来做更好 -->
+    </div>
+
+
+    <p>行内块巧妙运用</p>
+    <div class="box3">
+        <a href="#" class="prev">&lt;&lt;上一页</a>
+        <a href="#">1</a>
+        <a href="#" class="current">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#" class="elp">...</a>
+        <a href="#" class="next">下一页&gt;&gt;</a>
+        <!-- 行内块换行符算做空白符 -->
+        到第
+        <input type="text">
+        页
+        <button>确定</button>
+    </div>
+
+    <p>直角三角形</p>
+    <div class="triangle"></div>
+
+    <p>京东价格红色梯形</p>
+
+    <div class="price">
+        <span class="seckill">￥1230<i></i></span>
+
+        <span class="origin">￥9230</span>
+    </div>
+
+</body>
+
+</html>

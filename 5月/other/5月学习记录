@@ -810,7 +810,7 @@
         </div>
 
 
-        、单产品模块    img+h4+p>span   (span或者em，em一般是小图标)
+        、单产品模块    img+h4+p>i   (i或者span或者em，一般用i配合伪元素做小图标)
             一般是img设好宽高，然后设h4左右内边距，上内或外边距，宽高可设定，改h4样式，接着p上外边距，span设置特殊样式
         <div>
             <img src="">
@@ -833,6 +833,10 @@
         </div>
 
 
+——————————
+5.6
+学习用git管理版本
+——————————
 
 ，定位  position
 
@@ -969,13 +973,136 @@
 
 
 ，为了方便复制和查看旧文档，现修改之后的文档命名规则
-数字总序-内容-目的-月-日-版本序号
+数字总序-内容-目的-版本序号
 头部注释，写和上版本相比，修改了什么
 
 
+——————————
+5.7
+——————————
+
+,溢出文字省略号显示
+    推荐给后端做，后端做没有兼容性问题
+
+    。单行文本：
+        必须满足三个条件
+        white-space: nowrap;        禁止换行，强制一行显示
+        overflow:hidden;            溢出隐藏
+        text-overflow:ellipsis;     溢出文字省略号替代
+
+    。多行文本：
+        有兼容性问题，适合webkit内核
+            overflow: hidden;
+            text-overflow: ellipsis;
+            /* 弹性伸缩盒子模型显示 */
+            display: -webkit-box;
+            /* 限制块元素显示的文本行数 */
+            -webkit-line-clamp: 3;
+            /* 设置或检索伸缩盒子对象的子元素排列 */
+            -webkit-box-orient: vertical;
+    
+    。案例：22.溢出文字省略号显示.html
+
+
+，布局技巧
+    。margin负值
+        、多个浮动li盒子边框合并在一起，看上去会变粗
+
+        margin-left:边框宽度      变细了
+        ！使用这个后边框被压住，用相对定位提高层级，如果li都有定位，用z-index来提高层级
+
+    。浮动文字环绕特性巧妙运用
+        、新闻快报模块写法
+
+        、设置大盒子宽高和内边距后，给pic.div(用div包起来方便以后换图片)加浮动,设宽高，文字不用设宽高，就自动围绕到旁边了
+        <div>
+            <div class="pic"><img></div>
+            <p>文字</p>
+        <div>
+
+
+    。行内块巧妙运用
+        、底部页码跳转模块写法
+
+        、给大div加text-align:center，把a转换行内块，设置行高，这样就可以水平垂直居中，且一行排列，不用给大div设宽度，让a撑开div
+            <div>
+                <a></a>                   特殊样式单独指定
+                <a></a>
+                <a></a>
+                <a></a>                   特殊样式单独指定
+                <input type="text">
+                <button>
+            <div>
+
+    。css三角形运用
+        、直角三角形做法
+
+        、把左边框和下边框设为0，然后根据需要调整宽度，只保留一个边框有颜色
+            .triangle {
+            height: 0;
+            width: 0;
+            border-style: solid;
+            border-width: 50px 100px 0 0;
+            /* 只保留右边框颜色 */
+            border-color: transparent red transparent transparent;
+            }
+
+    。案例： 23.css巧妙运用.html
 
 
 
+，更换了初始化css，修改了snippet用户代码模板，以后默认在首行添加注释区做修改记录
+
+
+
+，h5c3提高
+    。兼容性差，基本上IE9+支持
+
+    。html5语义化标签
+        <header>    头部标签
+        <nav>       导航标签
+        <article>   内容标签
+        <section>   定义文档某个区域
+        <aside>     侧边栏标签
+        <footer>    尾部标签
+        、语义化标签是针对搜索引擎的
+        、可以使用多次
+        、IE9中需要转换为块级元素
+        、移动端更喜欢这些标签
+        
+        、案例：24.语义化标签.html
+
+    。视频标签  <video>
+       
+        、尽量mp4，再或者来个ogg
+        、兼容性写法：
+            <video src="">
+                <source src="xx.mp4" type="video/mp4">
+                <source src="xx.ogg" type="video/ogg">
+                您的浏览器不支持video标签
+            </video>
+
+        、常见属性
+            autoplay    autoplay    视频就绪自动播放，谷歌浏览器默认禁用，添加muted解决
+            controls        controls    显示播放控件
+            width|height    pixels像素  宽高
+            loop            loop        循环
+            preload         auto|none   预加载|不预加载
+            src             url         视频地址
+            poster          imgurl      加载等待的画面图片
+            muted           muted       静音播放
+
+    。音频标签  <audio>
+        、必须添加controls属性
+        、大都支持mp3格式，照顾兼容性弄个ogg格式
+        、兼容性写法：
+            <audio src="" controls="controls">
+                <source src="xx.mp3" type="audio/mp3">
+                <source src="xx.ogg" type="audio/ogg">
+                您的浏览器不支持audio标签
+            </audio>
+
+        、常见
 
 
 

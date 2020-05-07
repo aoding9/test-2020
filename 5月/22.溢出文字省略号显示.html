@@ -1,0 +1,47 @@
+<!-- 5.7修改了新的css初始化 -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=false" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="css/base-before-5-7.css" />
+    <title>溢出用省略号代替</title>
+    <style>
+        .a1 {
+            margin: 20px auto;
+            width: 150px;
+            height: 100px;
+            background-color: greenyellow;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .a2 {
+            margin: 20px auto;
+            width: 150px;
+            height: 300px;
+            background-color: greenyellow;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            /* 弹性伸缩盒子模型显示 */
+            display: -webkit-box;
+            /* 限制块元素显示的文本行数 */
+            -webkit-line-clamp: 3;
+            /* 设置或检索伸缩盒子对象的子元素排列 */
+            -webkit-box-orient: vertical;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="a1">很多很多很多很多很多很多很多很多很多很多很多很多很多的内容</div>
+    <div class="a2">
+        多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本多行文本
+    </div>
+</body>
+
+</html>
