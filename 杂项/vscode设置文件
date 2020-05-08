@@ -1,0 +1,23 @@
+{
+    // "editor.formatOnType":true,
+    "editor.formatOnSave": true,
+    "editor.fontSize": 18,
+    "workbench.iconTheme": "vscode-icons",
+    "editor.wordWrap": "on",
+    "vsicons.dontShowNewVersionMessage": true,
+    "files.autoSave": "afterDelay",
+    "liveServer.settings.donotShowInfoMsg": true,
+    "[html]": {
+        "editor.defaultFormatter": "HookyQR.beautify"
+    },
+    // "editor.acceptSuggestionOnEnter": "off",
+    // "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "window.zoomLevel": 0,
+    "terminal.integrated.rendererType": "dom",
+    "files.associations": {
+        "*.vue": "html",
+    },
+    "git.autofetch": true,
+    "editor.acceptSuggestionOnEnter": "off",
+    // "editor.suggest.showWords": false,
+}

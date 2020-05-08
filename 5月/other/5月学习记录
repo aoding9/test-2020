@@ -977,8 +977,11 @@
 头部注释，写和上版本相比，修改了什么
 
 
+
 ——————————
 5.7
+技巧提高和新特性
+学习git使用，git教程百度有
 ——————————
 
 ,溢出文字省略号显示
@@ -1055,7 +1058,13 @@
 
 
 
-，h5c3提高
+!h5c3提高，新增特性
+
+
+
+
+,html5新标签
+
     。兼容性差，基本上IE9+支持
 
     。html5语义化标签
@@ -1083,7 +1092,7 @@
             </video>
 
         、常见属性
-            autoplay    autoplay    视频就绪自动播放，谷歌浏览器默认禁用，添加muted解决
+            autoplay        autoplay    视频就绪自动播放，谷歌浏览器默认禁用，添加muted解决
             controls        controls    显示播放控件
             width|height    pixels像素  宽高
             loop            loop        循环
@@ -1102,7 +1111,166 @@
                 您的浏览器不支持audio标签
             </audio>
 
-        、常见
+        、常见属性
+            autoplay        autoplay    音频就绪自动播放，谷歌浏览器默认禁用
+            controls        controls    显示播放控件
+            loop            loop        循环
+            src             url         音频地址
+
+
+    。html5新增的input类型(type="xx")
+        email       限制输入必须为邮箱类型
+        url         必须URL类型
+        date        必须日期类型
+        time        必须时间类型
+        month       必须月类型
+        week        必须周类型
+        number      必须数字类型
+        tel         必须为手机号码
+        search      搜索框
+        color       生成一个颜色选择表单
+
+        、属性
+            required="required"     必须填写 不能为空
+            placeholder             提示文本
+                通过input:placeholder修改提示文本样式
+            autofocus               自动获取焦点
+            autocomplete="off|on"   根据之前键入的值，列出可填写的字段的选项
+            multiple="multiple"     上传文件允许多选
+
+
+
+，css3新特性
+
+    。css新增选择器
+
+        、属性选择器
+            E[att]              选择E元素中属性为att的
+            E[att="val"]        选出E元素中属性为attr,且他的值为val的
+            E[att^="val"]       选出E元素中属性为attr,且他的值为val开头的
+            E[att$="val"]       选出E元素中属性为attr,且他的值为val结尾的
+            E[att*="val"]       选出E元素中属性为attr,且他的值里含有val的
+
+        、结构伪类选择器 权重(0,0,0,1)
+            常根据文档结构来选择元素，根据父级来匹配
+            E:first-child       选择父元素中第一个子元素E
+            E:last-child        选择父元素中最后一个子元素E
+            E:nth-child(n)      选择父元素中第n个元素E
+            E:first-of-type     选择指定类型E的第一个
+            E:last-of-type      选择指定类型E的第一个
+            E:nth-of-type(n)       指定类型E的第n个
+
+                E:nth-child(n)  可以是数字、关键字、公式，公式只能是n，n从0开始自增
+                    odd|even    选择所有奇数|偶数子级元素
+                    2n          选偶数
+                    2n+1        选奇数
+                    n+5         从第5个开始
+                    -n+5        选择前5个
+
+            ·使用公式（an+ b） 描述：a代表一个循环的大小，N是一个计数器（从0开始），以及b是偏移量。
+
+            ·两类选择器的区别
+                nth-child(n)
+                先看第n个元素，再看元素是否符合匹配条件
+                （关注孩子，给所有子级排序在再匹配）
+                nth-of-type(n)
+                先看指定元素类型，再给元素排序去找
+                （关注类型，先匹配类型，再排序查找）
+
+        、伪元素选择器 权重(0,0,0,1)
+            伪元素选择器可以用css创建标签，结构更简单
+            
+            ::before|::after
+            在元素内部的前面|后面插入内容，属于子级，创建的盒子是行内元素
+
+            !必须要写content属性，值可以为空
+            div::before {
+                content: ''，
+            }
+
+            ！字体图标另一写法      伪元素选择器做法
+                i::after{
+                    position:absolute;      绝对定位脱标，方便调整位置
+                    font-family:icomoon;
+                    content:'\xxxx';
+                }
+
+            ！遮罩案例另一写法      伪元素选择器做法
+                .box::before {
+                    content:'';
+                    display:none;
+                    position:absolute;
+                    left:0;
+                    w|h|bg-color;
+                }
+                .box:hover::before{
+                    display:block;
+
+                }
+
+            ！伪元素清除浮动
+                /* 清除浮动 */
+                .clearfix:after {           插入一个盒子
+                    visibility: hidden;     把他隐藏起来
+                    clear: both;            清除浮动
+                    display: block;         必须插入块级盒子才能清浮动
+                    content: ".";           空内容
+                    height: 0               让盒子非常小，不影响后面排版
+                }
+
+                .clearfix:before,
+                .clearfix:after {
+                    content: "";
+                    display: table;         转换为块级元素并且一行显示
+                }
+
+                .clearfix:after {
+                    clear: both;
+                }
+
+
+    。css3盒子模型
+        box-sizing:content-box;
+        默认模型，盒子大小为width+padding+border
+        box-sizing:border-box;
+        css3新的盒子模型,把边框和padding也算进盒子大小，不会撑大盒子，这样就不用额外去计算了（前提border和padding不超过width）
+
+
+    。css3函数
+        、css3滤镜filter
+            filter: 函数();
+            例如：filter:blur(5px);     blur模糊处理，数值越大越模糊
+
+        、css3 clac函数
+            声明css属性值时执行一些计算，可以+-*/，需要加单位
+            例如：width:clac(100%-80%);     height:calc(100%-30px);
+                子盒子永远比父盒子小80%|30px
+
+    。css3过渡特性
+        、transition是css3最具颠覆性的特性之一，不用flash或者js就能添加动画效果，ie9以下不支持，经常搭配:hover使用
+
+        、transition:要过渡的属性 花费时间 运动速度曲线 延迟开始时间； 后面两个可以省略
+
+        、谁做过渡给谁加
+        例如:
+            div{
+                w200h200 bgco#000;
+                transition: width 1s ease 1s,height  1s ease 1s;
+            }
+            div:hover{w400h400}
+        多个属性过渡，用逗号分开，全部属性过渡，写all即可
+
+
+，git+gitee+vscode
+
+    下载安装git，生成公钥私钥，上传公钥到gitee后台，设置用户名和邮箱，拉取或者初始化本地仓库，拖到vscode里面
+    git有本地仓库和远程仓库，修改后需要先暂存修改，提交到本地仓库，然后推送远程仓库
+    有不同的地方修改，需要创建分支，然后可以修改后再合并
+
+——————————
+5.8
+阿里云数据可视化，datav使用
+
 
 
 

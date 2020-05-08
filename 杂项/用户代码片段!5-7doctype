@@ -16,16 +16,22 @@
 	// 	"description": "Log output to console"
 	// }
 	"html5": {
-		"prefix": "!doc",
+		"prefix": "!5-7doctype",
 		"body": [
+			"<!--",
+			"————————\n",
+			"————————",
+			"-->",
 			"<!DOCTYPE html>",
 			"<html>",
 			"\t<head>",
 			"\t\t<meta charset=\"UTF-8\" />",
 			"\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=false\" />",
-			"<meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\" />",
-			"<link rel=\"stylesheet\" href=\"css/base.css\" />",
-			"\t\t<title>$1</title>",
+			"\t\t<meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\" />",
+			"\t\t<link rel=\"stylesheet\" href=\"css/base-5-7.css\" />",
+			"<!-- \t\t<link rel=\"stylesheet\" href=\"css/${1:common}.css\" /> -->",
+			"\t\t<title>${2:document}</title>",
+			"<!-- \t\t<style>$3</style> -->",
 			"\t</head>",
 			"\t<body>",
 			"\t\t$0",
