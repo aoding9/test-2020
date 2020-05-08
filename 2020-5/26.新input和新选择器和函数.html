@@ -1,0 +1,83 @@
+<!--
+————————
+
+————————
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=false" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- <link rel="stylesheet" href="css/base-5-7.css" /> -->
+    <!-- 		<link rel="stylesheet" href="css/common.css" /> -->
+    <title>新特性练习</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        input {
+            outline: none;
+        }
+
+        input[type^="email"]::placeholder {
+            color: red;
+            font-size: 16px;
+        }
+
+        .type li:nth-child(2n) {
+            background-color: green;
+        }
+
+
+        .child li:nth-of-type(2n) {
+            background-color: skyblue;
+        }
+
+        .function {
+            width: 300px;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .function img {
+            width: calc(100% + 300px);
+            height: 100%;
+            filter: blur(5px);
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <input type="email" name="aaaa" placeholder="输入email" required="required" autofocus="autofocus"
+            autocomplete="on"><br><input type="date"><br><input type="time"><br><input type="month"><br><input
+            type="week"><br><input type="tel"><br><input type="number"><br> <input type="url"><br><input
+            type="search"><br><input type="color"><br><input type="submit"><br>
+    </form>
+    <br><br>
+    <ul class="type">
+        <li>1</li>
+        <li>2</li>
+        <p>3 nth-child是从所有孩子里排序匹配</p>
+        <li>4 p标签不是li，但也参与排序，</li>
+        <li>5</li>
+    </ul>
+    <br><br>
+    <ul class="child">
+        <li>1</li>
+        <li>2</li>
+        <p> nth-of-type是从匹配类型的孩子里再排序匹配</p>
+        <li>3 p标签不是li，不参与排序</li>
+        <li>4</li>
+    </ul>
+
+    <br><br>
+    <div class="function"><img src="img/20-1.jpg" alt=""></div>
+
+</body>
+
+</html>

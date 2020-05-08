@@ -87,10 +87,10 @@
 
     。<!-- 注释 -->
 
-    。特殊转义字符
+    。特殊字符实体
         &nbsp; 空格
-        &lt <
-        &gt >
+        &lt; <
+        &gt; >
 
     。案例：01.体育新闻.html
 
@@ -212,7 +212,7 @@
     。属性书写顺序，便于查看，提高渲染性能
         ·1 定位属性：position  display  float  left  top  right  bottom   overflow  clear   z-index
         ·2 自身属性：width  height  padding  border  margin   background
-        ·3 文字样式：font-family   font-size   font-style   font-weight   font-varient   color   
+        ·3 文字样式：font-family   font-size   font-style   font-weight   font-variant   color   
         ·4 文本属性：text-align   vertical-align   text-wrap   text-transform   text-indent    text-decoration   letter-spacing    word-spacing    white-space   text-overflow
         ·5 css3中新增属性：content   box-shadow   border-radius  transform……
 
@@ -244,7 +244,7 @@
 
         background-color:red;
         背景颜色    预定义颜色值、RGB代码、十六进制颜色
-        !透明色 transpanrent
+        !透明色 transparent
 
     。字体样式：
         font-family: "Microsoft Yahei"; 
@@ -436,22 +436,22 @@
 
 ，背景属性系列
 
-    。backgroud-color
+    。background-color
         背景颜色
 
-    。backgroud-image:url();    
+    。background-image:url();    
         背景图片
 
-    。backgroud-repeat
+    。background-repeat
         背景图片是否重复平铺    repeat  no-repeat repeat-x repeat-y  在x（y）轴上平铺
 
-    。backgroud-position：x y;
+    。background-position：x y;
         背景图片位置            left right top bottom center 也可以是精确数值或百分比
         ！方位名词顺序没关系，只写一个另一个则默认居中，精确数值是先写x再写y
 
     。案例：07-1.成长守护平台.html 07-2.王者荣耀大图居中.html
 
-    。backgroud-attachment
+    。background-attachment
         背景图片固定（附着）
         背景图像是否随页面滚动  scroll 滚动 fixed 不滚动
 
@@ -610,10 +610,14 @@
 ，阴影
     。box-shadow:
         盒子阴影效果
-
     。text-shadow
         文本阴影效果
 
+    。语法：
+    box-shadow: h-shadow v-shadow blur spread color inset;
+    水平阴影位置 垂直阴影位置 模糊半径 阴影扩散半径 颜色 内外阴影（改为inset就是内阴影）
+    
+    ！前两个值必须写
 
 
 ，网页布局三种方式
@@ -637,7 +641,7 @@
         ！浮动的盒子只会影响他后面的标准流，不会影响前面的标准流
     。如果多个盒子都浮动，他们会按属性值一行内显示并顶端对齐排列
         ！浮动元素是紧靠的没有缝隙，父盒子宽度装不下会自动另起一行
-    。任何元素都可以浮动，浮动后具有行内块特性
+    。任何元素都可以浮动，浮动元素具有行内块特性
         ！设置了浮动，不需要转换就可以给宽高，如果没有给宽高，则盒子按内容大小决定
 
 
@@ -648,7 +652,7 @@
     。常见网页布局
         一列固定宽度且居中：top-banner-main-footer
         两列左窄右宽型：top-banner-(left+right)-footer
-        通栏平均分布型：top-banner-(boxhd+boxbd)*4-footer
+        通栏平均分布型：top-banner-(box.hd+box.bd)*4-footer
         
     。CSS版心和布局流程、清除浮动
         https://blog.csdn.net/tichimi3375/article/details/82794074
@@ -864,8 +868,9 @@
             只能用于定位元素
 
     。定位的特殊特性
-        、行内添加脱标定位可以直接设宽高
-        、块级元素添加脱标定位，如果不给宽高，宽高就是内容决定
+        、定位元素具有行内块特性
+        、行内元素添加定位可以直接设宽高
+        、块级元素添加定位，如果不给宽高，宽高就是内容决定
         、脱标的盒子不触发外边距塌陷
 
     。定位和浮动的一个区别
@@ -914,7 +919,7 @@
         保留元素标准流位置，设置属性值为visible可见
 
     overflow:hidden;
-        溢出隐藏，scoll添加滚动条，auto当溢出时添加滚动条
+        溢出隐藏，scroll添加滚动条，auto当溢出时添加滚动条
 
 
 
@@ -932,7 +937,7 @@
         、去网上下载下来icomoon   icofont等
         、把font文件夹放入网页根目录，然后把style.css文件引入网页，可以用link来写
         、可以根据demo.html看图标
-        、使用时设置字体为"icomoom"，然后把demo.html里面图标对应的方框复制到网页即可
+        、使用时设置字体为"icomoon"，然后把demo.html里面图标对应的方框复制到网页即可
         、也可以用伪元素content:"\字符编码" 此方法需要加反斜杠
 
 
@@ -1121,10 +1126,10 @@
     。html5新增的input类型(type="xx")
         email       限制输入必须为邮箱类型
         url         必须URL类型
-        date        必须日期类型
-        time        必须时间类型
-        month       必须月类型
-        week        必须周类型
+        date        选择日期
+        time        选择时间
+        month       选择月份
+        week        选择周
         number      必须数字类型
         tel         必须为手机号码
         search      搜索框
@@ -1132,11 +1137,12 @@
 
         、属性
             required="required"     必须填写 不能为空
-            placeholder             提示文本
-                通过input:placeholder修改提示文本样式
+            placeholder             提示文本(常用)
+                通过input::placeholder伪元素修改提示文本样式
             autofocus               自动获取焦点
-            autocomplete="off|on"   根据之前键入的值，列出可填写的字段的选项
-            multiple="multiple"     上传文件允许多选
+            autocomplete="off|on"   根据之前键入的值，列出可填写的字段的选项（为了保护隐私 手动把他设为off）
+                                    需要有name，并且成功提交过才可显示
+            multiple="multiple"     上传文件允许多选（常用）
 
 
 
@@ -1241,20 +1247,30 @@
             filter: 函数();
             例如：filter:blur(5px);     blur模糊处理，数值越大越模糊
 
-        、css3 clac函数
+        、css3 calc函数
             声明css属性值时执行一些计算，可以+-*/，需要加单位
-            例如：width:clac(100%-80%);     height:calc(100%-30px);
+            !注意，符号与数值之间空格隔开，否则不生效
+            例如：width:calc(100%-80%);     height:calc(100%-30px);
                 子盒子永远比父盒子小80%|30px
 
-    。css3过渡特性
+    。案例：26.新input和新选择器和函数.html
+    
+
+    。css3过渡特性（重要）
         、transition是css3最具颠覆性的特性之一，不用flash或者js就能添加动画效果，ie9以下不支持，经常搭配:hover使用
 
-        、transition:要过渡的属性 花费时间 运动速度曲线 延迟开始时间； 后面两个可以省略
+        、transition:要过渡的属性 花费时间 运动速度曲线 延迟开始时间        后面两个可以省略
+
+            运动曲线值：linear 匀速 ease 开始快，逐渐变慢 ease-in 开始慢，加速，后面快 ease-out 开始快，减速，后面慢 ease-in-out 开始慢，加速，再减速，最后慢
+                    /*贝塞尔（贝兹）曲线*/
+                    /*transition: all 1s cubic-bezier(0.250,0.250,0.750,0.750);匀速*/
+                    /*超出再缩回的弹性效果*/
+                    transition: all 1s cubic-bezier(0.470, -0.485, 0.460, 1.435);
 
         、谁做过渡给谁加
         例如:
             div{
-                w200h200 bgco#000;
+                w200h200 bgcolor#000;
                 transition: width 1s ease 1s,height  1s ease 1s;
             }
             div:hover{w400h400}
@@ -1266,10 +1282,49 @@
     下载安装git，生成公钥私钥，上传公钥到gitee后台，设置用户名和邮箱，拉取或者初始化本地仓库，拖到vscode里面
     git有本地仓库和远程仓库，修改后需要先暂存修改，提交到本地仓库，然后推送远程仓库
     有不同的地方修改，需要创建分支，然后可以修改后再合并
+    更多内容百度
+
+
+，星期的单词忘记了顺手记一下
+    星期一：Monday（Mon.）
+    星期二：Tuesday（Tues.）
+    星期三：Wednesday（Wed.）
+    星期四：Thursday（Thur./Thurs.）
+    星期五：Friday（Fri.）
+    星期六：Saturday（Sat.）
 
 ——————————
 5.8
 阿里云数据可视化，datav使用
+项目案例:品优购静态页面
+——————————
+
+
+!品优购项目练习
+
+
+
+，网站制作流程
+
+    客户沟通指定方案 
+    签订合同 
+    预付定金 
+    初稿审核《《==美工制作原型图和ps效果图
+    前台页面设计、后台功能开发
+    测试验收
+    上线培训
+    后期维护
+
+
+
+，开发准备
+        。开发工具：VScode Photoshop/Fw Chrome浏览器
+
+        。技术栈
+            html5+css3手动布局，可以大量使用html5标签和样式
+            采取结构与样式相分离，模块化开发
+            遵循统一代码规范（素材文件夹--品优购代码规范.md）(为此装了Markdown one for all插件)
+
 
 
 
