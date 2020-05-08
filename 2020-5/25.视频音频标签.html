@@ -2,6 +2,7 @@
 ————————
 5.7 创建
 5.8 改url
+5-8-2更换了小的音视频源，同时调用了oss存储的音频源
 ————————
 -->
 <!DOCTYPE html>
@@ -18,9 +19,11 @@
 </head>
 
 <body>
-    <video src="media/25-1.mp4" autoplay="autoplay" width="100%" controls="controls" loop="loop" preload="auto"
+    <video src="media/25-1.mp4" autoplay="autoplay" width="50%" controls="controls" loop="loop" preload="auto"
         poster="img/25-3.jpg" muted="muted"></video>
-    <audio src="media/25-2.mp3" controls="controls" autoplay="autoplay" loop="loop"></audio>
+        
+    <!-- <audio src="media/25-2.mp3" controls="controls" autoplay="autoplay" loop="loop"></audio> -->
+    <audio src="https://oss1.aoding9.top/test2020/2020-5/media/25-2.mp3" controls="controls" autoplay="autoplay" loop="loop"></audio>
 </body>
 
 </html>
