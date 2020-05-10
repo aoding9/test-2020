@@ -1,0 +1,163 @@
+/* 
+5-11-1  创建
+5-11-2  主视区完成
+*/
+
+
+.main {
+    width: 980px;
+    height: 456px;
+    margin: 10px 0 15px 220px;
+}
+
+.focus {
+    position: relative;
+    width: 721px;
+    height: 456px;
+}
+
+.focus img {
+    width: 100%;
+    height: 100%;
+}
+
+.focus a::before {
+    display: block;
+    font-family: icomoon;
+    position: absolute;
+    top: 50%;
+    margin-top: -8px;
+    height: 30px;
+    width: 20px;
+    background-color: rgba(0, 0, 0, .3);
+    line-height: 30px;
+    font-size: 20px;
+    color: #fff;
+}
+
+.focus .focus-ico-prev::before {
+    content: '\e91f';
+    border-radius: 0 15px 15px 0;
+    left: 0;
+}
+.focus .focus-ico-next::before {
+    content: '\e920';
+    border-radius: 15px 0 0 15px;
+    right: 0;
+}
+
+.focus .focus-nav {
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    margin-left: -25px;
+    height: 16px;
+    width: 70px;
+    padding: 2px 0 2px 0;
+    background-color: rgba(0,0,0,.5);
+    border-radius: 8px;
+}
+
+.focus .focus-nav a {
+    display: block;
+    float: left;
+    width: 10px;
+    height: 12px;
+    background-color: #fff;
+    margin-left: 10px;
+    border-radius: 6px;
+}
+
+.focus .focus-nav .red-current {
+    background-color: #c81623;
+}
+.flash-news {
+    width: 250px;
+    height: 456px;
+    margin-left: 8px;
+    /* border-bottom: 0; */
+}
+
+.fn {
+    height: 165px;
+    border: solid 1px #e4e4e4;
+
+}
+
+.fn-hd {
+    height: 33px;
+    line-height: 33px;
+    border-bottom: dotted 1px #e4e4e4;
+    padding: 0 15px;
+}
+
+.fn-hd h4 {
+    font-size: 14px;
+}
+
+.ico-arrow-r::after {
+    content: '\e920';
+    font-family: icomoon;
+
+}
+
+.fn-bd {
+    padding: 8px 15px 0;
+    height: 125px;
+}
+
+.fn-bd ul li {
+    margin-bottom: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.convenient-list {
+    overflow: hidden;
+    height: 209px;
+    border-width: 0 1px 1px 1px;
+    border-style: solid;
+    border-color: #e4e4e4;
+}
+
+.convenient-list ul li {
+    float: left;
+    width: 62px;
+    height: 71px;
+    border-width: 0 1px 1px 0;
+    border-style: solid;
+    border-color: #e4e4e4;
+}
+
+.convenient-list ul li:nth-child(4n) {
+    border-right: 0;
+}
+
+
+.convenient-list ul li a {
+    display: block;
+    height: 100%;
+    padding-top: 14px;
+    text-align: center;
+}
+
+.convenient-list ul li a i {
+    display: block;
+    width: 24px;
+    height: 25px;
+    margin: 0 auto 5px;
+    background: url('../img/icons.png') no-repeat;
+}
+
+.convenient-list ul li a .cove-icon1 {
+    background-position: -17px -16px;
+}
+
+.convenient-list ul li a .cove-icon2 {
+    background-position: -80px -18px;
+}
+
+.bargain {
+    margin-top: 5px;
+}
