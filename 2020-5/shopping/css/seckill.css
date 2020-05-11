@@ -1,0 +1,58 @@
+/* 
+5-11-1  创建
+5-11-2  完成
+*/
+.sk-logo {
+    position: absolute;
+    top: 44px;
+    left: 190px;
+    border-left: solid 1px #c81523;
+    padding-left: 15px;
+}
+
+.sk-nav ul li {
+    float: left;
+
+}
+
+.sk-nav ul li a {
+    padding: 0 30px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #000;
+
+}
+
+.items-nav ul li {
+    padding: 0 18px;
+    float: left;
+}
+
+.items-nav ul li a {
+    font-size: 14px;
+}
+
+.items-nav-more:after {
+    content: '\e91e';
+    font-family: icomoon;
+}
+
+.main-bd {
+    padding-top: 25px;
+}
+
+.main-bd ul li {
+    float: left;
+    width: 289px;
+    height: 458px;
+    margin: 0 14px 15px 0;
+    border:solid 1px #fff;
+    background: url('../upload/list.jpg') no-repeat;
+}
+
+.main-bd ul li:hover {
+    border-color:#c81523;
+}
+.main-bd ul li:nth-child(4n) {
+    margin-right: 0;
+}

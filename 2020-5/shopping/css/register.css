@@ -1,0 +1,167 @@
+/* 
+5-11-1  完成
+*/
+
+
+.layout {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.header {
+    height: 75px;
+    border-bottom: solid 2px #c81523;
+}
+
+.header img {
+    margin: 10px 0;
+}
+
+.form-area {
+    margin-top: 18px;
+    height: 520px;
+    border: solid 1px #ccc;
+}
+
+.form-hd {
+    padding: 0 8px;
+    height: 44px;
+    line-height: 44px;
+    border-bottom: solid 1px #ccc;
+    background-color: #ececec;
+}
+
+.form-hd h4 {
+    float: left;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.form-hd p {
+    float: right;
+    font-size: 14px;
+}
+
+.form-hd p a {
+    color: #c81523;
+}
+
+.form-bd {
+    width: 600px;
+    height: 370px;
+    margin: 50px auto 0;
+
+}
+
+.form-bd ul li {
+    height: 38px;
+    line-height: 38px;
+    margin-bottom: 20px;
+}
+
+.form-bd ul li label {
+    display: inline-block;
+    width: 88px;
+    text-align: right;
+}
+
+.form-bd ul li input {
+    width: 241px;
+    height: 37px;
+    border: solid 1px #ccc;
+}
+
+.error {
+    color:#c81523;
+}
+
+.error i,
+.success i{
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+}
+
+.error {
+    color:#c81523;
+}
+
+.error i {
+    background: url('../img/error.png');
+}
+
+.success {
+    color:#008000;
+}
+.success i{
+    background: url('../img/success.png');
+}
+
+.form-bd ul .safe {
+    padding-left:172px;
+    height: 16px;
+    line-height: 16px;
+}
+
+.safe i {
+    padding:0 12px;
+    text-align: center;
+    color: #fff;
+}
+.weak {
+    background-color: #de1111;
+}
+.medium {
+    background-color: #40b83f;
+}
+
+.strong{
+    background-color: #f79100;
+}
+
+.form-bd ul .agree {
+    height: 14px;
+    line-height: 14px;
+}
+.form-bd ul .agree input {
+    width: 13px;
+    height: 13px;
+    border:1px solid #a6a6a6;
+    margin-left: 95px;
+    vertical-align: middle;
+}
+
+.agree a {
+    color:#1ba1e6;
+}
+.form-bd ul .submit input{
+    margin: 28px 0 0 70px;
+    width: 197px;
+    background-color: #c81623;
+    color:#fff;
+}
+
+/* footer */
+
+.mod-copyright,
+.links {
+    text-align: center;
+}
+
+.mod-copyright {
+    padding-top: 20px;
+}
+
+.links {
+    margin-bottom: 15px;
+}
+
+.links a::after {
+    content: '|';
+    margin: 0 2px;
+}
+
+.links a:last-child::after {
+    content: '';
+}

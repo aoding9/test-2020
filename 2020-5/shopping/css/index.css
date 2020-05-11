@@ -1,13 +1,14 @@
 /* 
-5-11-1  创建
-5-11-2  主视区完成
+5-10-1  创建
+5-10-2  主视区完成
+5-11-1  完成
 */
 
 
 .main {
     width: 980px;
     height: 456px;
-    margin: 10px 0 15px 220px;
+    margin: 10px 0 10px 220px;
 }
 
 .focus {
@@ -113,6 +114,9 @@
     text-overflow: ellipsis;
 }
 
+.fn-bd ul li a:hover {
+text-decoration:underline;
+}
 .convenient-list {
     overflow: hidden;
     height: 209px;
@@ -135,6 +139,7 @@
 }
 
 
+
 .convenient-list ul li a {
     display: block;
     height: 100%;
@@ -142,6 +147,9 @@
     text-align: center;
 }
 
+.convenient-list ul li a:hover {
+background-color: rgba(0,0,0,.04);
+}
 .convenient-list ul li a i {
     display: block;
     width: 24px;
@@ -161,3 +169,122 @@
 .bargain {
     margin-top: 5px;
 }
+
+/* recommend part */
+.recommend {
+    height: 163px;
+    background-color: #ebebeb;
+
+}
+
+.recom-hd {
+    height: 163px;
+    width: 205px;
+    background-color: #5c5251;
+    text-align: center;
+    line-height: 163px;
+}
+
+
+.recom-bd ul li {
+    position: relative;
+
+    float: left;
+}
+.recom-bd ul li a {
+}
+
+.recom-bd ul li a img {
+    width: 248px;
+    height: 163px;
+}
+
+.recom-bd ul li:nth-child(-n+3)::after {
+    content:'';
+    position: absolute;
+    top: 10px;
+    right: 0;
+    width: 1px;
+    height: 145px;
+    background-color: #ddd;
+}
+
+/* floor电梯楼层 部分 */
+.appliances-floor {
+    margin-top: 30px;
+    height: 390px;
+}
+.floor-hd {
+    height: 30px;
+    line-height: 30px;
+    border-bottom: solid 2px #c81623;
+}
+
+.floor-hd h4 {
+    font-weight: 400;
+    font-size: 18px;
+    color:#c81623;
+}
+.floor-hd ul li {
+    float: left;
+}
+
+.floor-hd ul li:last-child a {
+    border: 0;
+}
+
+.floor-hd ul li a {
+    padding: 0 15px;
+    border-right: solid #666 1px;
+}
+
+.tab-col{
+height: 361px;
+}
+.tab-col img {
+    width: 100%;
+}
+
+.tab-col210 {
+    width: 210px;
+    background-color: #fbfbfb;
+}
+
+.tab-col210 ul {
+    padding: 0 14px;
+}
+
+.tab-col210 ul li {
+    float: left;
+    height: 34px;
+    line-height: 34px;
+    border-bottom: solid 1px #ccc;
+}
+.tab-col210 ul li:nth-child(even) {
+    margin-left: 8px;
+}
+
+.tab-col210 ul li a {
+    padding: 0 18px;
+}
+
+.tab-col239 {
+    width: 239px;
+}
+
+.tab-col221 {
+    width: 221px;
+    border-right:solid 1px #ccc;
+}
+
+.tab-col219 {
+    width: 219px;
+}
+
+.tab-col221-top img,
+.tab-col219-top img {
+    display: block;
+    height: 180px;
+    border-bottom: solid 1px #ccc;
+}
+

@@ -1,15 +1,14 @@
 <!--
-————————
 5-9-1   创建
-5-11-1  下拉导航以及布局微调
-5-11-2  主视区完成
-————————
+5-10-1  下拉导航以及布局微调
+5-10-2  主视区完成
+5-11-1  完成
 -->
 <!DOCTYPE html>
 <html lang="zh-CN">
 
 <head>
-    <title>xxx - 前端学习 xxx.com</title>
+    <title>首页 - 品优购 xxx.com</title>
 
     <link href="favicon-1.ico" rel="shortcut icon">
     <meta charset="UTF-8">
@@ -25,7 +24,7 @@
 </head>
 
 <body>
-    <!-- shortcut module -->
+    <!-- shortcut module快捷导航模块 -->
     <section class="shortcut">
         <div class="layout">
             <div class="fl">
@@ -38,19 +37,19 @@
             </div>
             <div class="fr">
                 <ul>
-                    <li>我的订单</li>
+                    <li><a href="#">我的订单</a></li>
                     <li></li>
-                    <li class="ico-arrow">我的品优购</li>
+                    <li class="ico-arrow"><a href="#">我的品优购</a></li>
                     <li></li>
-                    <li>品优购会员</li>
+                    <li><a href="#">品优购会员</a></li>
                     <li></li>
-                    <li>企业采购</li>
+                    <li><a href="#">企业采购</a></li>
                     <li></li>
-                    <li class="ico-arrow">关注品优购</li>
+                    <li class="ico-arrow"><a href="#">关注品优购</a></li>
                     <li></li>
-                    <li class="ico-arrow">客户服务</li>
+                    <li class="ico-arrow"><a href="#">客户服务</a></li>
                     <li></li>
-                    <li class="ico-arrow">网站导航</li>
+                    <li class="ico-arrow"><a href="#"></a></li>
                 </ul>
             </div>
         </div>
@@ -91,7 +90,7 @@
 
     <!-- nav start -->
     <nav class="nav">
-        <div class="layout clearfix">
+        <div class="layout">
             <div class="dropdown fl">
                 <div class="dt">
                     <a href="#">全部商品分类</a>
@@ -133,7 +132,7 @@
         </div>
     </nav>
 
-    <!-- different part of home page -->
+    <!-- different part of home page首页差异部分 -->
     <!-- main part -->
     <div class="layout">
         <div class="main">
@@ -143,7 +142,7 @@
                 </ul>
                 <a href="#" class="focus-ico-prev"></a>
                 <a href="#" class="focus-ico-next"></a>
-               <div class= "focus-nav">
+                <div class="focus-nav">
                     <a href="#" class="red-current"></a>
                     <a href="#"></a>
                     <a href="#"></a>
@@ -189,118 +188,335 @@
         </div>
     </div>
 
-
-    <!-- footer start -->
-    <!-- <footer class="footer"> -->
-    <div class="layout">
-        <div class="mod-service clearfix">
+    <!-- recommend part推荐部分 -->
+    <div class=" recommend layout">
+        <div class="recom-hd fl">
+            <img src="img/recom.png" alt="">
+        </div>
+        <div class="recom-bd fl">
             <ul>
-                <li>
-                    <i></i>
-                    <h4>正品保障</h4>
-                    <p>正品保障,提供发票</p>
-                </li>
-                <li>
-                    <i></i>
-                    <h4>极速物流</h4>
-                    <p>急速物流，急速送达</p>
-                </li>
-                <li>
-                    <i></i>
-                    <h4>正品保障</h4>
-                    <p>正品保障,提供发票</p>
-                </li>
-                <li>
-                    <i></i>
-                    <h4>特色服务</h4>
-                    <p>私人定制家电套餐</p>
-                </li>
-                <li>
-                    <i></i>
-                    <h4>帮助中心</h4>
-                    <p>您的购物指南</p>
-                </li>
+                <li><a href="#"><img src="upload/recom_03.jpg" alt=""></a></li>
+                <li><a href="#"><img src="upload/recom_03.jpg" alt=""></a></li>
+                <li><a href="#"><img src="upload/recom_03.jpg" alt=""></a></li>
+                <li><a href="#"><img src="upload/recom_03.jpg" alt=""></a></li>
             </ul>
         </div>
+    </div>
 
-        <div class="mod-help clearfix">
-            <dl>
-                <dt>服务指南</dt>
-                <dd><a href="#">购物流程</a></dd>
-                <dd><a href="#">会员介绍</a></dd>
-                <dd><a href="#">生活旅行/团购</a></dd>
-                <dd><a href="#">常见问题</a></dd>
-                <dd><a href="#">大家电</a></dd>
-                <dd><a href="#">联系客服</a></dd>
-            </dl>
-
-            <dl>
-                <dt>服务指南</dt>
-                <dd><a href="#">购物流程</a></dd>
-                <dd><a href="#">会员介绍</a></dd>
-                <dd><a href="#">生活旅行/团购</a></dd>
-                <dd><a href="#">常见问题</a></dd>
-                <dd><a href="#">大家电</a></dd>
-                <dd><a href="#">联系客服</a></dd>
-            </dl>
-
-            <dl>
-                <dt>服务指南</dt>
-                <dd><a href="#">购物流程</a></dd>
-                <dd><a href="#">会员介绍</a></dd>
-                <dd><a href="#">生活旅行/团购</a></dd>
-                <dd><a href="#">常见问题</a></dd>
-                <dd><a href="#">大家电</a></dd>
-                <dd><a href="#">联系客服</a></dd>
-            </dl>
-
-            <dl>
-                <dt>服务指南</dt>
-                <dd><a href="#">购物流程</a></dd>
-                <dd><a href="#">会员介绍</a></dd>
-                <dd><a href="#">生活旅行/团购</a></dd>
-                <dd><a href="#">常见问题</a></dd>
-                <dd><a href="#">大家电</a></dd>
-                <dd><a href="#">联系客服</a></dd>
-            </dl>
-
-            <dl>
-                <dt>服务指南</dt>
-                <dd><a href="#">购物流程</a></dd>
-                <dd><a href="#">会员介绍</a></dd>
-                <dd><a href="#">生活旅行/团购</a></dd>
-                <dd><a href="#">常见问题</a></dd>
-                <dd><a href="#">大家电</a></dd>
-                <dd><a href="#">联系客服</a></dd>
-            </dl>
-
-            <dl>
-                <dt>帮助中心</dt>
-                <dd><img src="img/wx_cz.jpg" alt=""></dd>
-                <dd>品优购客户端</dd>
-            </dl>
-        </div>
-
-        <div class="mod-copyright">
-            <div class="links">
-                <a href="#">关于我们</a>
-                <a href="#">联系我们</a>
-                <a href="#">联系客服</a>
-                <a href="#">商家入驻</a>
-                <a href="#">营销中心</a>
-                <a href="#">手机品优购</a>
-                <a href="#">友情链接</a>
-                <a href="#">销售联盟</a>
-                <a href="#">品优购社区</a>
-                <a href="#">品优购公益</a>
-                <a href="#">English Site</a>
-                <a href="#">Contact U</a>
+    <!-- floor part楼层区 -->
+    <div class="goods-floor">
+        <!-- 1st floor 电器楼层 -->
+        <div class="appliances-floor layout">
+            <div class="floor-hd">
+                <h4 class="fl">家用电器</h4>
+                <ul class="fr">
+                    <li><a href="#" class="red-style">热门</a></li>
+                    <li><a href="#">大家电</a></li>
+                    <li><a href="#">生活电器</a></li>
+                    <li><a href="#">厨房电器</a></li>
+                    <li><a href="#">生活电器</a></li>
+                    <li><a href="#">个护健康</a></li>
+                    <li><a href="#">应季电器</a></li>
+                    <li><a href="#">空气净化</a></li>
+                    <li><a href="#">新奇特</a></li>
+                    <li><a href="#">高端电器</a></li>
+                </ul>
             </div>
-
-            <p>地址：北京市昌平区建材城西路金燕龙办公楼一层 邮编：100096 电话：400-618-4000 传真：010-82935100 邮箱: zhanghj+itcast.cn<br>
-                <a href=#>京ICP备08001421号京公网安备110108007702</a></p>
+            <div class="floor-bd">
+                <!-- 实际中会有标签切换效果，所以用tab包起来 -->
+                <div class="tab-content">
+                    <div class="tab-items1">
+                        <div class="tab-col tab-col210 fl">
+                            <ul>
+                                <li><a href="#">节能补贴</a></li>
+                                <li><a href="#">节能补贴</a></li>
+                                <li><a href="#">节能补贴</a></li>
+                                <li><a href="#">节能补贴</a></li>
+                                <li><a href="#">节能补贴</a></li>
+                                <li><a href="#">节能补贴</a></li>
+                            </ul>
+                            <a href="#"><img src="upload/floor-1-1.png" alt=""></a>
+                        </div>
+                        <div class="tab-col tab-col329 fl">
+                            <a href="#"><img src="upload/floor-1-b01.png" alt=""></a>
+                        </div>
+                        <div class="tab-col tab-col221 fl">
+                            <a href="#" class="tab-col221-top"><img src="upload/floor-1-2.png" alt=""></a>
+                            <a href="#" class="tab-col221-bottom"><img src="upload/floor-1-3.png" alt=""></a>
+                        </div>
+                        <div class="tab-col tab-col221 fl">
+                            <a href="#"><img src="upload/floor-1-4.png" alt=""></a>
+                        </div>
+                        <div class="tab-col tab-col219 fl">
+                            <a href="#" class="tab-col219-top"><img src="upload/floor-1-5.png" alt=""></a>
+                            <a href="#" class="tab-col219-bottom"><img src="upload/floor-1-6.png" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 2nd floor-->
+        <div class="appliances-floor layout">
+            <div class="floor-hd">
+                <h4 class="fl">家用电器</h4>
+                <ul class="fr">
+                    <li><a href="#" class="red-style">热门</a></li>
+                    <li><a href="#">大家电</a></li>
+                    <li><a href="#">生活电器</a></li>
+                    <li><a href="#">厨房电器</a></li>
+                    <li><a href="#">生活电器</a></li>
+                    <li><a href="#">个护健康</a></li>
+                    <li><a href="#">应季电器</a></li>
+                    <li><a href="#">空气净化</a></li>
+                    <li><a href="#">新奇特</a></li>
+                    <li><a href="#">高端电器</a></li>
+                </ul>
+            </div>
+            <div class="floor-bd">
+                <!-- 实际中会有标签切换效果，所以用tab包起来 -->
+                <div class="tab-content">
+                    <div class="tab-items1">
+                        <div class="tab-col tab-col210 fl">
+                            <ul>
+                                <li><a href="#">节能补贴</a></li>
+                                <li><a href="#">节能补贴</a></li>
+                                <li><a href="#">节能补贴</a></li>
+                                <li><a href="#">节能补贴</a></li>
+                                <li><a href="#">节能补贴</a></li>
+                                <li><a href="#">节能补贴</a></li>
+                            </ul>
+                            <a href="#"><img src="upload/floor-1-1.png" alt=""></a>
+                        </div>
+                        <div class="tab-col tab-col329 fl">
+                            <a href="#"><img src="upload/floor-1-b01.png" alt=""></a>
+                        </div>
+                        <div class="tab-col tab-col221 fl">
+                            <a href="#" class="tab-col221-top"><img src="upload/floor-1-2.png" alt=""></a>
+                            <a href="#" class="tab-col221-bottom"><img src="upload/floor-1-3.png" alt=""></a>
+                        </div>
+                        <div class="tab-col tab-col221 fl">
+                            <a href="#"><img src="upload/floor-1-4.png" alt=""></a>
+                        </div>
+                        <div class="tab-col tab-col219 fl">
+                            <a href="#" class="tab-col219-top"><img src="upload/floor-1-5.png" alt=""></a>
+                            <a href="#" class="tab-col219-bottom"><img src="upload/floor-1-6.png" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 3rd floor -->
+        <div class="appliances-floor layout">
+            <div class="floor-hd">
+                <h4 class="fl">家用电器</h4>
+                <ul class="fr">
+                    <li><a href="#" class="red-style">热门</a></li>
+                    <li><a href="#">大家电</a></li>
+                    <li><a href="#">生活电器</a></li>
+                    <li><a href="#">厨房电器</a></li>
+                    <li><a href="#">生活电器</a></li>
+                    <li><a href="#">个护健康</a></li>
+                    <li><a href="#">应季电器</a></li>
+                    <li><a href="#">空气净化</a></li>
+                    <li><a href="#">新奇特</a></li>
+                    <li><a href="#">高端电器</a></li>
+                </ul>
+            </div>
+            <div class="floor-bd">
+                <div class="tab-content">
+                    <div class="tab-items1">
+                        <div class="tab-col tab-col210 fl">
+                            <ul>
+                                <li><a href="#">节能补贴</a></li>
+                                <li><a href="#">节能补贴</a></li>
+                                <li><a href="#">节能补贴</a></li>
+                                <li><a href="#">节能补贴</a></li>
+                                <li><a href="#">节能补贴</a></li>
+                                <li><a href="#">节能补贴</a></li>
+                            </ul>
+                            <a href="#"><img src="upload/floor-1-1.png" alt=""></a>
+                        </div>
+                        <div class="tab-col tab-col329 fl">
+                            <a href="#"><img src="upload/floor-1-b01.png" alt=""></a>
+                        </div>
+                        <div class="tab-col tab-col221 fl">
+                            <a href="#" class="tab-col221-top"><img src="upload/floor-1-2.png" alt=""></a>
+                            <a href="#" class="tab-col221-bottom"><img src="upload/floor-1-3.png" alt=""></a>
+                        </div>
+                        <div class="tab-col tab-col221 fl">
+                            <a href="#"><img src="upload/floor-1-4.png" alt=""></a>
+                        </div>
+                        <div class="tab-col tab-col219 fl">
+                            <a href="#" class="tab-col219-top"><img src="upload/floor-1-5.png" alt=""></a>
+                            <a href="#" class="tab-col219-bottom"><img src="upload/floor-1-6.png" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 4th floor -->
+        <div class="appliances-floor layout">
+            <div class="floor-hd">
+                <h4 class="fl">家用电器</h4>
+                <ul class="fr">
+                    <li><a href="#" class="red-style">热门</a></li>
+                    <li><a href="#">大家电</a></li>
+                    <li><a href="#">生活电器</a></li>
+                    <li><a href="#">厨房电器</a></li>
+                    <li><a href="#">生活电器</a></li>
+                    <li><a href="#">个护健康</a></li>
+                    <li><a href="#">应季电器</a></li>
+                    <li><a href="#">空气净化</a></li>
+                    <li><a href="#">新奇特</a></li>
+                    <li><a href="#">高端电器</a></li>
+                </ul>
+            </div>
+            <div class="floor-bd">
+                <div class="tab-content">
+                    <div class="tab-items1">
+                        <div class="tab-col tab-col210 fl">
+                            <ul>
+                                <li><a href="#">节能补贴</a></li>
+                                <li><a href="#">节能补贴</a></li>
+                                <li><a href="#">节能补贴</a></li>
+                                <li><a href="#">节能补贴</a></li>
+                                <li><a href="#">节能补贴</a></li>
+                                <li><a href="#">节能补贴</a></li>
+                            </ul>
+                            <a href="#"><img src="upload/floor-1-1.png" alt=""></a>
+                        </div>
+                        <div class="tab-col tab-col329 fl">
+                            <a href="#"><img src="upload/floor-1-b01.png" alt=""></a>
+                        </div>
+                        <div class="tab-col tab-col221 fl">
+                            <a href="#" class="tab-col221-top"><img src="upload/floor-1-2.png" alt=""></a>
+                            <a href="#" class="tab-col221-bottom"><img src="upload/floor-1-3.png" alt=""></a>
+                        </div>
+                        <div class="tab-col tab-col221 fl">
+                            <a href="#"><img src="upload/floor-1-4.png" alt=""></a>
+                        </div>
+                        <div class="tab-col tab-col219 fl">
+                            <a href="#" class="tab-col219-top"><img src="upload/floor-1-5.png" alt=""></a>
+                            <a href="#" class="tab-col219-bottom"><img src="upload/floor-1-6.png" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+    <!-- footer start -->
+    <footer class="footer">
+
+        <div class="layout">
+            <div class="mod-service">
+                <ul>
+                    <li>
+                        <i></i>
+                        <h4>正品保障</h4>
+                        <p>正品保障,提供发票</p>
+                    </li>
+                    <li>
+                        <i></i>
+                        <h4>极速物流</h4>
+                        <p>急速物流，急速送达</p>
+                    </li>
+                    <li>
+                        <i></i>
+                        <h4>正品保障</h4>
+                        <p>正品保障,提供发票</p>
+                    </li>
+                    <li>
+                        <i></i>
+                        <h4>特色服务</h4>
+                        <p>私人定制家电套餐</p>
+                    </li>
+                    <li>
+                        <i></i>
+                        <h4>帮助中心</h4>
+                        <p>您的购物指南</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="mod-help clearfix">
+                <dl>
+                    <dt>服务指南</dt>
+                    <dd><a href="#">购物流程</a></dd>
+                    <dd><a href="#">会员介绍</a></dd>
+                    <dd><a href="#">生活旅行/团购</a></dd>
+                    <dd><a href="#">常见问题</a></dd>
+                    <dd><a href="#">大家电</a></dd>
+                    <dd><a href="#">联系客服</a></dd>
+                </dl>
+
+                <dl>
+                    <dt>服务指南</dt>
+                    <dd><a href="#">购物流程</a></dd>
+                    <dd><a href="#">会员介绍</a></dd>
+                    <dd><a href="#">生活旅行/团购</a></dd>
+                    <dd><a href="#">常见问题</a></dd>
+                    <dd><a href="#">大家电</a></dd>
+                    <dd><a href="#">联系客服</a></dd>
+                </dl>
+
+                <dl>
+                    <dt>服务指南</dt>
+                    <dd><a href="#">购物流程</a></dd>
+                    <dd><a href="#">会员介绍</a></dd>
+                    <dd><a href="#">生活旅行/团购</a></dd>
+                    <dd><a href="#">常见问题</a></dd>
+                    <dd><a href="#">大家电</a></dd>
+                    <dd><a href="#">联系客服</a></dd>
+                </dl>
+
+                <dl>
+                    <dt>服务指南</dt>
+                    <dd><a href="#">购物流程</a></dd>
+                    <dd><a href="#">会员介绍</a></dd>
+                    <dd><a href="#">生活旅行/团购</a></dd>
+                    <dd><a href="#">常见问题</a></dd>
+                    <dd><a href="#">大家电</a></dd>
+                    <dd><a href="#">联系客服</a></dd>
+                </dl>
+
+                <dl>
+                    <dt>服务指南</dt>
+                    <dd><a href="#">购物流程</a></dd>
+                    <dd><a href="#">会员介绍</a></dd>
+                    <dd><a href="#">生活旅行/团购</a></dd>
+                    <dd><a href="#">常见问题</a></dd>
+                    <dd><a href="#">大家电</a></dd>
+                    <dd><a href="#">联系客服</a></dd>
+                </dl>
+
+                <dl>
+                    <dt>帮助中心</dt>
+                    <dd><img src="img/wx_cz.jpg" alt=""></dd>
+                    <dd>品优购客户端</dd>
+                </dl>
+            </div>
+
+            <div class="mod-copyright">
+                <div class="links">
+                    <a href="#">关于我们</a>
+                    <a href="#">联系我们</a>
+                    <a href="#">联系客服</a>
+                    <a href="#">商家入驻</a>
+                    <a href="#">营销中心</a>
+                    <a href="#">手机品优购</a>
+                    <a href="#">友情链接</a>
+                    <a href="#">销售联盟</a>
+                    <a href="#">品优购社区</a>
+                    <a href="#">品优购公益</a>
+                    <a href="#">English Site</a>
+                    <a href="#">Contact U</a>
+                </div>
+
+                <p>地址：北京市昌平区建材城西路金燕龙办公楼一层 邮编：100096 电话：400-618-4000 传真：010-82935100 邮箱: zhanghj+itcast.cn<br>
+                    <a href=#>京ICP备08001421号京公网安备110108007702</a></p>
+            </div>
+        </div>
 
     </footer>
 
