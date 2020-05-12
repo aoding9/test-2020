@@ -1,6 +1,7 @@
 <!--
 ————————
-
+5-12-1 创建完成
+5-12-2 修改了表现方法，用div
 ————————
 -->
 <!DOCTYPE html>
@@ -21,15 +22,25 @@
             background-color: #eee;
         }
 
-        @keyframes bearpng {
+        /* 版面，切掉超出屏幕的部分 */
+        .layout {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /* 熊大奔跑动画 */
+        @keyframes run {
             0% {}
 
             100% {
-                transform: translate(-1600px, 0);
+                background-position: -1600px 0;
             }
         }
 
-        @keyframes bear {
+        /* 熊大移动动画 */
+        @keyframes move {
             0% {}
 
             100% {
@@ -37,6 +48,7 @@
             }
         }
 
+        /* 背景移动动画 */
         @keyframes bg {
             0% {}
 
@@ -45,92 +57,116 @@
             }
         }
 
-        .bg11,
-        .bg12 {
+        /* 太阳动画 */
+        @keyframes sun {
+            0% {}
+
+            100% {
+                transform-origin: 700px 20000px;
+                transform: rotate(-7deg);
+            }
+        }
+
+        /* 背景1和2 */
+        /* 无限循环背景：用两张图排在一起轮流移动，x轴上背景图多重复几次 */
+        .bga1,
+        .bga2 {
             position: absolute;
             top: 10px;
+            right: 0;
             width: 100%;
-            height: 600px;
-            background: url('img/34-1.png') no-repeat;
-            animation: bg 10s linear infinite;
+            height: 400px;
+            background: url('img/34-1.png');
+            animation: bg 40s linear infinite;
+            opacity: 0.95;
+
         }
-        .bg11{
-            right: -100%;
-        }
-        .bg21,
-        .bg22 {
-            position: absolute;
-            top: 300px;
-            width: 100%;
-            height: 600px;
-            background: url('img/34-3.png') no-repeat;
-            animation: bg 5s linear infinite;
-        }
-        .bg21{
+
+        .bga2 {
             right: -100%;
         }
 
+        .bgb1,
+        .bgb2 {
+            position: absolute;
+            top: 250px;
+            right: 0;
+            width: 100%;
+            height: 300px;
+            background: url('img/34-3.png');
+            animation: bg 20s linear infinite;
+
+        }
+
+        .bgb2 {
+            right: -100%;
+        }
+
+        /* 熊*/
         .bear {
             position: absolute;
             height: 100px;
             width: 200px;
             overflow: hidden;
+            background: url("img/34-2.png") no-repeat;
         }
 
+        /* 熊大 */
         .b1 {
             top: 510px;
             left: -420px;
-            animation: bear 3.2s .4s ease-in-out forwards;
+            animation: move 5.2s .4s ease-in-out forwards , run 1.2s steps(8) .3s  infinite;
         }
+
+        /* 熊二 */
 
         .b2 {
             top: 570px;
             left: -460px;
-            animation: bear 1.5s .8s ease-in forwards;
+            animation: move 4.5s .8s ease-in forwards,run 1s steps(8) .4s infinite;
         }
+
+        /* 熊三 */
 
         .b3 {
             top: 580px;
             left: -270px;
-            animation: bear 2s 1.2s ease-out forwards;
+            animation: move 4s 1.2s ease-out forwards,run 0.6s steps(8) .5s infinite;
 
-
+            /* 光头强 */
         }
 
         .b4 {
             top: 660px;
             left: -300px;
-            animation: bear 2s .8s ease-in-out forwards;
+            animation: move 4s .8s ease-in-out forwards,run 1s steps(8) .6s infinite;
 
 
-
+            /* 吉吉国王 */
         }
 
         .b5 {
             top: 600px;
             left: -510px;
-            animation: bear 3s linear forwards;
+            animation: move 5s linear forwards, run .8s steps(8) .2s infinite;
 
-
+            /* 设置熊的动作差异 */
         }
 
-        .bear img {
-            animation: bearpng .8s steps(8) infinite;
-        }
+ 
 
-        .b1 img {
-            animation: bearpng 1.2s steps(8) .3s infinite;
+        
 
-        }
-
-        .b2 img {
-            animation: bearpng 1s steps(8) .4s infinite;
-
-        }
-
-        .b3 img {
-            animation: bearpng 0.6s steps(8) .5s infinite;
-
+        .sun {
+            position: absolute;
+            top: 20px;
+            right: -60px;
+            width: 50px;
+            height: 50px;
+            background-color: #ee3131;
+            border-radius: 50%;
+            box-shadow: 0 0 100px 20px rgba(255, 100, 100, .5);
+            animation: sun 30s linear infinite;
         }
     </style>
     <!-- 	<script></script> -->
@@ -138,17 +174,19 @@
 </head>
 
 <body>
-        <div class="bg11"></div>
-        <div class="bg12"></div>
-        <div class="bg21"></div>
-        <div class="bg22"></div>
-    </div>
-    <div class="bear b1"><img src="img/34-2.png" alt=""></div>
-    <div class="bear b2"><img src="img/34-2.png" alt=""></div>
-    <div class="bear b3"><img src="img/34-2.png" alt=""></div>
-    <div class="bear b4"><img src="img/34-2.png" alt=""></div>
-    <div class="bear b5"><img src="img/34-2.png" alt=""></div>
+    <div class="layout">
+        <div class="sun"></div>
+        <div class="bga1"></div>
+        <div class="bga2"></div>
+        <div class="bgb1"></div>
+        <div class="bgb2"></div>
 
+        <div class="bear b1"></div>
+        <div class="bear b2"></div>
+        <div class="bear b3"></div>
+        <div class="bear b4"></div>
+        <div class="bear b5"></div>
+    </div>
 </body>
 
 </html>
