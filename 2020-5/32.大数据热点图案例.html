@@ -1,0 +1,114 @@
+<!--
+————————
+5-12-1 创建
+————————
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=false" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="css/base-5-7.css" />
+    <!-- <link rel="stylesheet" href="css/common.css" /> -->
+    <title>document</title>
+    <style>
+        @keyframes pulse {
+            0% {}
+
+            /* 不要用scale 因为他会让阴影变大*/
+            70% {
+                width: 40px;
+                height: 40px;
+                opacity: 1;
+            }
+
+            /* 逐渐变得透明 */
+            100% {
+                width: 70px;
+                height: 70px;
+                opacity: 0;
+            }
+        }
+
+        body {
+            background-color: #333;
+        }
+
+        .map {
+            position: relative;
+            width: 747px;
+            height: 616px;
+            margin: 10px auto;
+            background: url('img/32-1.png') no-repeat;
+        }
+
+        .city {
+            position: absolute;
+        }
+        .beijing{
+            top: 227px;
+            left: 542px;
+        }
+
+        .taibei {
+            top: 497px;
+            left: 658px;
+        }
+
+        .city div {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+
+        }
+
+        /* .dotted不定位，那么.city和他相等大小，圆心自动位于中心，.pulse则需要定位，让圆心与中心重合 */
+        .dotted {
+            background-color: #009dfd;
+        }
+
+        /* 由于用宽高过渡，变大时上边是不动的，因此让box位于div中间，中心重合，这样脉冲扩散就是从中心变大  */
+        .city div[class^="pulse"] {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 12px #009dfd;
+            animation: pulse 1s linear infinite;
+        }
+
+        .city div.pulse1 {
+            animation-delay: .1s;
+        }
+
+        .city div.pulse2 {
+            animation-delay: .4s;
+        }
+
+        .city div.pulse3 {
+            animation-delay: .7s;
+        }
+    </style>
+</head>
+
+<body>
+    32.大数据热点图案例.html
+    <div class="map">
+        <div class="city beijing">
+            <div class="dotted"></div>
+            <div class="pulse1"></div>
+            <div class="pulse2"></div>
+            <div class="pulse3"></div>
+        </div>
+        <div class="city taibei">
+            <div class="dotted"></div>
+            <div class="pulse1"></div>
+            <div class="pulse2"></div>
+            <div class="pulse3"></div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+<!--
+————————
+5-12-1  创建
+————————
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=false" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="css/base-5-7.css" />
+    <!-- <link rel="stylesheet" href="css/common.css" /> -->
+    <title>document</title>
+    <style>
+        @keyframes move1 {
+            0% {
+                transform: translate(0px);
+            }
+
+            100% {
+                transform: translate(1000px);
+            }
+        }
+
+        /* 调用动画 */
+        .box1 {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            /* 动画名称 */
+            animation-name: move1;
+            /* 持续时间 */
+            animation-duration: 2s;
+        }
+
+        /* 可以定义多个状态的关键帧 */
+        /* 百分比尽量用整数 */
+        /* 里面的百分比就是总时间的划分 */
+        @keyframes move2 {
+            0% {
+                transform: translate(0px);
+            }
+
+            25% {
+                transform: translate(1000px, 0);
+            }
+
+            50% {
+                transform: translate(1000px, 500px);
+            }
+
+            75% {
+                transform: translate(0, 500px);
+            }
+
+            100% {
+                transform: translate(0px);
+            }
+        }
+
+        .box2 {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            /* 动画名称 */
+            animation-name: move2;
+            /* 持续时间 */
+            animation-duration: 5s;
+        }
+
+        .box3 {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            /* 所有动画属性的简写属性，除了animation-play-state     */
+            /* animation                 */
+            /* @keyframes 动画名称 必须写 */
+            /* animation-name: move1; */
+            /* 完成一个周期花费的秒或毫秒，默认为0 必须写 */
+            /* animation-duration: .5s; */
+            /* 动画的速度曲线，默认ease */
+            /* animation-timing-function:ease; */
+            /* 动画合适开始，默认0 */
+            /* animation-delay: .2s; */
+            /* 动画播放次数，默认1，还有infinite */
+            /* animation-iteration-count: 5; */
+            /* 动画是否在下一周期逆向播放，默认normal，逆向播放alternate,只有1个周期无效 */
+            /* animation-direction:alternate; */
+            /* 动画结束后的状态，forwards保持现状，backwards回到起始 */
+            /* animation-fill-mode:forwards; */
+            /* animation: name duration timing-function delay iteration-count direction fill-mod; 没有严格顺序，但先写持续时间，再写延迟时间 */
+            /* name和duration必须写 */
+            animation: move1 .5s linear .2s 5 alternate forwards;
+        }
+        .box3:hover {
+            /* 动画是否正在运行或暂停，默认running，还有paused */
+            animation-play-state:paused;     
+
+        }
+    </style>
+</head>
+
+<body>
+    31.animation动画案例.html
+    <div class="box1">111</div>
+    <div class="box2">222</div>
+    <div class="box3">3</div>
+</body>
+
+</html>

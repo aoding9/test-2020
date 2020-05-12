@@ -1,0 +1,154 @@
+<!--
+————————
+
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>34.奔跑的熊大.html - 前端学习</title>
+
+    <link href="favicon-1.ico" rel="shortcut icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=false">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <!-- 	<link href="css/base-5-7.css" rel="stylesheet"> -->
+    <!-- 	<link href="css/common.css" rel="stylesheet"> -->
+    <!-- 	<link href="css/diffrence.css" rel="stylesheet"> -->
+    <style>
+        body {
+            background-color: #eee;
+        }
+
+        @keyframes bearpng {
+            0% {}
+
+            100% {
+                transform: translate(-1600px, 0);
+            }
+        }
+
+        @keyframes bear {
+            0% {}
+
+            100% {
+                transform: translate(1200px, 0);
+            }
+        }
+
+        @keyframes bg {
+            0% {}
+
+            100% {
+                transform: translate(-100%, 0);
+            }
+        }
+
+        .bg11,
+        .bg12 {
+            position: absolute;
+            top: 10px;
+            width: 100%;
+            height: 600px;
+            background: url('img/34-1.png') no-repeat;
+            animation: bg 10s linear infinite;
+        }
+        .bg11{
+            right: -100%;
+        }
+        .bg21,
+        .bg22 {
+            position: absolute;
+            top: 300px;
+            width: 100%;
+            height: 600px;
+            background: url('img/34-3.png') no-repeat;
+            animation: bg 5s linear infinite;
+        }
+        .bg21{
+            right: -100%;
+        }
+
+        .bear {
+            position: absolute;
+            height: 100px;
+            width: 200px;
+            overflow: hidden;
+        }
+
+        .b1 {
+            top: 510px;
+            left: -420px;
+            animation: bear 3.2s .4s ease-in-out forwards;
+        }
+
+        .b2 {
+            top: 570px;
+            left: -460px;
+            animation: bear 1.5s .8s ease-in forwards;
+        }
+
+        .b3 {
+            top: 580px;
+            left: -270px;
+            animation: bear 2s 1.2s ease-out forwards;
+
+
+        }
+
+        .b4 {
+            top: 660px;
+            left: -300px;
+            animation: bear 2s .8s ease-in-out forwards;
+
+
+
+        }
+
+        .b5 {
+            top: 600px;
+            left: -510px;
+            animation: bear 3s linear forwards;
+
+
+        }
+
+        .bear img {
+            animation: bearpng .8s steps(8) infinite;
+        }
+
+        .b1 img {
+            animation: bearpng 1.2s steps(8) .3s infinite;
+
+        }
+
+        .b2 img {
+            animation: bearpng 1s steps(8) .4s infinite;
+
+        }
+
+        .b3 img {
+            animation: bearpng 0.6s steps(8) .5s infinite;
+
+        }
+    </style>
+    <!-- 	<script></script> -->
+
+</head>
+
+<body>
+        <div class="bg11"></div>
+        <div class="bg12"></div>
+        <div class="bg21"></div>
+        <div class="bg22"></div>
+    </div>
+    <div class="bear b1"><img src="img/34-2.png" alt=""></div>
+    <div class="bear b2"><img src="img/34-2.png" alt=""></div>
+    <div class="bear b3"><img src="img/34-2.png" alt=""></div>
+    <div class="bear b4"><img src="img/34-2.png" alt=""></div>
+    <div class="bear b5"><img src="img/34-2.png" alt=""></div>
+
+</body>
+
+</html>
