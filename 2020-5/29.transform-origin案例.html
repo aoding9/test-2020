@@ -1,0 +1,54 @@
+<!--
+————————
+
+————————
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=false" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="css/base-5-7.css" />
+    <!-- <link rel="stylesheet" href="css/common.css" /> -->
+    <title>document</title>
+    <style>
+        .outside {
+            position: relative;
+            top: 100px;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            background-color: green;
+            background: url('img/2-1.jpg') no-repeat -50px -50px;
+            overflow: hidden;
+        }
+
+        .inside {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background-color: red;
+            transform-origin: 0 300px;
+            transition: all .5s;
+            color: #fff;
+            text-align: center;
+            font: 20px/300px "simhei";
+        }
+
+
+        .outside:hover .inside {
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+
+<body>
+    图片旋转效果
+    <div class="outside">
+        <div class="inside">who is he?</div>
+    </div>
+</body>
+
+</html>

@@ -1,3 +1,9 @@
+
+// 3-5-9修改版 添加TDK和favicon 注释了网站描述和关键词
+// 4-5-12修改版 添加TDK和favicon 注释了网站描述和关键词
+
+
+
 {
 	// Place your 全局 snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
 	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
@@ -25,16 +31,16 @@
 			"<!DOCTYPE html>",
 			"<html lang=\"zh-CN\">\n",
 			"<head>",
-			"\t<title>${1:xxx} - 前端学习 xxx.com</title>\n",		//标题
-			"\t<link href=\"favicon-1.ico\" rel=\"shortcut icon\">",		//favicon
+			"\t<title>${1:xxx} - 前端学习</title>\n", //标题
+			"\t<link href=\"favicon-1.ico\" rel=\"shortcut icon\">", //favicon
 			"\t<meta charset=\"UTF-8\">",
-			"\t<meta content=\"前端学习\" name=\"description\">",		//网站描述
-			"\t<meta content=\"前端学习,巴拉巴拉\" name=\"keyword\">",		//网站关键词
-			"\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=false\">",		
+			// "\t<meta content=\"前端学习\" name=\"description\">",		//网站描述
+			// "\t<meta content=\"前端学习,巴拉巴拉\" name=\"keyword\">",		//网站关键词
+			"\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=false\">",
 			"\t<meta content=\"ie=edge\" http-equiv=\"X-UA-Compatible\">",
-			"<!-- \t<link href=\"css/base-5-7.css\" rel=\"stylesheet\"> -->",				//初始化css
-			"<!-- \t<link href=\"css/common.css\" rel=\"stylesheet\"> -->",	//公共css
-			"<!-- \t<link href=\"css/${2:diffrence}.css\" rel=\"stylesheet\"> -->",		//差异css
+			"<!-- \t<link href=\"css/base-5-7.css\" rel=\"stylesheet\"> -->", //初始化css
+			"<!-- \t<link href=\"css/common.css\" rel=\"stylesheet\"> -->", //公共css
+			"<!-- \t<link href=\"css/${2:diffrence}.css\" rel=\"stylesheet\"> -->", //差异css
 			"<!-- \t<style></style> -->",
 			"<!-- \t<script></script> -->",
 			"</head>",
@@ -43,6 +49,6 @@
 			"</body>",
 			"</html>"
 		],
-		"description": "3-5-9修改版 添加TDK和favicon"
+		"description": "4-5-12修改版"
 	}
 }
