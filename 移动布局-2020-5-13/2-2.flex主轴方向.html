@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            /* 给父级添加flex属性，使其成为容器 */
+            /* 元素按主轴排列 */
+            display: flex;
+            width: 1000px;
+            height: 500px;
+            background-color: #3e3;
+            /* 默认主轴是x轴row，所以y轴就是侧轴 */
+            /* flex-direction:row; */
+            /* colum是列的意思，表示主轴是y轴，则子项竖直排列 */
+            /* flex-direction:column; */
+            /* row/column-reverse 表示翻转，像照镜子一样，排列顺序也会倒过来 */
+            flex-direction:row-reverse;
+
+        }
+        div span {
+            width: 200px;
+            height: 100px;
+            background-color: #e4e;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </div>
+</body>
+
+</html>

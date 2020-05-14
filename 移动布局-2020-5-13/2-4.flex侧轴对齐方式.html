@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            display: flex;
+            width: 700px;
+            height: 500px;
+            background-color: #3d3;
+            /* 侧轴对齐方式 */
+            /* 使用拉伸对齐时，子盒子不要给高度(宽度)*/
+            /* align-items:stretch; */
+            /* 侧轴负方向 */
+            /* align-items:flex-end; */
+            /* 侧轴居中对齐 */
+            /* align-items: center; */
+            /* 配合主轴居中，做到容器居中 */
+            /* justify-content: center; */
+            /* 如果主轴是y轴，则盒子们竖着水平垂直居中 */
+            /* flex-direction: column; */
+            /* 换行才能用align-content */
+            flex-wrap: wrap;
+            /* 贴着上下沿 */
+            /* align-content: space-between; */
+            /* 贴着侧轴中心 */
+            /* align-content:center; */
+            /* 侧轴上平分剩余空间 */
+            align-content: space-around;
+        }
+
+        span {
+            width: 200px;
+            height: 200px;
+            background-color: #a4a;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+    </div>
+</body>
+
+</html>
