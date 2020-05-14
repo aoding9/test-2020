@@ -42,7 +42,8 @@ body {
     -webkit-font-smoothing: antialiased;
 
     height: 100%;
-    width: 100% box-sizing: border-box;
+    width: 100% ;
+    box-sizing: border-box;
 
 }
 
@@ -145,14 +146,16 @@ li {
 
 
 /* clear float */
+.clearfix:before,
 .clearfix:after {
-    visibility: hidden;
-    clear: both;
-    display: block;
-    content: '.';
-    height: 0;
+  content: "";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
 }
 
 .clearfix {
-    *zoom: 1;
+  *zoom: 1;
 }

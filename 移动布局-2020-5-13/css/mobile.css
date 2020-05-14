@@ -1,0 +1,118 @@
+/* 5-13-1   创建 */
+/* 移动端初始化单独样式 */
+
+* {
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+}
+
+/* 移动端浏览器默认的按钮和输入框样式需要加上这个属性才能自定义 */
+input {
+    -webkit-appearance: none;
+    
+}
+/* 禁用长按弹出菜单 */
+img,a {
+    -webkit-touch-callout:none;
+}
+
+
+/* body初始化，有需要改的覆盖即可 */
+body {
+    /* 永远不会出现水平滚动条 */
+    overflow-x: hidden;
+    /* 清除点击高亮 */
+    -webkit-tap-highlight-color: transparent;
+    margin: 0 auto;
+    /* 设置最小最大宽度 */
+    /* max-width: 640px; */
+    min-width: 320px;
+    /* font-size: 0.9rem; */
+    font-family: -apple-system, "Helvetica", "sans-serif", "Microsoft YaHei", "Heiti SC", "\5B8B\4F53";
+    line-height: 1.5;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100% ;
+}
+
+HTML,
+body,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+dl,
+li,
+dt,
+dd,
+p,
+blockquote,
+pre,
+form,
+fieldset,
+table,
+th,
+td,
+a {
+    -webkit-font-smoothing: antialiased;
+    border: none;
+    font-size: 0.935rem;
+    margin: 0px;
+    padding: 0px;
+}
+
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+strong,
+th,
+var {
+    font-style: normal;
+    font-weight: normal;
+}
+
+
+a {
+    text-decoration: none;
+    color: #666;
+}
+
+li {
+    list-style: none;
+}
+
+/* 去除图片底部缝隙和图片超链接边框*/
+img {
+    vertical-align: middle;
+    border: none;
+}
+
+input::-webkit-input-placeholder {
+    color: #ccc;
+}
+
+/* clear float */
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.clearfix {
+  *zoom: 1;
+}
