@@ -1,387 +1,31 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script>
-<script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [['$','$'], ['\\(','\\)']]}});</script>
-<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS": {"availableFonts":["TeX"],"scale": 150}});</script>
-
-<style>
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See License.txt in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
-
-body {
-	font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
-	font-size: 14px;
-	padding: 0 12px;
-	line-height: 22px;
-	word-wrap: break-word;
-}
-
-#code-csp-warning {
-	position: fixed;
-	top: 0;
-	right: 0;
-	color: white;
-	margin: 16px;
-	text-align: center;
-	font-size: 12px;
-	font-family: sans-serif;
-	background-color:#444444;
-	cursor: pointer;
-	padding: 6px;
-	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
-}
-
-#code-csp-warning:hover {
-	text-decoration: none;
-	background-color:#007acc;
-	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
-}
-
-
-body.scrollBeyondLastLine {
-	margin-bottom: calc(100vh - 22px);
-}
-
-body.showEditorSelection .code-line {
-	position: relative;
-}
-
-body.showEditorSelection .code-active-line:before,
-body.showEditorSelection .code-line:hover:before {
-	content: "";
-	display: block;
-	position: absolute;
-	top: 0;
-	left: -12px;
-	height: 100%;
-}
-
-body.showEditorSelection li.code-active-line:before,
-body.showEditorSelection li.code-line:hover:before {
-	left: -30px;
-}
-
-.vscode-light.showEditorSelection .code-active-line:before {
-	border-left: 3px solid rgba(0, 0, 0, 0.15);
-}
-
-.vscode-light.showEditorSelection .code-line:hover:before {
-	border-left: 3px solid rgba(0, 0, 0, 0.40);
-}
-
-.vscode-dark.showEditorSelection .code-active-line:before {
-	border-left: 3px solid rgba(255, 255, 255, 0.4);
-}
-
-.vscode-dark.showEditorSelection .code-line:hover:before {
-	border-left: 3px solid rgba(255, 255, 255, 0.60);
-}
-
-.vscode-high-contrast.showEditorSelection .code-active-line:before {
-	border-left: 3px solid rgba(255, 160, 0, 0.7);
-}
-
-.vscode-high-contrast.showEditorSelection .code-line:hover:before {
-	border-left: 3px solid rgba(255, 160, 0, 1);
-}
-
-img {
-	max-width: 100%;
-	max-height: 100%;
-}
-
-a {
-	color: #4080D0;
-	text-decoration: none;
-}
-
-a:focus,
-input:focus,
-select:focus,
-textarea:focus {
-	outline: 1px solid -webkit-focus-ring-color;
-	outline-offset: -1px;
-}
-
-hr {
-	border: 0;
-	height: 2px;
-	border-bottom: 2px solid;
-}
-
-h1 {
-	padding-bottom: 0.3em;
-	line-height: 1.2;
-	border-bottom-width: 1px;
-	border-bottom-style: solid;
-}
-
-h1, h2, h3 {
-	font-weight: normal;
-}
-
-h1 code,
-h2 code,
-h3 code,
-h4 code,
-h5 code,
-h6 code {
-	font-size: inherit;
-	line-height: auto;
-}
-
-a:hover {
-	color: #4080D0;
-	text-decoration: underline;
-}
-
-table {
-	border-collapse: collapse;
-}
-
-table > thead > tr > th {
-	text-align: left;
-	border-bottom: 1px solid;
-}
-
-table > thead > tr > th,
-table > thead > tr > td,
-table > tbody > tr > th,
-table > tbody > tr > td {
-	padding: 5px 10px;
-}
-
-table > tbody > tr + tr > td {
-	border-top: 1px solid;
-}
-
-blockquote {
-	margin: 0 7px 0 5px;
-	padding: 0 16px 0 10px;
-	border-left: 5px solid;
-}
-
-code {
-	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
-	font-size: 14px;
-	line-height: 19px;
-}
-
-body.wordWrap pre {
-	white-space: pre-wrap;
-}
-
-.mac code {
-	font-size: 12px;
-	line-height: 18px;
-}
-
-pre:not(.hljs),
-pre.hljs code > div {
-	padding: 16px;
-	border-radius: 3px;
-	overflow: auto;
-}
-
-/** Theming */
-
-.vscode-light,
-.vscode-light pre code {
-	color: rgb(30, 30, 30);
-}
-
-.vscode-dark,
-.vscode-dark pre code {
-	color: #DDD;
-}
-
-.vscode-high-contrast,
-.vscode-high-contrast pre code {
-	color: white;
-}
-
-.vscode-light code {
-	color: #A31515;
-}
-
-.vscode-dark code {
-	color: #D7BA7D;
-}
-
-.vscode-light pre:not(.hljs),
-.vscode-light code > div {
-	background-color: rgba(220, 220, 220, 0.4);
-}
-
-.vscode-dark pre:not(.hljs),
-.vscode-dark code > div {
-	background-color: rgba(10, 10, 10, 0.4);
-}
-
-.vscode-high-contrast pre:not(.hljs),
-.vscode-high-contrast code > div {
-	background-color: rgb(0, 0, 0);
-}
-
-.vscode-high-contrast h1 {
-	border-color: rgb(0, 0, 0);
-}
-
-.vscode-light table > thead > tr > th {
-	border-color: rgba(0, 0, 0, 0.69);
-}
-
-.vscode-dark table > thead > tr > th {
-	border-color: rgba(255, 255, 255, 0.69);
-}
-
-.vscode-light h1,
-.vscode-light hr,
-.vscode-light table > tbody > tr + tr > td {
-	border-color: rgba(0, 0, 0, 0.18);
-}
-
-.vscode-dark h1,
-.vscode-dark hr,
-.vscode-dark table > tbody > tr + tr > td {
-	border-color: rgba(255, 255, 255, 0.18);
-}
-
-.vscode-light blockquote,
-.vscode-dark blockquote {
-	background: rgba(127, 127, 127, 0.1);
-	border-color: rgba(0, 122, 204, 0.5);
-}
-
-.vscode-high-contrast blockquote {
-	background: transparent;
-	border-color: #fff;
-}
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>HTML基础</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        <link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
 </style>
-
-<style>
-/* Tomorrow Theme */
-/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
-/* Original theme - https://github.com/chriskempson/tomorrow-theme */
-
-/* Tomorrow Comment */
-.hljs-comment,
-.hljs-quote {
-	color: #8e908c;
-}
-
-/* Tomorrow Red */
-.hljs-variable,
-.hljs-template-variable,
-.hljs-tag,
-.hljs-name,
-.hljs-selector-id,
-.hljs-selector-class,
-.hljs-regexp,
-.hljs-deletion {
-	color: #c82829;
-}
-
-/* Tomorrow Orange */
-.hljs-number,
-.hljs-built_in,
-.hljs-builtin-name,
-.hljs-literal,
-.hljs-type,
-.hljs-params,
-.hljs-meta,
-.hljs-link {
-	color: #f5871f;
-}
-
-/* Tomorrow Yellow */
-.hljs-attribute {
-	color: #eab700;
-}
-
-/* Tomorrow Green */
-.hljs-string,
-.hljs-symbol,
-.hljs-bullet,
-.hljs-addition {
-	color: #718c00;
-}
-
-/* Tomorrow Blue */
-.hljs-title,
-.hljs-section {
-	color: #4271ae;
-}
-
-/* Tomorrow Purple */
-.hljs-keyword,
-.hljs-selector-tag {
-	color: #8959a8;
-}
-
-.hljs {
-	display: block;
-	overflow-x: auto;
-	color: #4d4d4c;
-	padding: 0.5em;
-}
-
-.hljs-emphasis {
-	font-style: italic;
-}
-
-.hljs-strong {
-	font-weight: bold;
-}
-</style>
-
-<style>
-/*
- * Markdown PDF CSS
- */
-
-pre {
-	background-color: #f8f8f8;
-	border: 1px solid #cccccc;
-	border-radius: 3px;
-	overflow-x: auto;
-	white-space: pre-wrap;
-	overflow-wrap: break-word;
-}
-
-pre:not(.hljs) {
-	padding: 23px;
-	line-height: 19px;
-}
-
-blockquote {
-	background: rgba(127, 127, 127, 0.1);
-	border-color: rgba(0, 122, 204, 0.5);
-}
-
-.emoji {
-	height: 1.4em;
-}
-
-/* for inline code */
-:not(pre):not(.hljs) > code {
-	color: #C9AE75; /* Change the old color so it seems less like an error */
-	font-size: inherit;
-}
-
-</style>
-
-</head>
-<body>
-<h1 id="52%E7%9C%8B%E5%AE%8Cpink%E8%80%81%E5%B8%88h5c3%E5%9F%BA%E7%A1%80%E7%AF%87%E7%84%B6%E5%90%8E%E5%A4%8D%E4%B9%A0%E5%89%8D%E9%9D%A2%E7%9A%84%E5%86%85%E5%AE%B9"><em>5.2</em><br>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+    </head>
+    <body class="vscode-light">
+        <h1 id="52%e7%9c%8b%e5%ae%8cpink%e8%80%81%e5%b8%88h5c3%e5%9f%ba%e7%a1%80%e7%af%87%e7%84%b6%e5%90%8e%e5%a4%8d%e4%b9%a0%e5%89%8d%e9%9d%a2%e7%9a%84%e5%86%85%e5%ae%b9"><em>5.2</em><br>
 看完pink老师h5c3基础篇<br>
 然后复习前面的内容</h1>
-<h1 id="html%E5%9F%BA%E7%A1%80">HTML基础</h1>
-<h2 id="%E6%A6%82%E5%BF%B5">概念</h2>
+<h1 id="html%e5%9f%ba%e7%a1%80">HTML基础</h1>
+<h2 id="%e6%a6%82%e5%bf%b5">概念</h2>
 <ul>
 <li>
 <p>网站是因特网上根据一定规则，用html等制作的展示特定内容的网页集合</p>
@@ -399,14 +43,14 @@ blockquote {
 <p>标签两种关系：包含关系（父子关系），并列关系（兄弟关系）</p>
 </li>
 </ul>
-<p><strong><em>！注意：编辑时标签的选择尽量语义化，合适的地方给合适的标签，便于查看</em></strong></p>
-<h3 id="%E5%B7%A5%E5%85%B7">工具</h3>
+<p><em><strong>！注意：编辑时标签的选择尽量语义化，合适的地方给合适的标签，便于查看</strong></em></p>
+<h3 id="%e5%b7%a5%e5%85%b7">工具</h3>
 <ul>
 <li>vscode notepad++ submit Dreamweaver webstorm等</li>
 <li>vscode的html文件输入!回车，自动生成网页基本结构</li>
 </ul>
-<h3 id="doctype-lang-charset%E4%BB%A5%E5%8F%8A%E7%BD%91%E9%A1%B5%E5%A4%A7%E8%87%B4%E7%BB%93%E6%9E%84">!DOCTYPE lang charset以及网页大致结构</h3>
-<pre class="hljs"><code><div>    <span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>                 声明文档类型为HTML5
+<h3 id="doctype-lang-charset%e4%bb%a5%e5%8f%8a%e7%bd%91%e9%a1%b5%e5%a4%a7%e8%87%b4%e7%bb%93%e6%9e%84">!DOCTYPE lang charset以及网页大致结构</h3>
+<pre><code class="language-html"><div>    <span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>                 声明文档类型为HTML5
     <span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"zh-CN"</span>&gt;</span>             声明中文网页
         <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span> 头部
             <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>  声明编码类型为万国码
@@ -418,8 +62,8 @@ blockquote {
         <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
 </div></code></pre>
-<h3 id="%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9B%B8%E5%85%B3">浏览器相关</h3>
-<h4 id="%E5%B8%B8%E7%94%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BB%A5%E5%8F%8A%E5%86%85%E6%A0%B8%EF%BC%88%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E%EF%BC%8C%E8%AF%BB%E5%8F%96%E7%BD%91%E9%A1%B5%E5%86%85%E5%AE%B9%EF%BC%8C%E6%95%B4%E7%90%86%E8%AE%AF%E6%81%AF%EF%BC%8C%E8%AE%A1%E7%AE%97%E7%BD%91%E9%A1%B5%E6%98%BE%E7%A4%BA%E6%96%B9%E5%BC%8F%E5%B9%B6%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2%EF%BC%89">常用浏览器以及内核（渲染引擎，读取网页内容，整理讯息，计算网页显示方式并显示页面）</h4>
+<h3 id="%e6%b5%8f%e8%a7%88%e5%99%a8%e7%9b%b8%e5%85%b3">浏览器相关</h3>
+<h4 id="%e5%b8%b8%e7%94%a8%e6%b5%8f%e8%a7%88%e5%99%a8%e4%bb%a5%e5%8f%8a%e5%86%85%e6%a0%b8%e6%b8%b2%e6%9f%93%e5%bc%95%e6%93%8e%e8%af%bb%e5%8f%96%e7%bd%91%e9%a1%b5%e5%86%85%e5%ae%b9%e6%95%b4%e7%90%86%e8%ae%af%e6%81%af%e8%ae%a1%e7%ae%97%e7%bd%91%e9%a1%b5%e6%98%be%e7%a4%ba%e6%96%b9%e5%bc%8f%e5%b9%b6%e6%98%be%e7%a4%ba%e9%a1%b5%e9%9d%a2">常用浏览器以及内核（渲染引擎，读取网页内容，整理讯息，计算网页显示方式并显示页面）</h4>
 <table>
 <thead>
 <tr>
@@ -451,9 +95,9 @@ blockquote {
 </tr>
 </tbody>
 </table>
-<p><strong><em>!国产浏览器一般是webkit和blink内核</em></strong></p>
-<h3 id="web%E6%A0%87%E5%87%86">web标准</h3>
-<h4 id="w3c%E4%B8%87%E7%BB%B4%E7%BD%91%E8%81%94%E7%9B%9F%E5%88%B6%E5%AE%9A%E7%9A%84%E6%A0%87%E5%87%86%EF%BC%8C%E7%BB%9F%E4%B8%80%E4%B8%8D%E5%90%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%B1%95%E7%A4%BA%E6%96%B9%E5%BC%8F">W3C万维网联盟制定的标准，统一不同浏览器的展示方式</h4>
+<p><em><strong>!国产浏览器一般是webkit和blink内核</strong></em></p>
+<h3 id="web%e6%a0%87%e5%87%86">web标准</h3>
+<h4 id="w3c%e4%b8%87%e7%bb%b4%e7%bd%91%e8%81%94%e7%9b%9f%e5%88%b6%e5%ae%9a%e7%9a%84%e6%a0%87%e5%87%86%e7%bb%9f%e4%b8%80%e4%b8%8d%e5%90%8c%e6%b5%8f%e8%a7%88%e5%99%a8%e7%9a%84%e5%b1%95%e7%a4%ba%e6%96%b9%e5%bc%8f">W3C万维网联盟制定的标准，统一不同浏览器的展示方式</h4>
 <blockquote>
 <p>包含：</p>
 </blockquote>
@@ -463,8 +107,8 @@ blockquote {
 <li>行为    网页模型的定义及交互的编写，如JavaScript</li>
 </ul>
 <p><em>!web标准提出最佳体验方案：结构样式行为相分离，结构写到html文件，表现写到css文件，行为写到js文件</em>**</p>
-<h2 id="%E6%A0%87%E9%A2%98-%E6%AE%B5%E8%90%BD">标题 段落</h2>
-<pre class="hljs"><code><div>        <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>     网页标题
+<h2 id="%e6%a0%87%e9%a2%98-%e6%ae%b5%e8%90%bd">标题 段落</h2>
+<pre><code class="language-html"><div>        <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>     网页标题
         <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>-\<span class="hljs-tag">&lt;<span class="hljs-name">h6</span>&gt;</span>  标题
         <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>         段落
         <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>        换行
@@ -482,9 +126,9 @@ blockquote {
         &amp;lt;        <span class="hljs-tag">&lt;
         &amp;<span class="hljs-attr">gt</span>;        &gt;</span>
 </div></code></pre>
-<h3 id="%E6%A1%88%E4%BE%8B%EF%BC%9A2020-501%E4%BD%93%E8%82%B2%E6%96%B0%E9%97%BBhtml">案例：<a href="2020-5/01.%E4%BD%93%E8%82%B2%E6%96%B0%E9%97%BB.html">2020-5/01.体育新闻.html</a></h3>
-<h2 id="%E8%B6%85%E9%93%BE%E6%8E%A5-%E5%9B%BE%E7%89%87-%E9%94%9A%E7%82%B9-%E8%B7%AF%E5%BE%84">超链接 图片 锚点 路径</h2>
-<pre class="hljs"><code><div>    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span> <span class="hljs-attr">target</span>=<span class="hljs-string">""</span>&gt;</span>       超链接
+<h3 id="%e6%a1%88%e4%be%8b2020-501%e4%bd%93%e8%82%b2%e6%96%b0%e9%97%bbhtml">案例：<a href="2020-5/01.%E4%BD%93%E8%82%B2%E6%96%B0%E9%97%BB.html">2020-5/01.体育新闻.html</a></h3>
+<h2 id="%e8%b6%85%e9%93%be%e6%8e%a5-%e5%9b%be%e7%89%87-%e9%94%9a%e7%82%b9-%e8%b7%af%e5%be%84">超链接 图片 锚点 路径</h2>
+<pre><code class="language-html"><div>    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span> <span class="hljs-attr">target</span>=<span class="hljs-string">""</span>&gt;</span>       超链接
 
     id="锚点" 然后href="#锚点" 点击即可跳到锚点位置
 
@@ -497,11 +141,11 @@ blockquote {
     alt     图片显示不出时的替换文本
     title   图片说明
 </div></code></pre>
-<p><strong><em>!src alt title 必须写在标签里面</em></strong></p>
-<h3 id="%E7%9B%AE%E5%BD%95%E5%92%8C%E8%B7%AF%E5%BE%84">目录和路径</h3>
-<h4 id="%E7%9B%AE%E5%BD%95%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%9A%E6%94%BE%E7%BD%91%E7%AB%99%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%B9">目录文件夹：放网站的文件夹</h4>
-<h4 id="%E6%A0%B9%E7%9B%AE%E5%BD%95%EF%BC%9A%E7%9B%AE%E5%BD%95%E6%96%87%E4%BB%B6%E5%A4%B9%E6%9C%80%E5%A4%96%E9%9D%A2%E4%B8%80%E5%B1%82">根目录：目录文件夹最外面一层</h4>
-<h4 id="%E8%B7%AF%E5%BE%84">路径</h4>
+<p><em><strong>!src alt title 必须写在标签里面</strong></em></p>
+<h3 id="%e7%9b%ae%e5%bd%95%e5%92%8c%e8%b7%af%e5%be%84">目录和路径</h3>
+<h4 id="%e7%9b%ae%e5%bd%95%e6%96%87%e4%bb%b6%e5%a4%b9%e6%94%be%e7%bd%91%e7%ab%99%e7%9a%84%e6%96%87%e4%bb%b6%e5%a4%b9">目录文件夹：放网站的文件夹</h4>
+<h4 id="%e6%a0%b9%e7%9b%ae%e5%bd%95%e7%9b%ae%e5%bd%95%e6%96%87%e4%bb%b6%e5%a4%b9%e6%9c%80%e5%a4%96%e9%9d%a2%e4%b8%80%e5%b1%82">根目录：目录文件夹最外面一层</h4>
+<h4 id="%e8%b7%af%e5%be%84">路径</h4>
 <blockquote>
 <p>相对路径</p>
 </blockquote>
@@ -514,11 +158,11 @@ blockquote {
 </blockquote>
 <pre><code>    目录写全，通常是盘符开始或者网络地址开始    如 http://www.xx.com/xx.png
 </code></pre>
-<p><strong><em>!一般用相对路径，查找快，换电脑不用改</em></strong></p>
-<p><strong><em>!盘符表示的绝对路径，符号是\反斜杠</em></strong></p>
-<h3 id="%E6%A1%88%E4%BE%8B%EF%BC%9A02-1%E5%9C%A3%E8%AF%9E%E8%8A%82%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8Bhtml-02-2oldmanhtml">案例：<a href="2020-5/02-1.%E5%9C%A3%E8%AF%9E%E8%8A%82%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B.html">02-1.圣诞节的那些事.html</a> <a href="2020-5/02-2.oldman.html">02-2.oldman.html</a></h3>
-<h2 id="%E8%A1%A8%E6%A0%BC">表格</h2>
-<pre class="hljs"><code><div>        <span class="hljs-tag">&lt;<span class="hljs-name">table</span>&gt;</span> 下面的标签都要包含在\<span class="hljs-tag">&lt;<span class="hljs-name">table</span>&gt;</span>里面
+<p><em><strong>!一般用相对路径，查找快，换电脑不用改</strong></em></p>
+<p><em><strong>!盘符表示的绝对路径，符号是\反斜杠</strong></em></p>
+<h3 id="%e6%a1%88%e4%be%8b02-1%e5%9c%a3%e8%af%9e%e8%8a%82%e7%9a%84%e9%82%a3%e4%ba%9b%e4%ba%8bhtml-02-2oldmanhtml">案例：<a href="2020-5/02-1.%E5%9C%A3%E8%AF%9E%E8%8A%82%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B.html">02-1.圣诞节的那些事.html</a> <a href="2020-5/02-2.oldman.html">02-2.oldman.html</a></h3>
+<h2 id="%e8%a1%a8%e6%a0%bc">表格</h2>
+<pre><code class="language-html"><div>        <span class="hljs-tag">&lt;<span class="hljs-name">table</span>&gt;</span> 下面的标签都要包含在\<span class="hljs-tag">&lt;<span class="hljs-name">table</span>&gt;</span>里面
             cellspacing     单元格外边距
             cellpadding     格子内边距
             border          边框
@@ -534,11 +178,11 @@ blockquote {
             colspan         跨列合并
             rowspan         跨行合并
 </div></code></pre>
-<h3 id="%E6%A1%88%E4%BE%8B%EF%BC%9A03%E5%B0%8F%E8%AF%B4%E6%8E%92%E8%A1%8C%E6%A6%9Chtml">案例：<a href="2020-5/03.%E5%B0%8F%E8%AF%B4%E6%8E%92%E8%A1%8C%E6%A6%9C.html">03.小说排行榜.html</a></h3>
-<h1 id="53%E7%BB%A7%E7%BB%AD%E5%A4%8D%E4%B9%A0"><em>5.3</em>
+<h3 id="%e6%a1%88%e4%be%8b03%e5%b0%8f%e8%af%b4%e6%8e%92%e8%a1%8c%e6%a6%9chtml">案例：<a href="2020-5/03.%E5%B0%8F%E8%AF%B4%E6%8E%92%E8%A1%8C%E6%A6%9C.html">03.小说排行榜.html</a></h3>
+<h1 id="53%e7%bb%a7%e7%bb%ad%e5%a4%8d%e4%b9%a0"><em>5.3</em>
 继续复习</h1>
-<h2 id="%E5%88%97%E8%A1%A8%E3%80%81%E8%A1%A8%E5%8D%95%E6%A0%87%E7%AD%BE">列表、表单标签</h2>
-<pre class="hljs"><code><div>        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>    无序列表 
+<h2 id="%e5%88%97%e8%a1%a8%e8%a1%a8%e5%8d%95%e6%a0%87%e7%ad%be">列表、表单标签</h2>
+<pre><code class="language-html"><div>        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>    无序列表 
         <span class="hljs-tag">&lt;<span class="hljs-name">ol</span>&gt;</span>    有序列表
         <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>    列表子项
 
@@ -548,8 +192,8 @@ blockquote {
           <span class="hljs-tag">&lt;<span class="hljs-name">dt</span>&gt;</span>  定义项
           <span class="hljs-tag">&lt;<span class="hljs-name">dd</span>&gt;</span>  定义描述
 </div></code></pre>
-<h3 id="%E8%A1%A8%E5%8D%95%E7%9B%B8%E5%85%B3">表单相关</h3>
-<pre class="hljs"><code><div>        <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"demo.php"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"POST"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"name1"</span>&gt;</span> 表单域 配合后端收集数据
+<h3 id="%e8%a1%a8%e5%8d%95%e7%9b%b8%e5%85%b3">表单相关</h3>
+<pre><code class="language-html"><div>        <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"demo.php"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"POST"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"name1"</span>&gt;</span> 表单域 配合后端收集数据
         
         <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">""</span>&gt;</span> 表单控件
             text 文本框
@@ -561,26 +205,26 @@ blockquote {
         <span class="hljs-tag">&lt;<span class="hljs-name">select</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span> 下拉选择
         <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"id"</span>&gt;</span> 绑定到某个元素便于点击
 </div></code></pre>
-<h3 id="%E6%A1%88%E4%BE%8B%EF%BC%9A04%E6%B3%A8%E5%86%8C%E9%A1%B5%E9%9D%A2html">案例：<a href="2020-5/4.%E6%B3%A8%E5%86%8C%E9%A1%B5%E9%9D%A2.html">04.注册页面.html</a></h3>
-<h1 id="css%E5%9F%BA%E7%A1%80">CSS基础</h1>
-<h2 id="css3%E8%A7%84%E8%8C%83">css3规范</h2>
-<h3 id="css%E6%98%AF%E4%BB%80%E4%B9%88">css是什么</h3>
+<h3 id="%e6%a1%88%e4%be%8b04%e6%b3%a8%e5%86%8c%e9%a1%b5%e9%9d%a2html">案例：<a href="2020-5/4.%E6%B3%A8%E5%86%8C%E9%A1%B5%E9%9D%A2.html">04.注册页面.html</a></h3>
+<h1 id="css%e5%9f%ba%e7%a1%80">CSS基础</h1>
+<h2 id="css3%e8%a7%84%e8%8c%83">css3规范</h2>
+<h3 id="css%e6%98%af%e4%bb%80%e4%b9%88">css是什么</h3>
 <blockquote>
 <p>层叠样式表</p>
 </blockquote>
-<h3 id="%E4%B8%89%E7%A7%8D%E6%A0%B7%E5%BC%8F%E5%86%99%E6%B3%95">三种样式写法</h3>
-<h4 id="%E5%86%85%E8%81%94%E6%A0%B7%E5%BC%8F-%E7%9B%B4%E6%8E%A5%E6%A0%87%E7%AD%BE%E9%87%8C%E9%9D%A2%E5%86%99">内联样式 直接标签里面写</h4>
-<p><code>&lt;p style=&quot;&quot;&gt;</code></p>
-<h4 id="%E5%86%85%E9%83%A8%E6%A0%B7%E5%BC%8F-head%E9%87%8C%E9%9D%A2%E5%86%99-%E9%80%89%E6%8B%A9%E5%99%A8%E5%92%8C%E9%9A%94%E4%B8%80%E4%B8%AA%E7%A9%BA%E6%A0%BC-%E5%92%8C%E5%80%BC-%E6%89%93%E4%B8%AA%E7%A9%BA%E6%A0%BC">内部样式 <head>里面写 选择器和{隔一个空格 :和值 打个空格</h4>
-<pre class="hljs"><code><div>    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+<h3 id="%e4%b8%89%e7%a7%8d%e6%a0%b7%e5%bc%8f%e5%86%99%e6%b3%95">三种样式写法</h3>
+<h4 id="%e5%86%85%e8%81%94%e6%a0%b7%e5%bc%8f-%e7%9b%b4%e6%8e%a5%e6%a0%87%e7%ad%be%e9%87%8c%e9%9d%a2%e5%86%99">内联样式 直接标签里面写</h4>
+<p><code>&lt;p style=&quot;&quot;&gt; </code></p>
+<h4 id="%e5%86%85%e9%83%a8%e6%a0%b7%e5%bc%8f-head%e9%87%8c%e9%9d%a2%e5%86%99-%e9%80%89%e6%8b%a9%e5%99%a8%e5%92%8c%e9%9a%94%e4%b8%80%e4%b8%aa%e7%a9%ba%e6%a0%bc-%e5%92%8c%e5%80%bc-%e6%89%93%e4%b8%aa%e7%a9%ba%e6%a0%bc">内部样式 <head>里面写 选择器和{隔一个空格 :和值 打个空格</h4>
+<pre><code class="language-html"><div>    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
     <span class="hljs-selector-tag">p</span> {
         <span class="hljs-attribute">color</span>: red;
     }
     &lt;<span class="hljs-selector-tag">style</span>&gt;
 </span></div></code></pre>
-<h4 id="%E5%A4%96%E9%83%A8%E6%A0%B7%E5%BC%8F-head%E9%87%8C%E9%9D%A2link%E5%BC%95%E5%85%A5">外部样式 <head>里面<link>引入`</h4>
+<h4 id="%e5%a4%96%e9%83%a8%e6%a0%b7%e5%bc%8f-head%e9%87%8c%e9%9d%a2link%e5%bc%95%e5%85%a5">外部样式 <head>里面<link>引入`</h4>
 <p><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;xxx.css&quot;&gt;</code></p>
-<h3 id="%E5%B1%9E%E6%80%A7%E4%B9%A6%E5%86%99%E9%A1%BA%E5%BA%8F%EF%BC%8C%E4%BE%BF%E4%BA%8E%E6%9F%A5%E7%9C%8B%EF%BC%8C%E6%8F%90%E9%AB%98%E6%B8%B2%E6%9F%93%E6%80%A7%E8%83%BD">属性书写顺序，便于查看，提高渲染性能</h3>
+<h3 id="%e5%b1%9e%e6%80%a7%e4%b9%a6%e5%86%99%e9%a1%ba%e5%ba%8f%e4%be%bf%e4%ba%8e%e6%9f%a5%e7%9c%8b%e6%8f%90%e9%ab%98%e6%b8%b2%e6%9f%93%e6%80%a7%e8%83%bd">属性书写顺序，便于查看，提高渲染性能</h3>
 <ol>
 <li>定位属性：<br>
 <code>position  display  float  left  top  right  bottom   overflow  clear   z-index</code></li>
@@ -593,33 +237,33 @@ blockquote {
 <li>css3中新增属性：<br>
 <code>content   box-shadow   border-radius  transform……</code></li>
 </ol>
-<h2 id="css%E9%80%89%E6%8B%A9%E5%99%A81">css选择器1</h2>
-<h3 id="%E6%A0%87%E7%AD%BE%E9%80%89%E6%8B%A9%E5%99%A8">标签选择器</h3>
+<h2 id="css%e9%80%89%e6%8b%a9%e5%99%a81">css选择器1</h2>
+<h3 id="%e6%a0%87%e7%ad%be%e9%80%89%e6%8b%a9%e5%99%a8">标签选择器</h3>
 <pre><code>    p {xxx: xxx;}
     选择所有标签元素
 </code></pre>
-<h3 id="%E7%B1%BB%E9%80%89%E6%8B%A9%E5%99%A8">类选择器</h3>
+<h3 id="%e7%b1%bb%e9%80%89%e6%8b%a9%e5%99%a8">类选择器</h3>
 <pre><code>    .xx {xxx: xxx;} 声明类名然后标签里面class=&quot;xx&quot;调用这个类
     &lt;div class=&quot;类名1 类名2&quot;&gt; 多个类之间用一个空格隔开，都生效
 </code></pre>
-<h3 id="id%E9%80%89%E6%8B%A9%E5%99%A8">id选择器</h3>
+<h3 id="id%e9%80%89%e6%8b%a9%e5%99%a8">id选择器</h3>
 <pre><code>    #xxx {xxx: xxx;}声明id名然后标签里面id=&quot;xx&quot;调用他
 </code></pre>
-<h3 id="%E9%80%9A%E9%85%8D%E7%AC%A6%E9%80%89%E6%8B%A9%E5%99%A8">通配符选择器</h3>
+<h3 id="%e9%80%9a%e9%85%8d%e7%ac%a6%e9%80%89%e6%8b%a9%e5%99%a8">通配符选择器</h3>
 <pre><code>    * {} 选择所有元素
 </code></pre>
-<h2 id="%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A71">常用属性1</h2>
-<h3 id="%E8%87%AA%E8%BA%AB%E5%B1%9E%E6%80%A7%EF%BC%9A">自身属性：</h3>
-<pre class="hljs"><code><div>        {
+<h2 id="%e5%b8%b8%e7%94%a8%e5%b1%9e%e6%80%a71">常用属性1</h2>
+<h3 id="%e8%87%aa%e8%ba%ab%e5%b1%9e%e6%80%a7">自身属性：</h3>
+<pre><code class="language-css"><div>        {
         width|<span class="hljs-attribute">height</span>: <span class="hljs-number">10px</span>;  
         宽 高       像素、百分比 
         <span class="hljs-attribute">background-color</span>:red;
         背景颜色    预定义颜色值、RGB代码、十六进制颜色
         }
 </div></code></pre>
-<p><strong><em>!透明色 transparent</em></strong></p>
-<h3 id="%E5%AD%97%E4%BD%93%E6%A0%B7%E5%BC%8F%EF%BC%9A">字体样式：</h3>
-<pre class="hljs"><code><div>        {
+<p><em><strong>!透明色 transparent</strong></em></p>
+<h3 id="%e5%ad%97%e4%bd%93%e6%a0%b7%e5%bc%8f">字体样式：</h3>
+<pre><code class="language-css"><div>        {
         <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"Microsoft Yahei"</span>; 
         字体        微软雅黑
     
@@ -636,8 +280,8 @@ blockquote {
         字体复合写法    size和family必须写
         }
 </div></code></pre>
-<h3 id="%E6%96%87%E6%9C%AC%E5%A4%96%E8%A7%82%EF%BC%9A">文本外观：</h3>
-<pre class="hljs"><code><div>        {
+<h3 id="%e6%96%87%e6%9c%ac%e5%a4%96%e8%a7%82">文本外观：</h3>
+<pre><code class="language-css"><div>        {
         <span class="hljs-attribute">color</span>: red;
         文字颜色    颜色值
         
@@ -654,10 +298,10 @@ blockquote {
         行高    文字+上下间距之和   可以是px、em等，不跟单位表示当前字体多少倍
         }
 </div></code></pre>
-<p><strong><em>!行高=盒高则垂直居中，行高&gt;盒高则往下偏，反之偏上</em></strong></p>
-<h3 id="%E6%A1%88%E4%BE%8B%EF%BC%9A05%E5%A4%A9%E6%B0%94%E6%96%B0%E9%97%BBhtml">案例：<a href="2020-5/05.%E5%A4%A9%E6%B0%94%E6%96%B0%E9%97%BB.html">05.天气新闻.html</a></h3>
-<p><strong><em>!text-decoration:none;  去掉a下面的下划线</em></strong></p>
-<h2 id="%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7">浏览器调试工具</h2>
+<p><em><strong>!行高=盒高则垂直居中，行高&gt;盒高则往下偏，反之偏上</strong></em></p>
+<h3 id="%e6%a1%88%e4%be%8b05%e5%a4%a9%e6%b0%94%e6%96%b0%e9%97%bbhtml">案例：<a href="2020-5/05.%E5%A4%A9%E6%B0%94%E6%96%B0%E9%97%BB.html">05.天气新闻.html</a></h3>
+<p><em><strong>!text-decoration:none;  去掉a下面的下划线</strong></em></p>
+<h2 id="%e6%b5%8f%e8%a7%88%e5%99%a8%e8%b0%83%e8%af%95%e5%b7%a5%e5%85%b7">浏览器调试工具</h2>
 <ul>
 <li>
 <p>按F12，左边Elements元素栏看html，右边style看css，Computed看盒子模型</p>
@@ -672,9 +316,9 @@ blockquote {
 <p>可以临时修改，然后写到文件里面</p>
 </li>
 </ul>
-<h2 id="vscode-emment%E8%AF%AD%E6%B3%95">VScode Emment语法</h2>
-<h3 id="emment%E5%BF%AB%E9%80%9F%E7%94%9F%E6%88%90html%E6%A0%87%E7%AD%BE">Emment快速生成html标签</h3>
-<p><strong><em>!感叹号代表生成HTML5类型</em></strong></p>
+<h2 id="vscode-emment%e8%af%ad%e6%b3%95">VScode Emment语法</h2>
+<h3 id="emment%e5%bf%ab%e9%80%9f%e7%94%9f%e6%88%90html%e6%a0%87%e7%ad%be">Emment快速生成html标签</h3>
+<p><em><strong>!感叹号代表生成HTML5类型</strong></em></p>
 <table>
 <thead>
 <tr>
@@ -725,11 +369,11 @@ blockquote {
 </tr>
 </tbody>
 </table>
-<h3 id="%E5%BF%AB%E9%80%9F%E7%94%9F%E6%88%90css">快速生成css</h3>
+<h3 id="%e5%bf%ab%e9%80%9f%e7%94%9f%e6%88%90css">快速生成css</h3>
 <blockquote>
 <p>输入属性全名的部分字母，按tab自动补全，如w200生成width:200px;</p>
 </blockquote>
-<h2 id="vscode%E6%8F%92%E4%BB%B6%E5%92%8C%E9%85%8D%E7%BD%AE">VScode插件和配置</h2>
+<h2 id="vscode%e6%8f%92%e4%bb%b6%e5%92%8c%e9%85%8d%e7%bd%ae">VScode插件和配置</h2>
 <table>
 <thead>
 <tr>
@@ -784,8 +428,8 @@ blockquote {
 </tr>
 </tbody>
 </table>
-<h3 id="%E6%89%93%E5%BC%80%E8%AE%BE%E7%BD%AE%E5%9C%A8settingjson%E4%B8%AD%E8%AE%BE%E7%BD%AE%EF%BC%8C%E6%B7%BB%E5%8A%A0%E4%BB%A5%E4%B8%8B%E8%AF%AD%E5%8F%A5">打开设置,在setting.json中设置，添加以下语句</h3>
-<pre class="hljs"><code><div>        <span class="hljs-string">"editor.formatOnSave"</span>:<span class="hljs-literal">true</span>,     保存完自动格式化
+<h3 id="%e6%89%93%e5%bc%80%e8%ae%be%e7%bd%ae%e5%9c%a8settingjson%e4%b8%ad%e8%ae%be%e7%bd%ae%e6%b7%bb%e5%8a%a0%e4%bb%a5%e4%b8%8b%e8%af%ad%e5%8f%a5">打开设置,在setting.json中设置，添加以下语句</h3>
+<pre><code class="language-json"><div>        <span class="hljs-string">"editor.formatOnSave"</span>:<span class="hljs-literal">true</span>,     保存完自动格式化
         <span class="hljs-string">"editor.formatOnType"</span>:<span class="hljs-literal">true</span>,     输完一行自动格式化
         例如：
         {
@@ -800,48 +444,48 @@ blockquote {
         <span class="hljs-attr">"workbench.colorTheme"</span>: <span class="hljs-string">"One Dark Pro"</span>,
         }
 </div></code></pre>
-<h1 id="54%E8%A1%A5%E5%85%85%E5%89%8D%E9%9D%A2%EF%BC%8C%E7%BB%A7%E7%BB%AD%E5%A4%8D%E4%B9%A0"><em>5.4</em>
+<h1 id="54%e8%a1%a5%e5%85%85%e5%89%8d%e9%9d%a2%e7%bb%a7%e7%bb%ad%e5%a4%8d%e4%b9%a0"><em>5.4</em>
 补充前面，继续复习</h1>
-<h2 id="css%E9%80%89%E6%8B%A9%E5%99%A82">css选择器2</h2>
-<h3 id="%E5%A4%8D%E5%90%88%E9%80%89%E6%8B%A9%E5%99%A8">复合选择器</h3>
+<h2 id="css%e9%80%89%e6%8b%a9%e5%99%a82">css选择器2</h2>
+<h3 id="%e5%a4%8d%e5%90%88%e9%80%89%e6%8b%a9%e5%99%a8">复合选择器</h3>
 <ul>
 <li>多个组合，精确选择，提高权重</li>
 </ul>
-<h4 id="%E5%90%8E%E4%BB%A3%E9%80%89%E6%8B%A9%E5%99%A8">后代选择器</h4>
+<h4 id="%e5%90%8e%e4%bb%a3%e9%80%89%e6%8b%a9%e5%99%a8">后代选择器</h4>
 <p><code>E1 E2 {}</code> 中间空格隔开选择E1里面所有E2元素，孙子也算</p>
-<h4 id="%E5%AD%90%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9%E5%99%A8">子元素选择器</h4>
+<h4 id="%e5%ad%90%e5%85%83%e7%b4%a0%e9%80%89%e6%8b%a9%e5%99%a8">子元素选择器</h4>
 <p><code>E1&gt;E2 {}</code> 只选直接后代，亲儿子</p>
-<h4 id="%E5%B9%B6%E9%9B%86%E9%80%89%E6%8B%A9%E5%99%A8">并集选择器</h4>
+<h4 id="%e5%b9%b6%e9%9b%86%e9%80%89%e6%8b%a9%e5%99%a8">并集选择器</h4>
 <p><code>E1,E2 {}</code> 英文逗号分隔，规范换行，集体声明重复样式</p>
-<h4 id="%E4%BC%AA%E7%B1%BB%E9%80%89%E6%8B%A9%E5%99%A8">伪类选择器</h4>
-<h5 id="%E9%93%BE%E6%8E%A5%E4%BC%AA%E7%B1%BB%E9%80%89%E6%8B%A9%E5%99%A8">链接伪类选择器</h5>
-<pre class="hljs"><code><div>        <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:link</span>      选择所有未被访问的链接
+<h4 id="%e4%bc%aa%e7%b1%bb%e9%80%89%e6%8b%a9%e5%99%a8">伪类选择器</h4>
+<h5 id="%e9%93%be%e6%8e%a5%e4%bc%aa%e7%b1%bb%e9%80%89%e6%8b%a9%e5%99%a8">链接伪类选择器</h5>
+<pre><code class="language-css"><div>        <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:link</span>      选择所有未被访问的链接
         <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:visited</span>   选择所有已访问的链接
         <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span>     选择鼠标在其上的链接
         <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:active</span>    选择活动链接（鼠标按下未松开）
 </div></code></pre>
-<p><strong><em>!为了确保生效，请按照LVHA顺序声明</em></strong></p>
-<p><strong><em>!常用组合：a {} a:hover {}</em></strong></p>
-<h5 id="%E7%84%A6%E7%82%B9%E4%BC%AA%E7%B1%BB%E9%80%89%E6%8B%A9%E5%99%A8">焦点伪类选择器</h5>
+<p><em><strong>!为了确保生效，请按照LVHA顺序声明</strong></em></p>
+<p><em><strong>!常用组合：a {} a:hover {}</strong></em></p>
+<h5 id="%e7%84%a6%e7%82%b9%e4%bc%aa%e7%b1%bb%e9%80%89%e6%8b%a9%e5%99%a8">焦点伪类选择器</h5>
 <p><code>:focus</code></p>
 <blockquote>
 <p>选择光标焦点所在元素，一般&lt;input&gt;类表单元素才能获取</p>
 </blockquote>
-<p><strong><em>!常用组合： input:focus {}</em></strong></p>
-<h2 id="css%E5%85%83%E7%B4%A0%E6%98%BE%E7%A4%BA%E6%A8%A1%E5%BC%8F">css元素显示模式</h2>
-<h3 id="%E4%BB%A5%E4%BB%80%E4%B9%88%E6%96%B9%E5%BC%8F%E8%BF%9B%E8%A1%8C%E6%98%BE%E7%A4%BA">以什么方式进行显示</h3>
-<h3 id="%E5%9D%97%E5%85%83%E7%B4%A0-block">块元素 block</h3>
-<h4 id="%E7%89%B9%E7%82%B9">特点</h4>
+<p><em><strong>!常用组合： input:focus {}</strong></em></p>
+<h2 id="css%e5%85%83%e7%b4%a0%e6%98%be%e7%a4%ba%e6%a8%a1%e5%bc%8f">css元素显示模式</h2>
+<h3 id="%e4%bb%a5%e4%bb%80%e4%b9%88%e6%96%b9%e5%bc%8f%e8%bf%9b%e8%a1%8c%e6%98%be%e7%a4%ba">以什么方式进行显示</h3>
+<h3 id="%e5%9d%97%e5%85%83%e7%b4%a0-block">块元素 block</h3>
+<h4 id="%e7%89%b9%e7%82%b9">特点</h4>
 <ul>
 <li>独占一行</li>
 <li>宽高内外边距可控</li>
 <li>宽度默认父级100%</li>
 <li>是一个容器盒子，可以放行内或块元素</li>
 </ul>
-<h4 id="%E5%B8%B8%E8%A7%81%EF%BC%9A">常见：</h4>
+<h4 id="%e5%b8%b8%e8%a7%81">常见：</h4>
 <p><code>&lt;h1&gt;-&lt;h6&gt; &lt;p&gt; &lt;div&gt; &lt;ul&gt; &lt;ol&gt; &lt;li&gt;</code></p>
-<h3 id="%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0%EF%BC%88%E5%86%85%E8%81%94%E5%85%83%E7%B4%A0%EF%BC%89inline">行内元素（内联元素）inline</h3>
-<h4 id="%E7%89%B9%E7%82%B9">特点</h4>
+<h3 id="%e8%a1%8c%e5%86%85%e5%85%83%e7%b4%a0%e5%86%85%e8%81%94%e5%85%83%e7%b4%a0inline">行内元素（内联元素）inline</h3>
+<h4 id="%e7%89%b9%e7%82%b9-1">特点</h4>
 <ul>
 <li>相邻元素在一行上，一行可以显示多个</li>
 <li>宽高直接设置会无效</li>
@@ -849,19 +493,19 @@ blockquote {
 <li>只能容纳文本或其他行内元素，不能装块元素</li>
 <li></li>
 </ul>
-<h4 id="%E5%B8%B8%E8%A7%81%EF%BC%9A%E6%96%87%E5%AD%97%E7%9B%B8%E5%85%B3%E6%A0%87%E7%AD%BE">常见：文字相关标签</h4>
+<h4 id="%e5%b8%b8%e8%a7%81%e6%96%87%e5%ad%97%e7%9b%b8%e5%85%b3%e6%a0%87%e7%ad%be">常见：文字相关标签</h4>
 <p><code>&lt;span&gt; &lt;a&gt; &lt;em&gt; &lt;i&gt; &lt;strong&gt; &lt;b&gt; &lt;del&gt; &lt;s&gt; &lt;ins&gt; &lt;u&gt;等</code></p>
-<p><strong><em>!a链接里面不能再放a链接，特殊情况&lt;a&gt;里面可以放块元素，但转换模式最安全</em></strong></p>
-<h3 id="%E8%A1%8C%E5%86%85%E5%9D%97%E5%85%83%E7%B4%A0-inline-block">行内块元素 inline-block</h3>
-<h4 id="%E7%89%B9%E7%82%B9">特点</h4>
+<p><em><strong>!a链接里面不能再放a链接，特殊情况&lt;a&gt;里面可以放块元素，但转换模式最安全</strong></em></p>
+<h3 id="%e8%a1%8c%e5%86%85%e5%9d%97%e5%85%83%e7%b4%a0-inline-block">行内块元素 inline-block</h3>
+<h4 id="%e7%89%b9%e7%82%b9-2">特点</h4>
 <ul>
 <li>和相邻元素在一行，一行多个，但是会有空白缝隙(行内元素)</li>
 <li>默认宽度就是内容宽度（行内元素）</li>
 <li>高度、行高、内外边距可以控制（块元素）</li>
 </ul>
-<h4 id="%E5%B8%B8%E8%A7%81%EF%BC%9A">常见：</h4>
+<h4 id="%e5%b8%b8%e8%a7%81-1">常见：</h4>
 <p><code>&lt;img /&gt; &lt;input /&gt; &lt;td&gt;</code></p>
-<h3 id="%E6%98%BE%E7%A4%BA%E6%A8%A1%E5%BC%8F%E8%BD%AC%E6%8D%A2">显示模式转换</h3>
+<h3 id="%e6%98%be%e7%a4%ba%e6%a8%a1%e5%bc%8f%e8%bd%ac%e6%8d%a2">显示模式转换</h3>
 <h4 id="display">display:</h4>
 <table>
 <thead>
@@ -881,8 +525,8 @@ blockquote {
 </tr>
 </tbody>
 </table>
-<h3 id="%E6%A1%88%E4%BE%8B06%E5%B0%8F%E7%B1%B3%E4%BE%A7%E8%BE%B9%E6%A0%8Fhtml">案例:<a href="2020-5/06.%E5%B0%8F%E7%B1%B3%E4%BE%A7%E8%BE%B9%E6%A0%8F.html">06.小米侧边栏.html</a></h3>
-<h2 id="%E8%BE%85%E5%8A%A9%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8">辅助工具的使用</h2>
+<h3 id="%e6%a1%88%e4%be%8b06%e5%b0%8f%e7%b1%b3%e4%be%a7%e8%be%b9%e6%a0%8fhtml">案例:<a href="2020-5/06.%E5%B0%8F%E7%B1%B3%E4%BE%A7%E8%BE%B9%E6%A0%8F.html">06.小米侧边栏.html</a></h3>
+<h2 id="%e8%be%85%e5%8a%a9%e5%b7%a5%e5%85%b7%e7%9a%84%e4%bd%bf%e7%94%a8">辅助工具的使用</h2>
 <h3 id="snipaste">snipaste</h3>
 <blockquote>
 <p>F1截图 F3贴图 截图后按c复制取色 shift转十六进制颜色</p>
@@ -902,7 +546,7 @@ blockquote {
 切片选中，保存为web所用格式，保存选区
 cutterman插件，快速导出</p>
 </blockquote>
-<h2 id="%E8%83%8C%E6%99%AF%E5%B1%9E%E6%80%A7%E7%B3%BB%E5%88%97">背景属性系列</h2>
+<h2 id="%e8%83%8c%e6%99%af%e5%b1%9e%e6%80%a7%e7%b3%bb%e5%88%97">背景属性系列</h2>
 <table>
 <thead>
 <tr>
@@ -927,33 +571,33 @@ cutterman插件，快速导出</p>
 <pre><code>    no-repeat           不平铺
     repeat-x repeat-y   在x（y）轴上平铺
 </code></pre>
-<h3 id="background-position%EF%BC%9Ax-y-%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87%E4%BD%8D%E7%BD%AE">background-position：x y;   背景图片位置</h3>
+<h3 id="background-positionx-y-%e8%83%8c%e6%99%af%e5%9b%be%e7%89%87%e4%bd%8d%e7%bd%ae">background-position：x y;   背景图片位置</h3>
 <p><code>left right top bottom center</code></p>
 <blockquote>
 <p>也可以是精确数值或百分比</p>
 </blockquote>
-<p><strong><em>!方位名词顺序没关系，只写一个另一个则默认居中，精确数值是先写x再写y</em></strong></p>
-<h3 id="%E6%A1%88%E4%BE%8B%EF%BC%9A07-1%E6%88%90%E9%95%BF%E5%AE%88%E6%8A%A4%E5%B9%B3%E5%8F%B0html-07-2%E7%8E%8B%E8%80%85%E8%8D%A3%E8%80%80%E5%A4%A7%E5%9B%BE%E5%B1%85%E4%B8%ADhtml">案例：<a href="2020-5/07-1.%E6%88%90%E9%95%BF%E5%AE%88%E6%8A%A4%E5%B9%B3%E5%8F%B0.html">07-1.成长守护平台.html</a> <a href="2020-5/07-2.%E7%8E%8B%E8%80%85%E8%8D%A3%E8%80%80%E5%A4%A7%E5%9B%BE%E5%B1%85%E4%B8%AD.html">07-2.王者荣耀大图居中.html</a></h3>
-<h3 id="background-attachment-%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87%E9%99%84%E7%9D%80-%E6%98%AF%E5%90%A6%E9%9A%8F%E9%A1%B5%E9%9D%A2%E6%BB%9A%E5%8A%A8">background-attachment 背景图片附着 是否随页面滚动</h3>
+<p><em><strong>!方位名词顺序没关系，只写一个另一个则默认居中，精确数值是先写x再写y</strong></em></p>
+<h3 id="%e6%a1%88%e4%be%8b07-1%e6%88%90%e9%95%bf%e5%ae%88%e6%8a%a4%e5%b9%b3%e5%8f%b0html-07-2%e7%8e%8b%e8%80%85%e8%8d%a3%e8%80%80%e5%a4%a7%e5%9b%be%e5%b1%85%e4%b8%adhtml">案例：<a href="2020-5/07-1.%E6%88%90%E9%95%BF%E5%AE%88%E6%8A%A4%E5%B9%B3%E5%8F%B0.html">07-1.成长守护平台.html</a> <a href="2020-5/07-2.%E7%8E%8B%E8%80%85%E8%8D%A3%E8%80%80%E5%A4%A7%E5%9B%BE%E5%B1%85%E4%B8%AD.html">07-2.王者荣耀大图居中.html</a></h3>
+<h3 id="background-attachment-%e8%83%8c%e6%99%af%e5%9b%be%e7%89%87%e9%99%84%e7%9d%80-%e6%98%af%e5%90%a6%e9%9a%8f%e9%a1%b5%e9%9d%a2%e6%bb%9a%e5%8a%a8">background-attachment 背景图片附着 是否随页面滚动</h3>
 <p><code>scroll 滚动 fixed 不滚动</code></p>
-<h3 id="%E8%83%8C%E6%99%AF%E5%A4%8D%E5%90%88%E5%86%99%E6%B3%95">背景复合写法</h3>
+<h3 id="%e8%83%8c%e6%99%af%e5%a4%8d%e5%90%88%e5%86%99%e6%b3%95">背景复合写法</h3>
 <p><code>background: [bg-color] [bg-image] [bg-repeat] [bg-attachment] [bg-position]</code></p>
-<h3 id="%E8%83%8C%E6%99%AF%E8%89%B2%E5%8D%8A%E9%80%8F%E6%98%8E">背景色半透明</h3>
+<h3 id="%e8%83%8c%e6%99%af%e8%89%b2%e5%8d%8a%e9%80%8f%e6%98%8e">背景色半透明</h3>
 <p><code>background: rgba(0,0,0,0.5);</code></p>
 <blockquote>
 <p>第四个数是透明度，0-1之间，0.3的0可以省略</p>
 </blockquote>
-<p><strong><em>!背景颜色半透明，内容不受影响，新属性，IE9+才支持</em></strong></p>
-<h3 id="%E6%A1%88%E4%BE%8B%EF%BC%9A08%E4%BA%94%E5%BD%A9%E5%AF%BC%E8%88%AAhtml">案例：<a href="2020-5/08.%E4%BA%94%E5%BD%A9%E5%AF%BC%E8%88%AA.html">08.五彩导航.html</a></h3>
-<h2 id="css%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7">css三大特性</h2>
-<h3 id="%E5%B1%82%E5%8F%A0%E6%80%A7">层叠性</h3>
+<p><em><strong>!背景颜色半透明，内容不受影响，新属性，IE9+才支持</strong></em></p>
+<h3 id="%e6%a1%88%e4%be%8b08%e4%ba%94%e5%bd%a9%e5%af%bc%e8%88%aahtml">案例：<a href="2020-5/08.%E4%BA%94%E5%BD%A9%E5%AF%BC%E8%88%AA.html">08.五彩导航.html</a></h3>
+<h2 id="css%e4%b8%89%e5%a4%a7%e7%89%b9%e6%80%a7">css三大特性</h2>
+<h3 id="%e5%b1%82%e5%8f%a0%e6%80%a7">层叠性</h3>
 <ul>
 <li>相同选择器设置相同样式，就会发生样式层叠覆盖</li>
 <li>样式冲突，遵循就近原则，离哪个近就执行哪个，不冲突则不层叠</li>
 </ul>
-<h3 id="%E7%BB%A7%E6%89%BF%E6%80%A7">继承性</h3>
-<h4 id="%E5%AD%90%E5%85%83%E7%B4%A0%E5%8F%AF%E7%BB%A7%E6%89%BF%E7%88%B6%E5%85%83%E7%B4%A0%E6%9F%90%E4%BA%9B%E6%A0%B7%E5%BC%8F%EF%BC%8C%E9%83%A8%E5%88%86%E4%B8%8D%E7%BB%A7%E6%89%BF%EF%BC%8C%E9%80%9A%E8%BF%87%E6%96%87%E6%A1%A3%E4%B8%AD%E7%9A%84inherited%EF%BC%9Ayes%E6%9D%A5%E5%88%A4%E6%96%AD">子元素可继承父元素某些样式，部分不继承，通过文档中的inherited：yes来判断</h4>
-<h4 id="%E5%8F%AF%E4%BB%A5%E7%BB%A7%E6%89%BF%E7%9A%84%E5%B1%9E%E6%80%A7">可以继承的属性</h4>
+<h3 id="%e7%bb%a7%e6%89%bf%e6%80%a7">继承性</h3>
+<h4 id="%e5%ad%90%e5%85%83%e7%b4%a0%e5%8f%af%e7%bb%a7%e6%89%bf%e7%88%b6%e5%85%83%e7%b4%a0%e6%9f%90%e4%ba%9b%e6%a0%b7%e5%bc%8f%e9%83%a8%e5%88%86%e4%b8%8d%e7%bb%a7%e6%89%bf%e9%80%9a%e8%bf%87%e6%96%87%e6%a1%a3%e4%b8%ad%e7%9a%84inheritedyes%e6%9d%a5%e5%88%a4%e6%96%ad">子元素可继承父元素某些样式，部分不继承，通过文档中的inherited：yes来判断</h4>
+<h4 id="%e5%8f%af%e4%bb%a5%e7%bb%a7%e6%89%bf%e7%9a%84%e5%b1%9e%e6%80%a7">可以继承的属性</h4>
 <ul>
 <li>字体系列属性： <code>font系列</code></li>
 <li>文本系列属性：
@@ -1004,21 +648,21 @@ cutterman插件，快速导出</p>
 <li>页面样式属性：<code>page、page-break-inside、windows、orphans</code></li>
 <li>声音样式属性：<code>speak系列、volume、voice-family、pitch、pitch-range、stress、richness、azimuth、elevation</code></li>
 </ul>
-<h4 id="%E6%89%80%E6%9C%89%E5%85%83%E7%B4%A0%E5%8F%AF%E4%BB%A5%E7%BB%A7%E6%89%BF%E7%9A%84%E5%B1%9E%E6%80%A7">所有元素可以继承的属性</h4>
+<h4 id="%e6%89%80%e6%9c%89%e5%85%83%e7%b4%a0%e5%8f%af%e4%bb%a5%e7%bb%a7%e6%89%bf%e7%9a%84%e5%b1%9e%e6%80%a7">所有元素可以继承的属性</h4>
 <ul>
 <li>元素可见性：<code>visibility</code></li>
 <li>光标属性：<code>cursor</code></li>
 </ul>
-<h4 id="%E5%86%85%E8%81%94%E5%85%83%E7%B4%A0%E5%8F%AF%E4%BB%A5%E7%BB%A7%E6%89%BF%E7%9A%84%E5%B1%9E%E6%80%A7">内联元素可以继承的属性</h4>
+<h4 id="%e5%86%85%e8%81%94%e5%85%83%e7%b4%a0%e5%8f%af%e4%bb%a5%e7%bb%a7%e6%89%bf%e7%9a%84%e5%b1%9e%e6%80%a7">内联元素可以继承的属性</h4>
 <ul>
 <li>字体系列属性</li>
 <li>除<code>text-indent、text-align</code>之外的文本系列属性</li>
 </ul>
-<h4 id="%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0%E5%8F%AF%E4%BB%A5%E7%BB%A7%E6%89%BF%E7%9A%84%E5%B1%9E%E6%80%A7">块级元素可以继承的属性</h4>
+<h4 id="%e5%9d%97%e7%ba%a7%e5%85%83%e7%b4%a0%e5%8f%af%e4%bb%a5%e7%bb%a7%e6%89%bf%e7%9a%84%e5%b1%9e%e6%80%a7">块级元素可以继承的属性</h4>
 <ul>
 <li><code>text-indent、text-align</code></li>
 </ul>
-<h4 id="%E4%B8%8D%E8%83%BD%E7%BB%A7%E6%89%BF%E7%9A%84%E5%B1%9E%E6%80%A7%EF%BC%9A">不能继承的属性：</h4>
+<h4 id="%e4%b8%8d%e8%83%bd%e7%bb%a7%e6%89%bf%e7%9a%84%e5%b1%9e%e6%80%a7">不能继承的属性：</h4>
 <ul>
 <li><code>display</code>：规定元素应该生成的框的类型</li>
 <li>文本属性：</li>
@@ -1057,10 +701,10 @@ cutterman插件，快速导出</p>
 <li>轮廓样式属性：<code>outline系列</code></li>
 <li>声音样式属性：<code>pause系列、cue系列、play-during</code></li>
 </ul>
-<h3 id="%E4%BC%98%E5%85%88%E6%80%A7">优先性</h3>
-<h4 id="css%E6%9D%83%E9%87%8D%E6%98%AF%E6%8C%87%E6%A0%B7%E5%BC%8F%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7%EF%BC%8C%E6%9C%89%E4%B8%A4%E6%9D%A1%E6%88%96%E5%A4%9A%E6%9D%A1%E6%A0%B7%E5%BC%8F%E4%BD%9C%E7%94%A8%E4%BA%8E%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0%EF%BC%8C%E6%9D%83%E9%87%8D%E9%AB%98%E7%9A%84%E9%82%A3%E6%9D%A1%E6%A0%B7%E5%BC%8F%E5%AF%B9%E5%85%83%E7%B4%A0%E8%B5%B7%E4%BD%9C%E7%94%A8%EF%BC%8C%E6%9D%83%E9%87%8D%E7%9B%B8%E5%90%8C%E7%9A%84%EF%BC%8C%E5%90%8E%E5%86%99%E7%9A%84%E6%A0%B7%E5%BC%8F%E4%BC%9A%E8%A6%86%E7%9B%96%E5%89%8D%E9%9D%A2%E5%86%99%E7%9A%84%E6%A0%B7%E5%BC%8F%E3%80%82">css权重是指样式的优先级，有两条或多条样式作用于一个元素，权重高的那条样式对元素起作用，权重相同的，后写的样式会覆盖前面写的样式。</h4>
-<h4 id="css%E6%9D%83%E9%87%8D%E7%94%B14%E4%B8%AA%E6%95%B0%E7%BB%84%E6%88%90%EF%BC%8C%E5%B7%A6%E5%A4%A7%E5%8F%B3%E5%B0%8F%EF%BC%8C%E5%90%8C%E6%97%B6%E4%BD%BF%E7%94%A8%E5%A4%9A%E4%B8%AA%E9%80%89%E6%8B%A9%E5%99%A8%E5%8F%AF%E5%8F%A0%E5%8A%A0%E6%9D%83%E9%87%8D%EF%BC%8C%E4%BD%86%E4%B8%8D%E8%BF%9B%E4%BD%8D">css权重由4个数组成，左大右小，同时使用多个选择器可叠加权重，但不进位</h4>
-<h4 id="%E6%9D%83%E9%87%8D%E8%AE%A1%E7%AE%97%EF%BC%9A">权重计算：</h4>
+<h3 id="%e4%bc%98%e5%85%88%e6%80%a7">优先性</h3>
+<h4 id="css%e6%9d%83%e9%87%8d%e6%98%af%e6%8c%87%e6%a0%b7%e5%bc%8f%e7%9a%84%e4%bc%98%e5%85%88%e7%ba%a7%e6%9c%89%e4%b8%a4%e6%9d%a1%e6%88%96%e5%a4%9a%e6%9d%a1%e6%a0%b7%e5%bc%8f%e4%bd%9c%e7%94%a8%e4%ba%8e%e4%b8%80%e4%b8%aa%e5%85%83%e7%b4%a0%e6%9d%83%e9%87%8d%e9%ab%98%e7%9a%84%e9%82%a3%e6%9d%a1%e6%a0%b7%e5%bc%8f%e5%af%b9%e5%85%83%e7%b4%a0%e8%b5%b7%e4%bd%9c%e7%94%a8%e6%9d%83%e9%87%8d%e7%9b%b8%e5%90%8c%e7%9a%84%e5%90%8e%e5%86%99%e7%9a%84%e6%a0%b7%e5%bc%8f%e4%bc%9a%e8%a6%86%e7%9b%96%e5%89%8d%e9%9d%a2%e5%86%99%e7%9a%84%e6%a0%b7%e5%bc%8f">css权重是指样式的优先级，有两条或多条样式作用于一个元素，权重高的那条样式对元素起作用，权重相同的，后写的样式会覆盖前面写的样式。</h4>
+<h4 id="css%e6%9d%83%e9%87%8d%e7%94%b14%e4%b8%aa%e6%95%b0%e7%bb%84%e6%88%90%e5%b7%a6%e5%a4%a7%e5%8f%b3%e5%b0%8f%e5%90%8c%e6%97%b6%e4%bd%bf%e7%94%a8%e5%a4%9a%e4%b8%aa%e9%80%89%e6%8b%a9%e5%99%a8%e5%8f%af%e5%8f%a0%e5%8a%a0%e6%9d%83%e9%87%8d%e4%bd%86%e4%b8%8d%e8%bf%9b%e4%bd%8d">css权重由4个数组成，左大右小，同时使用多个选择器可叠加权重，但不进位</h4>
+<h4 id="%e6%9d%83%e9%87%8d%e8%ae%a1%e7%ae%97">权重计算：</h4>
 <table>
 <thead>
 <tr>
@@ -1102,9 +746,9 @@ cutterman插件，快速导出</p>
 </tr>
 </tbody>
 </table>
-<p><strong><em>!特别注意：继承来的属性无论父级权重多大，子级都是0</em></strong></p>
-<p><strong><em>!&lt;a&gt;标签在浏览器中默认指定了样式，无法用继承来覆盖，如要修改需对&lt;a&gt;单独指定</em></strong></p>
-<h2 id="%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B">盒子模型</h2>
+<p><em><strong>!特别注意：继承来的属性无论父级权重多大，子级都是0</strong></em></p>
+<p><em><strong>!&lt;a&gt;标签在浏览器中默认指定了样式，无法用继承来覆盖，如要修改需对&lt;a&gt;单独指定</strong></em></p>
+<h2 id="%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b">盒子模型</h2>
 <ul>
 <li>
 <p>把布局元素看做一个矩形盒子，装内容的容器</p>
@@ -1113,7 +757,7 @@ cutterman插件，快速导出</p>
 <p>外边距-边框-内边距-内容</p>
 </li>
 </ul>
-<h3 id="%E8%BE%B9%E6%A1%86-border">边框  border</h3>
+<h3 id="%e8%be%b9%e6%a1%86-border">边框  border</h3>
 <table>
 <thead>
 <tr>
@@ -1140,30 +784,30 @@ cutterman插件，快速导出</p>
 solid       实线
 dotted      点线边框
 dashed      虚线边框</p>
-<h4 id="%E5%88%86%E5%BC%80%E5%86%99%E6%B3%95">分开写法</h4>
+<h4 id="%e5%88%86%e5%bc%80%e5%86%99%e6%b3%95">分开写法</h4>
 <ul>
 <li>order-方位词，单独设置上 下 左 右的边框</li>
 </ul>
-<h4 id="%E5%A4%8D%E5%90%88%E5%86%99%E6%B3%95">复合写法</h4>
+<h4 id="%e5%a4%8d%e5%90%88%e5%86%99%e6%b3%95">复合写法</h4>
 <p><code>border: #000 1px solid;</code>     没有顺序随意写</p>
-<p><strong><em>!边框会影响盒子大小</em></strong></p>
+<p><em><strong>!边框会影响盒子大小</strong></em></p>
 <ul>
 <li>可以测量盒子大小时不量边框</li>
 <li>包含了边框则需用宽/高减去边框</li>
 </ul>
-<h4 id="border-radius-%E5%9C%86%E8%A7%92%E8%BE%B9%E6%A1%86">border-radius 圆角边框</h4>
+<h4 id="border-radius-%e5%9c%86%e8%a7%92%e8%be%b9%e6%a1%86">border-radius 圆角边框</h4>
 <ul>
 <li>跟1个值是四角，2值是左上+对角和另一对角，4值是从左上顺时针设置</li>
 </ul>
-<h4 id="%E5%8F%AF%E4%BB%A5%E5%8D%95%E7%8B%AC%E8%AE%BE%E7%BD%AE">可以单独设置</h4>
+<h4 id="%e5%8f%af%e4%bb%a5%e5%8d%95%e7%8b%ac%e8%ae%be%e7%bd%ae">可以单独设置</h4>
 <blockquote>
 <p>如：border-top-left-radius 顺序先写上下 再左右</p>
 </blockquote>
-<h3 id="%E5%86%85%E5%AE%B9-content-%E5%B0%B1%E6%98%AF%E9%87%8C%E9%9D%A2%E7%9A%84%E5%86%85%E5%AE%B9">内容  content 就是里面的内容</h3>
-<h3 id="%E5%86%85%E8%BE%B9%E8%B7%9D-padding">内边距    padding</h3>
-<h4 id="%E8%AE%BE%E7%BD%AE%E8%BE%B9%E6%A1%86%E5%92%8C%E5%86%85%E5%AE%B9%E4%B9%8B%E9%97%B4%E7%9A%84%E8%B7%9D%E7%A6%BB">设置边框和内容之间的距离</h4>
+<h3 id="%e5%86%85%e5%ae%b9-content-%e5%b0%b1%e6%98%af%e9%87%8c%e9%9d%a2%e7%9a%84%e5%86%85%e5%ae%b9">内容  content 就是里面的内容</h3>
+<h3 id="%e5%86%85%e8%be%b9%e8%b7%9d-padding">内边距    padding</h3>
+<h4 id="%e8%ae%be%e7%bd%ae%e8%be%b9%e6%a1%86%e5%92%8c%e5%86%85%e5%ae%b9%e4%b9%8b%e9%97%b4%e7%9a%84%e8%b7%9d%e7%a6%bb">设置边框和内容之间的距离</h4>
 <p><code>padding-方位词</code>      单独设置上 下 左 右边框到内容的距离</p>
-<h4 id="%E5%A4%8D%E5%90%88%E5%86%99%E6%B3%95">复合写法</h4>
+<h4 id="%e5%a4%8d%e5%90%88%e5%86%99%e6%b3%95-1">复合写法</h4>
 <table>
 <thead>
 <tr>
@@ -1190,75 +834,75 @@ dashed      虚线边框</p>
 </tr>
 </tbody>
 </table>
-<p><strong><em>!当盒子指定了width或height时，padding就会影响宽高撑大盒子，如果不设置就没影响，如果一定要用，宽或高需要减去内边距</em></strong></p>
-<p><strong><em>!常用做法：这个特性可以用于无法设置固定宽度的情况，左右padding撑开盒子，如导航栏</em></strong></p>
-<h3 id="%E6%A1%88%E4%BE%8B%EF%BC%9A09%E6%96%B0%E6%B5%AA%E5%AF%BC%E8%88%AAhtml">案例：<a href="2020-5/09.%E6%96%B0%E6%B5%AA%E5%AF%BC%E8%88%AA.html">09.新浪导航.html</a></h3>
-<p><strong><em>!行内块元素之间有缝隙，因为换行符也被当做空白符了</em></strong></p>
+<p><em><strong>!当盒子指定了width或height时，padding就会影响宽高撑大盒子，如果不设置就没影响，如果一定要用，宽或高需要减去内边距</strong></em></p>
+<p><em><strong>!常用做法：这个特性可以用于无法设置固定宽度的情况，左右padding撑开盒子，如导航栏</strong></em></p>
+<h3 id="%e6%a1%88%e4%be%8b09%e6%96%b0%e6%b5%aa%e5%af%bc%e8%88%aahtml">案例：<a href="2020-5/09.%E6%96%B0%E6%B5%AA%E5%AF%BC%E8%88%AA.html">09.新浪导航.html</a></h3>
+<p><em><strong>!行内块元素之间有缝隙，因为换行符也被当做空白符了</strong></em></p>
 <blockquote>
-<p>解决办法    https://www.cnblogs.com/phoebeyue/p/9125195.html</p>
+<p>解决办法    <a href="https://www.cnblogs.com/phoebeyue/p/9125195.html">https://www.cnblogs.com/phoebeyue/p/9125195.html</a></p>
 </blockquote>
-<h3 id="%E5%A4%96%E8%BE%B9%E8%B7%9D-margin">外边距    margin</h3>
-<h4 id="%E6%8E%A7%E5%88%B6%E7%9B%92%E5%AD%90%E4%B9%8B%E9%97%B4%E7%9A%84%E8%B7%9D%E7%A6%BB%EF%BC%8C%E5%86%99%E6%B3%95%E5%92%8Cpadding%E7%B1%BB%E4%BC%BC">控制盒子之间的距离，写法和padding类似</h4>
-<p><strong><em>!margin不会撑开盒子尺寸</em></strong></p>
-<p><strong><em>!常用做法：</em></strong></p>
+<h3 id="%e5%a4%96%e8%be%b9%e8%b7%9d-margin">外边距    margin</h3>
+<h4 id="%e6%8e%a7%e5%88%b6%e7%9b%92%e5%ad%90%e4%b9%8b%e9%97%b4%e7%9a%84%e8%b7%9d%e7%a6%bb%e5%86%99%e6%b3%95%e5%92%8cpadding%e7%b1%bb%e4%bc%bc">控制盒子之间的距离，写法和padding类似</h4>
+<p><em><strong>!margin不会撑开盒子尺寸</strong></em></p>
+<p><em><strong>!常用做法：</strong></em></p>
 <p><code>margin:0 auto;</code></p>
 <ul>
-<li>只要左右是auto就可以水平居中</li>
-<li>但对行内（块）元素无效，需要给父级加<code>text-align:center</code></li>
+<li>只要左右是auto就可以水平居中
+<em>！对行内（块）元素无效，需要给父级加<code>text-align:center</code></em></li>
 </ul>
-<p><strong><em>!嵌套块元素，外边距会塌陷，几种解决办法：父级加上边框，上内边距，overflow:hidden，子级加浮动，固定，绝对定位</em></strong></p>
-<p><strong><em>!为了兼容性，行内元素尽量不设上下内外边距，左右可以，或者把他转换一下</em></strong></p>
-<p><strong><em>!初始化css：清除默认内外边距</em></strong></p>
+<p><em><strong>!嵌套块元素，外边距会塌陷，几种解决办法：父级加上边框，上内边距，overflow:hidden，子级加浮动，固定，绝对定位</strong></em></p>
+<p><em><strong>!为了兼容性，行内元素尽量不设上下内外边距，左右可以，或者把他转换一下</strong></em></p>
+<p><em><strong>!初始化css：清除默认内外边距</strong></em></p>
 <p><code>*{margin:0;padding:0;}</code></p>
-<h3 id="%E6%A1%88%E4%BE%8B%EF%BC%9A10%E4%BA%A7%E5%93%81%E6%A8%A1%E5%9D%97html">案例：<a href="2020-5/10.%E4%BA%A7%E5%93%81%E6%A8%A1%E5%9D%97.html">10.产品模块.html</a></h3>
+<h3 id="%e6%a1%88%e4%be%8b10%e4%ba%a7%e5%93%81%e6%a8%a1%e5%9d%97html">案例：<a href="2020-5/10.%E4%BA%A7%E5%93%81%E6%A8%A1%E5%9D%97.html">10.产品模块.html</a></h3>
 <p>**<em>!测量时发现，部分元素间有缝隙，测量不准确，一般是5px</em></p>
-<h3 id="%E6%A1%88%E4%BE%8B%EF%BC%9A11%E5%BF%AB%E6%8A%A5%E6%A8%A1%E5%9D%97html">案例：<a href="2020-5/11.%E5%BF%AB%E6%8A%A5%E6%A8%A1%E5%9D%97.html">11.快报模块.html</a></h3>
-<p><strong><em>!list-style:none;    去掉li前面的小圆点</em></strong></p>
-<h1 id="55%E8%BF%99%E4%B9%88%E8%AE%B0%E7%AC%94%E8%AE%B0%E5%A4%AA%E6%85%A2%E4%BA%86%EF%BC%8C%E6%8D%A2%E4%B8%AA%E6%96%B9%E6%B3%95"><em>5.5</em>
+<h3 id="%e6%a1%88%e4%be%8b11%e5%bf%ab%e6%8a%a5%e6%a8%a1%e5%9d%97html">案例：<a href="2020-5/11.%E5%BF%AB%E6%8A%A5%E6%A8%A1%E5%9D%97.html">11.快报模块.html</a></h3>
+<p><em><strong>!list-style:none;    去掉li前面的小圆点</strong></em></p>
+<h1 id="55%e8%bf%99%e4%b9%88%e8%ae%b0%e7%ac%94%e8%ae%b0%e5%a4%aa%e6%85%a2%e4%ba%86%e6%8d%a2%e4%b8%aa%e6%96%b9%e6%b3%95"><em>5.5</em>
 这么记笔记太慢了，换个方法</h1>
-<h2 id="%E9%98%B4%E5%BD%B1">阴影</h2>
+<h2 id="%e9%98%b4%e5%bd%b1">阴影</h2>
 <ul>
 <li>box-shadow  盒子阴影效果</li>
 <li>text-shadow 文本阴影效果</li>
 </ul>
-<h3 id="%E8%AF%AD%E6%B3%95%EF%BC%9A">语法：</h3>
+<h3 id="%e8%af%ad%e6%b3%95">语法：</h3>
 <p><code>box-shadow: h-shadow v-shadow blur spread color inset;</code><br>
 水平阴影位置 垂直阴影位置 模糊半径 阴影扩散半径 颜色 内外阴影（改为inset就是内阴影）</p>
-<p><strong><em>!前两个值必须写</em></strong></p>
-<h2 id="%E7%BD%91%E9%A1%B5%E5%B8%83%E5%B1%80%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F">网页布局三种方式</h2>
-<h3 id="%E6%A0%87%E5%87%86%E6%B5%81">标准流</h3>
+<p><em><strong>!前两个值必须写</strong></em></p>
+<h2 id="%e7%bd%91%e9%a1%b5%e5%b8%83%e5%b1%80%e4%b8%89%e7%a7%8d%e6%96%b9%e5%bc%8f">网页布局三种方式</h2>
+<h3 id="%e6%a0%87%e5%87%86%e6%b5%81">标准流</h3>
 <ul>
 <li>按照标签默认规定的方式排列，最基本的布局方式</li>
 <li>块级元素独占一行，从上往下顺序排列</li>
 <li>行内元素从左到右按顺序排列，碰到父元素边缘自动换行</li>
 </ul>
-<h3 id="%E6%B5%AE%E5%8A%A8">浮动</h3>
+<h3 id="%e6%b5%ae%e5%8a%a8">浮动</h3>
 <ul>
 <li>float属性创建浮动块，将其移动到一边，直到左/右边缘触及包含块或另一个浮动框的边缘</li>
 </ul>
-<h3 id="%E5%AE%9A%E4%BD%8D%E5%90%8E%E9%9D%A2%E5%AD%A6">定位(后面学)</h3>
-<h2 id="%E6%B5%AE%E5%8A%A8%E7%89%B9%E6%80%A7">浮动特性</h2>
-<h3 id="%E8%84%B1%E6%A0%87%EF%BC%9A%E6%B5%AE%E5%8A%A8%E5%85%83%E7%B4%A0%E4%BC%9A%E8%84%B1%E7%A6%BB%E6%A0%87%E5%87%86%E6%B5%81%EF%BC%88%E6%B5%AE%EF%BC%89%E7%A7%BB%E5%8A%A8%E5%88%B0%E6%8C%87%E5%AE%9A%E4%BD%8D%E7%BD%AE%EF%BC%88%E5%8A%A8%EF%BC%89%EF%BC%8C%E6%B5%AE%E5%8A%A8%E7%9A%84%E7%9B%92%E5%AD%90%E4%B8%8D%E5%9C%A8%E4%BF%9D%E7%95%99%E5%8E%9F%E5%85%88%E4%BD%8D%E7%BD%AE">脱标：浮动元素会脱离标准流（浮）移动到指定位置（动），浮动的盒子不在保留原先位置</h3>
-<p><strong><em>!浮动的盒子只会影响他后面的标准流，不会影响前面的标准流</em></strong></p>
-<h3 id="%E5%A6%82%E6%9E%9C%E5%A4%9A%E4%B8%AA%E7%9B%92%E5%AD%90%E9%83%BD%E6%B5%AE%E5%8A%A8%EF%BC%8C%E4%BB%96%E4%BB%AC%E4%BC%9A%E6%8C%89%E5%B1%9E%E6%80%A7%E5%80%BC%E4%B8%80%E8%A1%8C%E5%86%85%E6%98%BE%E7%A4%BA%E5%B9%B6%E9%A1%B6%E7%AB%AF%E5%AF%B9%E9%BD%90%E6%8E%92%E5%88%97">如果多个盒子都浮动，他们会按属性值一行内显示并顶端对齐排列</h3>
-<p><strong><em>!浮动元素是紧靠的没有缝隙，父盒子宽度装不下会自动另起一行</em></strong></p>
-<h3 id="%E4%BB%BB%E4%BD%95%E5%85%83%E7%B4%A0%E9%83%BD%E5%8F%AF%E4%BB%A5%E6%B5%AE%E5%8A%A8%EF%BC%8C%E6%B5%AE%E5%8A%A8%E5%85%83%E7%B4%A0%E5%85%B7%E6%9C%89%E8%A1%8C%E5%86%85%E5%9D%97%E7%89%B9%E6%80%A7">任何元素都可以浮动，浮动元素具有行内块特性</h3>
-<p><strong><em>!设置了浮动，不需要转换就可以给宽高，如果没有给宽高，则盒子按内容大小决定</em></strong></p>
-<h2 id="%E7%BD%91%E9%A1%B5%E5%B8%83%E5%B1%80%E7%9B%B8%E5%85%B3">网页布局相关</h2>
-<h3 id="%E6%A1%88%E4%BE%8B%EF%BC%9A12%E6%B5%AE%E5%8A%A8%E5%B8%83%E5%B1%80html">案例：<a href="2020-5/12.%E6%B5%AE%E5%8A%A8%E5%B8%83%E5%B1%80.html">12.浮动布局.html</a></h3>
-<h3 id="%E5%B8%B8%E8%A7%81%E7%BD%91%E9%A1%B5%E5%B8%83%E5%B1%80">常见网页布局</h3>
+<h3 id="%e5%ae%9a%e4%bd%8d%e5%90%8e%e9%9d%a2%e5%ad%a6">定位(后面学)</h3>
+<h2 id="%e6%b5%ae%e5%8a%a8%e7%89%b9%e6%80%a7">浮动特性</h2>
+<h3 id="%e8%84%b1%e6%a0%87%e6%b5%ae%e5%8a%a8%e5%85%83%e7%b4%a0%e4%bc%9a%e8%84%b1%e7%a6%bb%e6%a0%87%e5%87%86%e6%b5%81%e6%b5%ae%e7%a7%bb%e5%8a%a8%e5%88%b0%e6%8c%87%e5%ae%9a%e4%bd%8d%e7%bd%ae%e5%8a%a8%e6%b5%ae%e5%8a%a8%e7%9a%84%e7%9b%92%e5%ad%90%e4%b8%8d%e5%9c%a8%e4%bf%9d%e7%95%99%e5%8e%9f%e5%85%88%e4%bd%8d%e7%bd%ae">脱标：浮动元素会脱离标准流（浮）移动到指定位置（动），浮动的盒子不在保留原先位置</h3>
+<p><em><strong>!浮动的盒子只会影响他后面的标准流，不会影响前面的标准流</strong></em></p>
+<h3 id="%e5%a6%82%e6%9e%9c%e5%a4%9a%e4%b8%aa%e7%9b%92%e5%ad%90%e9%83%bd%e6%b5%ae%e5%8a%a8%e4%bb%96%e4%bb%ac%e4%bc%9a%e6%8c%89%e5%b1%9e%e6%80%a7%e5%80%bc%e4%b8%80%e8%a1%8c%e5%86%85%e6%98%be%e7%a4%ba%e5%b9%b6%e9%a1%b6%e7%ab%af%e5%af%b9%e9%bd%90%e6%8e%92%e5%88%97">如果多个盒子都浮动，他们会按属性值一行内显示并顶端对齐排列</h3>
+<p><em><strong>!浮动元素是紧靠的没有缝隙，父盒子宽度装不下会自动另起一行</strong></em></p>
+<h3 id="%e4%bb%bb%e4%bd%95%e5%85%83%e7%b4%a0%e9%83%bd%e5%8f%af%e4%bb%a5%e6%b5%ae%e5%8a%a8%e6%b5%ae%e5%8a%a8%e5%85%83%e7%b4%a0%e5%85%b7%e6%9c%89%e8%a1%8c%e5%86%85%e5%9d%97%e7%89%b9%e6%80%a7">任何元素都可以浮动，浮动元素具有行内块特性</h3>
+<p><em><strong>!设置了浮动，不需要转换就可以给宽高，如果没有给宽高，则盒子按内容大小决定</strong></em></p>
+<h2 id="%e7%bd%91%e9%a1%b5%e5%b8%83%e5%b1%80%e7%9b%b8%e5%85%b3">网页布局相关</h2>
+<h3 id="%e6%a1%88%e4%be%8b12%e6%b5%ae%e5%8a%a8%e5%b8%83%e5%b1%80html">案例：<a href="2020-5/12.%E6%B5%AE%E5%8A%A8%E5%B8%83%E5%B1%80.html">12.浮动布局.html</a></h3>
+<h3 id="%e5%b8%b8%e8%a7%81%e7%bd%91%e9%a1%b5%e5%b8%83%e5%b1%80">常见网页布局</h3>
 <ul>
 <li>一列固定宽度且居中：top-banner-main-footer</li>
 <li>两列左窄右宽型：top-banner-(left+right)-footer</li>
-<li>通栏平均分布型：top-banner-(box.hd+box.bd)*4-footer</li>
+<li>通栏平均分布型：top-banner-(<a href="http://box.hd+box.bd">box.hd+box.bd</a>)*4-footer</li>
 </ul>
-<h3 id="css%E7%89%88%E5%BF%83%E5%92%8C%E5%B8%83%E5%B1%80%E6%B5%81%E7%A8%8B%E3%80%81%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8">CSS版心和布局流程、清除浮动</h3>
-<p>https://blog.csdn.net/tichimi3375/article/details/82794074</p>
+<h3 id="css%e7%89%88%e5%bf%83%e5%92%8c%e5%b8%83%e5%b1%80%e6%b5%81%e7%a8%8b%e6%b8%85%e9%99%a4%e6%b5%ae%e5%8a%a8">CSS版心和布局流程、清除浮动</h3>
+<p><a href="https://blog.csdn.net/tichimi3375/article/details/82794074">https://blog.csdn.net/tichimi3375/article/details/82794074</a></p>
 <ul>
 <li>通栏：宽度为屏幕100%的盒子</li>
 <li>版心（可视区）：指主体内容所在区域，一般水平居中，常见宽度为960px、980px、1000px、1200px等。</li>
 </ul>
-<h3 id="%E5%B8%83%E5%B1%80%E6%B5%81%E7%A8%8B">布局流程</h3>
+<h3 id="%e5%b8%83%e5%b1%80%e6%b5%81%e7%a8%8b">布局流程</h3>
 <blockquote>
 <p>为了提高网页制作的效率，布局时通常要遵守一定的布局流程：</p>
 </blockquote>
@@ -1269,19 +913,19 @@ dashed      虚线边框</p>
 <li>制作HTML结构 ，结构最重要</li>
 <li>CSS初始化，然后开始运用盒子模型的原理，通过DIV+CSS布局来控制网页的各个模块</li>
 </ol>
-<h3 id="%E6%A1%88%E4%BE%8B%EF%BC%9A13%E9%80%9A%E6%A0%8F%E5%B9%B3%E5%9D%87%E5%88%86%E5%B8%83%E5%B8%83%E5%B1%80html">案例：<a href="2020-5/13.%E9%80%9A%E6%A0%8F%E5%B9%B3%E5%9D%87%E5%88%86%E5%B8%83%E5%B8%83%E5%B1%80.html">13.通栏平均分布布局.html</a></h3>
-<p><strong><em>!标准流父元素排列上下位置，内部子元素浮动排列左右位置</em></strong></p>
-<p><strong><em>!一浮全浮：一个盒子里面有多个盒子，如果其中一个浮动，为了避免不利影响，其他盒子也要浮动</em></strong></p>
-<h2 id="%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8">清除浮动</h2>
-<h3 id="%E6%9C%89%E7%9A%84%E7%9B%92%E5%AD%90%E4%B8%8D%E6%96%B9%E4%BE%BF%E7%BB%99%E9%AB%98%E5%BA%A6%EF%BC%8C%E5%AD%90%E7%BA%A7%E6%B5%AE%E5%8A%A8%E4%BC%9A%E5%AF%BC%E8%87%B4%E7%88%B6%E7%BA%A7%E9%AB%98%E5%BA%A6%E4%B8%BA0%EF%BC%8C%E7%90%86%E6%83%B3%E7%8A%B6%E6%80%81%E6%98%AF%E9%9A%8F%E5%86%85%E5%AE%B9%E6%92%91%E5%BC%80%E9%AB%98%E5%BA%A6">有的盒子不方便给高度，子级浮动会导致父级高度为0，理想状态是随内容撑开高度</h3>
-<h3 id="%E6%9C%AC%E8%B4%A8%EF%BC%9A%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8%E5%85%83%E7%B4%A0%E9%80%A0%E6%88%90%E7%9A%84%E5%BD%B1%E5%93%8D">本质：清除浮动元素造成的影响</h3>
-<p><strong><em>!如果父盒子有高度则不需要清除浮动</em></strong></p>
-<p><strong><em>!清除浮动后，父级会根据内容自动检测高度，不会影响后面的标准流</em></strong></p>
+<h3 id="%e6%a1%88%e4%be%8b13%e9%80%9a%e6%a0%8f%e5%b9%b3%e5%9d%87%e5%88%86%e5%b8%83%e5%b8%83%e5%b1%80html">案例：<a href="2020-5/13.%E9%80%9A%E6%A0%8F%E5%B9%B3%E5%9D%87%E5%88%86%E5%B8%83%E5%B8%83%E5%B1%80.html">13.通栏平均分布布局.html</a></h3>
+<p><em><strong>!标准流父元素排列上下位置，内部子元素浮动排列左右位置</strong></em></p>
+<p><em><strong>!一浮全浮：一个盒子里面有多个盒子，如果其中一个浮动，为了避免不利影响，其他盒子也要浮动</strong></em></p>
+<h2 id="%e6%b8%85%e9%99%a4%e6%b5%ae%e5%8a%a8">清除浮动</h2>
+<h3 id="%e6%9c%89%e7%9a%84%e7%9b%92%e5%ad%90%e4%b8%8d%e6%96%b9%e4%be%bf%e7%bb%99%e9%ab%98%e5%ba%a6%e5%ad%90%e7%ba%a7%e6%b5%ae%e5%8a%a8%e4%bc%9a%e5%af%bc%e8%87%b4%e7%88%b6%e7%ba%a7%e9%ab%98%e5%ba%a6%e4%b8%ba0%e7%90%86%e6%83%b3%e7%8a%b6%e6%80%81%e6%98%af%e9%9a%8f%e5%86%85%e5%ae%b9%e6%92%91%e5%bc%80%e9%ab%98%e5%ba%a6">有的盒子不方便给高度，子级浮动会导致父级高度为0，理想状态是随内容撑开高度</h3>
+<h3 id="%e6%9c%ac%e8%b4%a8%e6%b8%85%e9%99%a4%e6%b5%ae%e5%8a%a8%e5%85%83%e7%b4%a0%e9%80%a0%e6%88%90%e7%9a%84%e5%bd%b1%e5%93%8d">本质：清除浮动元素造成的影响</h3>
+<p><em><strong>!如果父盒子有高度则不需要清除浮动</strong></em></p>
+<p><em><strong>!清除浮动后，父级会根据内容自动检测高度，不会影响后面的标准流</strong></em></p>
 <pre><code>clear:both;
 清除浮动        both|left|right 清除两侧（左、右）浮动元素的影响
 </code></pre>
-<h3 id="%E7%AD%96%E7%95%A5%EF%BC%9A%E9%97%AD%E5%90%88%E6%B5%AE%E5%8A%A8%EF%BC%8C%E4%B8%8D%E8%AE%A9%E6%B5%AE%E5%8A%A8%E5%BD%B1%E5%93%8D%E7%88%B6%E7%BA%A7%E5%A4%96%E9%9D%A2">策略：闭合浮动，不让浮动影响父级外面</h3>
-<h3 id="%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95">三种方法</h3>
+<h3 id="%e7%ad%96%e7%95%a5%e9%97%ad%e5%90%88%e6%b5%ae%e5%8a%a8%e4%b8%8d%e8%ae%a9%e6%b5%ae%e5%8a%a8%e5%bd%b1%e5%93%8d%e7%88%b6%e7%ba%a7%e5%a4%96%e9%9d%a2">策略：闭合浮动，不让浮动影响父级外面</h3>
+<h3 id="%e4%b8%89%e7%a7%8d%e6%96%b9%e6%b3%95">三种方法</h3>
 <ul>
 <li>
 <p>额外标签法（隔墙法） 在后面加一个块级元素的空标签</p>
@@ -1305,7 +949,7 @@ dashed      虚线边框</p>
 </blockquote>
 </li>
 </ul>
-<pre class="hljs"><code><div>    <span class="hljs-selector-class">.clearfix</span><span class="hljs-selector-pseudo">:after</span> {
+<pre><code class="language-css"><div>    <span class="hljs-selector-class">.clearfix</span><span class="hljs-selector-pseudo">:after</span> {
     <span class="hljs-attribute">content</span>: <span class="hljs-string">""</span>;
     <span class="hljs-attribute">display</span>: block;
     <span class="hljs-attribute">height</span>: <span class="hljs-number">0</span>;
@@ -1317,7 +961,7 @@ dashed      虚线边框</p>
         *<span class="hljs-attribute">zoom</span>: <span class="hljs-number">1</span>;
     }
 </div></code></pre>
-<pre class="hljs"><code><div>    、父级加双伪元素        同上，父级调用类就行
+<pre><code class="language-css"><div>    、父级加双伪元素        同上，父级调用类就行
     <span class="hljs-selector-class">.clearfix</span><span class="hljs-selector-pseudo">:before</span>,
     <span class="hljs-selector-class">.clearfix</span><span class="hljs-selector-pseudo">:after</span> {
         <span class="hljs-attribute">content</span>: <span class="hljs-string">""</span>;
@@ -1332,7 +976,7 @@ dashed      虚线边框</p>
         *<span class="hljs-attribute">zoom</span>: <span class="hljs-number">1</span>;
     }
 </div></code></pre>
-<h2 id="%E5%9B%BE%E7%89%87%E6%A0%BC%E5%BC%8F">图片格式</h2>
+<h2 id="%e5%9b%be%e7%89%87%e6%a0%bc%e5%bc%8f">图片格式</h2>
 <table>
 <thead>
 <tr>
@@ -1359,9 +1003,9 @@ dashed      虚线边框</p>
 </tr>
 </tbody>
 </table>
-<h2 id="%E7%BB%BC%E5%90%88%E6%A1%88%E4%BE%8B%EF%BC%9A14%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BFhtml">综合案例：<a href="2020-5/14.%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF.html">14.学成在线.html</a></h2>
-<h3 id="%E6%A1%88%E4%BE%8B%E6%80%BB%E7%BB%93">案例总结</h3>
-<h4 id="%E8%A7%84%E5%AE%9A%E8%87%AA%E5%B7%B1%E4%B9%A0%E6%83%AF%E7%9A%84%E9%A1%BA%E5%BA%8F">规定自己习惯的顺序</h4>
+<h2 id="%e7%bb%bc%e5%90%88%e6%a1%88%e4%be%8b14%e5%ad%a6%e6%88%90%e5%9c%a8%e7%ba%bfhtml">综合案例：<a href="2020-5/14.%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF.html">14.学成在线.html</a></h2>
+<h3 id="%e6%a1%88%e4%be%8b%e6%80%bb%e7%bb%93">案例总结</h3>
+<h4 id="%e8%a7%84%e5%ae%9a%e8%87%aa%e5%b7%b1%e4%b9%a0%e6%83%af%e7%9a%84%e9%a1%ba%e5%ba%8f">规定自己习惯的顺序</h4>
 <pre><code>    {
     定位属性
         定位、浮动、转换等
@@ -1385,41 +1029,41 @@ dashed      虚线边框</p>
         阴影
     }
 </code></pre>
-<h4 id="%E7%9B%92%E5%AD%90%E4%B9%8B%E9%97%B4%E8%B7%9D%E7%A6%BB%E7%94%A8margin%EF%BC%8C%E7%9B%92%E5%AD%90%E8%BE%B9%E6%A1%86%E4%B8%8E%E5%86%85%E5%AE%B9%E4%B9%8B%E9%97%B4%E7%94%A8padding%EF%BC%8C%E9%9C%80%E8%A6%81%E7%89%B9%E5%88%AB%E6%A0%B7%E5%BC%8F%E5%8F%AF%E4%BB%A5%E6%B7%B7%E7%94%A8%EF%BC%8C%E7%AE%80%E5%8D%95%E7%9C%8B%E6%B3%95%E5%B0%B1%E6%98%AF%E7%9C%8B%E5%86%85%E5%AE%B9%E7%9A%84%E6%9F%90%E4%B8%AA%E6%96%B9%E5%90%91%E4%B8%8A%E8%83%BD%E5%90%A6%E7%9B%B4%E6%8E%A5%E7%A2%B0%E5%88%B0%E8%BE%B9%E6%A1%86%EF%BC%8C%E8%83%BD%E7%A2%B0%E5%88%B0%E5%B0%B1%E5%86%85%E8%BE%B9%E8%B7%9D%EF%BC%8C%E8%A2%AB%E5%85%B6%E4%BB%96%E5%85%83%E7%B4%A0%E6%8C%A1%E4%BD%8F%E5%B0%B1%E5%A4%96%E8%BE%B9%E8%B7%9D">盒子之间距离用margin，盒子边框与内容之间用padding，需要特别样式可以混用，简单看法就是看内容的某个方向上能否直接碰到边框，能碰到就内边距，被其他元素挡住就外边距</h4>
-<p><strong><em>!一般li设外边距，a设内边距，如果a点击区需要连续排列没缝隙，就不给li对应边的外边距</em></strong></p>
-<h3 id="header%E7%9A%84%E6%A8%AA%E6%9D%A1nav%E5%81%9A%E6%B3%95">header的横条nav做法</h3>
-<h4 id="divullia%EF%BC%88ul%E6%9C%AC%E8%BA%AB%E5%B0%B1%E6%98%AF%E7%9B%92%E5%AD%90%EF%BC%8C%E5%8F%AF%E4%BB%A5%E4%B8%8D%E8%A6%81div%EF%BC%89">div&gt;ul&gt;li&gt;a（ul本身就是盒子，可以不要div）</h4>
-<h4 id="ul%E8%AE%BE%E7%BD%AE%E9%AB%98%E5%BA%A6%E5%92%8C%E5%B7%A6%E5%8F%B3%E5%A4%96%E8%BE%B9%E8%B7%9D%EF%BC%8C%E5%86%8D%E8%AE%BE%E8%A1%8C%E9%AB%98%E7%BB%A7%E6%89%BF%E7%BB%99%E5%AD%90%E7%BA%A7%E6%8E%A7%E5%88%B6%E6%96%87%E5%AD%97%E4%B8%8A%E4%B8%8B%EF%BC%8Cli%E8%AE%BE%E7%BD%AE%E5%A4%96%E8%BE%B9%E8%B7%9D%EF%BC%8Ca%E8%AE%BE%E7%BD%AE%E5%86%85%E8%BE%B9%E8%B7%9D%EF%BC%8C%E6%B5%AE%E5%8A%A8%EF%BC%8C%E5%AE%8C%E6%88%90">ul设置高度和左右外边距，再设行高继承给子级控制文字上下，li设置外边距，a设置内边距，浮动，完成</h4>
-<pre class="hljs"><code><div>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+<h4 id="%e7%9b%92%e5%ad%90%e4%b9%8b%e9%97%b4%e8%b7%9d%e7%a6%bb%e7%94%a8margin%e7%9b%92%e5%ad%90%e8%be%b9%e6%a1%86%e4%b8%8e%e5%86%85%e5%ae%b9%e4%b9%8b%e9%97%b4%e7%94%a8padding%e9%9c%80%e8%a6%81%e7%89%b9%e5%88%ab%e6%a0%b7%e5%bc%8f%e5%8f%af%e4%bb%a5%e6%b7%b7%e7%94%a8%e7%ae%80%e5%8d%95%e7%9c%8b%e6%b3%95%e5%b0%b1%e6%98%af%e7%9c%8b%e5%86%85%e5%ae%b9%e7%9a%84%e6%9f%90%e4%b8%aa%e6%96%b9%e5%90%91%e4%b8%8a%e8%83%bd%e5%90%a6%e7%9b%b4%e6%8e%a5%e7%a2%b0%e5%88%b0%e8%be%b9%e6%a1%86%e8%83%bd%e7%a2%b0%e5%88%b0%e5%b0%b1%e5%86%85%e8%be%b9%e8%b7%9d%e8%a2%ab%e5%85%b6%e4%bb%96%e5%85%83%e7%b4%a0%e6%8c%a1%e4%bd%8f%e5%b0%b1%e5%a4%96%e8%be%b9%e8%b7%9d">盒子之间距离用margin，盒子边框与内容之间用padding，需要特别样式可以混用，简单看法就是看内容的某个方向上能否直接碰到边框，能碰到就内边距，被其他元素挡住就外边距</h4>
+<p><em><strong>!一般li设外边距，a设内边距，如果a点击区需要连续排列没缝隙，就不给li对应边的外边距</strong></em></p>
+<h3 id="header%e7%9a%84%e6%a8%aa%e6%9d%a1nav%e5%81%9a%e6%b3%95">header的横条nav做法</h3>
+<h4 id="divulliaul%e6%9c%ac%e8%ba%ab%e5%b0%b1%e6%98%af%e7%9b%92%e5%ad%90%e5%8f%af%e4%bb%a5%e4%b8%8d%e8%a6%81div">div&gt;ul&gt;li&gt;a（ul本身就是盒子，可以不要div）</h4>
+<h4 id="ul%e8%ae%be%e7%bd%ae%e9%ab%98%e5%ba%a6%e5%92%8c%e5%b7%a6%e5%8f%b3%e5%a4%96%e8%be%b9%e8%b7%9d%e5%86%8d%e8%ae%be%e8%a1%8c%e9%ab%98%e7%bb%a7%e6%89%bf%e7%bb%99%e5%ad%90%e7%ba%a7%e6%8e%a7%e5%88%b6%e6%96%87%e5%ad%97%e4%b8%8a%e4%b8%8bli%e8%ae%be%e7%bd%ae%e5%a4%96%e8%be%b9%e8%b7%9da%e8%ae%be%e7%bd%ae%e5%86%85%e8%be%b9%e8%b7%9d%e6%b5%ae%e5%8a%a8%e5%ae%8c%e6%88%90">ul设置高度和左右外边距，再设行高继承给子级控制文字上下，li设置外边距，a设置内边距，浮动，完成</h4>
+<pre><code class="language-html"><div>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>            
             <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
 </div></code></pre>
-<h3 id="%E9%80%9A%E6%A0%8F%E7%89%88%E5%BF%83%E5%86%99%E6%B3%95">通栏+版心写法</h3>
+<h3 id="%e9%80%9a%e6%a0%8f%e7%89%88%e5%bf%83%e5%86%99%e6%b3%95">通栏+版心写法</h3>
 <h4 id="divdivlayout">div&gt;div.layout</h4>
 <pre><code>        第一个div设高度，不设宽或设100%，背景色设好，再弄layout里面
     &lt;div&gt;
         &lt;div class=&quot;layout&quot;&gt;
     &lt;/div&gt;
 </code></pre>
-<h3 id="banner%E9%83%A8%E5%88%86%E7%AB%96%E7%9B%B4nav%E5%86%99%E6%B3%95">banner部分竖直nav写法</h3>
+<h3 id="banner%e9%83%a8%e5%88%86%e7%ab%96%e7%9b%b4nav%e5%86%99%e6%b3%95">banner部分竖直nav写法</h3>
 <h4 id="divulliaspan">div&gt;ul&gt;li&gt;a&gt;span</h4>
-<h4 id="div%E8%AE%BE%E7%BD%AE%E5%AE%BD%E9%AB%98%EF%BC%8Cul%E4%B8%8A%E5%A4%96%E8%BE%B9%E8%B7%9Dli%E6%88%96%E8%80%85a%E8%AE%BE%E7%BD%AE%E9%AB%98%E5%BA%A6%E3%80%81%E8%A1%8C%E9%AB%98%EF%BC%8Cli%E5%A4%96%E8%BE%B9%E8%B7%9D%EF%BC%8Ca%E5%86%85%E8%BE%B9%E8%B7%9D%EF%BC%8Ca%E5%B7%A6%E6%B5%AE%E5%8A%A8%EF%BC%8Cspan%E7%AE%AD%E5%A4%B4%E5%8F%B3%E6%B5%AE%E5%8A%A8%EF%BC%8C%E5%8F%B3%E5%86%85%E8%BE%B9%E8%B7%9D%E8%B0%83%E6%95%B4">div设置宽高，ul上外边距,li或者a设置高度、行高，li外边距，a内边距，a左浮动，span箭头右浮动，右内边距调整</h4>
-<pre class="hljs"><code><div>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+<h4 id="div%e8%ae%be%e7%bd%ae%e5%ae%bd%e9%ab%98ul%e4%b8%8a%e5%a4%96%e8%be%b9%e8%b7%9dli%e6%88%96%e8%80%85a%e8%ae%be%e7%bd%ae%e9%ab%98%e5%ba%a6%e8%a1%8c%e9%ab%98li%e5%a4%96%e8%be%b9%e8%b7%9da%e5%86%85%e8%be%b9%e8%b7%9da%e5%b7%a6%e6%b5%ae%e5%8a%a8span%e7%ae%ad%e5%a4%b4%e5%8f%b3%e6%b5%ae%e5%8a%a8%e5%8f%b3%e5%86%85%e8%be%b9%e8%b7%9d%e8%b0%83%e6%95%b4">div设置宽高，ul上外边距,li或者a设置高度、行高，li外边距，a内边距，a左浮动，span箭头右浮动，右内边距调整</h4>
+<pre><code class="language-html"><div>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </div></code></pre>
-<h3 id="%E8%AF%BE%E7%A8%8B%E9%83%A8%E5%88%86%E5%BF%AB%E6%8A%A5%E5%86%99%E6%B3%95">课程部分快报写法</h3>
-<h4 id="divdivhddivbdulliaxxx">div&gt;div.hd+div.bd&gt;(ul&gt;li&gt;a+xxx)</h4>
+<h3 id="%e8%af%be%e7%a8%8b%e9%83%a8%e5%88%86%e5%bf%ab%e6%8a%a5%e5%86%99%e6%b3%95">课程部分快报写法</h3>
+<h4 id="divdivhddivbdulliaxxx">div&gt;<a href="http://div.hd+div.bd">div.hd+div.bd</a>&gt;(ul&gt;li&gt;a+xxx)</h4>
 <blockquote>
 <p>hd可以是标题标签，设置行高即可，ul设置左右和上内边距，li或a设置高、行高，最后按钮什么的类似吧，上外边距和高度行高设置好</p>
 </blockquote>
-<pre class="hljs"><code><div>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+<pre><code class="language-html"><div>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hd"</span>&gt;</span>巴拉巴拉<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bd"</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
@@ -1430,35 +1074,35 @@ dashed      虚线边框</p>
             <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </div></code></pre>
-<h3 id="%E7%89%88%E5%BF%83%E4%BA%A7%E5%93%81%E6%A8%A1%E5%9D%97">版心产品模块</h3>
-<h4 id="divulli%E4%BA%A7%E5%93%81%E6%A8%A1%E5%9D%97">div&gt;ul&gt;li&gt;产品模块</h4>
-<h4 id="div%E8%AE%BE%E5%A5%BD%E5%AE%BD%E5%BA%A6%EF%BC%8Cli%E8%AE%BE%E5%A5%BD%E5%AE%BD%E9%AB%98%EF%BC%8C%E8%AE%BE%E5%A4%96%E8%BE%B9%E8%B7%9D%EF%BC%8C%E6%B5%AE%E5%8A%A8%EF%BC%8C%E6%9C%80%E5%90%8E%E4%B8%80%E6%8E%92%E6%94%BE%E4%B8%8D%E4%B8%8B%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95%EF%BC%9A">div设好宽度，li设好宽高，设外边距，浮动，最后一排放不下的解决办法：</h4>
+<h3 id="%e7%89%88%e5%bf%83%e4%ba%a7%e5%93%81%e6%a8%a1%e5%9d%97">版心产品模块</h3>
+<h4 id="divulli%e4%ba%a7%e5%93%81%e6%a8%a1%e5%9d%97">div&gt;ul&gt;li&gt;产品模块</h4>
+<h4 id="div%e8%ae%be%e5%a5%bd%e5%ae%bd%e5%ba%a6li%e8%ae%be%e5%a5%bd%e5%ae%bd%e9%ab%98%e8%ae%be%e5%a4%96%e8%be%b9%e8%b7%9d%e6%b5%ae%e5%8a%a8%e6%9c%80%e5%90%8e%e4%b8%80%e6%8e%92%e6%94%be%e4%b8%8d%e4%b8%8b%e7%9a%84%e8%a7%a3%e5%86%b3%e5%8a%9e%e6%b3%95">div设好宽度，li设好宽高，设外边距，浮动，最后一排放不下的解决办法：</h4>
 <ul>
 <li>div宽度给大一点，溢出的overflow:hidden</li>
 <li>选择器选中手动清除边距</li>
 </ul>
-<pre class="hljs"><code><div>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+<pre><code class="language-html"><div>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>产品模块<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>产品模块<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </div></code></pre>
-<h3 id="%E5%8D%95%E4%BA%A7%E5%93%81%E6%A8%A1%E5%9D%97">单产品模块</h3>
-<h4 id="imgh4pi-i%E6%88%96%E8%80%85span%E6%88%96%E8%80%85em%EF%BC%8C%E4%B8%80%E8%88%AC%E7%94%A8i%E9%85%8D%E5%90%88%E4%BC%AA%E5%85%83%E7%B4%A0%E5%81%9A%E5%B0%8F%E5%9B%BE%E6%A0%87">img+h4+p&gt;i   (i或者span或者em，一般用i配合伪元素做小图标)</h4>
-<h4 id="%E4%B8%80%E8%88%AC%E6%98%AFimg%E8%AE%BE%E5%A5%BD%E5%AE%BD%E9%AB%98%EF%BC%8C%E7%84%B6%E5%90%8E%E8%AE%BEh4%E5%B7%A6%E5%8F%B3%E5%86%85%E8%BE%B9%E8%B7%9D%EF%BC%8C%E4%B8%8A%E5%86%85%E6%88%96%E5%A4%96%E8%BE%B9%E8%B7%9D%EF%BC%8C%E5%AE%BD%E9%AB%98%E5%8F%AF%E8%AE%BE%E5%AE%9A%EF%BC%8C%E6%94%B9h4%E6%A0%B7%E5%BC%8F%EF%BC%8C%E6%8E%A5%E7%9D%80p%E4%B8%8A%E5%A4%96%E8%BE%B9%E8%B7%9D%EF%BC%8Cspan%E8%AE%BE%E7%BD%AE%E7%89%B9%E6%AE%8A%E6%A0%B7%E5%BC%8F">一般是img设好宽高，然后设h4左右内边距，上内或外边距，宽高可设定，改h4样式，接着p上外边距，span设置特殊样式</h4>
-<pre class="hljs"><code><div>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+<h3 id="%e5%8d%95%e4%ba%a7%e5%93%81%e6%a8%a1%e5%9d%97">单产品模块</h3>
+<h4 id="imgh4pi-i%e6%88%96%e8%80%85span%e6%88%96%e8%80%85em%e4%b8%80%e8%88%ac%e7%94%a8i%e9%85%8d%e5%90%88%e4%bc%aa%e5%85%83%e7%b4%a0%e5%81%9a%e5%b0%8f%e5%9b%be%e6%a0%87">img+h4+p&gt;i   (i或者span或者em，一般用i配合伪元素做小图标)</h4>
+<h4 id="%e4%b8%80%e8%88%ac%e6%98%afimg%e8%ae%be%e5%a5%bd%e5%ae%bd%e9%ab%98%e7%84%b6%e5%90%8e%e8%ae%beh4%e5%b7%a6%e5%8f%b3%e5%86%85%e8%be%b9%e8%b7%9d%e4%b8%8a%e5%86%85%e6%88%96%e5%a4%96%e8%be%b9%e8%b7%9d%e5%ae%bd%e9%ab%98%e5%8f%af%e8%ae%be%e5%ae%9a%e6%94%b9h4%e6%a0%b7%e5%bc%8f%e6%8e%a5%e7%9d%80p%e4%b8%8a%e5%a4%96%e8%be%b9%e8%b7%9dspan%e8%ae%be%e7%bd%ae%e7%89%b9%e6%ae%8a%e6%a0%b7%e5%bc%8f">一般是img设好宽高，然后设h4左右内边距，上内或外边距，宽高可设定，改h4样式，接着p上外边距，span设置特殊样式</h4>
+<pre><code class="language-html"><div>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">""</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">h4</span>&gt;</span>标题<span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>文字<span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>特别样式<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </div></code></pre>
-<h3 id="footer%E6%A8%A1%E5%9D%97">footer模块</h3>
+<h3 id="footer%e6%a8%a1%e5%9d%97">footer模块</h3>
 <h4 id="divdivlayoutdivleftdivright">div&gt;div.layout&gt;div.left+div.right</h4>
 <blockquote>
 <p>也可能不是左右，是上下排布的，用dl&gt;dt&gt;dd做</p>
 </blockquote>
-<pre class="hljs"><code><div>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+<pre><code class="language-html"><div>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"layout"</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"left"</span>&gt;</span>巴拉巴拉<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"left"</span>&gt;</span>
@@ -1471,9 +1115,9 @@ dashed      虚线边框</p>
             <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </div></code></pre>
-<h1 id="56%E5%AD%A6%E4%B9%A0%E7%94%A8git%E7%AE%A1%E7%90%86%E7%89%88%E6%9C%AC"><em>5.6</em>
+<h1 id="56%e5%ad%a6%e4%b9%a0%e7%94%a8git%e7%ae%a1%e7%90%86%e7%89%88%e6%9c%ac"><em>5.6</em>
 学习用git管理版本</h1>
-<h2 id="%E5%AE%9A%E4%BD%8D-position">定位  position</h2>
+<h2 id="%e5%ae%9a%e4%bd%8d-position">定位  position</h2>
 <ul>
 <li>静态定位 static</li>
 </ul>
@@ -1498,72 +1142,73 @@ dashed      虚线边框</p>
 <blockquote>
 <p>相对浏览器可视窗口，必须给至少一个定位值，在随滚轴滚动到定位值的位置之前和普通元素一样可以动，在到达位置后就固定不动了</p>
 </blockquote>
-<h3 id="%E6%A1%88%E4%BE%8B%EF%BC%9A16%E7%B2%98%E6%80%A7%E5%AE%9A%E4%BD%8D">案例：<a href="2020-5/16.%E7%B2%98%E6%80%A7%E5%AE%9A%E4%BD%8D.html">16.粘性定位</a></h3>
+<h3 id="%e6%a1%88%e4%be%8b16%e7%b2%98%e6%80%a7%e5%ae%9a%e4%bd%8d">案例：<a href="2020-5/16.%E7%B2%98%E6%80%A7%E5%AE%9A%E4%BD%8D.html">16.粘性定位</a></h3>
 <ul>
 <li>固定定位  fixed</li>
 </ul>
 <blockquote>
-<p>相对浏览器可视窗口，固定不动，脱标</p>
+<p>相对浏览器可视窗口，固定不动，脱标
+<em>！fixed固定定位的盒子一定要给宽度，因为他是相对于浏览器可视区来定位，和父级没有关系，默认没有宽度</em>
+<em><strong>!子绝父相</strong></em></p>
 </blockquote>
-<p><strong><em>!子绝父相</em></strong></p>
 <blockquote>
 <p>!<em>绝对定位般配合相对定位约束来使用，因为相对定位不脱标</em></p>
 </blockquote>
-<h3 id="%E5%B1%82%E5%8F%A0%E9%A1%BA%E5%BA%8F-z-index">层叠顺序    z-index</h3>
+<h3 id="%e5%b1%82%e5%8f%a0%e9%a1%ba%e5%ba%8f-z-index">层叠顺序    z-index</h3>
 <ul>
 <li>设置定位元素的层叠顺序，数值越大层级越高</li>
 <li>只能用于定位元素</li>
 </ul>
-<h3 id="%E5%AE%9A%E4%BD%8D%E7%9A%84%E7%89%B9%E6%AE%8A%E7%89%B9%E6%80%A7">定位的特殊特性</h3>
+<h3 id="%e5%ae%9a%e4%bd%8d%e7%9a%84%e7%89%b9%e6%ae%8a%e7%89%b9%e6%80%a7">定位的特殊特性</h3>
 <ul>
 <li>定位元素具有行内块特性</li>
 <li>行内元素添加定位可以直接设宽高</li>
 <li>块级元素添加定位，如果不给宽高，宽高就是内容决定</li>
 <li>脱标的盒子不触发外边距塌陷</li>
 </ul>
-<h3 id="%E5%AE%9A%E4%BD%8D%E5%92%8C%E6%B5%AE%E5%8A%A8%E7%9A%84%E4%B8%80%E4%B8%AA%E5%8C%BA%E5%88%AB">定位和浮动的一个区别</h3>
+<h3 id="%e5%ae%9a%e4%bd%8d%e5%92%8c%e6%b5%ae%e5%8a%a8%e7%9a%84%e4%b8%80%e4%b8%aa%e5%8c%ba%e5%88%ab">定位和浮动的一个区别</h3>
 <blockquote>
 <p>绝对（固定）定位会完全压住盒子，浮动会压住盒子但不压住文字（浮动起初是为了做文字环绕）</p>
 </blockquote>
-<h3 id="%E6%A1%88%E4%BE%8B%EF%BC%9A15%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF%E5%AE%9A%E4%BD%8D%E4%BF%AE%E6%94%B9%E7%89%88html">案例：<a href="2020-5/15.%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF%E5%AE%9A%E4%BD%8D%E4%BF%AE%E6%94%B9%E7%89%88.html">15.学成在线定位修改版.html</a></h3>
-<h3 id="%E7%89%88%E8%BE%B9%E6%82%AC%E6%B5%AE%E7%AA%97%E5%86%99%E6%B3%95">版边悬浮窗写法</h3>
-<h4 id="div%E5%9B%BA%E5%AE%9A%E5%AE%9A%E4%BD%8Dpositionfixed">div固定定位position:fixed</h4>
-<p><strong><em>!算法：</em></strong></p>
+<h3 id="%e6%a1%88%e4%be%8b15%e5%ad%a6%e6%88%90%e5%9c%a8%e7%ba%bf%e5%ae%9a%e4%bd%8d%e4%bf%ae%e6%94%b9%e7%89%88html">案例：<a href="2020-5/15.%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF%E5%AE%9A%E4%BD%8D%E4%BF%AE%E6%94%B9%E7%89%88.html">15.学成在线定位修改版.html</a></h3>
+<h3 id="%e7%89%88%e8%be%b9%e6%82%ac%e6%b5%ae%e7%aa%97%e5%86%99%e6%b3%95">版边悬浮窗写法</h3>
+<h4 id="div%e5%9b%ba%e5%ae%9a%e5%ae%9a%e4%bd%8dpositionfixed">div固定定位position:fixed</h4>
+<p><em><strong>!算法：</strong></em></p>
 <ul>
 <li>假如要贴靠版心右侧，先定位脱标，再写外边距</li>
 </ul>
-<pre class="hljs"><code><div>        {
+<pre><code class="language-css"><div>        {
         <span class="hljs-attribute">position</span>:absolute;
         <span class="hljs-attribute">left</span>:<span class="hljs-number">50%</span>;
         <span class="hljs-attribute">margin-left</span>:版心宽度一半;
         }
 </div></code></pre>
-<h3 id="hot-new%E5%B0%8F%E5%9B%BE%E6%A0%87%E5%86%99%E6%B3%95">hot new小图标写法</h3>
-<h4 id="%E7%BB%99%E5%A4%A7%E7%9B%92%E5%AD%90%E7%9B%B8%E5%AF%B9%E5%AE%9A%E4%BD%8D%EF%BC%8C%E7%84%B6%E5%90%8Eemimg%E7%BB%9D%E5%AF%B9%E5%AE%9A%E4%BD%8D%E5%8D%B3%E5%8F%AF">给大盒子相对定位，然后em&gt;img绝对定位即可</h4>
-<h3 id="%E6%A1%88%E4%BE%8B%EF%BC%9A18%E6%B7%98%E5%AE%9D%E8%BD%AE%E6%92%AD%E5%9B%BE%E6%A8%A1%E5%9D%97html">案例：<a href="2020-5/18.%E6%B7%98%E5%AE%9D%E8%BD%AE%E6%92%AD%E5%9B%BE%E6%A8%A1%E5%9D%97.html">18.淘宝轮播图模块.html</a></h3>
-<h4 id="%E6%B7%98%E5%AE%9D%E7%84%A6%E7%82%B9%E8%BD%AE%E6%92%AD%E5%9B%BE%E6%A8%A1%E5%9D%97%E5%86%99%E6%B3%95">淘宝焦点轮播图模块写法</h4>
+<h3 id="hot-new%e5%b0%8f%e5%9b%be%e6%a0%87%e5%86%99%e6%b3%95">hot new小图标写法</h3>
+<h4 id="%e7%bb%99%e5%a4%a7%e7%9b%92%e5%ad%90%e7%9b%b8%e5%af%b9%e5%ae%9a%e4%bd%8d%e7%84%b6%e5%90%8eemimg%e7%bb%9d%e5%af%b9%e5%ae%9a%e4%bd%8d%e5%8d%b3%e5%8f%af">给大盒子相对定位，然后em&gt;img绝对定位即可</h4>
+<h3 id="%e6%a1%88%e4%be%8b18%e6%b7%98%e5%ae%9d%e8%bd%ae%e6%92%ad%e5%9b%be%e6%a8%a1%e5%9d%97html">案例：<a href="2020-5/18.%E6%B7%98%E5%AE%9D%E8%BD%AE%E6%92%AD%E5%9B%BE%E6%A8%A1%E5%9D%97.html">18.淘宝轮播图模块.html</a></h3>
+<h4 id="%e6%b7%98%e5%ae%9d%e7%84%a6%e7%82%b9%e8%bd%ae%e6%92%ad%e5%9b%be%e6%a8%a1%e5%9d%97%e5%86%99%e6%b3%95">淘宝焦点轮播图模块写法</h4>
 <h4 id="divfocusimgdivprevadivnextadivnavullia">div.focus&gt;img+div.prev&gt;a+div.next&gt;a+div.nav&gt;ul&gt;li&gt;a</h4>
 <ul>
 <li>给div相对定位，然后控件div绝对定位，左右箭头垂直居中算法，半透明背景色</li>
 <li>li小圆点水平居中算法
-<strong><em>!算法：</em></strong></li>
+<em><strong>!算法：</strong></em></li>
 <li>绝对定位元素,水平或垂直居中：</li>
 </ul>
-<pre class="hljs"><code><div>        {       
+<pre><code class="language-css"><div>        {       
         <span class="hljs-attribute">position</span>:absolute;
         <span class="hljs-attribute">left</span>:<span class="hljs-number">50%</span>;
         <span class="hljs-attribute">margin-left</span>:负的盒子宽度一半;
         }
 </div></code></pre>
-<h3 id="%E6%A1%88%E4%BE%8B%EF%BC%9A17%E7%BB%9D%E5%AF%B9%E5%AE%9A%E4%BD%8D%E7%9A%84%E5%B1%85%E4%B8%AD%E7%AE%97%E6%B3%95html">案例：<a href="2020-5/17.%E7%BB%9D%E5%AF%B9%E5%AE%9A%E4%BD%8D%E7%9A%84%E5%B1%85%E4%B8%AD%E7%AE%97%E6%B3%95.html">17.绝对定位的居中算法.html</a></h3>
-<h3 id="%E6%A1%88%E4%BE%8B%EF%BC%9A19%E9%81%AE%E7%BD%A9%E6%95%88%E6%9E%9Chtml">案例：<a href="2020-5/19.%E9%81%AE%E7%BD%A9%E6%95%88%E6%9E%9C.html">19.遮罩效果.html</a></h3>
-<h4 id="%E9%81%AE%E7%BD%A9%E6%95%88%E6%9E%9C%E5%86%99%E6%B3%95">遮罩效果写法</h4>
+<h3 id="%e6%a1%88%e4%be%8b17%e7%bb%9d%e5%af%b9%e5%ae%9a%e4%bd%8d%e7%9a%84%e5%b1%85%e4%b8%ad%e7%ae%97%e6%b3%95html">案例：<a href="2020-5/17.%E7%BB%9D%E5%AF%B9%E5%AE%9A%E4%BD%8D%E7%9A%84%E5%B1%85%E4%B8%AD%E7%AE%97%E6%B3%95.html">17.绝对定位的居中算法.html</a></h3>
+<h3 id="%e6%a1%88%e4%be%8b19%e9%81%ae%e7%bd%a9%e6%95%88%e6%9e%9chtml">案例：<a href="2020-5/19.%E9%81%AE%E7%BD%A9%E6%95%88%E6%9E%9C.html">19.遮罩效果.html</a></h3>
+<h4 id="%e9%81%ae%e7%bd%a9%e6%95%88%e6%9e%9c%e5%86%99%e6%b3%95">遮罩效果写法</h4>
 <h4 id="divdivmaskdivcontent">div&gt;(div.mask+div.content)</h4>
 <ul>
 <li>给大盒子div指定宽高后设置相对定位，子元素宽高就100%，然后给mask设置绝对定位（top:0)，设置display:none将其隐藏</li>
 <li>接着.content:hover .mask{display:block;} 让鼠标经过content就将mask显示出来</li>
 </ul>
-<h2 id="%E4%B8%89%E7%A7%8D%E9%9A%90%E8%97%8F%E5%85%83%E7%B4%A0%E7%9A%84%E6%96%B9%E6%B3%95">三种隐藏元素的方法</h2>
+<h2 id="%e4%b8%89%e7%a7%8d%e9%9a%90%e8%97%8f%e5%85%83%e7%b4%a0%e7%9a%84%e6%96%b9%e6%b3%95">三种隐藏元素的方法</h2>
 <ul>
 <li>display:none;</li>
 </ul>
@@ -1582,16 +1227,16 @@ dashed      虚线边框</p>
 <blockquote>
 <p>溢出隐藏，scroll添加滚动条，auto当溢出时添加滚动条</p>
 </blockquote>
-<h2 id="css%E9%AB%98%E7%BA%A7%E8%BF%90%E7%94%A8">css高级运用</h2>
-<h3 id="%E7%B2%BE%E7%81%B5%E5%9B%BE%EF%BC%88%E9%9B%AA%E7%A2%A7%E5%9B%BEsprite%EF%BC%89">精灵图（雪碧图sprite）</h3>
+<h2 id="css%e9%ab%98%e7%ba%a7%e8%bf%90%e7%94%a8">css高级运用</h2>
+<h3 id="%e7%b2%be%e7%81%b5%e5%9b%be%e9%9b%aa%e7%a2%a7%e5%9b%besprite">精灵图（雪碧图sprite）</h3>
 <ul>
 <li>把很多小图标放在一张图上，减少图片请求次数</li>
 <li>通过background-image设置图片，bgposition设置位置</li>
 </ul>
-<h3 id="%E6%A1%88%E4%BE%8B%EF%BC%9A20%E6%8B%BC%E5%86%99%E5%90%8D%E5%AD%97html">案例：<a href="2020-5/20.%E6%8B%BC%E5%86%99%E5%90%8D%E5%AD%97.html">20.拼写名字.html</a></h3>
-<h4 id="%E4%B8%80%E8%88%AC%E5%85%88%E9%87%8F%E8%83%8C%E6%99%AF%E5%9B%BE%E5%AE%BD%E9%AB%98%EF%BC%8C%E7%84%B6%E5%90%8E%E9%87%8Fxy%E8%BD%B4%E8%B7%9D%E7%A6%BB">一般先量背景图宽高，然后量xy轴距离</h4>
-<h3 id="%E5%AD%97%E4%BD%93%E5%9B%BE%E6%A0%87">字体图标</h3>
-<h4 id="%E4%B8%80%E7%A7%8D%E7%9F%A2%E9%87%8F%E5%9B%BE%E6%A0%87%E5%81%9A%E6%88%90%E7%9A%84%E5%AD%97%E4%BD%93%EF%BC%8C%E5%8F%AF%E4%BB%A5%E6%96%B9%E4%BE%BF%E6%8E%A7%E5%88%B6%E5%A4%A7%E5%B0%8F%E9%A2%9C%E8%89%B2">一种矢量图标做成的字体，可以方便控制大小颜色</h4>
+<h3 id="%e6%a1%88%e4%be%8b20%e6%8b%bc%e5%86%99%e5%90%8d%e5%ad%97html">案例：<a href="2020-5/20.%E6%8B%BC%E5%86%99%E5%90%8D%E5%AD%97.html">20.拼写名字.html</a></h3>
+<h4 id="%e4%b8%80%e8%88%ac%e5%85%88%e9%87%8f%e8%83%8c%e6%99%af%e5%9b%be%e5%ae%bd%e9%ab%98%e7%84%b6%e5%90%8e%e9%87%8fxy%e8%bd%b4%e8%b7%9d%e7%a6%bb">一般先量背景图宽高，然后量xy轴距离</h4>
+<h3 id="%e5%ad%97%e4%bd%93%e5%9b%be%e6%a0%87">字体图标</h3>
+<h4 id="%e4%b8%80%e7%a7%8d%e7%9f%a2%e9%87%8f%e5%9b%be%e6%a0%87%e5%81%9a%e6%88%90%e7%9a%84%e5%ad%97%e4%bd%93%e5%8f%af%e4%bb%a5%e6%96%b9%e4%be%bf%e6%8e%a7%e5%88%b6%e5%a4%a7%e5%b0%8f%e9%a2%9c%e8%89%b2">一种矢量图标做成的字体，可以方便控制大小颜色</h4>
 <ol>
 <li>去网上下载下来icomoon   icofont等</li>
 <li>把font文件夹放入网页根目录，然后把style.css文件引入网页，可以用link来写</li>
@@ -1599,8 +1244,8 @@ dashed      虚线边框</p>
 <li>使用时设置字体为&quot;icomoon&quot;，然后把demo.html里面图标对应的方框复制到网页即可</li>
 <li>也可以用伪元素content:&quot;\字符编码&quot; 此方法需要加反斜杠</li>
 </ol>
-<h3 id="%E4%B8%89%E8%A7%92%E5%BD%A2%E5%81%9A%E6%B3%95">三角形做法</h3>
-<pre class="hljs"><code><div>        {
+<h3 id="%e4%b8%89%e8%a7%92%e5%bd%a2%e5%81%9a%e6%b3%95">三角形做法</h3>
+<pre><code class="language-css"><div>        {
         <span class="hljs-attribute">width</span>:<span class="hljs-number">0</span>;
         <span class="hljs-attribute">height</span>:<span class="hljs-number">0</span>;
         <span class="hljs-attribute">font-size</span>:<span class="hljs-number">0</span>; <span class="hljs-comment">/*照顾兼容性*/</span>
@@ -1609,8 +1254,8 @@ dashed      虚线边框</p>
         通过控制各个边框的宽度，可以改变三角形的形状
         }
 </div></code></pre>
-<h3 id="%E6%A1%88%E4%BE%8B%EF%BC%9A21%E5%88%B6%E4%BD%9C%E4%B8%89%E8%A7%92%E5%BD%A2html">案例：<a href="2020-5/21.%E5%88%B6%E4%BD%9C%E4%B8%89%E8%A7%92%E5%BD%A2.html">21.制作三角形.html</a></h3>
-<h3 id="cursor-%E9%BC%A0%E6%A0%87%E6%A0%B7%E5%BC%8F">cursor 鼠标样式</h3>
+<h3 id="%e6%a1%88%e4%be%8b21%e5%88%b6%e4%bd%9c%e4%b8%89%e8%a7%92%e5%bd%a2html">案例：<a href="2020-5/21.%E5%88%B6%E4%BD%9C%E4%B8%89%E8%A7%92%E5%BD%A2.html">21.制作三角形.html</a></h3>
+<h3 id="cursor-%e9%bc%a0%e6%a0%87%e6%a0%b7%e5%bc%8f">cursor 鼠标样式</h3>
 <table>
 <thead>
 <tr>
@@ -1641,9 +1286,9 @@ dashed      虚线边框</p>
 </tr>
 </tbody>
 </table>
-<h3 id="outlinenone-%E5%8F%96%E6%B6%88%E8%A1%A8%E5%8D%95%E8%BD%AE%E5%BB%93%E7%BA%BF%EF%BC%88%E7%84%A6%E7%82%B9%E6%A1%86%E5%A4%96%E9%9D%A2%E9%82%A3%E4%B8%AA%E8%93%9D%E8%89%B2%E6%A1%86%E6%A1%86%EF%BC%89">outline:none   取消表单轮廓线（焦点框外面那个蓝色框框）</h3>
-<h3 id="resizenone-%E7%A6%81%E6%AD%A2%E6%96%87%E6%9C%AC%E5%9F%9F%E6%8B%96%E6%8B%BD%E5%A4%A7%E5%B0%8F">resize:none   禁止文本域拖拽大小</h3>
-<h3 id="vertical-align-%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0%E7%9A%84%E5%9E%82%E7%9B%B4%E5%AF%B9%E9%BD%90%E6%96%B9%E5%BC%8F">vertical-align    行内元素的垂直对齐方式</h3>
+<h3 id="outlinenone-%e5%8f%96%e6%b6%88%e8%a1%a8%e5%8d%95%e8%bd%ae%e5%bb%93%e7%ba%bf%e7%84%a6%e7%82%b9%e6%a1%86%e5%a4%96%e9%9d%a2%e9%82%a3%e4%b8%aa%e8%93%9d%e8%89%b2%e6%a1%86%e6%a1%86">outline:none   取消表单轮廓线（焦点框外面那个蓝色框框）</h3>
+<h3 id="resizenone-%e7%a6%81%e6%ad%a2%e6%96%87%e6%9c%ac%e5%9f%9f%e6%8b%96%e6%8b%bd%e5%a4%a7%e5%b0%8f">resize:none   禁止文本域拖拽大小</h3>
+<h3 id="vertical-align-%e8%a1%8c%e5%86%85%e5%85%83%e7%b4%a0%e7%9a%84%e5%9e%82%e7%9b%b4%e5%af%b9%e9%bd%90%e6%96%b9%e5%bc%8f">vertical-align    行内元素的垂直对齐方式</h3>
 <table>
 <thead>
 <tr>
@@ -1670,26 +1315,26 @@ dashed      虚线边框</p>
 </tr>
 </tbody>
 </table>
-<h3 id="%E5%9B%BE%E7%89%87%E5%92%8C%E6%96%87%E5%AD%97%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD-vertical-alignmiddle">图片和文字垂直居中 vertical-align:middle;</h3>
-<h4 id="%E6%B8%85%E9%99%A4%E5%9B%BE%E7%89%87%E5%BA%95%E9%83%A8%E9%BB%98%E8%AE%A4%E7%A9%BA%E7%99%BD%E7%BC%9D%E9%9A%99%EF%BC%88%E8%A1%8C%E5%86%85%E3%80%81%E8%A1%8C%E5%86%85%E5%9D%97%E5%85%83%E7%B4%A0%E5%BA%95%E9%83%A8%E7%BC%9D%E9%9A%99%E4%B9%9F%E5%8F%AF%E4%BB%A5%E6%B8%85%E9%99%A4%EF%BC%89">清除图片底部默认空白缝隙（行内、行内块元素底部缝隙也可以清除）</h4>
+<h3 id="%e5%9b%be%e7%89%87%e5%92%8c%e6%96%87%e5%ad%97%e5%9e%82%e7%9b%b4%e5%b1%85%e4%b8%ad-vertical-alignmiddle">图片和文字垂直居中 vertical-align:middle;</h3>
+<h4 id="%e6%b8%85%e9%99%a4%e5%9b%be%e7%89%87%e5%ba%95%e9%83%a8%e9%bb%98%e8%ae%a4%e7%a9%ba%e7%99%bd%e7%bc%9d%e9%9a%99%e8%a1%8c%e5%86%85%e8%a1%8c%e5%86%85%e5%9d%97%e5%85%83%e7%b4%a0%e5%ba%95%e9%83%a8%e7%bc%9d%e9%9a%99%e4%b9%9f%e5%8f%af%e4%bb%a5%e6%b8%85%e9%99%a4">清除图片底部默认空白缝隙（行内、行内块元素底部缝隙也可以清除）</h4>
 <ul>
 <li>方法一：给图片添加vertical-align:不是baseline就行
 原理：因为图片属于行内块，行内块默认基线对齐，空白缝隙是留给文字下面部分用的</li>
 <li>方法二：转换为块元素</li>
 </ul>
-<h2 id="%E4%B8%BA%E4%BA%86%E6%96%B9%E4%BE%BF%E5%A4%8D%E5%88%B6%E5%92%8C%E6%9F%A5%E7%9C%8B%E6%97%A7%E6%96%87%E6%A1%A3%EF%BC%8C%E7%8E%B0%E4%BF%AE%E6%94%B9%E4%B9%8B%E5%90%8E%E7%9A%84%E6%96%87%E6%A1%A3%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99">为了方便复制和查看旧文档，现修改之后的文档命名规则</h2>
+<h2 id="%e4%b8%ba%e4%ba%86%e6%96%b9%e4%be%bf%e5%a4%8d%e5%88%b6%e5%92%8c%e6%9f%a5%e7%9c%8b%e6%97%a7%e6%96%87%e6%a1%a3%e7%8e%b0%e4%bf%ae%e6%94%b9%e4%b9%8b%e5%90%8e%e7%9a%84%e6%96%87%e6%a1%a3%e5%91%bd%e5%90%8d%e8%a7%84%e5%88%99">为了方便复制和查看旧文档，现修改之后的文档命名规则</h2>
 <ul>
 <li>数字总序-内容-目的-版本序号</li>
 <li>头部注释，写和上版本相比，修改了什么</li>
 </ul>
-<h1 id="57%E6%8A%80%E5%B7%A7%E6%8F%90%E9%AB%98%E5%92%8C%E6%96%B0%E7%89%B9%E6%80%A7%E5%AD%A6%E4%B9%A0git%E4%BD%BF%E7%94%A8%EF%BC%8Cgit%E6%95%99%E7%A8%8B%E7%99%BE%E5%BA%A6%E6%9C%89"><em>5.7</em>
+<h1 id="57%e6%8a%80%e5%b7%a7%e6%8f%90%e9%ab%98%e5%92%8c%e6%96%b0%e7%89%b9%e6%80%a7%e5%ad%a6%e4%b9%a0git%e4%bd%bf%e7%94%a8git%e6%95%99%e7%a8%8b%e7%99%be%e5%ba%a6%e6%9c%89"><em>5.7</em>
 技巧提高和新特性
 学习git使用，git教程百度有</h1>
-<h2 id="%E6%BA%A2%E5%87%BA%E6%96%87%E5%AD%97%E7%9C%81%E7%95%A5%E5%8F%B7%E6%98%BE%E7%A4%BA">溢出文字省略号显示</h2>
+<h2 id="%e6%ba%a2%e5%87%ba%e6%96%87%e5%ad%97%e7%9c%81%e7%95%a5%e5%8f%b7%e6%98%be%e7%a4%ba">溢出文字省略号显示</h2>
 <blockquote>
 <p>推荐给后端做，后端做没有兼容性问题</p>
 </blockquote>
-<h3 id="%E5%8D%95%E8%A1%8C%E6%96%87%E6%9C%AC%EF%BC%9A">单行文本：</h3>
+<h3 id="%e5%8d%95%e8%a1%8c%e6%96%87%e6%9c%ac">单行文本：</h3>
 <blockquote>
 <p>必须满足三个条件</p>
 </blockquote>
@@ -1698,8 +1343,8 @@ dashed      虚线边框</p>
 <li>overflow:hidden;            溢出隐藏</li>
 <li>text-overflow:ellipsis;     溢出文字省略号替代</li>
 </ul>
-<h3 id="%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%EF%BC%9A">多行文本：</h3>
-<pre class="hljs"><code><div>        {
+<h3 id="%e5%a4%9a%e8%a1%8c%e6%96%87%e6%9c%ac">多行文本：</h3>
+<pre><code class="language-css"><div>        {
         有兼容性问题，适合webkit内核
         <span class="hljs-attribute">overflow</span>: hidden;
         <span class="hljs-attribute">text-overflow</span>: ellipsis;
@@ -1711,24 +1356,24 @@ dashed      虚线边框</p>
         <span class="hljs-attribute">-webkit-box-orient</span>: vertical;
     }
 </div></code></pre>
-<h3 id="%E6%A1%88%E4%BE%8B%EF%BC%9A22%E6%BA%A2%E5%87%BA%E6%96%87%E5%AD%97%E7%9C%81%E7%95%A5%E5%8F%B7%E6%98%BE%E7%A4%BAhtml">案例：<a href="2020-5/22.%E6%BA%A2%E5%87%BA%E6%96%87%E5%AD%97%E7%9C%81%E7%95%A5%E5%8F%B7%E6%98%BE%E7%A4%BA.html">22.溢出文字省略号显示.html</a></h3>
-<h2 id="%E5%B8%83%E5%B1%80%E6%8A%80%E5%B7%A7">布局技巧</h2>
-<h3 id="margin%E8%B4%9F%E5%80%BC">margin负值</h3>
-<h4 id="%E5%A4%9A%E4%B8%AA%E6%B5%AE%E5%8A%A8li%E7%9B%92%E5%AD%90%E8%BE%B9%E6%A1%86%E5%90%88%E5%B9%B6%E5%9C%A8%E4%B8%80%E8%B5%B7%EF%BC%8C%E7%9C%8B%E4%B8%8A%E5%8E%BB%E4%BC%9A%E5%8F%98%E7%B2%97">多个浮动li盒子边框合并在一起，看上去会变粗</h4>
+<h3 id="%e6%a1%88%e4%be%8b22%e6%ba%a2%e5%87%ba%e6%96%87%e5%ad%97%e7%9c%81%e7%95%a5%e5%8f%b7%e6%98%be%e7%a4%bahtml">案例：<a href="2020-5/22.%E6%BA%A2%E5%87%BA%E6%96%87%E5%AD%97%E7%9C%81%E7%95%A5%E5%8F%B7%E6%98%BE%E7%A4%BA.html">22.溢出文字省略号显示.html</a></h3>
+<h2 id="%e5%b8%83%e5%b1%80%e6%8a%80%e5%b7%a7">布局技巧</h2>
+<h3 id="margin%e8%b4%9f%e5%80%bc">margin负值</h3>
+<h4 id="%e5%a4%9a%e4%b8%aa%e6%b5%ae%e5%8a%a8li%e7%9b%92%e5%ad%90%e8%be%b9%e6%a1%86%e5%90%88%e5%b9%b6%e5%9c%a8%e4%b8%80%e8%b5%b7%e7%9c%8b%e4%b8%8a%e5%8e%bb%e4%bc%9a%e5%8f%98%e7%b2%97">多个浮动li盒子边框合并在一起，看上去会变粗</h4>
 <p><code>margin-left:边框宽度</code></p>
-<p><strong><em>!使用这个后边框被压住，用相对定位提高层级，如果li都有定位，用z-index来提高层级</em></strong></p>
-<h3 id="%E6%B5%AE%E5%8A%A8%E6%96%87%E5%AD%97%E7%8E%AF%E7%BB%95%E7%89%B9%E6%80%A7%E5%B7%A7%E5%A6%99%E8%BF%90%E7%94%A8">浮动文字环绕特性巧妙运用</h3>
-<h4 id="%E6%96%B0%E9%97%BB%E5%BF%AB%E6%8A%A5%E6%A8%A1%E5%9D%97%E5%86%99%E6%B3%95">新闻快报模块写法</h4>
-<h4 id="%E8%AE%BE%E7%BD%AE%E5%A4%A7%E7%9B%92%E5%AD%90%E5%AE%BD%E9%AB%98%E5%92%8C%E5%86%85%E8%BE%B9%E8%B7%9D%E5%90%8E%EF%BC%8C%E7%BB%99picdiv%E7%94%A8div%E5%8C%85%E8%B5%B7%E6%9D%A5%E6%96%B9%E4%BE%BF%E4%BB%A5%E5%90%8E%E6%8D%A2%E5%9B%BE%E7%89%87%E5%8A%A0%E6%B5%AE%E5%8A%A8%E8%AE%BE%E5%AE%BD%E9%AB%98%EF%BC%8C%E6%96%87%E5%AD%97%E4%B8%8D%E7%94%A8%E8%AE%BE%E5%AE%BD%E9%AB%98%EF%BC%8C%E5%B0%B1%E8%87%AA%E5%8A%A8%E5%9B%B4%E7%BB%95%E5%88%B0%E6%97%81%E8%BE%B9%E4%BA%86">设置大盒子宽高和内边距后，给pic.div(用div包起来方便以后换图片)加浮动,设宽高，文字不用设宽高，就自动围绕到旁边了</h4>
-<pre class="hljs"><code><div>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+<p><em><strong>!使用这个后边框被压住，用相对定位提高层级，如果li都有定位，用z-index来提高层级</strong></em></p>
+<h3 id="%e6%b5%ae%e5%8a%a8%e6%96%87%e5%ad%97%e7%8e%af%e7%bb%95%e7%89%b9%e6%80%a7%e5%b7%a7%e5%a6%99%e8%bf%90%e7%94%a8">浮动文字环绕特性巧妙运用</h3>
+<h4 id="%e6%96%b0%e9%97%bb%e5%bf%ab%e6%8a%a5%e6%a8%a1%e5%9d%97%e5%86%99%e6%b3%95">新闻快报模块写法</h4>
+<h4 id="%e8%ae%be%e7%bd%ae%e5%a4%a7%e7%9b%92%e5%ad%90%e5%ae%bd%e9%ab%98%e5%92%8c%e5%86%85%e8%be%b9%e8%b7%9d%e5%90%8e%e7%bb%99picdiv%e7%94%a8div%e5%8c%85%e8%b5%b7%e6%9d%a5%e6%96%b9%e4%be%bf%e4%bb%a5%e5%90%8e%e6%8d%a2%e5%9b%be%e7%89%87%e5%8a%a0%e6%b5%ae%e5%8a%a8%e8%ae%be%e5%ae%bd%e9%ab%98%e6%96%87%e5%ad%97%e4%b8%8d%e7%94%a8%e8%ae%be%e5%ae%bd%e9%ab%98%e5%b0%b1%e8%87%aa%e5%8a%a8%e5%9b%b4%e7%bb%95%e5%88%b0%e6%97%81%e8%be%b9%e4%ba%86">设置大盒子宽高和内边距后，给pic.div(用div包起来方便以后换图片)加浮动,设宽高，文字不用设宽高，就自动围绕到旁边了</h4>
+<pre><code class="language-html"><div>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"pic"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">img</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>文字<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
 </div></code></pre>
-<h3 id="%E8%A1%8C%E5%86%85%E5%9D%97%E5%B7%A7%E5%A6%99%E8%BF%90%E7%94%A8">行内块巧妙运用</h3>
-<h4 id="%E5%BA%95%E9%83%A8%E9%A1%B5%E7%A0%81%E8%B7%B3%E8%BD%AC%E6%A8%A1%E5%9D%97%E5%86%99%E6%B3%95">底部页码跳转模块写法</h4>
-<h4 id="%E7%BB%99%E5%A4%A7div%E5%8A%A0text-aligncenter%EF%BC%8C%E6%8A%8Aa%E8%BD%AC%E6%8D%A2%E8%A1%8C%E5%86%85%E5%9D%97%EF%BC%8C%E8%AE%BE%E7%BD%AE%E8%A1%8C%E9%AB%98%EF%BC%8C%E8%BF%99%E6%A0%B7%E5%B0%B1%E5%8F%AF%E4%BB%A5%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%EF%BC%8C%E4%B8%94%E4%B8%80%E8%A1%8C%E6%8E%92%E5%88%97%EF%BC%8C%E4%B8%8D%E7%94%A8%E7%BB%99%E5%A4%A7div%E8%AE%BE%E5%AE%BD%E5%BA%A6%EF%BC%8C%E8%AE%A9a%E6%92%91%E5%BC%80div">给大div加text-align:center，把a转换行内块，设置行高，这样就可以水平垂直居中，且一行排列，不用给大div设宽度，让a撑开div</h4>
-<pre class="hljs"><code><div>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+<h3 id="%e8%a1%8c%e5%86%85%e5%9d%97%e5%b7%a7%e5%a6%99%e8%bf%90%e7%94%a8">行内块巧妙运用</h3>
+<h4 id="%e5%ba%95%e9%83%a8%e9%a1%b5%e7%a0%81%e8%b7%b3%e8%bd%ac%e6%a8%a1%e5%9d%97%e5%86%99%e6%b3%95">底部页码跳转模块写法</h4>
+<h4 id="%e7%bb%99%e5%a4%a7div%e5%8a%a0text-aligncenter%e6%8a%8aa%e8%bd%ac%e6%8d%a2%e8%a1%8c%e5%86%85%e5%9d%97%e8%ae%be%e7%bd%ae%e8%a1%8c%e9%ab%98%e8%bf%99%e6%a0%b7%e5%b0%b1%e5%8f%af%e4%bb%a5%e6%b0%b4%e5%b9%b3%e5%9e%82%e7%9b%b4%e5%b1%85%e4%b8%ad%e4%b8%94%e4%b8%80%e8%a1%8c%e6%8e%92%e5%88%97%e4%b8%8d%e7%94%a8%e7%bb%99%e5%a4%a7div%e8%ae%be%e5%ae%bd%e5%ba%a6%e8%ae%a9a%e6%92%91%e5%bc%80div">给大div加text-align:center，把a转换行内块，设置行高，这样就可以水平垂直居中，且一行排列，不用给大div设宽度，让a撑开div</h4>
+<pre><code class="language-html"><div>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>               特殊样式单独指定
             <span class="hljs-tag">&lt;<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
@@ -1737,10 +1382,10 @@ dashed      虚线边框</p>
             <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
 </div></code></pre>
-<h3 id="css%E4%B8%89%E8%A7%92%E5%BD%A2%E8%BF%90%E7%94%A8">css三角形运用</h3>
-<h4 id="%E7%9B%B4%E8%A7%92%E4%B8%89%E8%A7%92%E5%BD%A2%E5%81%9A%E6%B3%95">直角三角形做法</h4>
-<h4 id="%E6%8A%8A%E5%B7%A6%E8%BE%B9%E6%A1%86%E5%92%8C%E4%B8%8B%E8%BE%B9%E6%A1%86%E8%AE%BE%E4%B8%BA0%EF%BC%8C%E7%84%B6%E5%90%8E%E6%A0%B9%E6%8D%AE%E9%9C%80%E8%A6%81%E8%B0%83%E6%95%B4%E5%AE%BD%E5%BA%A6%EF%BC%8C%E5%8F%AA%E4%BF%9D%E7%95%99%E4%B8%80%E4%B8%AA%E8%BE%B9%E6%A1%86%E6%9C%89%E9%A2%9C%E8%89%B2">把左边框和下边框设为0，然后根据需要调整宽度，只保留一个边框有颜色</h4>
-<pre class="hljs"><code><div>        <span class="hljs-selector-class">.triangle</span> {
+<h3 id="css%e4%b8%89%e8%a7%92%e5%bd%a2%e8%bf%90%e7%94%a8">css三角形运用</h3>
+<h4 id="%e7%9b%b4%e8%a7%92%e4%b8%89%e8%a7%92%e5%bd%a2%e5%81%9a%e6%b3%95">直角三角形做法</h4>
+<h4 id="%e6%8a%8a%e5%b7%a6%e8%be%b9%e6%a1%86%e5%92%8c%e4%b8%8b%e8%be%b9%e6%a1%86%e8%ae%be%e4%b8%ba0%e7%84%b6%e5%90%8e%e6%a0%b9%e6%8d%ae%e9%9c%80%e8%a6%81%e8%b0%83%e6%95%b4%e5%ae%bd%e5%ba%a6%e5%8f%aa%e4%bf%9d%e7%95%99%e4%b8%80%e4%b8%aa%e8%be%b9%e6%a1%86%e6%9c%89%e9%a2%9c%e8%89%b2">把左边框和下边框设为0，然后根据需要调整宽度，只保留一个边框有颜色</h4>
+<pre><code class="language-css"><div>        <span class="hljs-selector-class">.triangle</span> {
         <span class="hljs-attribute">height</span>: <span class="hljs-number">0</span>;
         <span class="hljs-attribute">width</span>: <span class="hljs-number">0</span>;
         <span class="hljs-attribute">border-style</span>: solid;
@@ -1749,15 +1394,15 @@ dashed      虚线边框</p>
         <span class="hljs-attribute">border-color</span>: transparent red transparent transparent;
         }
 </div></code></pre>
-<h3 id="%E6%A1%88%E4%BE%8B%EF%BC%9A-23css%E5%B7%A7%E5%A6%99%E8%BF%90%E7%94%A8html">案例： <a href="2020-5/23.css%E5%B7%A7%E5%A6%99%E8%BF%90%E7%94%A8.html">23.css巧妙运用.html</a></h3>
-<h2 id="%E6%9B%B4%E6%8D%A2%E4%BA%86%E5%88%9D%E5%A7%8B%E5%8C%96css%EF%BC%8C%E4%BF%AE%E6%94%B9%E4%BA%86snippet%E7%94%A8%E6%88%B7%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%9D%BF%EF%BC%8C%E4%BB%A5%E5%90%8E%E9%BB%98%E8%AE%A4%E5%9C%A8%E9%A6%96%E8%A1%8C%E6%B7%BB%E5%8A%A0%E6%B3%A8%E9%87%8A%E5%8C%BA%E5%81%9A%E4%BF%AE%E6%94%B9%E8%AE%B0%E5%BD%95">更换了初始化css，修改了snippet用户代码模板，以后默认在首行添加注释区做修改记录</h2>
-<h1 id="h5c3%E6%8F%90%E9%AB%98%EF%BC%8C%E6%96%B0%E5%A2%9E%E7%89%B9%E6%80%A7">H5C3提高，新增特性</h1>
+<h3 id="%e6%a1%88%e4%be%8b-23css%e5%b7%a7%e5%a6%99%e8%bf%90%e7%94%a8html">案例： <a href="2020-5/23.css%E5%B7%A7%E5%A6%99%E8%BF%90%E7%94%A8.html">23.css巧妙运用.html</a></h3>
+<h2 id="%e6%9b%b4%e6%8d%a2%e4%ba%86%e5%88%9d%e5%a7%8b%e5%8c%96css%e4%bf%ae%e6%94%b9%e4%ba%86snippet%e7%94%a8%e6%88%b7%e4%bb%a3%e7%a0%81%e6%a8%a1%e6%9d%bf%e4%bb%a5%e5%90%8e%e9%bb%98%e8%ae%a4%e5%9c%a8%e9%a6%96%e8%a1%8c%e6%b7%bb%e5%8a%a0%e6%b3%a8%e9%87%8a%e5%8c%ba%e5%81%9a%e4%bf%ae%e6%94%b9%e8%ae%b0%e5%bd%95">更换了初始化css，修改了snippet用户代码模板，以后默认在首行添加注释区做修改记录</h2>
+<h1 id="h5c3%e6%8f%90%e9%ab%98%e6%96%b0%e5%a2%9e%e7%89%b9%e6%80%a7">H5C3提高，新增特性</h1>
 <blockquote>
 <p>html5新标签</p>
 </blockquote>
-<p><strong><em>!兼容性差，基本上IE9+支持</em></strong></p>
-<h3 id="html5%E8%AF%AD%E4%B9%89%E5%8C%96%E6%A0%87%E7%AD%BE">html5语义化标签</h3>
-<pre class="hljs"><code><div>        <span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>    头部标签
+<p><em><strong>!兼容性差，基本上IE9+支持</strong></em></p>
+<h3 id="html5%e8%af%ad%e4%b9%89%e5%8c%96%e6%a0%87%e7%ad%be">html5语义化标签</h3>
+<pre><code class="language-html"><div>        <span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>    头部标签
         <span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>       导航标签
         <span class="hljs-tag">&lt;<span class="hljs-name">article</span>&gt;</span>   内容标签
         <span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span>   定义文档某个区域
@@ -1770,19 +1415,19 @@ dashed      虚线边框</p>
 <li>IE9中需要转换为块级元素</li>
 <li>移动端更喜欢这些标签</li>
 </ul>
-<h3 id="%E6%A1%88%E4%BE%8B%EF%BC%9A24%E8%AF%AD%E4%B9%89%E5%8C%96%E6%A0%87%E7%AD%BEhtml">案例：<a href="2020-5/24.%E8%AF%AD%E4%B9%89%E5%8C%96%E6%A0%87%E7%AD%BE.html">24.语义化标签.html</a></h3>
-<h3 id="%E8%A7%86%E9%A2%91%E6%A0%87%E7%AD%BE-video">视频标签  &lt;video&gt;</h3>
+<h3 id="%e6%a1%88%e4%be%8b24%e8%af%ad%e4%b9%89%e5%8c%96%e6%a0%87%e7%ad%behtml">案例：<a href="2020-5/24.%E8%AF%AD%E4%B9%89%E5%8C%96%E6%A0%87%E7%AD%BE.html">24.语义化标签.html</a></h3>
+<h3 id="%e8%a7%86%e9%a2%91%e6%a0%87%e7%ad%be-video">视频标签  &lt;video&gt;</h3>
 <ul>
 <li>尽量mp4，再或者来个ogg</li>
 <li>兼容性写法：</li>
 </ul>
-<pre class="hljs"><code><div>        <span class="hljs-tag">&lt;<span class="hljs-name">video</span> <span class="hljs-attr">src</span>=<span class="hljs-string">""</span>&gt;</span>
+<pre><code class="language-html"><div>        <span class="hljs-tag">&lt;<span class="hljs-name">video</span> <span class="hljs-attr">src</span>=<span class="hljs-string">""</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"xx.mp4"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"video/mp4"</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"xx.ogg"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"video/ogg"</span>&gt;</span>
             您的浏览器不支持video标签
         <span class="hljs-tag">&lt;/<span class="hljs-name">video</span>&gt;</span>
 </div></code></pre>
-<h4 id="%E5%B8%B8%E8%A7%81%E5%B1%9E%E6%80%A7">常见属性</h4>
+<h4 id="%e5%b8%b8%e8%a7%81%e5%b1%9e%e6%80%a7">常见属性</h4>
 <table>
 <thead>
 <tr>
@@ -1834,19 +1479,19 @@ dashed      虚线边框</p>
 </tr>
 </tbody>
 </table>
-<h3 id="%E9%9F%B3%E9%A2%91%E6%A0%87%E7%AD%BE-audio">音频标签  &lt;audio&gt;</h3>
+<h3 id="%e9%9f%b3%e9%a2%91%e6%a0%87%e7%ad%be-audio">音频标签  &lt;audio&gt;</h3>
 <ul>
 <li>必须添加controls属性</li>
 <li>大都支持mp3格式，照顾兼容性弄个ogg格式</li>
 <li>兼容性写法：</li>
 </ul>
-<pre class="hljs"><code><div>        <span class="hljs-tag">&lt;<span class="hljs-name">audio</span> <span class="hljs-attr">src</span>=<span class="hljs-string">""</span> <span class="hljs-attr">controls</span>=<span class="hljs-string">"controls"</span>&gt;</span>
+<pre><code class="language-html"><div>        <span class="hljs-tag">&lt;<span class="hljs-name">audio</span> <span class="hljs-attr">src</span>=<span class="hljs-string">""</span> <span class="hljs-attr">controls</span>=<span class="hljs-string">"controls"</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"xx.mp3"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"audio/mp3"</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"xx.ogg"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"audio/ogg"</span>&gt;</span>
             您的浏览器不支持audio标签
         <span class="hljs-tag">&lt;/<span class="hljs-name">audio</span>&gt;</span>
 </div></code></pre>
-<h4 id="%E5%B8%B8%E8%A7%81%E5%B1%9E%E6%80%A7">常见属性</h4>
+<h4 id="%e5%b8%b8%e8%a7%81%e5%b1%9e%e6%80%a7-1">常见属性</h4>
 <table>
 <thead>
 <tr>
@@ -1878,8 +1523,8 @@ dashed      虚线边框</p>
 </tr>
 </tbody>
 </table>
-<h3 id="%E6%A1%88%E4%BE%8B%EF%BC%9A25%E8%A7%86%E9%A2%91%E9%9F%B3%E9%A2%91%E6%A0%87%E7%AD%BEhtml">案例：<a href="2020-5/25.%E8%A7%86%E9%A2%91%E9%9F%B3%E9%A2%91%E6%A0%87%E7%AD%BE.html">25.视频音频标签.html</a>|</h3>
-<h3 id="html5%E6%96%B0%E5%A2%9E%E7%9A%84input%E7%B1%BB%E5%9E%8Btypexx">html5新增的input类型(type=&quot;xx&quot;)</h3>
+<h3 id="%e6%a1%88%e4%be%8b25%e8%a7%86%e9%a2%91%e9%9f%b3%e9%a2%91%e6%a0%87%e7%ad%behtml">案例：<a href="2020-5/25.%E8%A7%86%E9%A2%91%E9%9F%B3%E9%A2%91%E6%A0%87%E7%AD%BE.html">25.视频音频标签.html</a>|</h3>
+<h3 id="html5%e6%96%b0%e5%a2%9e%e7%9a%84input%e7%b1%bb%e5%9e%8btype%22xx%22">html5新增的input类型(type=&quot;xx&quot;)</h3>
 <table>
 <thead>
 <tr>
@@ -1926,7 +1571,7 @@ dashed      虚线边框</p>
 </tr>
 </tbody>
 </table>
-<h4 id="%E5%B1%9E%E6%80%A7">属性</h4>
+<h4 id="%e5%b1%9e%e6%80%a7">属性</h4>
 <table>
 <thead>
 <tr>
@@ -1953,11 +1598,11 @@ dashed      虚线边框</p>
 </tr>
 </tbody>
 </table>
-<p><strong><em>!autocomplete=&quot;on&quot;需要有name，并且成功提交过才可显示</em></strong>
-<strong><em>!通过input::placeholder伪元素修改提示文本样式</em></strong></p>
-<h2 id="css3%E6%96%B0%E7%89%B9%E6%80%A7">css3新特性</h2>
-<h3 id="css%E6%96%B0%E5%A2%9E%E9%80%89%E6%8B%A9%E5%99%A8">css新增选择器</h3>
-<h4 id="%E5%B1%9E%E6%80%A7%E9%80%89%E6%8B%A9%E5%99%A8">属性选择器</h4>
+<p><em><strong>!autocomplete=&quot;on&quot;需要有name，并且成功提交过才可显示</strong></em>
+<em><strong>!通过input::placeholder伪元素修改提示文本样式</strong></em></p>
+<h2 id="css3%e6%96%b0%e7%89%b9%e6%80%a7">css3新特性</h2>
+<h3 id="css%e6%96%b0%e5%a2%9e%e9%80%89%e6%8b%a9%e5%99%a8">css新增选择器</h3>
+<h4 id="%e5%b1%9e%e6%80%a7%e9%80%89%e6%8b%a9%e5%99%a8">属性选择器</h4>
 <table>
 <thead>
 <tr>
@@ -1984,7 +1629,7 @@ dashed      虚线边框</p>
 </tr>
 </tbody>
 </table>
-<h4 id="%E7%BB%93%E6%9E%84%E4%BC%AA%E7%B1%BB%E9%80%89%E6%8B%A9%E5%99%A8-%E6%9D%83%E9%87%8D0001">结构伪类选择器 权重(0,0,0,1)</h4>
+<h4 id="%e7%bb%93%e6%9e%84%e4%bc%aa%e7%b1%bb%e9%80%89%e6%8b%a9%e5%99%a8-%e6%9d%83%e9%87%8d0001">结构伪类选择器 权重(0,0,0,1)</h4>
 <blockquote>
 <p>常根据文档结构来选择元素，根据父级来匹配</p>
 </blockquote>
@@ -2018,7 +1663,7 @@ dashed      虚线边框</p>
 </tr>
 </tbody>
 </table>
-<p><strong><em>! E:nth-child(n)  可以是数字、关键字、公式，公式只能是n，n从0开始自增</em></strong></p>
+<p><em><strong>! E:nth-child(n)  可以是数字、关键字、公式，公式只能是n，n从0开始自增</strong></em></p>
 <table>
 <thead>
 <tr>
@@ -2064,7 +1709,7 @@ dashed      虚线边框</p>
 </ul>
 </li>
 </ul>
-<h4 id="%E4%BC%AA%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9%E5%99%A8-%E6%9D%83%E9%87%8D0001">伪元素选择器 权重(0,0,0,1)</h4>
+<h4 id="%e4%bc%aa%e5%85%83%e7%b4%a0%e9%80%89%e6%8b%a9%e5%99%a8-%e6%9d%83%e9%87%8d0001">伪元素选择器 权重(0,0,0,1)</h4>
 <blockquote>
 <p>伪元素选择器可以用css创建标签，结构更简单</p>
 </blockquote>
@@ -2072,20 +1717,20 @@ dashed      虚线边框</p>
 <ul>
 <li>在元素内部的前面|后面插入内容，属于子级，创建的盒子是行内元素</li>
 </ul>
-<p><strong><em>!!必须要写content属性，值可以为空</em></strong></p>
-<pre class="hljs"><code><div>        <span class="hljs-selector-tag">div</span><span class="hljs-selector-pseudo">::before</span> {
+<p><em><strong>!!必须要写content属性，值可以为空</strong></em></p>
+<pre><code class="language-css"><div>        <span class="hljs-selector-tag">div</span><span class="hljs-selector-pseudo">::before</span> {
             <span class="hljs-attribute">content</span>: <span class="hljs-string">''</span>，
         }
 </div></code></pre>
-<p><strong><em>!字体图标另一写法      伪元素选择器做法</em></strong></p>
-<pre class="hljs"><code><div>        <span class="hljs-selector-tag">i</span><span class="hljs-selector-pseudo">::after</span>{
+<p><em><strong>!字体图标另一写法      伪元素选择器做法</strong></em></p>
+<pre><code class="language-css"><div>        <span class="hljs-selector-tag">i</span><span class="hljs-selector-pseudo">::after</span>{
             <span class="hljs-attribute">position</span>:absolute;      绝对定位脱标，方便调整位置
             <span class="hljs-attribute">font-family</span>:icomoon;
             <span class="hljs-attribute">content</span>:<span class="hljs-string">'\xxxx'</span>;
         }
 </div></code></pre>
-<p><strong><em>!遮罩案例另一写法      伪元素选择器做法</em></strong></p>
-<pre class="hljs"><code><div>        <span class="hljs-selector-class">.box</span><span class="hljs-selector-pseudo">::before</span> {
+<p><em><strong>!遮罩案例另一写法      伪元素选择器做法</strong></em></p>
+<pre><code class="language-css"><div>        <span class="hljs-selector-class">.box</span><span class="hljs-selector-pseudo">::before</span> {
             <span class="hljs-attribute">content</span>:<span class="hljs-string">''</span>;
             <span class="hljs-attribute">display</span>:none;
             <span class="hljs-attribute">position</span>:absolute;
@@ -2096,8 +1741,8 @@ dashed      虚线边框</p>
             <span class="hljs-attribute">display</span>:block;
         }
 </div></code></pre>
-<p><strong><em>!伪元素清除浮动</em></strong></p>
-<pre class="hljs"><code><div>        <span class="hljs-comment">/* 清除浮动 */</span>
+<p><em><strong>!伪元素清除浮动</strong></em></p>
+<pre><code class="language-css"><div>        <span class="hljs-comment">/* 清除浮动 */</span>
         <span class="hljs-selector-class">.clearfix</span><span class="hljs-selector-pseudo">:after</span> {           插入一个盒子
             <span class="hljs-attribute">visibility</span>: hidden;     把他隐藏起来
             <span class="hljs-attribute">clear</span>: both;            清除浮动
@@ -2116,7 +1761,7 @@ dashed      虚线边框</p>
             <span class="hljs-attribute">clear</span>: both;
         }
 </div></code></pre>
-<h3 id="css3%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B">css3盒子模型</h3>
+<h3 id="css3%e7%9b%92%e5%ad%90%e6%a8%a1%e5%9e%8b">css3盒子模型</h3>
 <p><code>box-sizing:content-box;</code></p>
 <ul>
 <li>默认模型，盒子大小为width+padding+border</li>
@@ -2125,23 +1770,23 @@ dashed      虚线边框</p>
 <ul>
 <li>css3新的盒子模型,把边框和padding也算进盒子大小，不会撑大盒子，这样就不用额外去计算了（前提border和padding不超过width）</li>
 </ul>
-<h3 id="css3%E5%87%BD%E6%95%B0">css3函数</h3>
-<h4 id="css3%E6%BB%A4%E9%95%9Cfilter">css3滤镜filter</h4>
+<h3 id="css3%e5%87%bd%e6%95%b0">css3函数</h3>
+<h4 id="css3%e6%bb%a4%e9%95%9cfilter">css3滤镜filter</h4>
 <p><code>filter: 函数();</code></p>
 <pre><code>    例如：filter:blur(5px);  
     blur模糊处理，数值越大越模糊
 </code></pre>
-<h4 id="css3-calc%E5%87%BD%E6%95%B0">css3 calc函数</h4>
+<h4 id="css3-calc%e5%87%bd%e6%95%b0">css3 calc函数</h4>
 <blockquote>
 <p>声明css属性值时执行一些计算，可以+-*/，需要加单位</p>
 </blockquote>
-<p><strong><em>!注意，符号与数值之间空格隔开，否则不生效</em></strong></p>
+<p><em><strong>!注意，符号与数值之间空格隔开，否则不生效</strong></em></p>
 <pre><code>    例如：width:calc(100%-80%);  
     height:calc(100%-30px);  
     子盒子永远比父盒子小80%|30px
 </code></pre>
-<h3 id="%E6%A1%88%E4%BE%8B%EF%BC%9A26%E6%96%B0input%E5%92%8C%E6%96%B0%E9%80%89%E6%8B%A9%E5%99%A8%E5%92%8C%E5%87%BD%E6%95%B0html">案例：<a href="2020-5/26.%E6%96%B0input%E5%92%8C%E6%96%B0%E9%80%89%E6%8B%A9%E5%99%A8%E5%92%8C%E5%87%BD%E6%95%B0.html">26.新input和新选择器和函数.html</a></h3>
-<h3 id="css3%E8%BF%87%E6%B8%A1%E7%89%B9%E6%80%A7%EF%BC%88%E9%87%8D%E8%A6%81%EF%BC%89">css3过渡特性（重要）</h3>
+<h3 id="%e6%a1%88%e4%be%8b26%e6%96%b0input%e5%92%8c%e6%96%b0%e9%80%89%e6%8b%a9%e5%99%a8%e5%92%8c%e5%87%bd%e6%95%b0html">案例：<a href="2020-5/26.%E6%96%B0input%E5%92%8C%E6%96%B0%E9%80%89%E6%8B%A9%E5%99%A8%E5%92%8C%E5%87%BD%E6%95%B0.html">26.新input和新选择器和函数.html</a></h3>
+<h3 id="css3%e8%bf%87%e6%b8%a1%e7%89%b9%e6%80%a7%e9%87%8d%e8%a6%81">css3过渡特性（重要）</h3>
 <ul>
 <li>
 <p>transition是css3最具颠覆性的特性之一，不用flash或者js就能添加动画效果</p>
@@ -2160,7 +1805,7 @@ dashed      虚线边框</p>
 <blockquote>
 <p>运动曲线值：</p>
 </blockquote>
-<pre class="hljs"><code><div>        <span class="hljs-selector-tag">linear</span> 匀速
+<pre><code class="language-css"><div>        <span class="hljs-selector-tag">linear</span> 匀速
         <span class="hljs-selector-tag">ease</span> 开始快，逐渐变慢
         <span class="hljs-selector-tag">ease-in</span> 开始慢，加速，后面快
         <span class="hljs-selector-tag">ease-out</span> 开始快，减速，后面慢
@@ -2172,18 +1817,18 @@ dashed      虚线边框</p>
         <span class="hljs-attribute">transition</span>: all <span class="hljs-number">1s</span> <span class="hljs-built_in">cubic-bezier</span>(0.470, -0.485, 0.460, 1.435);
         }
 </div></code></pre>
-<h4 id="%E8%B0%81%E5%81%9A%E8%BF%87%E6%B8%A1%E7%BB%99%E8%B0%81%E5%8A%A0">谁做过渡给谁加</h4>
+<h4 id="%e8%b0%81%e5%81%9a%e8%bf%87%e6%b8%a1%e7%bb%99%e8%b0%81%e5%8a%a0">谁做过渡给谁加</h4>
 <blockquote>
 <p>例如:</p>
 </blockquote>
-<pre class="hljs"><code><div>        <span class="hljs-selector-tag">div</span> {
+<pre><code class="language-css"><div>        <span class="hljs-selector-tag">div</span> {
             w200h200 bgcolor#000;
             <span class="hljs-attribute">transition</span>: width <span class="hljs-number">1s</span> ease <span class="hljs-number">1s</span>,height  <span class="hljs-number">1s</span> ease <span class="hljs-number">1s</span>;
         }
         <span class="hljs-selector-tag">div</span><span class="hljs-selector-pseudo">:hover</span> {w400h400}
 </div></code></pre>
-<h4 id="%E5%A4%9A%E4%B8%AA%E5%B1%9E%E6%80%A7%E8%BF%87%E6%B8%A1%EF%BC%8C%E7%94%A8%E9%80%97%E5%8F%B7%E5%88%86%E5%BC%80%EF%BC%8C%E5%85%A8%E9%83%A8%E5%B1%9E%E6%80%A7%E8%BF%87%E6%B8%A1%EF%BC%8C%E5%86%99all%E5%8D%B3%E5%8F%AF">多个属性过渡，用逗号分开，全部属性过渡，写all即可</h4>
-<h3 id="%E6%A1%88%E4%BE%8B%EF%BC%9A27%E8%BF%9B%E5%BA%A6%E6%9D%A1%E6%A1%88%E4%BE%8B-%E8%BF%87%E6%B8%A1%E5%B1%9E%E6%80%A7html">案例：<a href="2020-5/27.%E8%BF%9B%E5%BA%A6%E6%9D%A1%E6%A1%88%E4%BE%8B-%E8%BF%87%E6%B8%A1%E5%B1%9E%E6%80%A7.html">27.进度条案例-过渡属性.html</a></h3>
+<h4 id="%e5%a4%9a%e4%b8%aa%e5%b1%9e%e6%80%a7%e8%bf%87%e6%b8%a1%e7%94%a8%e9%80%97%e5%8f%b7%e5%88%86%e5%bc%80%e5%85%a8%e9%83%a8%e5%b1%9e%e6%80%a7%e8%bf%87%e6%b8%a1%e5%86%99all%e5%8d%b3%e5%8f%af">多个属性过渡，用逗号分开，全部属性过渡，写all即可</h4>
+<h3 id="%e6%a1%88%e4%be%8b27%e8%bf%9b%e5%ba%a6%e6%9d%a1%e6%a1%88%e4%be%8b-%e8%bf%87%e6%b8%a1%e5%b1%9e%e6%80%a7html">案例：<a href="2020-5/27.%E8%BF%9B%E5%BA%A6%E6%9D%A1%E6%A1%88%E4%BE%8B-%E8%BF%87%E6%B8%A1%E5%B1%9E%E6%80%A7.html">27.进度条案例-过渡属性.html</a></h3>
 <h2 id="gitgiteevscode">git+gitee+vscode</h2>
 <ul>
 <li>下载安装git，生成公钥私钥，上传公钥到gitee后台，设置用户名和邮箱，拉取或者初始化本地仓库，拖到vscode里面</li>
@@ -2191,7 +1836,7 @@ dashed      虚线边框</p>
 <li>有不同的地方修改，需要创建分支，然后可以修改后再合并</li>
 <li>更多内容百度</li>
 </ul>
-<h2 id="%E6%98%9F%E6%9C%9F%E7%9A%84%E5%8D%95%E8%AF%8D%E5%BF%98%E8%AE%B0%E4%BA%86%E9%A1%BA%E6%89%8B%E8%AE%B0%E4%B8%80%E4%B8%8B">星期的单词忘记了顺手记一下</h2>
+<h2 id="%e6%98%9f%e6%9c%9f%e7%9a%84%e5%8d%95%e8%af%8d%e5%bf%98%e8%ae%b0%e4%ba%86%e9%a1%ba%e6%89%8b%e8%ae%b0%e4%b8%80%e4%b8%8b">星期的单词忘记了顺手记一下</h2>
 <pre><code>星期一：Monday（Mon.）
 星期二：Tuesday（Tues.）
 星期三：Wednesday（Wed.）
@@ -2199,13 +1844,13 @@ dashed      虚线边框</p>
 星期五：Friday（Fri.）
 星期六：Saturday（Sat.）
 </code></pre>
-<h1 id="58%E9%98%BF%E9%87%8C%E4%BA%91%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96datav%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0%E6%94%B9%E4%B8%BAmarkdown%E6%A0%BC%E5%BC%8F%E9%A1%B9%E7%9B%AE%E6%A1%88%E4%BE%8B%E5%93%81%E4%BC%98%E8%B4%AD%E9%9D%99%E6%80%81%E9%A1%B5%E9%9D%A2"><em>5.8</em><br>
+<h1 id="58%e9%98%bf%e9%87%8c%e4%ba%91%e6%95%b0%e6%8d%ae%e5%8f%af%e8%a7%86%e5%8c%96datav%e4%bd%bf%e7%94%a8%e7%ac%94%e8%ae%b0%e6%94%b9%e4%b8%bamarkdown%e6%a0%bc%e5%bc%8f%e9%a1%b9%e7%9b%ae%e6%a1%88%e4%be%8b%e5%93%81%e4%bc%98%e8%b4%ad%e9%9d%99%e6%80%81%e9%a1%b5%e9%9d%a2"><em>5.8</em><br>
 阿里云数据可视化<br>
 datav使用<br>
 笔记改为markdown格式<br>
 项目案例:品优购静态页面</h1>
-<h1 id="%E7%BB%BC%E5%90%88%E6%A1%88%E4%BE%8B%EF%BC%9A%E5%93%81%E4%BC%98%E8%B4%AD%E9%A1%B9%E7%9B%AE">综合案例：品优购项目</h1>
-<h2 id="%E7%BD%91%E7%AB%99%E5%88%B6%E4%BD%9C%E6%B5%81%E7%A8%8B">网站制作流程</h2>
+<h1 id="%e7%bb%bc%e5%90%88%e6%a1%88%e4%be%8b%e5%93%81%e4%bc%98%e8%b4%ad%e9%a1%b9%e7%9b%ae">综合案例：品优购项目</h1>
+<h2 id="%e7%bd%91%e7%ab%99%e5%88%b6%e4%bd%9c%e6%b5%81%e7%a8%8b">网站制作流程</h2>
 <p>1.客户沟通指定方案<br>
 2.签订合同<br>
 3.预付定金<br>
@@ -2214,15 +1859,15 @@ datav使用<br>
 6.测试验收<br>
 7.上线培训<br>
 8.后期维护</p>
-<h2 id="%E5%BC%80%E5%8F%91%E5%87%86%E5%A4%87">开发准备</h2>
-<h3 id="%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%EF%BC%9Avscode-photoshopfw-chrome%E6%B5%8F%E8%A7%88%E5%99%A8">开发工具：VScode Photoshop/Fw Chrome浏览器</h3>
-<h3 id="%E6%8A%80%E6%9C%AF%E6%A0%88">技术栈</h3>
+<h2 id="%e5%bc%80%e5%8f%91%e5%87%86%e5%a4%87">开发准备</h2>
+<h3 id="%e5%bc%80%e5%8f%91%e5%b7%a5%e5%85%b7vscode-photoshopfw-chrome%e6%b5%8f%e8%a7%88%e5%99%a8">开发工具：VScode Photoshop/Fw Chrome浏览器</h3>
+<h3 id="%e6%8a%80%e6%9c%af%e6%a0%88">技术栈</h3>
 <ul>
 <li>html5+css3手动布局，可以大量使用html5标签和样式</li>
 <li>采取结构与样式相分离，模块化开发</li>
-<li>遵循统一代码规范（素材文件夹--品优购代码规范.md）(为此装了Markdown one for all插件)</li>
+<li>遵循统一代码规范（<a href="http://xn-----df3ctcui974az6h7r0arvdd78c00l8grgwue3k.md">素材文件夹--品优购代码规范.md</a>）(为此装了Markdown one for all插件)</li>
 </ul>
-<h3 id="%E9%A2%9D%E5%A4%96%E8%A1%A5%E5%85%85markdown%E8%AF%AD%E6%B3%95">额外补充markdown语法</h3>
+<h3 id="%e9%a2%9d%e5%a4%96%e8%a1%a5%e5%85%85markdown%e8%af%ad%e6%b3%95">额外补充markdown语法</h3>
 <p>#-######代表一级到六级标题，与文字要空格隔开<br>
 ==和--代表一级二级标题，写在第二行<br>
 *包裹是斜体，**包裹是粗体，三个就是粗体加斜体<br>
@@ -2237,13 +1882,13 @@ datav使用<br>
 表头|表头|<br>
 -|-<br>
 内容|内容<br>
-内容|内容
-:-<img class="emoji" alt="neutral_face" src="data:image/png;base64,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" />:-:代表居中</p>
-<h1 id="59%E7%BB%93%E5%90%88markdown%E9%87%8D%E5%86%99%E4%BA%86%E7%AC%94%E8%AE%B0%E7%BB%A7%E7%BB%AD%E5%93%81%E4%BC%98%E8%B4%AD"><em>5.9</em>
+| 内容|内容 |
+| :--------: ||代表居中</p>
+<h1 id="59%e7%bb%93%e5%90%88markdown%e9%87%8d%e5%86%99%e4%ba%86%e7%ac%94%e8%ae%b0%e7%bb%a7%e7%bb%ad%e5%93%81%e4%bc%98%e8%b4%ad"><em>5.9</em>
 结合markdown重写了笔记<br>
 继续品优购</h1>
 <!-- 现在是四点，睡觉。。。 -->
-<h3 id="%E5%BB%BA%E7%AB%8B%E7%BD%91%E7%AB%99%E7%9B%AE%E5%BD%95">建立网站目录</h3>
+<h3 id="%e5%bb%ba%e7%ab%8b%e7%bd%91%e7%ab%99%e7%9b%ae%e5%bd%95">建立网站目录</h3>
 <table>
 <thead>
 <tr>
@@ -2271,20 +1916,20 @@ datav使用<br>
 </tbody>
 </table>
 <h3 id="favicon">favicon</h3>
-<h4 id="%E5%BF%85%E9%A1%BBico%E6%A0%BC%E5%BC%8F%EF%BC%8C%E5%8F%AF%E4%BB%A5%E5%8E%BBbitbug%E7%AD%89%E8%BD%AC%E6%8D%A2%E6%A0%BC%E5%BC%8F">必须ico格式，可以去bitbug等转换格式</h4>
+<h4 id="%e5%bf%85%e9%a1%bbico%e6%a0%bc%e5%bc%8f%e5%8f%af%e4%bb%a5%e5%8e%bbbitbug%e7%ad%89%e8%bd%ac%e6%8d%a2%e6%a0%bc%e5%bc%8f">必须ico格式，可以去bitbug等转换格式</h4>
 <p><code>&lt;link href=&quot;xx.ico&quot; rel=&quot;shortcut ico&quot;&gt;</code></p>
 <h3 id="tdk">TDK</h3>
-<h4 id="%E4%B8%BA%E4%BA%86%E8%BF%8E%E5%90%88%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E7%9A%84%E8%A7%84%E5%88%99%EF%BC%8C%E9%A1%B5%E9%9D%A2%E8%BF%9B%E8%A1%8Cseo%E4%BC%98%E5%8C%96%EF%BC%8C%E6%9B%B4%E5%AE%B9%E6%98%93%E8%A2%AB%E6%8A%93%E5%8F%96%EF%BC%8C%E6%8E%92%E5%90%8D%E6%9B%B4%E5%AE%B9%E6%98%93%E9%9D%A0%E5%89%8D">为了迎合搜索引擎的规则，页面进行SEO优化，更容易被抓取，排名更容易靠前</h4>
-<pre class="hljs"><code><div>    <span class="hljs-comment">&lt;!-- 不要只写title 把网站名 网址 优势点也写出来 --&gt;</span>
+<h4 id="%e4%b8%ba%e4%ba%86%e8%bf%8e%e5%90%88%e6%90%9c%e7%b4%a2%e5%bc%95%e6%93%8e%e7%9a%84%e8%a7%84%e5%88%99%e9%a1%b5%e9%9d%a2%e8%bf%9b%e8%a1%8cseo%e4%bc%98%e5%8c%96%e6%9b%b4%e5%ae%b9%e6%98%93%e8%a2%ab%e6%8a%93%e5%8f%96%e6%8e%92%e5%90%8d%e6%9b%b4%e5%ae%b9%e6%98%93%e9%9d%a0%e5%89%8d">为了迎合搜索引擎的规则，页面进行SEO优化，更容易被抓取，排名更容易靠前</h4>
+<pre><code class="language-html"><div>    <span class="hljs-comment">&lt;!-- 不要只写title 把网站名 网址 优势点也写出来 --&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>品优购商城-综合网购首选-正品低价、品质保障、配送及时、轻松购物！<span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>
     <span class="hljs-comment">&lt;!-- 描述网站 优势内容放前面 --&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"品优购商城-专业的综合网上购物商城,销售家电、数码通讯、电脑、家居百货、服装服饰、母婴、图书、食品等数万个品牌优质商品.便捷、诚信的服务，为您提供愉悦的网上购物体验!"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"description"</span>&gt;</span>
     <span class="hljs-comment">&lt;!-- 关键词一般6-8个 越靠前权重越高--&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"网上购物,网上商城,手机,笔记本,电脑,MP3,CD,VCD,DV,相机,数码,配件,手表,存储卡,京东"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"keywords"</span> /&gt;</span>
 </div></code></pre>
-<h3 id="%E6%A8%A1%E5%9D%97%E5%8C%96%E5%BC%80%E5%8F%91">模块化开发</h3>
+<h3 id="%e6%a8%a1%e5%9d%97%e5%8c%96%e5%bc%80%e5%8f%91">模块化开发</h3>
 <p><em>把相同的可复用样式写到common.css，提高简洁度，减少重复工作</em></p>
-<h3 id="%E6%A8%A1%E5%9D%97%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83">模块命名规范</h3>
+<h3 id="%e6%a8%a1%e5%9d%97%e5%91%bd%e5%90%8d%e8%a7%84%e8%8c%83">模块命名规范</h3>
 <table>
 <thead>
 <tr>
@@ -2343,11 +1988,11 @@ datav使用<br>
 </tr>
 </tbody>
 </table>
-<h1 id="5-11%E5%86%99%E5%AE%8C%E4%BA%86%EF%BC%8C%E8%AE%B0%E7%AC%94%E8%AE%B0"><em>5-11</em>
+<h1 id="5-11%e5%86%99%e5%ae%8c%e4%ba%86%e8%ae%b0%e7%ac%94%e8%ae%b0"><em>5-11</em>
 写完了，记笔记</h1>
-<h3 id="%E6%95%B4%E4%BD%93%E5%88%86%E6%9E%90%EF%BC%9A%E5%A4%B4%E9%83%A8%E5%92%8C%E5%B0%BE%E9%83%A8%E6%9C%89%E5%A4%9A%E5%A4%84%E5%85%B1%E7%94%A8%EF%BC%8C%E5%9B%A0%E6%AD%A4%E5%86%99%E5%9C%A8commoncss%E9%87%8C%E9%9D%A2%EF%BC%8C%E5%85%B6%E4%BB%96%E9%A1%B5%E9%9D%A2%E5%A4%8D%E5%88%B6%E5%90%8E%E5%8F%AA%E9%9C%80%E7%A8%8D%E5%8A%A0%E4%BF%AE%E6%94%B9">整体分析：头部和尾部有多处共用，因此写在common.css里面，其他页面复制后只需稍加修改</h3>
-<h3 id="%E9%A6%96%E9%A1%B5indexhtml%E5%88%86%E6%9E%90">首页index.html分析</h3>
-<h4 id="%E7%BA%B5%E5%90%91%E5%88%86%E4%B8%BA%EF%BC%9A">纵向分为：</h4>
+<h3 id="%e6%95%b4%e4%bd%93%e5%88%86%e6%9e%90%e5%a4%b4%e9%83%a8%e5%92%8c%e5%b0%be%e9%83%a8%e6%9c%89%e5%a4%9a%e5%a4%84%e5%85%b1%e7%94%a8%e5%9b%a0%e6%ad%a4%e5%86%99%e5%9c%a8commoncss%e9%87%8c%e9%9d%a2%e5%85%b6%e4%bb%96%e9%a1%b5%e9%9d%a2%e5%a4%8d%e5%88%b6%e5%90%8e%e5%8f%aa%e9%9c%80%e7%a8%8d%e5%8a%a0%e4%bf%ae%e6%94%b9">整体分析：头部和尾部有多处共用，因此写在common.css里面，其他页面复制后只需稍加修改</h3>
+<h3 id="%e9%a6%96%e9%a1%b5indexhtml%e5%88%86%e6%9e%90">首页index.html分析</h3>
+<h4 id="%e7%ba%b5%e5%90%91%e5%88%86%e4%b8%ba">纵向分为：</h4>
 <ul>
 <li>shortcut  快捷导航</li>
 <li>header    头部</li>
@@ -2357,23 +2002,23 @@ datav使用<br>
 <li>floor     楼层区</li>
 <li>footer    尾部</li>
 </ul>
-<h4 id="%E6%A8%AA%E5%90%91%E5%B8%83%E5%B1%80%E7%BB%86%E5%88%86">横向布局细分</h4>
+<h4 id="%e6%a8%aa%e5%90%91%e5%b8%83%e5%b1%80%e7%bb%86%e5%88%86">横向布局细分</h4>
 <ul>
 <li>shortcut
 横向整齐，左右浮动即可</li>
 </ul>
-<pre class="hljs"><code><div>    section             通栏
+<pre><code><code><div>    section             通栏
         d.layout      版心
             d.fl      左浮盒
                 p+a
             d.fr      右浮盒
                 ul&gt;lia*n nth-child竖线盒子   ::after字体图标箭头
-</div></code></pre>
+</div></code></code></pre>
 <ul>
 <li>header
 横向不整齐，浮动排布不方便，用定位</li>
 </ul>
-<pre class="hljs"><code><div>    d.layout          版心
+<pre><code><code><div>    d.layout          版心
         d.logo        图标
             h1&gt;a        SEO优化 font-size:0
         d.search      搜索框
@@ -2383,25 +2028,27 @@ datav使用<br>
         d.shopcar     购物车  relative
             a           ::before+::after字体图标
             i           红色count模块   absolute
-</div></code></pre>
+</div></code></code></pre>
 <ul>
 <li>navigation
 横向整齐，均左浮
 由于内容相关性，注意下拉导航连在一起</li>
 </ul>
-<pre class="hljs"><code><div>    d.nav             通栏，做红色线条
+<pre><code><code><div>    d.nav             通栏，做红色线条
         d.layout      版心
             d.dropdown    下拉列表
                 d.dt      表头
                 d.dd      详细条目
                     ul&gt;lia ::after字体图标
-</div></code></pre>
+            d.items-nav     左浮
+                ul&gt;lia      左浮
+</div></code></code></pre>
 <ul>
 <li>main
 焦点图focus和快报flash-news，再加便利模块convenient，减价品bargain
 排布整理，左右浮动，右盒子内纵向排布，便利区需浮动</li>
 </ul>
-<pre class="hljs"><code><div>    d.layout
+<pre><code><code><div>    d.layout
         d.main    装focus和fn
             .focus
                 i.prev+i.next+ul&gt;lia*n 轮播图控件
@@ -2414,23 +2061,23 @@ datav使用<br>
                 d.convenient
                     ul&gt;liaip*n   i精灵图
                 d.bargain&gt;img    降价品
-</div></code></pre>
+</div></code></code></pre>
 <ul>
 <li>recommend推荐模块
 横向整齐，用浮动</li>
 </ul>
-<pre class="hljs"><code><div>    d.recom-hd              左浮
+<pre><code><code><div>    d.recom-hd              左浮
         d.recom-bd          左浮
             ul&gt;liaimg*n     左浮
-</div></code></pre>
+</div></code></code></pre>
 <ul>
 <li>floor楼层区
 分成多个类似的版块楼层，不给高度让它撑开，楼层内又分上下，上面左右浮动，下面5列box，总体比较整齐，还是浮动，box里再细分</li>
 </ul>
-<pre class="hljs"><code><div>    d.floor
+<pre><code><code><div>    d.floor
         d.floor1            楼层1
             d.floor-hd
-                h4+d.tab-list&gt;ul&gt;lia   具有标签效果，必须这么写
+                h4+d.tab-list&gt;ul&gt;lia   具有标签切换效果，必须这么写
             d.floor-bd
                 d.tab-content   标签内容区
                     d.tab-item1 标签1的内容      
@@ -2447,13 +2094,13 @@ datav使用<br>
                         d.col5
                             col5-top&gt;aimg
                             col5-bottom&gt;aimg
-</div></code></pre>
+</div></code></code></pre>
 <ul>
 <li>footer尾部
 纵向细分service help copyright
 横向整齐，用浮动，注意最后没给高度的盒子要清除浮动</li>
 </ul>
-<pre class="hljs"><code><div>    d.footer    通栏灰色
+<pre><code><code><div>    d.footer    通栏灰色
         d.service   左浮动
             ul&gt;liih4p*n   精灵图 左浮 用浮动特性挤开文字
         d.help
@@ -2464,10 +2111,10 @@ datav使用<br>
                 ul&gt;lia*n    ::after做竖线
             d.copyright-module
                 1&lt;br&gt;2
-</div></code></pre>
-<h3 id="listhtmlseckillhtml%E5%88%97%E8%A1%A8%E9%A1%B5%E5%88%86%E6%9E%90">list.html(seckill.html)列表页分析</h3>
-<h4 id="shortcut%E4%B8%80%E6%A0%B7-header%E7%9B%B8%E4%BC%BC%EF%BC%8C%E5%B0%BE%E9%83%A8%E4%B8%80%E6%A0%B7-%E5%A4%8D%E5%88%B6%E8%BF%87%E6%9D%A5">shortcut一样 header相似，尾部一样 复制过来</h4>
-<h4 id="%E7%BA%B5%E5%90%91">纵向</h4>
+</div></code></code></pre>
+<h3 id="listhtmlseckillhtml%e5%88%97%e8%a1%a8%e9%a1%b5%e5%88%86%e6%9e%90">list.html(seckill.html)列表页分析</h3>
+<h4 id="shortcut%e4%b8%80%e6%a0%b7-header%e7%9b%b8%e4%bc%bc%e5%b0%be%e9%83%a8%e4%b8%80%e6%a0%b7-%e5%a4%8d%e5%88%b6%e8%bf%87%e6%9d%a5">shortcut一样 header相似，尾部一样 复制过来</h4>
+<h4 id="%e7%ba%b5%e5%90%91">纵向</h4>
 <ul>
 <li>shortcut</li>
 <li>header</li>
@@ -2475,7 +2122,7 @@ datav使用<br>
 <li>sk-container  秒杀区容器</li>
 <li>footer</li>
 </ul>
-<h4 id="%E6%A8%AA%E5%90%91">横向</h4>
+<h4 id="%e6%a8%aa%e5%90%91">横向</h4>
 <ul>
 <li>shortcut和header几乎一样，往header加个d.sklogo即可</li>
 <li>navigation
@@ -2486,23 +2133,23 @@ datav使用<br>
 <li>footer 一样，复制粘贴即可</li>
 </ul>
 <h3 id="registerhtml">register.html</h3>
-<h4 id="%E4%BF%9D%E6%8A%A4%E9%9A%90%E7%A7%81%E4%B8%8D%E8%A6%81%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E6%8A%93%E5%8F%96%EF%BC%8C%E4%B8%8D%E8%A6%81seo%E4%BC%98%E5%8C%96">保护隐私不要搜索引擎抓取，不要SEO优化</h4>
-<h4 id="footer%E9%83%A8%E5%88%86%E5%8F%AF%E4%BB%A5%E5%A4%8D%E7%94%A8">footer部分可以复用</h4>
-<h4 id="%E7%94%A8%E7%89%88%E5%BF%83box%E5%85%A8%E9%83%A8%E5%8C%85%E4%BD%8F">用版心box全部包住</h4>
-<h4 id="%E7%BA%B5%E5%90%91">纵向</h4>
+<h4 id="%e4%bf%9d%e6%8a%a4%e9%9a%90%e7%a7%81%e4%b8%8d%e8%a6%81%e6%90%9c%e7%b4%a2%e5%bc%95%e6%93%8e%e6%8a%93%e5%8f%96%e4%b8%8d%e8%a6%81seo%e4%bc%98%e5%8c%96">保护隐私不要搜索引擎抓取，不要SEO优化</h4>
+<h4 id="footer%e9%83%a8%e5%88%86%e5%8f%af%e4%bb%a5%e5%a4%8d%e7%94%a8">footer部分可以复用</h4>
+<h4 id="%e7%94%a8%e7%89%88%e5%bf%83box%e5%85%a8%e9%83%a8%e5%8c%85%e4%bd%8f">用版心box全部包住</h4>
+<h4 id="%e7%ba%b5%e5%90%91-1">纵向</h4>
 <ul>
 <li>header</li>
 <li>form-area</li>
 <li>footer</li>
 </ul>
-<h4 id="%E6%A8%AA%E5%90%91">横向</h4>
+<h4 id="%e6%a8%aa%e5%90%91-1">横向</h4>
 <ul>
 <li>layout 版心全部包住</li>
 <li>d.header img</li>
 <li>form-area
 分为上下form-area-hd和bd,上面细分左右，下面用ul&gt;li*n写</li>
 </ul>
-<pre class="hljs"><code><div>    form-area
+<pre><code><code><div>    form-area
         formm-area-hd
             form-area-hd h4
             form-area-hd p+a.login
@@ -2512,11 +2159,11 @@ datav使用<br>
                 li&gt;i*3                          安全强度，用内边距调位置，浮动不行
                 li&gt;checkbox+a
                 li&gt;submit
-</div></code></pre>
+</div></code></code></pre>
 <ul>
 <li>footer 复制粘贴就行</li>
 </ul>
-<h2 id="%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%A6%82%E5%BF%B5">服务器概念</h2>
+<h2 id="%e6%9c%8d%e5%8a%a1%e5%99%a8%e6%a6%82%e5%bf%b5">服务器概念</h2>
 <ul>
 <li>服务器（主机）是提供计算服务的设备，他也是计算机。可分为文件服务器、数据库服务器、应用程序服务器、web服务器</li>
 <li>web服务器一般指网站服务器，可放置网站文件让网络其他人浏览，放置数据文件给人下载。</li>
@@ -2524,8 +2171,8 @@ datav使用<br>
 <li>本地服务器，把本地计算机配置成局域网的服务器，要ajax</li>
 <li>把网站上传到别人的服务器上，通过域名来访问</li>
 </ul>
-<h2 id="css3%E6%96%B0%E7%89%B9%E6%80%A7%E8%A1%A5%E5%85%85%EF%BC%88%E8%A7%86%E9%A2%91%E9%A1%BA%E5%BA%8F%E9%94%99%E4%BA%86%EF%BC%8C%E6%9C%89%E6%AE%B5%E5%9C%A8%E5%90%8E%E9%9D%A2%EF%BC%89">css3新特性补充（视频顺序错了，有段在后面）</h2>
-<h3 id="2d%E8%BD%AC%E6%8D%A2%EF%BC%9A%E6%94%B9%E5%8F%98%E6%A0%87%E7%AD%BE%E7%9A%84%E5%B9%B3%E9%9D%A2%E4%B8%8A%E7%9A%84%E4%BD%8D%E7%BD%AE%E5%BD%A2%E7%8A%B6">2D转换：改变标签的平面上的位置形状</h3>
+<h2 id="css3%e6%96%b0%e7%89%b9%e6%80%a7%e8%a1%a5%e5%85%85%e8%a7%86%e9%a2%91%e9%a1%ba%e5%ba%8f%e9%94%99%e4%ba%86%e6%9c%89%e6%ae%b5%e5%9c%a8%e5%90%8e%e9%9d%a2">css3新特性补充（视频顺序错了，有段在后面）</h2>
+<h3 id="2d%e8%bd%ac%e6%8d%a2%e6%94%b9%e5%8f%98%e6%a0%87%e7%ad%be%e7%9a%84%e5%b9%b3%e9%9d%a2%e4%b8%8a%e7%9a%84%e4%bd%8d%e7%bd%ae%e5%bd%a2%e7%8a%b6">2D转换：改变标签的平面上的位置形状</h3>
 <h4 id="transform">transform</h4>
 <ul>
 <li>移动 translate(x,y)</li>
@@ -2533,54 +2180,329 @@ datav使用<br>
 <li>缩放 scale</li>
 <li>注意：y轴往下为正方向</li>
 </ul>
-<h3 id="%E7%A7%BB%E5%8A%A8%E7%9B%92%E5%AD%90%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%9A%E5%AE%9A%E4%BD%8D%E3%80%81%E8%BE%B9%E8%B7%9D%E3%80%81translate">移动盒子的方法：定位、边距、translate</h3>
+<h3 id="%e7%a7%bb%e5%8a%a8%e7%9b%92%e5%ad%90%e7%9a%84%e6%96%b9%e6%b3%95%e5%ae%9a%e4%bd%8d%e8%be%b9%e8%b7%9dtranslate">移动盒子的方法：定位、边距、translate</h3>
 <h3 id="translate">translate</h3>
 <ul>
-<li>语法：translateX(n) translateY(n) 可合写，也可分开写</li>
+<li>语法：translateX(n) translateY(n) 空格隔开，可合写，也可分开写</li>
 <li>优点：不会影响其他盒子位置，类似相对定位</li>
 <li>百分比单位是相对元素自身的</li>
 <li>对行内标签无效</li>
 <li>盒子居中算法优化写法：</li>
 </ul>
-<pre class="hljs"><code><div>{<span class="hljs-attribute">position</span>:absolute;
+<pre><code class="language-css"><div>{<span class="hljs-attribute">position</span>:absolute;
 <span class="hljs-attribute">top</span>:<span class="hljs-number">50%</span>;
 <span class="hljs-attribute">left</span>:<span class="hljs-number">50%</span>;
 <span class="hljs-attribute">transform</span>:<span class="hljs-built_in">translate</span>(-50%,-50%);}
 </div></code></pre>
-<h3 id="%E6%A1%88%E4%BE%8B%EF%BC%9A28translate%E8%BF%90%E7%94%A8html">案例：28.translate运用.html</h3>
+<h3 id="%e6%a1%88%e4%be%8b28translate%e8%bf%90%e7%94%a8html">案例：28.translate运用.html</h3>
 <h3 id="rotate">rotate</h3>
 <ul>
 <li>语法：rotate(45deg);  顺时针旋转45度</li>
 <li>deg是单位度</li>
 <li>负数表示逆时针旋转</li>
 </ul>
-<h3 id="%E6%A1%88%E4%BE%8B%EF%BC%9A29translaterotate%E6%A1%88%E4%BE%8Bhtml">案例：29.translate+rotate案例.html</h3>
-<h3 id="%E8%AE%BE%E7%BD%AE%E8%BD%AC%E6%8D%A2%E4%B8%AD%E5%BF%83%E7%82%B9">设置转换中心点</h3>
+<h3 id="%e6%a1%88%e4%be%8b29translaterotate%e6%a1%88%e4%be%8bhtml">案例：29.translate+rotate案例.html</h3>
+<h3 id="%e8%ae%be%e7%bd%ae%e8%bd%ac%e6%8d%a2%e4%b8%ad%e5%bf%83%e7%82%b9">设置转换中心点</h3>
 <ul>
 <li>transform-origin: x y;</li>
 <li>默认是宽高中心(50% 50%) 空格分开</li>
 <li>可以用精确数值，百分比数，也可以用方位词</li>
 </ul>
-<h3 id="%E6%A1%88%E4%BE%8B%EF%BC%9A29transform-origin%E6%A1%88%E4%BE%8Bhtml">案例：29.transform-origin案例.html</h3>
+<h3 id="%e6%a1%88%e4%be%8b29transform-origin%e6%a1%88%e4%be%8bhtml">案例：29.transform-origin案例.html</h3>
 <h3 id="scale">scale</h3>
 <ul>
-<li>语法
-transform:scale(x,y);</li>
-<li>参数不跟单位，表示倍数，</li>
-<li>规范和细节
-xy之间用逗号隔开
-scale(1,1)  宽高都放大到原来的一倍，相当于没有放大
-scale(2)    只写一个参数默认第二个相同，相当于宽高放大到原本的两倍
-scale(0.5,0.5)  缩小到原来的0.5倍
-默认以矩形中心缩放
-<em>!scale缩放最大优势：可以设置缩放的中心点，而且不影响其他盒子</em></li>
+<li>
+<p>语法
+transform:scale(x,y);</p>
+</li>
+<li>
+<p>参数不跟单位，表示倍数，</p>
+</li>
+<li>
+<p>规范和细节</p>
+<pre><code>  xy之间用逗号隔开  
+  scale(1,1)  宽高都放大到原来的一倍，相当于没有放大  
+  scale(2)    只写一个参数默认第二个相同，相当于宽高放大到原本的两倍  
+  scale(0.5,0.5)  缩小到原来的0.5倍  
+  默认以矩形中心缩放  
+</code></pre>
+</li>
 </ul>
-<h3 id="%E6%A1%88%E4%BE%8B%EF%BC%9A30scale%E6%A1%88%E4%BE%8B%E5%88%86%E9%A1%B5%E6%8C%89%E9%92%AEhtml">案例：30.scale案例+分页按钮.html</h3>
-<h3 id="%E5%A4%8D%E5%90%88%E5%86%99%E6%B3%95">复合写法</h3>
+<p><em>!scale缩放最大优势：可以设置缩放的中心点，而且不影响其他盒子</em></p>
+<h3 id="%e6%a1%88%e4%be%8b30scale%e6%a1%88%e4%be%8b%e5%88%86%e9%a1%b5%e6%8c%89%e9%92%aehtml">案例：30.scale案例+分页按钮.html</h3>
+<h3 id="%e5%a4%8d%e5%90%88%e5%86%99%e6%b3%95-2">复合写法</h3>
 <ul>
-<li>transform: translate(x,y) rotate(xdeg) scale(x,y);
-<em>!代码有执行顺序，当同时有位移其他属性时，需要把位移放最前面</em></li>
+<li>transform: translate(x,y) rotate(xdeg) scale(x,y);</li>
 </ul>
+<p><em>!代码有执行顺序，当同时有位移其他属性时，需要把位移放最前面</em></p>
+<h2 id="animation-%e5%8a%a8%e7%94%bb">animation 动画</h2>
+<ul>
+<li>先定义动画，再调用动画</li>
+<li>用keyframes定义动画关键帧</li>
+<li>animation-name,animation-duration调用方法，动画名称和动画持续时间</li>
+</ul>
+<pre><code class="language-css"><div><span class="hljs-comment">/* 定义动画 */</span>
+@<span class="hljs-keyword">keyframes</span> move {
+    <span class="hljs-comment">/* 动画序列，0%-100%按顺序执行 */</span>
+    0% {
+        <span class="hljs-attribute">transform</span>:<span class="hljs-built_in">translate</span>(0px);
+    }
+    100% {
+        <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(1000px);
+    }
+}
+<span class="hljs-comment">/* 调用动画 */</span>
+<span class="hljs-selector-tag">div</span> {
+    w+<span class="hljs-attribute">h</span>:<span class="hljs-number">200px</span>;
+    <span class="hljs-attribute">bgc</span>:red;
+    <span class="hljs-comment">/* 动画名称 */</span>
+    <span class="hljs-attribute">animation-name</span>:move;
+    <span class="hljs-comment">/* 持续时间 */</span>
+    <span class="hljs-attribute">animation-duration</span>:<span class="hljs-number">1s</span>;
+}
+</div></code></pre>
+<ul>
+<li>from和to相当于0%和100%</li>
+<li>可以定义多个关键帧</li>
+</ul>
+<pre><code class="language-css"><div>@<span class="hljs-keyword">keyframes</span> move2 {
+        0% {
+            <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(0px);
+        }
 
-</body>
-</html>
+        25% {
+            <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(1000px, 0);
+        }
+
+        50% {
+            <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(1000px, 500px);
+        }
+
+        75% {
+            <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(0, 500px);
+        }
+
+        100% {
+            <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(0px);
+        }
+    }
+
+    <span class="hljs-selector-class">.box2</span> {
+        <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;
+        <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;
+        <span class="hljs-attribute">background-color</span>: red;
+        <span class="hljs-comment">/* 动画名称 */</span>
+        <span class="hljs-attribute">animation-name</span>: move2;
+        <span class="hljs-comment">/* 持续时间 */</span>
+        <span class="hljs-attribute">animation-duration</span>: <span class="hljs-number">5s</span>;
+    }
+</div></code></pre>
+<h3 id="%e5%8a%a8%e7%94%bb%e5%b8%b8%e7%94%a8%e5%b1%9e%e6%80%a7">动画常用属性</h3>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>@keyframes</td>
+<td>定义动画</td>
+</tr>
+<tr>
+<td>animation</td>
+<td>所有动画属性的简写属性，除了animation-play-state</td>
+</tr>
+<tr>
+<td>animation-name</td>
+<td>@keyframes 动画名称 必须写</td>
+</tr>
+<tr>
+<td>animation-duration</td>
+<td>完成一个周期花费的秒或毫秒，默认为0 必须写</td>
+</tr>
+<tr>
+<td>animation-timing-function</td>
+<td>动画的速度曲线，默认ease</td>
+</tr>
+<tr>
+<td>animation-delay</td>
+<td>动画何时开始，默认0</td>
+</tr>
+<tr>
+<td>animation-iteration-count</td>
+<td>动画播放次数，默认1，还有infinite</td>
+</tr>
+<tr>
+<td>animation-direction</td>
+<td>动画是否在下一周期逆向播放，默认normal，逆向播放alternate，有1个周期无效</td>
+</tr>
+<tr>
+<td>animation-play-state</td>
+<td>动画是否正在运行或暂停，默认running，还有paused</td>
+</tr>
+<tr>
+<td>animation-fill-mode</td>
+<td>动画结束后的状态，forwards保持现状，backwards回到起始</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>animation: name duration timing-function delay iteration-count direction fill-mod; 先写持续时间，再写延迟时间</li>
+<li>name和duration必须写</li>
+</ul>
+<h3 id="%e6%a1%88%e4%be%8b32%e5%a4%a7%e6%95%b0%e6%8d%ae%e7%83%ad%e7%82%b9%e5%9b%be%e6%a1%88%e4%be%8bhtml">案例：32.大数据热点图案例.html</h3>
+<ul>
+<li>opacity 透明度 0-1 0表示完全透明</li>
+</ul>
+<h3 id="%e9%80%9f%e5%ba%a6%e6%9b%b2%e7%ba%bf">速度曲线</h3>
+<p><code>animation-timing-function:value</code></p>
+<ul>
+<li>规定动画的速度曲线，默认ease</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>linear</td>
+<td>初速中，匀速运动</td>
+</tr>
+<tr>
+<td>ease</td>
+<td>默认，初速小，初加速度大，加速度增大，快结束时快速减小，末速小</td>
+</tr>
+<tr>
+<td>ease-in</td>
+<td>初速小，初加速度大，加速度减小，最后匀速，末速中</td>
+</tr>
+<tr>
+<td>ease-out</td>
+<td>初速中，初加速度小，加速度减小，最后减速，末速小</td>
+</tr>
+<tr>
+<td>ease-in-out</td>
+<td>初速小，初加速度大，加速度先增大再减小，末速小</td>
+</tr>
+<tr>
+<td>steps()</td>
+<td>指定时间函数中的间隔数量（步长）</td>
+</tr>
+<tr>
+<td>cubic-bezier(n,n,n,n)</td>
+<td>贝塞尔曲线，回弹效果，在 cubic-bezier参数的值可能是从 0 到 1</td>
+</tr>
+</tbody>
+</table>
+<p><a href="http://yisibl.github.io/cubic-bezier/">cubic-bezier动态设置</a></p>
+<h4 id="step-%e5%b0%b1%e6%98%af%e5%8a%a8%e7%94%bb%e5%88%86%e5%87%a0%e6%ad%a5%e5%ae%8c%e6%88%90%e6%9c%89%e8%bf%99%e4%b8%aa%e5%b0%b1%e4%b8%8d%e8%a6%81%e9%80%9f%e5%ba%a6%e6%9b%b2%e7%ba%bf%e4%ba%86">step()     就是动画分几步完成，有这个就不要速度曲线了</h4>
+<h3 id="%e6%a1%88%e4%be%8b33steps%e9%80%9f%e5%ba%a6%e6%9b%b2%e7%ba%bf%e6%ad%a5%e9%95%bf%e8%bf%90%e7%94%a8html">案例：33.steps速度曲线步长运用.html</h3>
+<h3 id="%e7%bb%bc%e5%90%88%e6%a1%88%e4%be%8b34%e5%a5%94%e8%b7%91%e7%9a%84%e7%86%8a%e5%a4%a7html">综合案例：34.奔跑的熊大.html</h3>
+<h2 id="3d%e8%bd%ac%e6%8d%a2">3D转换</h2>
+<h3 id="%e7%bd%91%e9%a1%b5%e4%b8%89%e7%bb%b4%e5%9d%90%e6%a0%87%e7%b3%bb">网页三维坐标系</h3>
+<ul>
+<li>
+<p>x轴，水平向右，右为正</p>
+</li>
+<li>
+<p>y轴，垂直向下，下面是正</p>
+</li>
+<li>
+<p>z轴，垂直屏幕，外屏幕外为正，往里为负
+<em>！坐标系是相对于当前盒子本身所在平面来建立的，他的正中心就是坐标原点</em></p>
+</li>
+<li>
+<p>如果想要改变坐标原点位置，使用<code>transform-origin:x x [x];</code>，该属性默认值为<code>50% 50%</code></p>
+</li>
+</ul>
+<h3 id="3d%e4%bd%8d%e7%a7%bb">3d位移</h3>
+<ul>
+<li><code>translate3d(x,y,z)</code>        复合写法</li>
+<li></li>
+<li><code>translateX/Y/Z(100px)</code>     单独写法，z轴单位一般用px，z轴结合透视才有效果</li>
+</ul>
+<h3 id="3d%e9%80%8f%e8%a7%86">3D透视</h3>
+<ul>
+<li><code>perspective:none/num px;</code></li>
+<li>想要网页产生3D效果，需要透视</li>
+<li>模拟人类视觉位置，可理解为模拟一个人的眼睛去看</li>
+<li>透视单位是像素</li>
+<li>透视也称为视距，眼睛到屏幕的距离</li>
+<li>视距越大，成像越大，反之越小，近大远小</li>
+</ul>
+<p><em>！透视写在被观察元素的父级</em></p>
+<p><em>！z就是z轴，即视距，z轴（正值）越大，成像越大</em></p>
+<h3 id="translatez">translateZ</h3>
+<p><em>！写在被观察元素身上</em></p>
+<h1 id="513%e4%bb%8a%e5%a4%a9%e4%b8%8a%e5%8d%88%e5%ad%a6%e5%ae%8ccss3%e6%8f%90%e9%ab%98"><em>5.13</em>
+今天上午学完css3提高</h1>
+<h3 id="3d%e6%97%8b%e8%bd%ac-rotate3d">3D旋转  rotate3d</h3>
+<ul>
+<li>
+<p>transform:ratateX/Y/Z(45deg)    绕某轴旋转，正值为顺时针，负值逆时针</p>
+</li>
+<li>
+<p>transform:ratate3d(x,y,z,deg)    xyz为旋转轴矢量，旋转轴为矢量相加的，deg是旋转角度</p>
+</li>
+<li>
+<p>判断旋转方向：左手定则：左手握拳，拳心平行于旋转轴，大拇指指向正方向，其他手指弯曲方向即为旋转方向</p>
+</li>
+</ul>
+<h3 id="transform-style-3d%e5%91%88%e7%8e%b0%e9%87%8d%e8%a6%81">transform-style 3D呈现（重要）</h3>
+<ul>
+<li>控制子元素是否开启三维立体环境,让盒子内所有元素位于同一个三维空间</li>
+<li>默认值为<code>flat</code>不开启，改为<code>preserve-3d</code>，子元素开启3d空间
+<em>！写给父级，但是影响的是子级</em></li>
+</ul>
+<h3 id="%e4%b8%89%e7%bb%b4%e7%a9%ba%e9%97%b4%e6%90%ad%e5%bb%ba%e8%a6%81%e7%82%b9">三维空间搭建要点</h3>
+<ul>
+<li>摄像机是观察三维空间的视点位置，用摄像机属性<code>perspective</code>和<code>perspective-origin</code>可以简单控制观察位置，前者控制远近，后者控制视线平面</li>
+<li>在网页里，无论你搭建了怎样的三维场景，只要你希望它显示出来，就应该把构成场景的三维物体都放在一个容器元素里，然后为容器元素添加摄像机属性，从而改变视点位置</li>
+<li>此外，还需要注意添加<code>transform-style: preserve-3d;</code>以保证多个三维物体都位于同一空间</li>
+</ul>
+<h3 id="%e6%a1%88%e4%be%8b35%e4%b8%a4%e9%9d%a2%e7%bf%bb%e8%bd%ac%e7%9b%92%e5%ad%90html">案例：35.两面翻转盒子.html</h3>
+<p><code>d.box-3d&gt;d.box&gt;d.a+d.b</code></p>
+<ul>
+<li>.box-3d添加透视，.3d添加3d呈现，让子盒子进入同一个3d空间，.a提高层级，.b翻转180度，让a和b背靠背，最后给.box加过渡效果，并且hover翻转180度</li>
+</ul>
+<h3 id="%e6%a1%88%e4%be%8b363d%e5%af%bc%e8%88%aa%e6%a0%8fhtml">案例：36.3d导航栏.html</h3>
+<p><code>ul&gt;li&gt;d.box&gt;d.a+d.b</code></p>
+<ul>
+<li>li加透视，.box加3d呈现，设置宽高，.a层级1，.b先下移，再-90deg旋转，最后.a前移，让旋转轴在.box中心，.box:hover翻转 过渡</li>
+</ul>
+<p><em>!当有移动和其他效果同时存在时，先做移动</em></p>
+<h3 id="%e7%bb%bc%e5%90%88%e6%a1%88%e4%be%8b37%e7%85%a7%e7%89%87%e6%97%8b%e8%bd%ac%e6%9c%a8%e9%a9%ac%e6%95%88%e6%9e%9chtml">综合案例：37.照片旋转木马效果.html</h3>
+<ul>
+<li>分析：box里面装6个狗图片和1个猪图片</li>
+<li>空间搭建：由于box需要和图片一起旋转，因此body加透视，然后box加<code>transform-style:preserve-3d;</code>，把box和图片放进同一个空间</li>
+<li>接着调整图片位置，6张狗图先rotateY分别旋转60度，一圈360度，然后沿Z轴移动相同距离即可</li>
+<li>最后定义动画效果，沿Y轴旋转360度，box调用</li>
+</ul>
+<h2 id="%e6%b5%8f%e8%a7%88%e5%99%a8%e7%a7%81%e6%9c%89%e5%89%8d%e7%bc%80">浏览器私有前缀</h2>
+<h3 id="%e7%a7%81%e6%9c%89%e5%89%8d%e7%bc%80%e6%98%af%e4%b8%ba%e4%ba%86%e5%85%bc%e5%ae%b9%e8%80%81%e7%89%88%e6%9c%ac%e7%9a%84%e5%86%99%e6%b3%95%e6%96%b0%e7%89%88%e6%9c%ac%e6%97%a0%e9%9c%80%e6%b7%bb%e5%8a%a0">私有前缀是为了兼容老版本的写法，新版本无需添加</h3>
+<ul>
+<li>-moz-     firefox</li>
+<li>
+<ul>
+<li>ms-     ie(微软后面不更新了，改edge)</li>
+</ul>
+</li>
+<li>-webkit-  safari chrome</li>
+<li>-o-       Opera</li>
+</ul>
+<blockquote>
+<p>提倡的写法</p>
+</blockquote>
+<pre><code class="language-css"><div><span class="hljs-selector-tag">-moz-border-radius</span>: 10<span class="hljs-selector-tag">px</span>;
+<span class="hljs-selector-tag">-webkit-border-radius</span>: 10<span class="hljs-selector-tag">px</span>;
+<span class="hljs-selector-tag">-o-border-radius</span>: 10<span class="hljs-selector-tag">px</span>;
+<span class="hljs-selector-tag">border-radius</span>: 10<span class="hljs-selector-tag">px</span>;
+</div></code></pre>
+
+    </body>
+    </html>
