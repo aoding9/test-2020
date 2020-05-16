@@ -1,0 +1,26 @@
+@font-base:50px;
+.html {
+    font-size: @font-base;
+}
+
+.header {
+    width: 500rem / @font-base;
+    height: 500rem / @font-base;
+    // 可以计算颜色 数字 变量
+    background-color: #22a + #aa2;
+    a {
+        display: block;
+        // 运算符必须空格隔开，运算单位以第一个参数为准
+        width: 100rem / @font-base;
+        height: 50rem / @font-base;
+        background-color: #3e3;
+        // 伪元素 伪类 交集选择器用&符号连接，表示同级
+        &:hover {
+            content: '';
+            width: 100rem / @font-base;
+            height: 50rem / @font-base;
+            background-color: red;
+        }
+    }
+
+}

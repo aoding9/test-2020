@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin:0;
+        }
+        /* 1.给元素设置rem宽高 */
+        /* 2.用@media针对不同screen设置不同的根f-s*/
+        @media screen and (max-width:539px) {
+            html {
+                font-size: 50px;
+            }
+        }
+
+        @media screen and (min-width:540px)  {
+            html {
+                font-size: 100px;
+            }
+        }
+        @media screen and (min-width: 970px) {
+            html {
+                font-size: 150px;
+            }
+        }
+
+        .top {
+            background-color: green;
+            color: #fff;
+            font-size: .5rem;
+            height: 1rem;
+            text-align: center;
+            line-height: 1rem;
+        }
+    </style>
+</head>
+<body>
+   <div class="top">购物车</div>
+</body>
+</html>
