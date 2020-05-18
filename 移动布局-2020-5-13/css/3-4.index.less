@@ -1,0 +1,116 @@
+// 首页的less文件
+// 导入common.less
+@import "3-4.common.less";
+
+body {
+    min-width: 320px;
+    width: 15rem;
+    margin: 0 auto;
+    font-family: Arial, Helvetica;
+    // 空格也会影响代码，此处的空格导致行高设置没有生效
+    // line-height: 1.5;
+    line-height: 1.5;
+    background: #F2F2F2;
+}
+
+@bf: 50;
+
+// search-content
+.search-content {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 15rem;
+    height: 88rem / @bf;
+    background-color: #FFC001;
+
+    .classify {
+        width: 44rem / @bf;
+        height: 70rem / @bf;
+        margin: 11rem / @bf 25rem / @bf 7rem / @bf 24rem / @bf;
+        background: url('../images/3-4.png') no-repeat;
+        background-size: 44rem / @bf 70rem / @bf;
+        // background-color: pink;
+    }
+
+    .search {
+        flex: 1;
+
+        // background-color: purple;
+        input {
+            margin-top: 12rem / @bf;
+            padding-left: 55rem / @bf;
+            background-color: #FFF2CC;
+            width: 100%;
+            height: 66rem / @bf;
+            outline: none;
+            border-radius: 33rem / @bf;
+            border: 0;
+            color: #757583;
+            font-size: 25rem / @bf;
+        }
+    }
+
+    .login {
+        width: 75rem / @bf;
+        height: 70rem / @bf;
+        margin: 10rem / @bf;
+        font-size: 25rem / @bf;
+        color: #fff;
+        text-align: center;
+        line-height: 70rem / @bf;
+        // background-color: blue;
+    }
+
+}
+
+// banner
+.banner {
+    width: 750rem / @bf;
+    height: 368rem / @bf;
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+// ad
+.ad {
+    display: flex;
+
+    a {
+        flex: 1;
+
+        img {
+            width: 100%;
+        }
+    }
+}
+
+// nav
+nav {
+    width: 750rem / @bf;
+
+    a {
+        float: left;
+        width: 150rem / @bf;
+        height: 140rem / @bf;
+        text-align: center;
+
+
+        img {
+            display: block;
+            width: 82rem / @bf;
+            height: 82rem / @bf;
+            margin: 10rem / @bf auto 0;
+        }
+
+        span {
+            font-size: 25rem / @bf;
+            color: #333;
+        }
+    }
+}
