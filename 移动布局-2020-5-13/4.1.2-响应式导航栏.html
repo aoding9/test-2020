@@ -1,0 +1,69 @@
+<!--
+————————
+5-19-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>响应式导航栏 - 前端学习</title>
+
+    <link href="images/favicon-1.ico" rel="shortcut icon">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <!-- 	<link href="css/normalize.css" rel="stylesheet"> -->
+    <!-- <link href="css/.css" rel="stylesheet"> -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 750px;
+            margin: 0 auto;
+        }
+
+        .container ul li {
+            list-style: none;
+            float: left;
+            width: 93.75px;
+            height: 30px;
+            background-color: green;
+            color: #fff;
+
+        }
+
+        /* 小于768就让li多行显示 */
+        @media screen and (max-width:767px) {
+            .container {
+                width: 100%;
+            }
+
+            .container ul li {
+                width: 33.33%;
+            }
+        }
+    </style>
+    <!-- <script></script> -->
+</head>
+
+<body>
+    <div class="container">
+        <ul>
+            <li>导航栏</li>
+            <li>导航栏</li>
+            <li>导航栏</li>
+            <li>导航栏</li>
+            <li>导航栏</li>
+            <li>导航栏</li>
+            <li>导航栏</li>
+            <li>导航栏</li>
+        </ul>
+    </div>
+</body>
+
+</html>

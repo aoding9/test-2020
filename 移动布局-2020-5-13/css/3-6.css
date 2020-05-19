@@ -1,7 +1,8 @@
 body {
     /* 限制最大最小宽度 */
     min-width: 320px;
-    max-width: 750px;
+    /*由于没有设置媒体查询common，所以需要给body限制最大宽度，不过下面媒体查询有限制，这里就不用加了*/
+    /* max-width: 750px; */
     width: 10rem;
     margin: 0 auto;
     line-height: 1.5;
@@ -16,12 +17,14 @@ a {
 
 /* cssrem插件默认的HTML文字大小为16px,搜cssrem设置改为我们需要的75 */
 
-/* 如果屏幕超过了750px 就按照750设计稿设置字体大小，不让他超出750*/
+
+/* 由于根字体大小是js设置的，但是如果屏幕超过了750px还会继续变大，所以要手动限制超出750就按照750设计稿设置字体大小，不让他超出*/
 @media screen and (min-width: 750px) {
     html {
+        /*flexible引入写在 引入css下面，所以媒体查询会被层叠，需要提权*/
         font-size: 75px !important;
     }
-}
+} 
 
 .search-content {
     display: flex;

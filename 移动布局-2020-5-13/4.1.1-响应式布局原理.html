@@ -1,0 +1,62 @@
+<!--
+————————
+5-19-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>响应式布局原理 - 前端学习</title>
+
+    <link href="images/favicon-1.ico" rel="shortcut icon">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <!-- 	<link href="css/normalize.css" rel="stylesheet"> -->
+    <!-- <link href="css/.css" rel="stylesheet"> -->
+    <style>
+        .container {
+            height: 150px;
+            background-color: #1a1;
+            margin: 0 auto;
+        }
+
+        /* 超小屏幕 小于768 布局容器宽度100% */
+        @media screen and (max-width:767px) {
+            .container {
+                width: 100%;
+            }
+        }
+
+        /* 小屏幕 大于等于768 小于992 布局容器宽度750px */
+        @media screen and (min-width:768px) {
+            .container {
+                width: 750px;
+            }
+        }
+
+        /* 中等屏幕 大于等于992 小于1200 布局容器宽度970px */
+        @media screen and (min-width: 992px) {
+            .container {
+                width: 970px
+            }
+        }
+
+        /* 大屏幕 大于等于1200px 布局容器宽度1170 */
+        @media screen and (min-width:1200px) {
+            .container {
+                width: 1170px;
+            }
+        }
+    </style>
+    <!-- <script></script> -->
+</head>
+
+<body>
+    响应式开发首先要一个布局容器,通过布局容器设置不同屏幕下的布局
+    <div class="container"></div>
+</body>
+
+</html>
