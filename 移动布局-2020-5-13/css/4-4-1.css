@@ -1,0 +1,98 @@
+/* 根据设计稿，修改container最大宽度为1280px */
+@media screen and (min-width:1280px) {
+    .container {
+        width: 1280px;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: #666;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* header; */
+header {
+    padding-left: 0 !important;
+}
+
+.logo {
+    background-color: #429AD9;
+}
+
+.logo img {
+    /* max-width是指最大宽度不超过父级，如果超过了就限制，没超过则不会缩放，而width无论如何都会缩放 */
+    /* 如果用width，不符合小屏的logo样式 */
+    max-width: 100%;
+}
+
+.nav {
+    background-color: #eee;
+    border-bottom: solid 1px #ccc;
+}
+
+
+.nav a {
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 30px;
+    font-size: 16px;
+}
+
+.nav a:hover {
+    color: #333;
+    background-color: #fff;
+}
+/* 让字体图标垂直居中，并且设置一个小边距 */
+.nav a::before {
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+/* article; */
+.news li {
+    float: left;
+    width: 25%;
+    height: 128px;
+    padding-right: 10px;
+    margin-bottom: 10px;
+}
+
+.news li a {
+    position: relative;
+    display:block;
+    width: 100%;
+    height: 100%;
+
+}
+
+.news li:nth-child(1) {
+    width: 50%;
+    height: 266px;
+    font-size:16px;
+    background-color:pink;
+}
+
+.news li a img {
+    width: 100%;
+    height: 100%;
+}
+
+.news li p {
+    position:absolute;
+    bottom:0;
+    width: 100%;
+    height: 40px;
+    background: rgba(0,0,0,.3);
+
+}

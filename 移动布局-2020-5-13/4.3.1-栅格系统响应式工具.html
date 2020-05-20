@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>aa</title>
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+<script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+<style>
+    .row div {
+        height:200px;
+        border: solid 1px #ccc;
+    }
+    .xs {
+        background-color: red;
+    }
+    .sm {
+        background-color: green;
+    }
+    .md {
+        background-color: yellow;
+    }
+    .lg {
+        background-color: deeppink;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h4>.hidden-xs 超小屏隐藏，其他屏可见 类似的还有.hidden-sm/md/lg</h4>
+    <h4>.visible-xs 超小屏显示，其他屏隐藏 类似的还有.visible-sm/md/lg</h4>
+
+    <div class="row">
+        <div class="xs col-xs-4 hidden-xs">xs隐藏</div>
+        <div class="sm col-xs-4 hidden-sm">sm隐藏</div>
+        <div class="md col-xs-4 hidden-md">md隐藏</div>
+        <div class="lg col-xs-4 hidden-lg">lg隐藏</div>
+        <div class="lg col-xs-12 visible-lg">lg显示</div>
+    </div>
+</div>
+</body>
+</html>

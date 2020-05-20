@@ -1,0 +1,17 @@
+{
+
+	"nav-a-img-span": {
+		"prefix": "!nav-a-img-span",
+		"scope": "html",
+		"body": [
+			"<div class=\"${1:nav}\">",
+			//"<ul>\n\t<li>",
+			"\t<a href=\"#\">",
+			"\t\t<img src=\"${2:images}/$3\">",
+			"\t\t<span>${0:导航1}</span>",
+			"\t</a>",
+			//"\t</li>\n</ul>",
+			"</div>",
+		],
+		"description": "5-19-1 常用手机端nav模板"
+}

@@ -1,0 +1,22 @@
+{
+	//5-19-1 创建
+		"!doc normal html": {
+			"prefix": "!doc-normal-html",
+			"scope": "html",
+			"body": [
+				"<!DOCTYPE html>",
+				"<html>",
+				"\t<head>",
+				"\t\t<meta charset=\"UTF-8\" />",
+				"\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=false\" />",
+				"<meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\" />",
+				"\t\t<title>$1</title>",
+				"\t</head>",
+				"\t<body>",
+				"\t\t$0",
+				"\t</body>",
+				"</html>"
+			],
+			"description": "普通模板HTML Template"
+		}
+	}

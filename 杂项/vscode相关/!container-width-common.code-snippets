@@ -1,0 +1,13 @@
+{
+	//5-19-1	创建
+	"container-width-common": {
+		"prefix": "!container-width-common",
+		"body": [
+			"@media screen and (max-width:767px) {.container {width: 100%;}}",
+			"@media screen and (min-width:768px) {.container {width: 750px;}}",
+			"@media screen and (min-width: 992px) {.container {width: 970px}}",
+			"@media screen and (min-width:1200px) {.container {width: 1170px;}}",
+		],
+		"description": "5-19-1常用响应式布局容器宽度"
+	}
+}
