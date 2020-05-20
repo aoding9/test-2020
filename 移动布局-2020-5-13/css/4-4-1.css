@@ -53,6 +53,7 @@ header {
     color: #333;
     background-color: #fff;
 }
+
 /* 让字体图标垂直居中，并且设置一个小边距 */
 .nav a::before {
     vertical-align: middle;
@@ -66,21 +67,27 @@ header {
     height: 128px;
     padding-right: 10px;
     margin-bottom: 10px;
+
 }
 
 .news li a {
     position: relative;
-    display:block;
+    display: block;
     width: 100%;
     height: 100%;
+    color: #fff;
 
 }
 
 .news li:nth-child(1) {
     width: 50%;
     height: 266px;
-    font-size:16px;
-    background-color:pink;
+    /* background-color:pink; */
+}
+.news li:nth-child(1) p {
+    font-size: 20px;
+    line-height: 40px;
+    padding-top: 0;
 }
 
 .news li a img {
@@ -89,10 +96,43 @@ header {
 }
 
 .news li p {
-    position:absolute;
-    bottom:0;
+    position: absolute;
+    left: 0;
+    bottom: 0;
     width: 100%;
     height: 40px;
-    background: rgba(0,0,0,.3);
+    background: rgba(0, 0, 0, .5);
+    margin-bottom: 0;
+    padding: 5px 10px;
+    font-size:12px;
+}
 
+/* 发布模块 */
+.publish {
+    border-top: solid 1px #ccc;
+}
+
+.publish .row{
+    border-bottom: solid 1px #ccc;
+    padding: 10px 0;
+}
+.pic {
+    padding-top:10px;
+}
+
+.pic img {
+    width: 100%;
+}
+
+/* aside; */
+.banner img {
+    width: 100%;
+}
+
+.hot {
+    display:block;
+    margin-top:20px;
+    border: 1px solid #ccc;
+    
+这里收录国内各个领域的优秀博客，是一个全人工编辑的开放式博客联盟交流和展示平台......
 }
