@@ -392,3 +392,6 @@ a {
 .links a:last-child::after {
     content: '';
 }
+.links a:hover::after{
+    color:#666;
+}

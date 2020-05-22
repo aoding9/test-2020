@@ -229,13 +229,13 @@ background-color: rgba(0,0,0,.04);
     float: left;
 }
 
-.floor-hd ul li:last-child a {
-    border: 0;
-}
-
 .floor-hd ul li a {
     padding: 0 15px;
     border-right: solid #666 1px;
+}
+
+.floor-hd ul li:last-child a {
+    border: 0;
 }
 
 .tab-col{
