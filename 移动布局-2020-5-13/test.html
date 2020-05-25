@@ -1,21 +1,125 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=false" />
-<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title></title>
-        <style>
-            a {
-                border:solid 1px #ccc;
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=false" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title></title>
+    <style>
+        @keyframes a {
+            0% {}
+
+            75% {
+                opacity: 0.8;
             }
-        </style>
-    </head>
-    <body>
-        <a href="#">
-            <span>ahdoahd</span>
-            <h4>aksjdajd</h4>
-            <p>ahsdahsdada</p>
-        </a>
-    </body>
+
+            100% {
+                width: 70px;
+                height: 70px;
+                opacity: 0;
+            }
+        }
+
+        .redian {
+            position: relative;
+            width: 5px;
+            height: 5px;
+            margin: 100px auto;
+        }
+
+        .dotted {
+            top: 0;
+            left: 0;
+            background-color: blue;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+        }
+
+
+        .redian div[class^="aa"] {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 5px;
+            width: 5px;
+            border-radius: 50%;
+            box-shadow: 0 0 4px 4px rgba(0, 0, 255, .5);
+            animation: a .9s linear infinite;
+        }
+
+
+
+        .redian div.aa2 {
+            animation-delay: .3s;
+        }
+
+        .redian div.aa3 {
+            animation-delay: .6s;
+        }
+
+
+        .box1 {
+            position: relative;
+            height: 100px;
+            width: 100px;
+            margin: 200px auto;
+            text-align: center;
+            line-height: 100px;
+            perspective: 800px;
+        }
+
+
+        .box1-3d {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            transform-style: preserve-3d;
+
+        }
+
+        .box1 div {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            transition: all .5s;
+
+        }
+
+        .b1 {
+            background-color: green;
+            z-index: 1;
+        }
+
+        .b2 {
+            transform: rotateY(180deg);
+            background-color: red;
+        }
+
+        .box1:hover .box1-3d {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="redian">
+        <div class="dotted"></div>
+        <div class="aa1"></div>
+        <div class="aa2"></div>
+        <div class="aa3"></div>
+    </div>
+
+
+    <div class="box1">
+        <div class="box1-3d">
+            <div class="b1">1</div>
+            <div class="b2">2</div>
+        </div>
+    </div>
+</body>
+
 </html>
