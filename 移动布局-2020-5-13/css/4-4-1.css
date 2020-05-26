@@ -1,5 +1,5 @@
 body {
-    min-width:330px;
+    min-width: 330px;
 }
 
 a {
@@ -98,7 +98,8 @@ header {
     width: 50%;
     height: 266px;
 }
-    /* background-color:pink; */
+
+/* background-color:pink; */
 
 
 .news li a {
@@ -139,7 +140,7 @@ header {
 .publish .row {
     border-bottom: solid 1px #ccc;
     padding: 10px 0;
-    margin:0;
+    margin: 0;
 }
 
 .publish .pic img {
@@ -171,6 +172,7 @@ header {
 .hot p {
     font-size: 12px;
 }
+
 /* 写在下面可以防止同级层叠失效（写在上面也可以，提权即可） */
 /* 根据设计稿，修改container最大宽度为1280px */
 @media screen and (min-width:1280px) {
@@ -178,35 +180,43 @@ header {
         width: 1280px;
     }
 }
+
 @media screen and (max-width:991px) {
-    /* 当进入小屏，nav的li浮动 */
+
+    /* 当进入小屏，nav的li浮动 ，li宽度五等分*/
     .nav li {
         float: left;
         width: 20%;
     }
+
     /* 当进入小屏，article添加上边距 */
     article {
         margin-top: 10px;
     }
 }
+
 @media screen and (max-width:767px) {
+
     /* 进入超小屏导航文字变小 */
     .nav li a {
         font-size: 14px;
         padding-left: 5px;
     }
+
     /* 超小屏改变news li宽度，隐藏部分文字和图片 */
     .news li {
         width: 50%;
     }
 
+    /*第一个li之前加了右内边距，现在要清掉*/
     .news ul li:nth-child(1) {
         width: 100%;
         padding-right: 0;
     }
 
+    /* 字体变小，文字加粗 */
     .publish h3 {
-        font-weight:700;
+        font-weight: 700;
         font-size: 14px;
     }
 }
