@@ -1,0 +1,83 @@
+<!--
+————————
+5-27-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <!-- <style></style> -->
+    <script>
+        // prompt浏览器弹出输入框，返回输入的内容
+        // 变量的初始化：声明并赋值变量
+        // 同时声明多个变量并赋值，用逗号
+        // 字符串用单引号
+        // 连接字符串和变量用加号+
+        // 换行用\n
+        // 变量名规范：字母数字和_与$组成，且不能是数字开头，其他特殊符号不行，大小写敏感，命名尽量有语义，用驼峰命名法，不能是关键字和保留字
+        /* var  my_name = prompt('请输入姓名'),
+        my_age = prompt('请输入年龄'),
+        year = 2020 - my_age,
+             str1 = '亲爱的' + my_name + ',你大概是' + year + '年出生的',
+             str2 = '你的姓名是\n' + my_name + '\n你的年龄是\n' + my_age;
+             
+        // alert输出到提示框
+        // console.log输出到控制台日志
+        alert(str1);
+        console.log(str2); */
+
+        // 声明但未赋值，属于undefined未定义类型，赋值后根据值确定类型，并且重新赋值可以改变类型
+        var a_var;
+        console.log(a_var); //undefined未定义类型
+
+        var a_str = a_var + '啊';
+        console.log(a_str); //这里结果为字符串的undefined+啊，字符串在控制台里面是黑色，NaN null，false，undefined是灰色，数字是蓝色
+        console.log(typeof (a_str)); // 任何类型和字符串连接，结果都是string字符串类型
+
+        var a_NaN = a_var + 111; //undefined类型+数字 
+        console.log(a_NaN); //为NaN非数字类型
+
+        a_var = null;
+        console.log(a_var);
+        console.log(typeof (a_var)); //空类型属于object对象类型
+
+        a_var = +111;
+        console.log(a_var);
+        console.log(typeof (a_var)); //空类型+数字为number数字类型
+
+        //类型转换
+        var a_string = '1.6',
+            a_number = 1,
+            a_float = 1.3,
+            a_boolean = true;
+        // 其他类型转换为字符串
+        console.log(typeof (toString(a_number)));
+        console.log(typeof (String(a_float)));
+        console.log(typeof (a_boolean + '')); //隐式转换
+        //  其他类型转换为数字型
+        console.log(typeof (parseInt(a_string)));
+        console.log(typeof (parseFloat(a_string)));
+        console.log(typeof (parseInt(a_float)));
+        console.log(typeof (Number(a_boolean)));
+        console.log(typeof (a_boolean - 0)); //隐式转换
+
+        // 其他类型转换为布尔值
+        console.log(typeof (Boolean(a_number)));
+        console.log(typeof (Boolean(a_float)));
+        console.log(typeof (Boolean(null)));
+        console.log(typeof (Boolean(undefined)));
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
