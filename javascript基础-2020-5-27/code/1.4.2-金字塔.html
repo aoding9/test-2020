@@ -1,0 +1,79 @@
+<!--
+————————
+5-28-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <!-- <style></style> -->
+    <script>
+        // 首先获取层数n，一共有n行2n+1列，中间数为(1+(2n+1))/2，化简即为n
+        // 然后根据行数判断第每列三角形的开始和结束，即j>=n-(i-1)且j<=n+(i-1),当j>n+i-1时,break跳出循环
+        // 每行加个换行符
+        // 此处获取的是字符串，不能直接计算，需要把它转换成数字，
+        // var n = prompt('请输入层数') - 0;
+        // var str = '';
+        // for (var i = 1; i <= n; i++) {
+        //     for (var j = 1; j <= n * 2 + 1; j++) {
+        //         if (j >= n - i + 1 && j <= n + i - 1) {
+        //             str += '▲';
+        //         // } else if (j > n + i - 1) {
+        //         //     break;
+        //         } else {
+        //             str += ' ';
+        //         }
+        //     }
+        //     str += '\n';
+        // }
+        // console.log(str);
+
+        // 松树
+        var m = parseInt(prompt('请输入松树的层数')) + 1;
+        var str = '';
+        var n = 3;
+        for (var x = 1; x <= 3 / 2 * m; x++) {
+            for (var i = 1; i <= n; i++) {
+                for (var j = 1; j <= (m + 2) * 2; j++) {
+                    if (x != 1 && x <= m && j >= (m + 3) - (i - 1) && j <= (m + 3) + (i - 1)) {
+                        str += '▲';
+                    } else if (i + 1 < x) {
+                        break;
+                    } else if (x > m && j >= (m + 3) - m / 4 && j <= (m + 3) + m / 4) {
+                        str += '□';
+                    } else {
+                        str += ' ';
+                    }
+
+                }
+                if (i + 1 >= x) {
+                    str += '\n';
+                }
+            }
+            n++;
+        }
+        // for (var i = 1; i <= m; i++) {
+        //     for (var j = 1; j < (m + 2) * 2; j++) {
+        //         if (j >= (m + 3) - m / 3 && j <= (m + 3) + m / 3) {
+        //             str += '□';
+        //         } else {
+        //             str += ' ';
+        //         }
+        //     }
+        //     str += '\n';
+        // }
+        console.log(str);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
