@@ -1,0 +1,77 @@
+<!--
+————————
+5-28-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <!-- <style></style> -->
+    <script>
+        // 首先获取层数n，一共有n行2n-1列，中间数为(1+(2n-1))/2，化简即为n
+        // 然后根据行数判断第每列三角形的开始和结束，即j>=n-(i-1)&&j<=n+(i-1),当j>n+i-1时,break跳出循环
+        // 每行加个换行符
+        // 此处获取的是字符串，不能直接计算，需要把它转换成数字
+        // var n = prompt('请输入层数') - 0;
+        // var str = '';
+        // for (var i = 1; i <= n; i++) {
+        //     for (var j = 1; j <= n * 2 - 1; j++) {
+        //         if (j >= n - i + 1 && j <= n + i - 1) {
+        //             str += '▲';
+        //         // } else if (j > n + i - 1) {
+        //         //     break;
+        //         } else {
+        //             str += ' ';
+        //         }
+        //     }
+        //     str += '\n';
+        // }
+        // console.log(str);
+
+        // 松树
+        // 松树由树叶和树干组成
+        // 树叶：在金字塔的基础上再嵌套一层循环 用m控制大层数 并且设置默认的n为3层 大循环一次，n加一层
+        // 为了让树叶更逼真，所以把每大层的前x-1层跳过
+        function tree (){
+            var m = parseInt(prompt('请输入松树的层数')) + 1;
+            var str = '';
+            var n = 3; // 小层从三层开始
+            for (var x = 1; x <= 3 / 2 * m; x++) { // x是大层计数器 树叶有m大层，下面的树干高度占1/2m
+                for (var i = 1; i <= n; i++) { // i是小层计数器j是列计数器
+                    for (var j = 1; j <= m * 2 + 3; j++) { //最大列数为(n+m-1)*2-1 即m*2+3 中间数为m+2,
+                        if (x <= m && j >= m - i + 3 && j <= m + i + 1) { //三角区间为(m + 2)加减(i - 1) 化简即可，当x大于m时停止绘制树叶
+                            str += '▲';
+                        } else if (i <= x - 1) { //跳过每大层的前x-1层，形状更好看
+                            break;
+                        } else if (x > m && j >= (m + 2) - m / 4 && j <= (m + 2) + m /
+                            4) { //x大于m则开始画树干，树干宽度是m/2,则树干区间是(m+2)加减m/2/2
+                            str += '□';
+                        } else {
+                            str += ' ';
+                        }
+
+                    }
+                    if (i > x - 1) { //跳过了前x-1层
+                        str += '\n';
+                    }
+                }
+                n++;
+            }
+            return str;
+        }
+        console.log(tree());
+        console.log(tree);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

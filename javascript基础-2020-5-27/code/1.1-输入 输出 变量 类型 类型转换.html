@@ -34,22 +34,22 @@
 
         // 声明但未赋值，属于undefined未定义类型，赋值后根据值确定类型，并且重新赋值可以改变类型
         var a_var;
-        console.log(a_var); //undefined未定义类型
+        console.log(a_var); // undefined未定义类型
 
         var a_str = a_var + '啊';
-        console.log(a_str); //这里结果为字符串的undefined+啊，字符串在控制台里面是黑色，NaN null，false，undefined是灰色，数字是蓝色
+        console.log(a_str); // 这里结果为字符串的undefined+啊，字符串在控制台里面是黑色，NaN null，false，undefined是灰色，数字是蓝色
         console.log(typeof (a_str)); // 任何类型和字符串连接，结果都是string字符串类型
 
-        var a_NaN = a_var + 111; //undefined类型+数字 
-        console.log(a_NaN); //为NaN非数字类型
+        var a_NaN = a_var + 111; // undefined类型+数字 
+        console.log(a_NaN); // 为NaN非数字类型
 
         a_var = null;
         console.log(a_var);
-        console.log(typeof (a_var)); //空类型属于object对象类型
+        console.log(typeof (a_var)); // 空类型属于object对象类型
 
         a_var = +111;
         console.log(a_var);
-        console.log(typeof (a_var)); //空类型+数字为number数字类型
+        console.log(typeof (a_var)); // 空类型+数字为number数字类型
 
         //类型转换
         var a_string = '1.6',
@@ -59,19 +59,19 @@
         // 其他类型转换为字符串
         console.log(typeof (toString(a_number)));
         console.log(typeof (String(a_float)));
-        console.log(typeof (a_boolean + '')); //隐式转换
+        console.log(typeof (a_boolean + ''));  // 隐式转换
         //  其他类型转换为数字型
-        console.log(typeof (parseInt(a_string)));
+        console.log(typeof (parseInt(a_string))); // 转换为整数
         console.log(typeof (parseFloat(a_string)));
         console.log(typeof (parseInt(a_float)));
         console.log(typeof (Number(a_boolean)));
-        console.log(typeof (a_boolean - 0)); //隐式转换
+        console.log(typeof (a_boolean - 0));  // 隐式转换
 
         // 其他类型转换为布尔值
-        console.log(typeof (Boolean(a_number)));
-        console.log(typeof (Boolean(a_float)));
-        console.log(typeof (Boolean(null)));
-        console.log(typeof (Boolean(undefined)));
+        console.log(typeof (Boolean(a_number)));    //0是false 0之外都是true
+        console.log(typeof (Boolean(a_float))); 
+        console.log(typeof (Boolean(null))); // false
+        console.log(typeof (Boolean(undefined))); // false
 
     </script>
 </head>
