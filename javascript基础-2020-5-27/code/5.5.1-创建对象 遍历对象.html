@@ -1,0 +1,70 @@
+<!--
+————————
+5-29-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <!-- <style></style> -->
+    <script>
+        // 创建对象的三种方法
+        // 1.字面量{}
+        var obj1 = {
+            name: 'bob',
+            sex: 'man',
+            skill: function (skill) {
+                console.log(skill)
+            }
+        }
+        console.log(obj1.name);
+        console.log(obj1['sex']);
+        obj1.skill('i can sing');
+
+        // 2.使用内置构造函数和new关键字创建空对象
+        var obj2 = new Object();
+        obj2.name = 'peter';
+        obj2.sex = 'man';
+        obj2.skill = function (skill) {
+            console.log(skill)
+        }
+        console.log(obj2.name);
+        console.log(obj2['sex']);
+        obj2.skill('i can dance');
+
+        // 3.使用构造函数批量创建对象，构造函数约定首字母大写，用this指代当前对象，不需要return，通过new来创建并返回对象
+        function Obj(name, sex) {
+            this.name = name;
+            this.sex = sex;
+            this.skill = function (skill) {
+                console.log(skill)
+            }
+        }
+
+        // 声明Obj类之后用new来创建,适合用来创建大量有重复属性和方法的对象
+        var obj3 = new Obj('anne', 'woman');
+        console.log(obj3.name);
+        console.log(obj3.sex);
+        obj3.skill('i can swim');
+
+
+
+        //遍历对象for in
+        for (var k in obj3) {
+            console.log(k);
+            console.log(obj3[k])
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

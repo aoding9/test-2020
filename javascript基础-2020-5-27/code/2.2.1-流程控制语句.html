@@ -1,0 +1,55 @@
+<!--
+————————
+5-31-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <script>
+        // if(条件判断语句){代码} 条件语句布尔值为真就执行{}里的代码
+        var i = 1,
+            j = 0;
+        if (i > j) {
+            console.log('i>j')
+        }
+        if (i) {
+            console.log('i转换为布尔值为真，所以也可以执行')
+        } else if (j) {
+            console.log('j转换为布尔值为假，所以不执行')
+        } else {
+            console.log('如果上面两个都不满足，就执行最后的else')   
+        }
+
+        // 三元表达式 表达式1?表达式2:表达式3; 表达式1为真就返回表达式2的结果，为假就返回表达式3的结果
+        var x = 3;
+        console.log(x>5?'x大于5':'x不大于5');
+
+        // switch适合有确定值的多选一判断，由于值确定，可以一次判断出分支，比if else的二选一层层筛选效率更高，分支越多越明显
+        // 里面必须要break，不然会无视条件继续执行下面的case
+        var i = prompt('你要买苹果还是菠萝？');
+        switch (i) {
+            case '苹果':
+                console.log('苹果5元一斤');
+                break;
+            case '菠萝':
+                console.log('菠萝6元一斤');
+                break;
+            default:
+                console.log('我这里只卖苹果和菠萝');
+                break;
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

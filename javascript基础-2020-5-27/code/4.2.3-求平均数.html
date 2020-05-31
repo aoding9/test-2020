@@ -1,0 +1,38 @@
+<!--
+————————
+5-31-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <script>
+        // 求一组数字的平均数，首先要遍历数组，求和，然后除以数组长度即可
+        function average(arr) {
+            var sum = 0;
+            for (var i = 0; i < arr.length; i++) {
+                if (typeof (arr[i]) != 'number') {
+                    console.log('只能是数字类型');
+                    break
+                }
+                sum += arr[i]
+            }
+            return sum / arr.length;
+        }
+        var arr = [1, 2, 3, 4, 5];
+        // var arr = [1, 2, 3, 4, '5'];
+        console.log(average(arr));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

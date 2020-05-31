@@ -1,0 +1,84 @@
+<!--
+————————
+5-28-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <!-- <style></style> -->
+    <script>
+        var arr = [1, 2, 3, 8, 5];
+        // 遍历数组
+        // function readArr(arr){
+        //     for(var i=0;i<arr.length;i++){
+        //         console.log(arr[i])
+        //     }
+        // }
+        // readArr(arr);
+
+        // arr.length表示数组长度，比数组最后一个索引多1，因此可以用来在末尾追加数组元素
+        // function putArr(num,arr){
+        //     arr[arr.length] = num;
+        // }
+        // console.log(arr);
+        // putArr(6,arr);
+        // console.log(arr);
+
+        // 计算数组长度
+        // function lengthArr(arr) {
+        //     var i = 0;
+        //     while (arr[i]) {
+        //         i++;
+        //     }
+        //     return i;
+        // }
+        // console.log(lengthArr(arr));
+
+        // 求数组中最大值，最小值类似，就不写了
+        // function maxArr(arr) {
+        //     var max=arr[0];
+        //     for (var i = 1; i < arr.length; i++) {
+        //         if (arr[i+1]>max){
+        //             max = arr[i+1]
+        //         }
+        //     }
+        //     return max;
+        // }
+        // console.log(maxArr(arr));
+
+        // 数组元素拼接字符串
+        // var str = '';
+        // var strArr = ['a', 'b', 'c'];
+        // function arrToStr(arr) {
+        //     for (var i = 0; i <= arr.length - 1; i++) {
+        //         str += arr[i] + '.'
+        //     }
+        //     console.log(str);
+        // }
+        // arrToStr(strArr);
+
+        // 翻转数组
+        function reverse(arr) {
+            var newArr = [];
+            for (var i = arr.length - 1; i >= 0; i--) {
+                newArr[newArr.length] = arr[i];
+            }
+            return newArr;
+        }
+        console.log(arr);
+        console.log(reverse(arr));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

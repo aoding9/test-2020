@@ -1,0 +1,43 @@
+<!--
+————————
+5-31-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <script>
+        // 必须实例化才能获取时间，不传参数默认是当前时间
+        var now1 = new Date();
+        console.log(now1);
+        // 通过参数获取指定时间的日期对象
+        var otherDay = new Date('2020/5/30');
+        console.log(otherDay);
+        // Date对象的属性和方法
+        var dates = new Date();
+        // 格式化日期对象 年-月-日-星期 时：分：秒  小于10补0更好看
+        var weekday = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+        var nowTime = dates.getFullYear() + '-' + dates.getMonth() + '-' + dates.getDate() + '\t' + weekday[dates.getDay()] +
+            '\t' + dates.getHours() + ':' + dates.getMinutes() + ':' + dates.getSeconds();
+        console.log(nowTime);
+        // 获取自1970年1月1日0时0分0秒（世界标准时间）来的总毫秒数
+        // 实例化Date对象
+        var now2 = new Date();
+        // 1. 用于获取对象的原始值
+        console.log(now2.valueOf())
+        console.log(now2.getTime())
+        // 2. 简单写可以这么做
+        var now3 = + new Date();
+        // 3. HTML5中提供的方法，有兼容性问题
+        var now4 = Date.now();
+        console.log(now4);
+    </script>
+</head>
+<body>
+</body>
+</html>
