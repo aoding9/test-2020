@@ -1,0 +1,69 @@
+<!--
+————————
+6-3-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <style>
+        .box {
+            position: relative;
+            width: 400px;
+            border-bottom: 1px solid #ccc;
+            margin: 100px auto;
+        }
+
+        input {
+            border: none;
+            height: 32px;
+            width: 370px;
+            outline: none;
+        }
+
+        .box label img {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            width: 24px;
+        }
+    </style>
+    <!-- <script></script> -->
+</head>
+
+<body>
+    <div class='box'>
+        <label for=""><img src="../images/close.png" alt="" id="eye"></label>
+        <input type="password" id="pwd">
+    </div>
+
+    <script>
+        var eye = document.querySelector('#eye');
+        var pwd = document.querySelector('#pwd');
+        // 如何判断要睁眼还是闭眼？
+        // 通过flag来存储并判断状态
+        // 默认flag为0 状态为闭眼 那么当flag为0时点击图片就变为睁眼，同时flag设为1，反之亦然
+        var flag = 0;
+        eye.onclick = function () {
+            if (flag == 0) {
+                pwd.type = 'text';
+                eye.src = '../images/open.png';
+                // 执行完后要改变flag值，这样就可以无限0和1之间切换
+                flag = 1;
+            } else {
+                pwd.type = 'password';
+                eye.src = '../images/close.png';
+                flag = 0;
+
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!--
+————————
+6-3-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <!-- <style></style> -->
+    <!-- <script></script> -->
+</head>
+<body>
+
+    <button class="clickMe">点我</button>
+
+    <script>
+        // 事件三要素：事件源 事件类型 事件处理程序
+
+        //事件源：按钮
+        // 事件类型：点击事件
+        // 事件处理程序：输出你点了我
+
+        //  执行事件的步骤
+        // 1.获取事件源
+        // 2.注册事件（绑定事件）
+        // 3.添加事件处理程序（采取函数赋值形式）
+        var clickMe = document.querySelector('.clickMe');
+        clickMe.onclick = function(){
+            console.log('你点了我');
+        }
+
+        // 鼠标事件onclick 鼠标左键点击时触发
+
+    </script>
+</body>
+</html>

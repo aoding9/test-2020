@@ -1,0 +1,65 @@
+<!--
+————————
+6-3-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            border: solid 1px #ccc;
+        }
+
+        .pink {
+            background-color: pink;
+        }
+
+        .yellow {
+            border: solid 2px yellow;
+        }
+    </style>
+    <!-- <script></script> -->
+</head>
+
+<body>
+    <div></div>
+    <div class="div2"></div>
+    <script>
+        var div1 = document.querySelector('div');
+        var div2 = document.querySelector('.div2');
+        //修改元素样式的两种方案
+        // 方案1
+        // element.style.attribute = value;    行内样式修改
+        // 之间行内修改，权重教高，但大量修改时繁琐不方便
+        div1.onclick = function () {
+            div1.style.width = '200px';
+            div1.style.border = 'solid 1px red';
+        }
+
+        // 方案2
+        // element.className = 'className';     类名修改
+        // 修改元素的类，把类写到css里，便于修改
+        // 如果要添加多个类名，需要两个一起写上，只写一个会覆盖掉
+        div2.onclick = function () {
+            div2.className = 'pink';
+        }
+        div2.onmouseover = function () {
+            div2.className = 'yellow';
+        }
+
+        div2.onmouseout = function(){
+            div2.className = 'pink yellow';
+        }
+    </script>
+</body>
+
+</html>

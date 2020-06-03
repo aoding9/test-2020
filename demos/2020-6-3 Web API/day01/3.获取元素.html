@@ -1,0 +1,78 @@
+<!--
+————————
+6-3-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <!-- <style></style> -->
+    <!-- <script></script> -->
+</head>
+
+<body>
+    <div></div>
+    <div id="blue"></div>
+    <div class="red"></div>
+    <div class="red"></div>
+    <div><p>123</p></div>
+    <!-- 文档从上往下加载，先让元素加载出来，再执行script才有效果，所以要写在下面 -->
+    <script>
+        // document.getElementById()
+        // 作用：根据id获取元素对象
+        // 参数：id属性值，大小写敏感的字符串
+        // 返回值：返回匹配到ID的DOM的Element对象 没有匹配到则返回null
+
+        // #blue是在document下面的元素节点(本质上也是一个对象)
+        // 创建一个变量保存获取到的元素节点
+        var blue = document.getElementById('blue');
+        // console.log()会在浏览器控制台打印出信息
+        // console.dir()可以显示一个对象的所有属性和方法
+        console.log(document.getElementById('yellow')); //null
+        console.log(blue);
+        console.log(typeof blue);
+        console.dir(blue);
+
+        // getElementsByTagName()
+        // 根据标签名获取元素 
+        // 返回元素的集合，以伪数组形式保存，本质是对象，可以 通过索引号获取
+        // 注意 这个是Elements复数，可以获取多个元素 
+        var div4 = document.getElementsByTagName('div');
+        console.log(typeof div4);
+        console.dir(div4);
+
+
+        // H5新增的通过选择器获取元素 
+
+        // getElementsByClassName() 通过类名返回元素对象集合(因为是集合，所以也是复数Elements)
+        var red1 = document.getElementsByClassName('red');
+        console.log(red1);
+
+        // querySelector() 参数是选择器 只返回第一个匹配的元素
+        var red2 = document.querySelector('.red');
+        console.log(red2);
+        // 里面跟的是选择器
+
+        // querySelectorAll() 参数是选择器 返回的是所有匹配元素
+        var p = document.querySelectorAll('div')[3].querySelector('p');
+        console.log(p);
+
+     
+        // 特殊元素的获取方法
+        // 获取body元素
+        console.log(document.body);
+
+        // 获取html元素
+        console.log(document.documentElement);
+        
+        
+    </script>
+</body>
+
+</html>

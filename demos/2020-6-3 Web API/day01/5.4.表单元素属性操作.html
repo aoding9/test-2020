@@ -1,0 +1,43 @@
+<!--
+————————
+6-3-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <!-- <style></style> -->
+    <!-- <script></script> -->
+</head>
+<body>
+    <form action="">
+        <button class="btn">点击</button>
+        <input type="text" value='输入内容'>
+        <input type="checkbox" checked='checked'>我姑且同意你的霸王条款
+        <button class="register">点击注册</button>
+    </form>
+    <script>
+        var btn = document.querySelector('.btn');
+        var register = document.querySelector('.register');
+        var ipt = document.querySelector('input');
+        var checkbox = document.querySelector('input[type="checkbox"]');
+        btn.onclick = function(){
+            btn.disabled = true;
+            ipt.value = '被点击了奥 铁汁';
+        }
+        checkbox.onclick = function (){
+            if (!checkbox.checked){
+                register.disabled=true;
+                alert('不同意不能注册奥')
+            }else{
+                register.disabled=false;
+
+            }
+        }
+    </script>
+</body>
+</html>
