@@ -1,0 +1,133 @@
+<!--
+————————
+6-4-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style-type: none;
+        }
+
+        .tab {
+            width: 978px;
+            margin: 100px auto;
+        }
+
+        .tab_list {
+            height: 39px;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+        .tab_list li {
+            float: left;
+            height: 39px;
+            line-height: 39px;
+            padding: 0 20px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .tab_list .current {
+            background-color: #c81623;
+            color: #fff;
+        }
+
+        .item_info {
+            padding: 20px 0 0 20px;
+        }
+
+        .item {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tab">
+        <div class="tab_list">
+            <ul>
+                <li class="current">商品介绍</li>
+                <li>规格与包装</li>
+                <li>售后保障</li>
+                <li>商品评价（50000）</li>
+                <li>手机社区</li>
+            </ul>
+        </div>
+        <div class="tab_con">
+            <div class="item" style="display: block;">
+                商品介绍模块内容
+            </div>
+            <div class="item">
+                规格与包装模块内容
+            </div>
+            <div class="item">
+                售后保障模块内容
+            </div>
+            <div class="item">
+                商品评价（50000）模块内容
+            </div>
+            <div class="item">
+                手机社区模块内容
+            </div>
+
+        </div>
+    </div>
+    <p>h5自定义属性</p>
+    <p data-bbb="2">h5自定义属性</p>
+    <script>
+        var list = document.querySelector('.tab_list').querySelectorAll('li');
+        var items = document.querySelectorAll('.item');
+
+        for (var i = 0; i < list.length; i++) {
+            // 给每个list设置一个索引号属性
+            list[i].setAttribute('data-index', i);
+
+            // 排他思想，点击时，先清空其他list的current并隐藏所有item
+            // 然后点击的那个list设为current，并且获取索引号，根据索引号设置对应item为block，让其显示出来
+            list[i].onclick = function () {
+                for (var i = 0; i < list.length; i++) {
+                    list[i].className = '';
+                    items[i].style.display = 'none'
+                }
+                this.className = 'current';
+                var index = this.getAttribute('data-index');
+                items[index].style.display = 'block'
+                // 不要index直接写也行，但不利于阅读
+                // items[this.getAttribute('data-index')].style.display = 'block'
+            }
+
+        }
+
+        // H5自定义属性
+        // 由于自定义属性容易与已有属性冲突，所以h5规定自定义属性要加data-前缀，如data-index
+        // 如何设置：可以html直接写标签里，也可以js设置
+        // 新增 element.dataset.attribute或element.dataset['attribute']，这两个自动加data-前缀，而且获取的时候不获取前缀
+        // 兼容性问题 IE11+支持
+        var p = document.querySelectorAll('p');
+        p[0].dataset.aaa = 1;
+        console.log(p[0]);
+        console.log(p[0].dataset['aaa']);
+        console.log(p[0].dataset.aaa);
+        
+        // dataset 是一个集合里面存放了所有以data开头的自定义属性
+        p[0].dataset.ccc = 1;
+        console.log(p[0].dataset)
+    </script>
+</body>
+
+</html>

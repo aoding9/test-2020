@@ -1,0 +1,76 @@
+<!--
+————————
+6-4-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <style>
+        .p1 {
+            /* 元素节点 */
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <ul>
+        <li class="li1">我是li1,我是p1的爸爸
+            <!-- 文本节点 -->
+            <p class="p1">我是p1，我是li1的儿子</p>
+            <span>我是span，p1是我兄弟</span>
+        </li>
+        <li>
+            <p>我是p</p>
+            <span>我是span</span>
+        </li>
+    </ul>
+
+    <script>
+        var p1 = document.querySelector('.p1');
+        // node.parentNode属性动态保存了对象的父节点，返回的是最近的父节点，找不到就是null
+        console.log(p1.parentNode);
+
+        // parentNode.childNodes属性动态保存了对象的所有子节点的集合（包括元素节点，属性节点，文本节点，注释节点等），所以是复数
+        var li1 = document.querySelector('.li1');
+        console.log(li1.childNodes);
+
+        for (var i = 0; i < li1.childNodes.length; i++) {
+            console.log(li1.childNodes[i].nodeType); //节点类型 1元素节点  2属性节点 3文本节点 8注释节点
+            console.log(li1.childNodes[i].nodeName);
+            console.log(li1.childNodes[i].nodeValue);
+        }
+        // 如果想得到子元素节点，需要进行处理，所以一般不用这个
+
+        // parentNode.children(非标准) 返回所有子元素节点，但是是只读属性，修改要另外改
+        console.log(li1.children);
+
+
+        // 第一个和最后一个子节点
+        var ul = document.querySelector('ul');
+        // 为什么输出不是li?因为第一个和最后一个子节点是换行和空格，属于文本节点，这就是不经常使用这个的原因，不方便
+        console.log(ul.firstChild);
+        console.log(ul.lastChild);
+
+        // 获取第一个和最后一个元素子节点
+        // 但是也不比children方便，而且还有兼容问题，IE9+支持
+        console.log(ul.firstElementChild);
+        console.log(ul.lastElementChild);
+
+        // 综上，我们一般这么获取第一和最后一个元素子节点
+        console.log(ul.children[0]);
+        console.log(ul.children[ul.children.length-1]);
+        // ul.children.length-1就是最后一个ul子元素节点的索引号
+        
+    </script>
+</body>
+
+</html>

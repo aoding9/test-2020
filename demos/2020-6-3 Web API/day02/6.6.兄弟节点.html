@@ -1,0 +1,48 @@
+<!--
+————————
+6-4-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <!-- <style></style> -->
+</head>
+<body>
+    <p>我是大哥</p>
+    <p>我是二弟</p>
+    <span>我是老三</span>
+    <script>
+        var p1 = document.querySelector('p');
+        var p3 = document.querySelector('span');
+
+        // 下一个兄弟节点，找不到就返回null（下面几个也是一样找不到就null）
+        console.log(p1.nextSibling); //是换行文本节点
+        // 上一个兄弟节点
+        console.log(p3.previousSibling);//是空格文本节点
+        
+        
+        // 下一个兄弟元素节点(有兼容性问题)
+        console.log(p1.nextElementSibling);
+        // 上一个兄弟元素节点(有兼容性问题)
+        console.log(p3.previousElementSibling);
+
+
+        // 兼容性问题解决方案，封装兼容函数
+        // 解析：传一个元素进来赋值给el，通过while循环，将el的下一个子节点赋值给el，判断el的节点类型是否为元素节点，是就返回这个元素节点，同时每次循环的条件是，判断el是否为null，为null则说明所有子节点已经全部遍历，没找到，返回null
+        function getNextElementSibling(element){
+            var el = element;
+            while(el = el.nextSibling){
+                if(el.nodeType===1){
+                    return el;
+                }
+            }
+            return null;
+        }
+    </script>
+</body>
+</html>

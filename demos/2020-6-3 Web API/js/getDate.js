@@ -1,3 +1,4 @@
+// 返回今天的年月日和星期
 function getDate() {
     var date = new Date(),
     y = date.getFullYear(),

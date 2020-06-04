@@ -31,25 +31,25 @@
 </head>
 
 <body>
-    <div></div>
+    <div><img src="../images/right.png" alt=""></div>
     <div class="div2"></div>
     <script>
         var div1 = document.querySelector('div');
         var div2 = document.querySelector('.div2');
+        var img = document.querySelector('img');
         //修改元素样式的两种方案
         // 方案1
-        // element.style.attribute = value;    行内样式修改
-        // 之间行内修改，权重教高，但大量修改时繁琐不方便
+        // element.attribute = value;    行内属性修改
+        // 直接行内修改，权重较高，但大量修改时繁琐不方便
         div1.onclick = function () {
-            div1.style.width = '200px';
-            div1.style.border = 'solid 1px red';
+            img.src = '../images/wrong.png';
         }
 
         
         // 方案2
         // element.className = 'className';     类名修改
         // 修改元素的类，把类写到css里，便于修改
-        // 如果要添加多个类名，需要两个一起写上，只写一个会覆盖掉
+        // 如果要添加多个类名，需要两个一起写上，只写一个会覆盖掉之前的类
         div2.onclick = function () {
             div2.className = 'pink';
         }

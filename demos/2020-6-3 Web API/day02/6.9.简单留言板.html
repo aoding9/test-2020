@@ -1,0 +1,53 @@
+<!--
+————————
+6-4-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <style>
+        body {
+            padding: 20px;
+        }
+        ul{
+            padding-left: 20px;
+        }
+        li{
+            color:green;
+            width: 300px;
+            margin-top: 10px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <button>发布</button>
+    <ul></ul>
+
+    <script>
+        var textarea = document.querySelector('textarea');
+        var btn = document.querySelector('button');
+        var ul = document.querySelector('ul');
+        btn.onclick = function () {
+            // 创建一个li
+            var li = document.createElement('li')
+            // 然后将textarea内的文字给这个新的li，清空文本域内容
+            li.innerHTML = textarea.value;
+            textarea.value = '';
+            // 在ul第一个子元素节点前插入li
+            ul.insertBefore(li, ul.children[0]);
+
+        }
+    </script>
+</body>
+
+</html>

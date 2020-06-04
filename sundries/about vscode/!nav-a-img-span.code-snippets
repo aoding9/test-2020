@@ -5,13 +5,11 @@
 		"scope": "html",
 		"body": [
 			"<div class=\"${1:nav}\">",
-			//"<ul>\n\t<li>",
 			"\t<a href=\"#\">",
 			"\t\t<img src=\"${2:images}/$3\">",
-			"\t\t<span>${0:导航1}</span>",
+			"\t\t<span>${0:导航栏}</span>",
 			"\t</a>",
-			//"\t</li>\n</ul>",
 			"</div>",
 		],
-		"description": "5-19-1 常用手机端nav模板"
+		"description": "5-19-1 nav-a-img-span模板"
 }
