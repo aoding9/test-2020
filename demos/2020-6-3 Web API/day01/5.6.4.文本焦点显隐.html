@@ -1,6 +1,7 @@
 <!--
 ————————
 6-3-1	创建
+6-5-1   封装成了函数
 ————————
 -->
 <!DOCTYPE html>
@@ -17,8 +18,13 @@
     </style>
 </head>
 <body>
-    <input type="text" value="手机">
+    <input type="text" value="手机" id='ipt'>
+
+    <script src='../js/placeHolderText.js'></script>
     <script>
+        placeHolderText('ipt','家电促销','blue','red')
+    </script>
+    <!-- <script>
         var text = document.querySelector('input');
         text.onfocus = function(){
             // 获得焦点 文字变深色
@@ -37,6 +43,6 @@
                 
             }
         }
-    </script>
+    </script> -->
 </body>
 </html>

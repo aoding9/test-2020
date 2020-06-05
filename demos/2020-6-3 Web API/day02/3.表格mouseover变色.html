@@ -1,6 +1,7 @@
 <!--
 ————————
 6-4-1	创建
+6-5-1	封装成了函数
 ————————
 -->
 <!DOCTYPE html>
@@ -43,7 +44,7 @@
 </head>
 
 <body>
-    <table>
+    <table id="tb">
         <thead>
             <tr>
                 <th>代码</th>
@@ -105,18 +106,20 @@
             </tr>
         </tbody>
     </table>
+    <script src="../js/trChangeColor.js"></script>
     <script>
-        var trs = document.querySelector('tbody').querySelectorAll('tr');
-        console.log(trs);
-        for (var i = 0; i < trs.length; i++) {
-            trs[i].onmouseover = function(){
-                // console.log('aa');
-                this.className = 'current'
-            }
-            trs[i].onmouseout = function(){
-                this.className = ''
-            }
-        }
+        trChangeColor('tb','current')
+        // var trs = document.querySelector('tbody').querySelectorAll('tr');
+        // console.log(trs);
+        // for (var i = 0; i < trs.length; i++) {
+        //     trs[i].onmouseover = function(){
+        //         // console.log('aa');
+        //         this.className = 'current'
+        //     }
+        //     trs[i].onmouseout = function(){
+        //         this.className = ''
+        //     }
+        // }
     </script>
 </body>
 

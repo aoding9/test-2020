@@ -1,0 +1,101 @@
+<!--
+————————
+6-5-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <style>
+        table {
+            margin: 100px auto;
+            border-collapse: collapse;
+            text-align: center;
+            width: 500px;
+        }
+
+        td,
+        th {
+            border: 1px solid #333;
+        }
+
+        thead tr {
+            height: 40px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <table>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>科目</th>
+                <th>成绩</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody id="tb">
+        </tbody>
+    </table>
+    <script src="../js/autoCreateTable.js"></script>
+    <script src="../js/autoWriteTable.js"></script>
+    <script>
+        // 1.先去准备好学生的数据
+        var datas = [{
+            name: '魏璎珞',
+            subject: 'JavaScript',
+            score: 100
+        }, {
+            name: '弘历',
+            subject: 'JavaScript',
+            score: 98
+        }, {
+            name: '傅恒',
+            subject: 'JavaScript',
+            score: 99
+        }, {
+            name: '明玉',
+            subject: 'JavaScript',
+            score: 88
+        }, {
+            name: '大猪蹄子',
+            subject: 'JavaScript',
+            score: 0
+        }];
+
+        var num = 0;
+        for(var k in datas[0]){
+            num++;
+        }
+        // 生成表格，填入数据
+        autoCreateTable('tb', datas.length,num);
+        autoWriteTable('tb', datas);
+        
+        // 添加删除链接
+        var tbody = document.querySelector('tbody')
+        var trs = tbody.querySelectorAll('tr');
+        for (var i = 0 ;i < datas.length ;i++) {
+            var rm = document.createElement('td');
+            rm.innerHTML = '<a href="javascript:;">删除</a>';
+            trs[i].appendChild(rm)
+        }
+        // 绑定点击事件
+        var rms = document.querySelectorAll('a');
+        for (var i = 0 ;i < rms.length ;i++) {
+            rms[i].onclick = function(){
+                tbody.removeChild(this.parentNode.parentNode)
+            }
+        }
+    </script>
+</body>
+
+</html>

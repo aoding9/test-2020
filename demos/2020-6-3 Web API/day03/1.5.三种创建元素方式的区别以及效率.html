@@ -1,0 +1,89 @@
+<!--
+————————
+6-5-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <!-- <style></style> -->
+</head>
+
+<body>
+    <div class="box1">
+        <button class="btn1">按钮1</button>
+    </div>
+    <div class="box2">
+        <button class="btn2">按钮2</button>
+    </div>
+    <div class="box3">
+        <button class="btn3">按钮3</button>
+    </div>
+    <div class="box4">
+        <button class="btn4">按钮4</button>
+    </div>
+    <script>
+        var box1 = document.querySelector('.box1');
+        var box2 = document.querySelector('.box2');
+        var box3 = document.querySelector('.box3');
+        var box4 = document.querySelector('.box4');
+        var btn1 = document.querySelector('.btn1');
+        var btn2 = document.querySelector('.btn2');
+        var btn3 = document.querySelector('.btn3');
+        var btn4 = document.querySelector('.btn4');
+        var num = 500;
+
+        // 1. document.write()将内容写入内容流，如果文档流执行完毕再执行他，会导致页面全部重绘（相当于新建了个页面）
+        btn1.onclick = function () {
+            var d1 = +new Date();
+            for (var i = 0; i < num; i++) {
+                document.write('<span>1</span>')
+            }
+            var d2 = +new Date();
+            console.log(d2-d1)
+            alert('页面重绘了')
+        }
+
+        // 2. innerHTML 创建元素
+        btn2.onclick = function () {
+            var d1 = +new Date();
+            for (var i = 0; i < num; i++) {
+                box2.innerHTML += '<span>2</span>'
+            }
+            var d2 = +new Date();
+            console.log(d2-d1)
+        }
+        // 拼接字符串效率低，尽量用数组
+        btn3.onclick = function () {
+            var d1 = +new Date();
+            var arr = [];
+            for (var i = 0; i < num; i++) {
+                arr.push('<span>3</span>')
+            }
+            box3.innerHTML = arr.join('')
+            var d2 = +new Date();
+            console.log(d2-d1)
+        }
+
+        // 3. document.createElement() 创建元素
+        btn4.onclick = function () {
+            var d1 = +new Date();
+
+            for (var i = 0; i <= num; i++) {
+                var span = document.createElement('span');
+                span.innerText = '4'
+                box4.appendChild(span);
+            }
+            var d2 = +new Date();
+            console.log(d2-d1)
+        }
+    </script>
+</body>
+
+</html>
