@@ -1,41 +1,71 @@
 // 功能：自动生成表格
-// 参数：table/tbody的id 行数trNum 列数tdNum 插入位置
-// 使用：先手动创建<table>或<tbody>，给他id，然后传进来
-function autoCreateTable(id, trNum, tdNum, indexRow) {
+// 参数：table/tbody元素对象 行数trNum 列数tdNum 插入第几行位置
+// 使用：先手动创建并获取<table>或<tbody>，然后传进来
+function autoCreateTable(element, trNum, tdNum, indexRow) {
     //错误信息
-    var err1 = 'Err1:id、trNum和tdNum参数必须写',
-        err2 = 'Err1:id必须是字符串，其他参数必须是整数',
-        err3 = 'Err3:id匹配的元素不存在',
-        err4 = 'Err4:id匹配的元素必须是TABLE或TBODY',
-        err5 = 'Err5:trNum和tdNum不能小于1，indexRow不能小于0';
+    var requiredErr1 = 'requiredErr1:缺少必须参数element',
+        requiredErr2 = 'requiredErr2:缺少必须参数trNum',
+        requiredErr3 = 'requiredErr3:缺少必须参数tdNum',
+        typeErr1 = 'TypeErr1:element不是元素对象',
+        typeErr2 = 'TypeErr2:trNum不是整数',
+        typeErr3 = 'TypeErr3:tdNum不是整数',
+        typeErr4 = 'TypeErr4:indexRow不是整数',
+        conditionErr1 = 'conditionErr1:element不是TABLE或TBODY',
+        conditionErr2 = 'conditionErr2:trNum不能小于1',
+        conditionErr3 = 'conditionErr3:trNum不能小于1',
+        conditionErr4 = 'conditionErr4:indexRow不能小于0';
 
-    // id、trNum和tdNum参数必须写
-    if (typeof id == 'undefined' || typeof trNum == 'undefined' || typeof tdNum == 'undefined') {
-        console.log(err1);
+    // 必须参数
+    if (typeof element == 'undefined') {
+        console.log(requiredErr1);
+        return
+    }
+    if (typeof trNum == 'undefined') {
+        console.log(requiredErr2);
+        return
+    }
+    if (typeof tdNum == 'undefined') {
+        console.log(requiredErr3);
         return
     }
 
-    // 参数必须字符串
-    if (typeof id != 'string' || typeof trNum != 'number' || trNum % 1 || typeof tdNum != 'number' || tdNum % 1 || (typeof indexRow != 'number' && indexRow % 1 && typeof indexRow != 'undefined')) {
-        console.log(err2)
+
+    // 参数类型判断
+    if (typeof element != 'object' || element.nodeType != 1) {
+        console.log(typeErr1);
+        return
+    }
+    if (typeof trNum != 'number' || trNum % 1) {
+        console.log(typeErr2);
+        return
+    }
+    if (typeof tdNum != 'number' || tdNum % 1) {
+        console.log(typeErr3);
+        return
+    }
+    if ((typeof indexRow != 'number' || indexRow % 1) && typeof indexRow != 'undefined') {
+        console.log(typeErr4);
         return
     }
 
-    // id匹配的元素必须存在
-    var idEl = document.querySelector('#' + id);
-    if (!idEl) {
-        console.log(err3)
+
+
+    // 参数限制条件判断
+    if (element.nodeName != 'TABLE' && element.nodeName != 'TBODY') {
+        console.log(conditionErr1)
         return;
     }
 
-    // id匹配的元素必须是TABLE或TBODY
-    if (idEl.nodeName != 'TABLE' && idEl.nodeName != 'TBODY') {
-        console.log(err4)
+    if (trNum < 1) {
+        console.log(conditionErr2)
         return;
     }
-
-    if (trNum < 1 || tdNum < 1 || indexRow < 0) {
-        console.log(err5)
+    if (tdNum < 1) {
+        console.log(conditionErr3)
+        return;
+    }
+    if (indexRow < 0) {
+        console.log(conditionErr4)
         return;
     }
 
@@ -52,9 +82,9 @@ function autoCreateTable(id, trNum, tdNum, indexRow) {
     // 克隆并添加tr节点
     for (var i = 0; i < trNum; i++) {
         if (typeof indexRow != 'undefined') {
-            idEl.insertBefore(tr.cloneNode(true), idEl.children[indexRow + i]);
+            element.insertBefore(tr.cloneNode(true), element.children[indexRow + i]);
         } else {
-            idEl.appendChild(tr.cloneNode(true));
+            element.appendChild(tr.cloneNode(true));
         }
     }
 }

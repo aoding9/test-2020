@@ -1,0 +1,70 @@
+<!--
+————————
+6-6-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <style>
+        .d1 {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+
+        .d2 {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <button>默认为事件冒泡，点击切换为事件捕获</button>
+    <div class="d1">
+        <div class="d2"></div>
+    </div>
+    <script>
+        var btn = document.querySelector('button');
+        var d1 = document.querySelector('.d1');
+        var d2 = document.querySelector('.d2');
+
+        function f1() {
+            alert('son')
+        }
+
+        function f2() {
+            alert('father')
+        }
+
+
+        function f3() {
+            alert('document')
+        }
+        document.addEventListener('click', f3);
+        d1.addEventListener('click', f2);
+        d2.addEventListener('click', f1);
+
+
+        btn.addEventListener('click', function () {
+            document.removeEventListener('click');
+            d1.removeEventListener('click');
+            d2.removeEventListener('click');
+            // addEventListener()第三个参数确定是按照事件捕获还是事件冒泡执行，默认为false，表示事件冒泡
+            document.addEventListener('click', f3, true);
+            d1.addEventListener('click', f2, true);
+            d2.addEventListener('click', f1, true);
+
+        })
+    </script>
+</body>
+
+</html>

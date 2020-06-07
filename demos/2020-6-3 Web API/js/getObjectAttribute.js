@@ -3,8 +3,8 @@
 // 返回值：对象的属性数量
 function getObjectAttributeNumber(obj) {
     //错误信息
-    var err1 = 'Err1:obj参数必须写',
-        err2 = 'Err2:obj必须是对象';
+    var err1 = 'Err1:obj是必须参数',
+        err2 = 'Err2:obj不是对象';
 
     // id、trNum和tdNum参数必须写
     if (typeof obj == 'undefined') {

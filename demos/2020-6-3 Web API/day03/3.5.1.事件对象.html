@@ -1,0 +1,55 @@
+<!--
+————————
+6-7-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="d">123</div>
+    <script>
+        // var d = document.querySelector('div');
+        // d.addEventListener('click', function (event) {
+        //     console.log(event);
+        // })
+
+        // 兼容性写法：event = event || window.event;
+        // ie678不会主动传递事件对象 需要自己通过window.event获取
+        var d = document.getElementById('d');
+
+        function myAddEventListener(element, eventName, fn) {
+            if (element.addEventListener) {
+                element.addEventListener(eventName, fn);
+            } else if (element.attachEvent) {
+                element.attachEvent('on' + eventName, fn);
+            } else {
+                element['on' + eventName] = fn;
+            }
+        }
+
+        function fn1(event) {
+            // event = event || window.event;
+            console.log(event);
+        }
+        // 这个传进来的处理函数必须先声明，不能用匿名函数形式，会报错
+        myAddEventListener(d, 'click', fn1)
+    </script>
+</body>
+
+</html>

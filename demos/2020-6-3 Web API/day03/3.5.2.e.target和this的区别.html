@@ -1,0 +1,44 @@
+<!--
+————————
+6-7-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <style>
+        div {
+            width: 500px;
+            height: 600px;
+            background-color: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </div>
+    <script>
+        var ul = document.querySelector('ul');
+        // 形参evt是event简写，名字随意，用于接收点击产生的事件对象实参
+        ul.addEventListener('click', function (evt) {
+            // this指向绑定事件的对象，div绑定了监听函数，所以指向div
+            console.log(this);
+            // e.target属性保存了触发事件的对象，此处点谁触发的就指向谁
+            console.log(evt.target);
+        })
+    </script>
+</body>
+
+</html>

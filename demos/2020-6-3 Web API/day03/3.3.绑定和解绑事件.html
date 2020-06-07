@@ -1,0 +1,52 @@
+<!--
+————————
+6-6-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <script>
+        var div = document.querySelectorAll('div');
+        // 传统方法绑定事件
+        function fn1 (){
+            alert('hi~');
+            // 传统方式解绑事件
+            div[0].onclick = null;
+        }
+        // 监听函数绑定事件 ie9以上支持
+        function fn2 (){
+            alert('hi~');
+            // removeEventListener 删除事件
+            div[1].removeEventListener('click',fn2)
+        }
+        // 老版ie的监听函数 ie678才识别，新版不识别了会报错
+        function fn3 (){
+            alert('hi~');
+            // detachEvent 旧版ie删除事件
+            div[2].detachEvent('onclick',fn3)
+        }
+
+        // 不调用就不加括号，加括号会立即调用
+        div[0].onclick = fn1;
+        div[1].addEventListener('click',fn2); // ie9以上支持
+        // div[2].attachEvent('onclick',fn3); // ie678才识别
+    </script>
+</body>
+</html>

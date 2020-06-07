@@ -37,9 +37,10 @@
             color: blue;
         }
 
-        .current {
-            background-color: pink;
+        .trChangeColor {
+            background-color: pink!important;
         }
+        
     </style>
 </head>
 
@@ -108,13 +109,14 @@
     </table>
     <script src="../js/trChangeColor.js"></script>
     <script>
-        trChangeColor('tb','current')
+        var tb = document.querySelector('#tb');
+        trChangeColor(tb)
         // var trs = document.querySelector('tbody').querySelectorAll('tr');
         // console.log(trs);
         // for (var i = 0; i < trs.length; i++) {
         //     trs[i].onmouseover = function(){
         //         // console.log('aa');
-        //         this.className = 'current'
+        //         this.className = 'trChangeColor'
         //     }
         //     trs[i].onmouseout = function(){
         //         this.className = ''

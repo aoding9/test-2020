@@ -1,58 +1,46 @@
 // 功能：鼠标经过改变tr颜色，移开恢复
-// 参数1：tr的父级id（爷爷辈也可，只要包含tr即可）
-// 参数2：类名，需要自己写一个改变tr颜色的css样式
-// 使用方法：给包含tr的父级加id，然后传进来，默认#ccc色
+// 参数1：tr的父级元素对象（爷爷辈也可，只要包含tr即可）
+// 使用方法：获取包含tr的元素对象并传进来
+// 会给鼠标所在的tr加一个trChangeColor类，默认改变颜色为#ccc，如果要自定义，需在css里给trChangeColor类指定样式
+// 注意：自定义样式由于权重问题，需要加!important提高权重才能生效
 
-function trChangeColor(id, className) {
+function trChangeColor(element) {
 
-    // 错误信息
-    var err1 = 'Err1:id参数必须写',
-        err2 = 'Err2:所有参数必须是字符串',
-        err3 = 'Err3:与id匹配的元素不存在',
-        err4 = 'Err4:与id匹配的元素必须包含tr';
+    var requiredErr1 = 'requiredErr1:缺少必须参数element',
+        typeErr1 = 'TypeErr1:element不是元素对象',
+        conditionErr1 = 'conditionErr1:element里没有tr';
 
-    // id必须写
-    if (typeof id == 'undefined') {
-        console.log(err1);
+    // 必须参数
+    if (typeof element == 'undefined') {
+        console.log(requiredErr1);
         return
     }
 
-    // 参数必须字符串
-    if (typeof id != 'string' || (typeof className != 'string' && typeof className != 'undefined')) {
-        console.log(err2)
+    // 参数类型判断
+    if (typeof element != 'object' || element.nodeType != 1) {
+        console.log(typeErr1);
         return
     }
 
-    // id匹配的元素必须存在
-    var idEl = document.querySelector('#' + id);
-    if (!idEl) {
-        console.log(err3)
-        return;
-    }
 
-    // id匹配的元素必须包含tr
-    var trs = idEl.querySelectorAll('tr');
-    
+    // 参数限制条件判断
+    // 元素里必须包含tr
+    var trs = element.querySelectorAll('tr');
     if (!trs.length) {
-        console.log(err4)
+        console.log(conditionErr1)
         return;
     }
+
 
     // 主体
     for (var i = 0; i < trs.length; i++) {
         trs[i].onmouseover = function () {
-            if (className) {
-                this.className = className
-            } else {
-                this.style.backgroundColor = '#ccc'
-            }
+            this.style.backgroundColor = '#ccc'
+            this.className = 'trChangeColor'
         }
         trs[i].onmouseout = function () {
-            if (className) {
-                this.className = ''
-            } else {
-                this.style.backgroundColor = ''
-            }
+            this.style.backgroundColor = ''
+            this.className = ''
         }
     }
 }

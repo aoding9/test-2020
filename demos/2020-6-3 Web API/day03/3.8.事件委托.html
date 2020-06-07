@@ -1,0 +1,49 @@
+<!--
+————————
+6-7-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <style>
+        div {
+            width: 500px;
+            height: 600px;
+            background-color: #ddd;
+        }
+
+        li {
+            border: red 1px solid;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+    </div>
+    <script>
+        // 当需要给大量元素添加相似的事件时，如果直接添加，需要多次操作dom，写起来麻烦，而且还影响性能
+        // 事件委托，利用事件冒泡，给父级元素绑定事件，只操作了一次dom就给子元素节点全部绑定了事件，提高了性能
+        // 可以通过e.target得到触发事件的元素对象
+        var ul = document.querySelector('ul');
+        ul.addEventListener('click', function (evt) {
+            console.log('我是' + evt.target.innerHTML);
+        })
+    </script>
+</body>
+
+</html>

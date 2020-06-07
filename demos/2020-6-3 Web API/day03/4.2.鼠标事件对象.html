@@ -1,0 +1,50 @@
+<!--
+————————
+6-7-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <style>
+        body{
+            height: 2000px;
+        }
+        div {
+            position: absolute;
+            border: 5px solid red;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        var d = document.querySelector('div');
+
+
+        document.addEventListener('mousemove', function(e) {
+            console.log(e);
+            // clientX和clientY返回鼠标在浏览器窗口中的位置，他的数值是没单位的，使用的时候不要忘记加单位
+            // d.style.left = e.clientX+'px';
+            // d.style.top = e.clientY+'px'
+
+            // pageX和pageY是鼠标在文档中的位置
+            // d.style.left = e.pageX+'px';
+            // d.style.top = e.pageY+'px'
+
+            // screenX和screenY是鼠标相对电脑屏幕的位置
+            d.style.left = e.screenX+'px';
+            d.style.top = e.screenY+'px'
+        })
+    </script>
+</body>
+
+</html>

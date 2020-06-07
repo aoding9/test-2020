@@ -1,0 +1,63 @@
+<!--
+————————
+6-7-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <style>
+        div {
+            width: 500px;
+            height: 600px;
+            background-color: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <a href="http://www.baidu.com/">百度</a>
+    </div>
+    <script>
+        var ul = document.querySelector('ul');
+        // 获得事件对象的实际类型
+        function type(evt) {
+            console.log(evt.type);
+        }
+        ul.addEventListener('click', type);
+        ul.addEventListener('mouseover', type);
+        ul.addEventListener('mouseout', type);
+        // 阻止默认行为
+        var a = document.querySelector('a');
+
+        function fn(e) {
+            // dom标准写法
+            e.preventDefault()
+        }
+        a.addEventListener('click', fn);
+
+        // 低版本兼容
+        a.onclick = function(e){
+            // ie678 是一个属性，不加括号
+            e.returnValue;
+            // 没有兼容性问题，都可以用
+            // 缺点：return false后面代码不执行了，只能传统方式绑定事件
+            return false;
+
+        }
+    </script>
+</body>
+
+</html>

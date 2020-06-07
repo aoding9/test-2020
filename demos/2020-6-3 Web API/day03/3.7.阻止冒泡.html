@@ -1,0 +1,68 @@
+<!--
+————————
+6-6-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <style>
+        .d1 {
+            margin: 100px auto;
+            width: 400px;
+            height: 400px;
+            background-color: red;
+        }
+
+        .d2 {
+            margin: auto;
+            width: 200px;
+            height: 200px;
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="d1">
+        <div class="d2"></div>
+    </div>
+    <script>
+        var d1 = document.querySelector('.d1');
+        var d2 = document.querySelector('.d2');
+
+        function f1(e) {
+            alert('son');
+            // stop 停止  Propagation 传播
+            e.stopPropagation();
+            // 非标准  cancel 取消 bubble 泡泡
+            // window.event.cancelBubble = true;
+        }
+
+        function f2() {
+            alert('father')
+        }
+
+        function f3() {
+            alert('document')
+        }
+        document.addEventListener('click', f3);
+        d1.addEventListener('click', f2);
+        d2.addEventListener('click', f1);
+
+        // 阻止冒泡的兼容性处理
+        // if (e && e.stopPropagation) {
+        //     e.stopPropagation();
+        // } else {
+        //     window.event.cancelBubble = true;
+        // }
+    </script>
+</body>
+
+</html>

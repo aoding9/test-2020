@@ -18,11 +18,12 @@
     </style>
 </head>
 <body>
-    <input type="text" value="手机" id='ipt'>
+    <input type="text" value="手机">
 
     <script src='../js/placeHolderText.js'></script>
     <script>
-        placeHolderText('ipt','家电促销','blue','red')
+        var ipt = document.querySelector('input');
+        placeHolderText(ipt,'家电促销','blue','red')
     </script>
     <!-- <script>
         var text = document.querySelector('input');

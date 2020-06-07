@@ -1684,6 +1684,8 @@ DOM 事件流会经历3个阶段：
     </script>
 ```
 
+e.curretnTarget和this类似，都是返回绑定事件的对象，但是ie678不认识，所以不如用 this
+
 ### 1.3.6 阻止默认行为
 
 > html中一些标签有默认行为，例如a标签被单击后，默认会进行页面跳转。
@@ -1704,6 +1706,7 @@ DOM 事件流会经历3个阶段：
             e.returnValue = false;
             // 我们可以利用return false 也能阻止默认行为 没有兼容性问题
             return false;
+            // 但是return后面的代码不执行了， 而且只限于传统的注册方式
         }
     </script>
 ```

@@ -43,7 +43,7 @@
                 <th>操作</th>
             </tr>
         </thead>
-        <tbody id="tb">
+        <tbody>
         </tbody>
     </table>
     <script src="../js/autoCreateTable.js"></script>
@@ -72,26 +72,26 @@
             score: 0
         }];
 
+        var tbody = document.querySelector('tbody')
         var num = 0;
-        for(var k in datas[0]){
+        for (var k in datas[0]) {
             num++;
         }
         // 生成表格，填入数据
-        autoCreateTable('tb', datas.length,num);
-        autoWriteTable('tb', datas);
-        
+        autoCreateTable(tbody, datas.length, num);
+        autoWriteTable(tbody, datas);
+
         // 添加删除链接
-        var tbody = document.querySelector('tbody')
         var trs = tbody.querySelectorAll('tr');
-        for (var i = 0 ;i < datas.length ;i++) {
+        for (var i = 0; i < datas.length; i++) {
             var rm = document.createElement('td');
             rm.innerHTML = '<a href="javascript:;">删除</a>';
             trs[i].appendChild(rm)
         }
         // 绑定点击事件
         var rms = document.querySelectorAll('a');
-        for (var i = 0 ;i < rms.length ;i++) {
-            rms[i].onclick = function(){
+        for (var i = 0; i < rms.length; i++) {
+            rms[i].onclick = function () {
                 tbody.removeChild(this.parentNode.parentNode)
             }
         }
