@@ -1,0 +1,40 @@
+<!--
+————————
+6-8-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <link href="../css/6-8-easyHtml.css" rel="stylesheet">
+    <link href="../css/6-8-common.css" rel="stylesheet">
+    <style></style>
+</head>
+
+<body>
+    <div class="bg-red w300 h300"></div>
+    <script>
+        var div = document.querySelector('div');
+        // keydown 键盘按下触发，能识别ctrl shift enter delete 方向键等 不能识别字母大小写
+        document.addEventListener('keydown', function () {
+            div.innerHTML += 'keydown触发了<br>'
+        })
+        // keypress 按键按下的时候触发  不能识别功能键 比如 ctrl shift 左右箭头啊 但是能识别大小写
+        document.addEventListener('keypress', function () {
+            div.innerHTML += 'keypress触发了<br>'
+        })
+        // keyup 按键弹起的时候触发  能识别ctrl shift enter delete 方向键等 不能识别字母大小写
+        document.addEventListener('keyup', function () {
+            div.innerHTML += 'keyup触发了<br>'
+        })
+        // 按下键盘触发顺序 keydown keypress keyup
+    </script>
+</body>
+
+</html>

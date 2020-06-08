@@ -1,0 +1,37 @@
+<!--
+————————
+6-8-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <!-- 	<link href="../css/6-8-common.css" rel="stylesheet"> -->
+    <!-- 	<link href="../css/6-8-easyHtml.css" rel="stylesheet"> -->
+    <style></style>
+    <script>
+        // navigator.userAgent存储了客户端的相关信息，可以以此判断显示手机端还是电脑端页面
+        console.log(navigator.userAgent);
+
+        if ((navigator.userAgent.match(
+                /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
+            ))) {
+            window.location.href = "2.8.navigator对象2.html"; //手机
+        }
+        // else{
+        // window.location.href = "2.8.navigator对象1.html"; //电脑
+        // }
+    </script>
+</head>
+
+<body>
+    我是电脑端页面
+</body>
+
+</html>

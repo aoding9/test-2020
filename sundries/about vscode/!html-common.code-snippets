@@ -3,10 +3,11 @@
 
 {
 // 5-9-3	修改版 添加TDK和favicon 注释了网站描述和关键词
-// 5-12-4	修改版 添加TDK和favicon 注释了网站描述和关键词
-// 5-13-5	添加理想视口的meta标签
-// 5-14-6	注释了X-UA-Compatible标签，修改了favicon图标路径
-// 5-19-7	注释了一些东西，稍微修改
+// 5-12-1	修改版 添加TDK和favicon 注释了网站描述和关键词
+// 5-13-1	添加理想视口的meta标签
+// 5-14-1	注释了X-UA-Compatible标签，修改了favicon图标路径
+// 5-19-1	注释了一些东西，稍微修改
+// 6-8-1	添加了快速样式easyHtml的css文件
 
 	"html-common": {
 		"prefix": "!html-common",
@@ -32,16 +33,18 @@
 			//初始化css"<!-- \t<link href=\"css/normalize.css\" rel=\"stylesheet\"> -->", 
 			//自定义初始化css pc端 没有兼容优化"<!-- \t<link href=\"css/base.css\" rel=\"stylesheet\"> -->",
 			//自定义初始化css 移动端"<!-- \t<link href=\"css/mobile.css\" rel=\"stylesheet\"> -->",
-			//公共css"<!-- \t<link href=\"css/common.css\" rel=\"stylesheet\"> -->", 
+			// 公共css
+			"<!-- \t<link href=\"../css/6-8-common.css\" rel=\"stylesheet\"> -->", 
+			"<!-- \t<link href=\"../css/6-8-easyHtml.css\" rel=\"stylesheet\"> -->", 
 			//当前页面css"<!-- <link href=\"css/$2.css\" rel=\"stylesheet\"> -->", 
-			"\t<!-- <style></style> -->",
+			"\t<style></style>",
 			"</head>",
 			"<body>",
 			"\t$0",
-			"\t<!-- <script></script> -->",
+			"\t<script></script>",
 			"</body>",
 			"</html>"
 		],
-		"description": "5-19-7修改版"
+		"description": "6-8-1修改版"
 	}
 }

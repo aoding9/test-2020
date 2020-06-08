@@ -1,0 +1,45 @@
+<!--
+————————
+6-8-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<!-- 	<link href="../css/6-8-common.css" rel="stylesheet"> -->
+<!-- 	<link href="../css/6-8-easyHtml.css" rel="stylesheet"> -->
+    <style></style>
+</head>
+<body>
+    
+    <script>
+        // window.onload 是窗口 (页面）加载事件，当文档内容完全加载完成会触发该事件(包括图像、脚本文件、CSS 文件等), 调用处理函数。
+        // 传统注册事件方式，写两个以最后一个为准
+        // window.onload=function(){
+        //     alert(1)
+        // }
+        // window.onload=function(){
+        //     alert(2)
+        // }
+        // 事件侦听方式，可以注册多个事件都生效
+        window.addEventListener('load',function(){
+            alert(1)
+        })
+        window.addEventListener('load',function(){
+            alert(2)
+        })
+
+        // DOMContentLoaded 事件触发时，仅当DOM加载完成，不包括样式表，图片，flash等等
+        // IE9以上支持
+        // 如果图片视频等较多，传输较慢，可以用他让js先加载，提高用户体验
+        // 可以看到，网页先弹出33，在弹出1和2
+        window.addEventListener('DOMContentLoaded',function(){
+            alert(3)
+        })
+    </script>
+</body>
+</html>

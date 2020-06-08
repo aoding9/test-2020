@@ -1,0 +1,81 @@
+<!--
+————————
+6-8-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <!-- 	<link href="../css/6-8-common.css" rel="stylesheet"> -->
+    <!-- 	<link href="../css/6-8-easyHtml.css" rel="stylesheet"> -->
+    <style>
+        div {
+            margin: 200px;
+        }
+
+        span {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            font-size: 20px;
+            color: #fff;
+            text-align: center;
+            line-height: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span class="hour">1</span>
+        <span class="minute">2</span>
+        <span class="second">3</span>
+    </div>
+    <button>开始倒计时</button>
+    <button>停止倒计时</button>
+    <script>
+        var hour = document.querySelector('.hour');
+        var minute = document.querySelector('.minute');
+        var second = document.querySelector('.second');
+        // var endTime = +new Date('2020-6-8 18:00:00');
+        //倒计时10小时
+        var endTime = +new Date() + 36000000;
+        
+        function countDown() {
+            var now = +new Date();
+            var remainS = (endTime - now) / 1000;
+            var h = parseInt(remainS / 60 / 60);
+            h < 10 ? h = '0' + h : h;
+            var m = parseInt(remainS / 60 % 60);
+            m < 10 ? m = '0' + m : m;
+            var s = parseInt(remainS % 60);
+            s < 10 ? s = '0' + s : s;
+            hour.innerHTML = h;
+            minute.innerHTML = m;
+            second.innerHTML = s;
+        }
+        // 先调用一次，防止页面出现默认文字
+        countDown();
+        var countDown1 = null;
+
+        var btn = document.querySelectorAll('button');
+        btn[0].addEventListener('click', function () {
+            countDown1 = setInterval(countDown, 1000);
+
+        });
+        // 停止定时器   clearInterval(intervalID)
+        btn[1].addEventListener('click', function () {
+            clearInterval(countDown1);
+
+        });
+    </script>
+</body>
+
+</html>

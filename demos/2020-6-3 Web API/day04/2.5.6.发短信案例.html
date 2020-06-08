@@ -1,0 +1,46 @@
+<!--
+————————
+6-8-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <!-- 	<link href="../css/6-8-common.css" rel="stylesheet"> -->
+    <!-- 	<link href="../css/6-8-easyHtml.css" rel="stylesheet"> -->
+    <style>
+        input {
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <label for="">手机号：<input type="text"><button>发送</button></label>
+    <script>
+        var btn = document.querySelector('button');
+
+        function countDown() {
+            btn.disabled = true;
+            var i = 3;
+            var countDown = setInterval(function () {
+                btn.innerHTML = i + '秒后重新发送';
+                i--;
+                if (i < 0) {
+                    clearInterval(countDown);
+                    btn.disabled = false;
+                    btn.innerHTML = '发送';
+                }
+            }, 1000)
+        }
+        btn.addEventListener('click', countDown);
+    </script>
+</body>
+
+</html>

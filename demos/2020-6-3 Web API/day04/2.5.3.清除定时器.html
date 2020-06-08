@@ -1,0 +1,38 @@
+<!--
+————————
+6-8-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <!-- 	<link href="../css/6-8-common.css" rel="stylesheet"> -->
+    <!-- 	<link href="../css/6-8-easyHtml.css" rel="stylesheet"> -->
+    <style></style>
+</head>
+
+<body>
+    <button>我是东风快递停止按钮</button>
+    <script>
+        var btn = document.querySelector('button');
+        // window.clearTimeout(回调函数,延迟毫秒数)
+        // 页面经常有多个定时器，一般给他标识符
+        var timer = window.setTimeout(function () {
+            btn.innerHTML = '爆炸了';
+        }, 2000);
+        // clearTimeout(定时器标识符);
+        function stop() {
+            clearTimeout(timer);
+            btn.innerHTML = '停止了';
+        }
+        btn.addEventListener('click', stop)
+    </script>
+</body>
+
+</html>

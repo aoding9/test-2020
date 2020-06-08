@@ -1,0 +1,39 @@
+<!--
+————————
+6-8-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <!-- 	<link href="../css/6-8-common.css" rel="stylesheet"> -->
+    <!-- 	<link href="../css/6-8-easyHtml.css" rel="stylesheet"> -->
+    <style></style>
+</head>
+
+<body>
+
+    <script>
+        // window.setTimeout(回调函数,延迟毫秒数)
+        // window可以省略
+        // 函数可以直接写，也可以写函数名，或者用字符串加小括号调用（第三种不推荐）
+        // 页面经常有多个定时器，一般给他标识符
+        var time1 = window.setTimeout(function () {
+            console.log('爆炸了1');
+        }, 2000);
+
+        function callback() {
+            console.log('爆炸了2');
+        }
+        var time2 = setTimeout(callback, 2000);
+        var time3 = setTimeout('callback()', 2000)
+    </script>
+</body>
+
+</html>

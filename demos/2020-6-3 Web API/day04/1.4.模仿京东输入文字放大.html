@@ -1,0 +1,63 @@
+<!--
+————————
+6-8-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <link href="../css/6-8-common.css" rel="stylesheet">
+    <link href="../css/6-8-easyHtml.css" rel="stylesheet">
+    <style>
+        input {
+            margin-top: 60px !important;
+        }
+
+        div {
+            font-size: 20px;
+        }
+
+        .bor-triangle-bottom::before {
+            bottom: -16px;
+            left: 20px
+        }
+    </style>
+</head>
+
+<body>
+    <div class="w200 h25 bor-style1 bor-ccc pos-absolute dis-none shadow-5 bor-triangle-bottom"></div>
+    <input type="text" class="mar-top-100 pos-relative">
+    <script>
+        var ipt = document.querySelector('input');
+        var d = document.querySelector('div');
+        // 因为按下事件不松开会一直触发，所以一般使用keyup，触发要区分大小写才用keypress
+        // keydown和keypress是在文字落入文本框之前触发，会导致少一个字，只能用keyup
+        // 如果获得焦点 并且input内容不为空 就显示
+        
+        ipt.addEventListener('focus', function () {
+            if (ipt.value) {
+                d.style.display = 'block'
+            }
+        })
+        // 如果失去焦点就隐藏
+        ipt.addEventListener('blur', function () {
+            d.style.display = 'none'
+        })
+        document.addEventListener('keyup', function () {
+            d.innerHTML = ipt.value;
+            if(ipt.value){
+                d.style.display = 'block'
+            }else{
+                d.style.display = 'none'
+            }
+        })
+    </script>
+</body>
+
+</html>

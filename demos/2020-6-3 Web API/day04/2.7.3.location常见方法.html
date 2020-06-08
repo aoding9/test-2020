@@ -1,0 +1,39 @@
+<!--
+————————
+6-8-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<!-- 	<link href="../css/6-8-common.css" rel="stylesheet"> -->
+<!-- 	<link href="../css/6-8-easyHtml.css" rel="stylesheet"> -->
+    <style></style>
+</head>
+<body>
+    <button>assign</button>
+    <button>replace</button>
+    <button>reload</button>
+    <script>
+        var btn = document.querySelectorAll('button');
+        // assign() 页面重定向，跟href一样可以跳转，记录浏览历史，可以后退
+        btn[0].addEventListener('click',function(){
+            location.assign('http://www.itcast.cn')
+        })
+        // replace() 页面替换，可以跳转，不记录浏览历史，不可以后退
+
+        btn[1].addEventListener('click',function(){
+            location.replace('http://www.itcast.cn')
+        })
+        // replace() 页面重新加载，默认参数false，相当于f5，当参数为true表示强制刷新，无视缓存，相当于ctrl+f5
+
+        btn[2].addEventListener('click',function(){
+            location.reload(true)
+        })
+    </script>
+</body>
+</html>
