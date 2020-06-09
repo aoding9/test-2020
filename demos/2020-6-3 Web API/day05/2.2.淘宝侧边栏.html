@@ -1,0 +1,85 @@
+<!--
+————————
+6-9-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <!-- 	<link href="../css/6-8-common.css" rel="stylesheet"> -->
+    <!-- 	<link href="../css/6-8-easyHtml.css" rel="stylesheet"> -->
+    <style>
+        .slider-bar {
+            position: absolute;
+            left: 50%;
+            top: 300px;
+            margin-left: 600px;
+            width: 45px;
+            height: 130px;
+            background-color: pink;
+        }
+
+        .w {
+            width: 1200px;
+            margin: 10px auto;
+        }
+
+        .header {
+            height: 150px;
+            background-color: purple;
+        }
+
+        .banner {
+            height: 250px;
+            background-color: skyblue;
+        }
+
+        .main {
+            height: 1000px;
+            background-color: yellowgreen;
+        }
+
+        span {
+            display: none;
+            position: absolute;
+            bottom: -45px;
+            width: 45px;
+            height: 45px;
+            background-color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider-bar">
+        <span class="goBack">返回顶部</span>
+    </div>
+    <div class="header w">头部区域</div>
+    <div class="banner w">banner区域</div>
+    <div class="main w">主体部分</div>
+    <script>
+        // 获取元素
+        var sliderBar = document.querySelector('.slider-bar');
+        var banner = document.querySelector('.banner');
+        // banner.offestTop 就是被卷去头部的大小 一定要写到滚动的外面
+        var bannerTop = banner.offsetTop;
+        // bannerTop - sliderBar.offsetTop就是侧边栏固定定位之后的位置
+        var sliderBarTop = sliderBar.offsetTopbannerTop - ;
+        document.addEventListener('scroll', function () {
+            // 当页面卷去的高度超出bannerTop 侧边栏改为固定定位
+            if (window.pageYOffset >= bannerTop) {
+                sliderBar.style.display = 'fixed';
+                sliderBar.style.top = sliderBarTop;
+            }
+        })
+        var goBack = document.querySelector('.goBack');
+    </script>
+</body>
+
+</html>
