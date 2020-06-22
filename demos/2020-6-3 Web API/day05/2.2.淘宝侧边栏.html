@@ -65,20 +65,38 @@
     <div class="main w">主体部分</div>
     <script>
         // 获取元素
-        var sliderBar = document.querySelector('.slider-bar');
+        var sliderbar = document.querySelector('.slider-bar');
+        var goback = document.querySelector('.goBack');
+        var header = document.querySelector('.header');
         var banner = document.querySelector('.banner');
-        // banner.offestTop 就是被卷去头部的大小 一定要写到滚动的外面
-        var bannerTop = banner.offsetTop;
-        // bannerTop - sliderBar.offsetTop就是侧边栏固定定位之后的位置
-        var sliderBarTop = sliderBar.offsetTopbannerTop - ;
+        var main = document.querySelector('.main');
+
+        // 功能1：滚动到banner之后sliderbar固定定位
+        // 功能2：滚到main之后出现goback
+
+        // 1滚动到banner，也就是滚掉header，计算header卷去的高度，其实就是banner.offsetTop
+        var bannertop = banner.offsetTop;
+        // 2然后计算固定之后，sliderbar所在位置
+        var sliderbartop = sliderbar.offsetTop - banner.offsetTop;
+        // 3计算main卷去高度
+        var maintop = main.offsetTop;
+        // 3侦听滚动事件
         document.addEventListener('scroll', function () {
-            // 当页面卷去的高度超出bannerTop 侧边栏改为固定定位
-            if (window.pageYOffset >= bannerTop) {
-                sliderBar.style.display = 'fixed';
-                sliderBar.style.top = sliderBarTop;
+            if (window.pageYOffset > bannertop) {
+                sliderbar.style.position = 'fixed';
+                sliderbar.style.top = sliderbartop + 'px';
+
+            } else {
+                sliderbar.style.position = 'absolute';
+                sliderbar.style.top = '300px';
+            }
+            // 超过maintop,出现goback
+            if (window.pageYOffset > maintop) {
+                goback.style.display = 'block';
+            } else {
+                goback.style.display = 'none'
             }
         })
-        var goBack = document.querySelector('.goBack');
     </script>
 </body>
 
