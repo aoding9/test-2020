@@ -1,0 +1,53 @@
+<!--
+————————
+6-26-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <!-- 	<link href="../css/6-8-common.css" rel="stylesheet"> -->
+    	<link href="../css/6-8-easyHtml.css" rel="stylesheet">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <!-- 核心算法： (目标值 - 现在的位置)   /  10    做为每次移动的距离步长 -->
+    <button>到500</button>
+    <button>到800</button>
+    <div class="w100 h100 pos-absolute bg-pink"></div>
+    <script>
+        var div = document.querySelector('div');
+
+        function animate(obj, target) {
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function () {
+                if (obj.offsetLeft == target) {
+                    clearInterval(obj.timer);
+                }
+                // step必须往上取整，否则当target - obj.offsetLeft) / 10小于1之后，step为0了，没到达target就不走了，当target - obj.offsetLeft) / 10小于等于0时，step取0，这样才正确停止动画，另外当step为负值时，则需要往小了取整
+                obj.step = (target - obj.offsetLeft) / 10;
+                obj.step = obj.step > 0 ? Math.ceil(obj.step) : Math.floor(obj.step);
+                obj.style.left = obj.offsetLeft + obj.step + 'px';
+            }, 20)
+        }
+
+        var btn = document.querySelectorAll('button');
+        btn[0].addEventListener('click', function () {
+            animate(div, 500)
+        });
+        btn[1].addEventListener('click', function () {
+            animate(div, 800)
+        });
+    </script>
+</body>
+
+</html>

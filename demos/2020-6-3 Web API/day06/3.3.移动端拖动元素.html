@@ -1,0 +1,47 @@
+<!--
+————————
+6-27-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <!-- 	<link href="../css/6-8-common.css" rel="stylesheet"> -->
+    <link href="../css/6-8-easyHtml.css" rel="stylesheet">
+    <style></style>
+</head>
+
+<body>
+    <div class="w100 h100 pos-absolute bg-pink"></div>
+    <script>
+        var div = document.querySelector('div');
+        // 手指起始坐标
+        var startX = 0;
+        var startY = 0;
+        // 盒子坐标
+        var x = 0;
+        var y = 0;
+        div.addEventListener('touchstart', function (e) {
+            startX = e.targetTouches[0].pageX;
+            startY = e.targetTouches[0].pageY;
+            x = this.offsetLeft;
+            y = this.offsetTop;
+        });
+        div.addEventListener('touchmove', function (e) {
+            var moveX = e.targetTouches[0].pageX - startX;
+            var moveY = e.targetTouches[0].pageY - startY;
+            div.style.left = x + moveX + 'px';
+            div.style.top = y + moveY + 'px';
+            // 手指下滑默认有个滚动事件，需要阻止默认事件
+            e.preventDefault();
+        });
+    </script>
+</body>
+
+</html>

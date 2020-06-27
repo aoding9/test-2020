@@ -1,0 +1,96 @@
+<!--
+————————
+6-26-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <!-- 	<link href="../css/6-8-common.css" rel="stylesheet"> -->
+    <link href="../css/6-8-easyHtml.css" rel="stylesheet">
+    <style> </style>
+</head>
+
+<body>
+    龟兔赛跑比赛现场
+    <button>比赛开始</button>
+    <div class="pos-absolute h100 w100 bg-pink">乌龟</div>
+    <div class="pos-absolute top200 h100 w100 bg-pink">兔子</div>
+    <script>
+        //封装一个简单的动画函数
+        // obj 动画对象
+        // distance 移动距离
+        // speed 移动速度，每秒移动的px
+        // callback 动画完成后执行的回调函数
+
+        function animate(obj, distance, speed, callback) {
+            // 计算速度，每帧移动距离
+            speed = speed / 100;
+            // 获取源位置
+            // 用定时器不停地让left+speed达到移动的效果
+            var timer = setInterval(function () {
+                // 移动一定的距离后就停止定时器
+                if (obj.offsetLeft >= distance) {
+                    clearInterval(timer);
+                    // 回调函数写到定时器的结束语句里面
+                    if (callback) callback();
+                }
+                obj.style.left = obj.offsetLeft + speed + 'px';
+            }, 10);
+        }
+
+        var div = document.querySelectorAll('div');
+        var btn = document.querySelector('button');
+        // animate(div[0], 1000, 200);
+        //     animate(div[1], 500, 300, function () {
+        //         console.log('兔子半路睡着了,他睡了2s，然后醒了');
+        //         setTimeout(function () {
+        //             animate(div[1], 500, 400, function () {
+        //                 console.log('等他急急忙忙赶到终点，乌龟已经赢了');
+        //             })
+        //         }, 2000);
+        //     });
+
+
+
+        // 用按钮给不同的div注册定时器
+        // 优化：每次调用函数，都会声明一次timer，比较费内存资源，所以用obj.timer，将定时器设为obj的一个自定义属性，obj本身已经有了，所以不会再开辟额外的空间
+        // bug：如果不做处理，连续点击速度会越来越快，每次点击都注册一个定时器，叠加了
+        // 每次点击需要先清除原来的定时器，再添加，这样就可以了
+
+        function animate2(obj, distance, speed, callback) {
+            // 计算速度，每帧移动距离
+            speed = speed / 100;
+            // 获取源位置
+            // 用定时器不停地让left+speed达到移动的效果
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function () {
+                // 移动一定的距离后就停止定时器
+                if (obj.offsetLeft >= distance) {
+                    clearInterval(obj.timer);
+                    if (callback) callback();
+                }
+                obj.style.left = obj.offsetLeft + speed + 'px';
+            }, 10);
+        }
+        btn.addEventListener('click', function () {
+            animate2(div[0], 1000, 200);
+            animate2(div[1], 500, 300, function () {
+                console.log('兔子半路睡着了,他睡了2s，然后醒了');
+                setTimeout(function () {
+                    animate2(div[1], 1000, 400, function () {
+                        console.log('等他急急忙忙赶到终点，乌龟已经赢了');
+                    })
+                }, 2000);
+            });
+        })
+    </script>
+</body>
+
+</html>

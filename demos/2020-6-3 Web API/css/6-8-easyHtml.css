@@ -94,6 +94,32 @@
     position: absolute
 }
 
+.top50{
+    top: 50px;
+}
+.left50{
+    top: 50px;
+}
+.top100{
+    top: 100px;
+}
+.left100{
+    top: 100px;
+}
+.top200{
+    top: 200px;
+}
+.left200{
+    top: 200px;
+}
+.top500{
+    top: 500px;
+}
+.left500{
+    top: 500px;
+}
+
+
 .flo-left {
     float: left
 }

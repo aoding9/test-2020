@@ -1,0 +1,130 @@
+<!--
+————————
+6-26-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <!-- 	<link href="../css/6-8-common.css" rel="stylesheet"> -->
+    <!-- 	<link href="../css/6-8-easyHtml.css" rel="stylesheet"> -->
+    <style>
+        .slider-bar {
+            position: absolute;
+            left: 50%;
+            top: 300px;
+            margin-left: 600px;
+            width: 45px;
+            height: 130px;
+            background-color: pink;
+        }
+
+        .w {
+            width: 1200px;
+            margin: 10px auto;
+        }
+
+        .header {
+            height: 150px;
+            background-color: purple;
+        }
+
+        .banner {
+            height: 250px;
+            background-color: skyblue;
+        }
+
+        .main {
+            height: 1000px;
+            background-color: yellowgreen;
+        }
+
+        span {
+            display: none;
+            position: absolute;
+            bottom: -45px;
+            width: 45px;
+            height: 45px;
+            background-color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider-bar">
+        <span class="goBack">返回顶部</span>
+    </div>
+    <div class="header w">头部区域</div>
+    <div class="banner w">banner区域</div>
+    <div class="main w">主体部分</div>
+    <script>
+        // 获取元素
+        var sliderbar = document.querySelector('.slider-bar');
+        var goback = document.querySelector('.goBack');
+        var header = document.querySelector('.header');
+        var banner = document.querySelector('.banner');
+        var main = document.querySelector('.main');
+
+        // 功能1：滚动到banner之后sliderbar固定定位
+        // 功能2：滚到main之后出现goback
+
+        // 1滚动到banner，也就是滚掉header，计算header卷去的高度，其实就是banner.offsetTop
+        var bannertop = banner.offsetTop;
+        // 2然后计算固定之后，sliderbar所在位置
+        var sliderbartop = sliderbar.offsetTop - banner.offsetTop;
+        // 3计算main卷去高度
+        var maintop = main.offsetTop;
+        // 3侦听滚动事件
+        document.addEventListener('scroll', function () {
+            if (window.pageYOffset > bannertop) {
+                sliderbar.style.position = 'fixed';
+                sliderbar.style.top = sliderbartop + 'px';
+
+            } else {
+                sliderbar.style.position = 'absolute';
+                sliderbar.style.top = '300px';
+            }
+            // 超过maintop,出现goback
+            if (window.pageYOffset > maintop) {
+                goback.style.display = 'block';
+            } else {
+                goback.style.display = 'none'
+            }
+        })
+
+        // 没有动画效果的滚动
+        // goback.addEventListener('click', function () {
+        //     scroll(0, 0)
+        // });
+
+        // 有动画效果更舒服
+        function animate(obj, target, callback) {
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function () {
+                if (obj.pageYOffset == target) {
+                    clearInterval(obj.timer);
+                    callback && callback()
+                }
+                
+                obj.step = (target - obj.pageYOffset) / 10;
+                obj.step = obj.step > 0 ? Math.ceil(obj.step) : Math.floor(obj.step);
+                if (obj.step == -1) obj.step = -2; //为了解决浏览器窗口缩小后-1不移动的问题
+                window.scroll(0, obj.pageYOffset + obj.step);
+            }, 20)
+        }
+
+
+        goback.addEventListener('click', function () {
+            //让window滚动
+            animate(window, 0)
+        })
+    </script>
+</body>
+
+</html>

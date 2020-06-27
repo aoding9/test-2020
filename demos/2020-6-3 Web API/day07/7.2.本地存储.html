@@ -1,0 +1,59 @@
+<!--
+————————
+6-27-1	创建
+————————
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>前端学习</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <!-- 	<link href="../css/6-8-common.css" rel="stylesheet"> -->
+    <!-- 	<link href="../css/6-8-easyHtml.css" rel="stylesheet"> -->
+    <style></style>
+</head>
+
+<body>
+    <input type="text">
+    <button class="set">保存数据</button>
+    <button class="get">获取数据</button>
+    <button class="remove">删除数据</button>
+    <button class="clear">全部清空</button>
+    <script>
+
+        // window.sessionStorage本地会话存储，只要当前窗口不关闭就一直有效，生命周期在网页窗口关闭时结束
+        // 键值对形式存储
+        var input = document.querySelector('input');
+        var set = document.querySelector('.set');
+        var get = document.querySelector('.get');
+        var remove = document.querySelector('.remove');
+        var clear = document.querySelector('.clear');
+        set.addEventListener('click', function () {
+            // sessionStorage.setItem(key, value)
+            var value = input.value;
+            sessionStorage.setItem('uname', value);
+            sessionStorage.setItem('passw', '123');
+        })
+        get.addEventListener('click', function () {
+            // sessionStorage.getItem(key)
+            console.log(sessionStorage.getItem('uname'));
+        })
+        remove.addEventListener('click', function () {
+            // sessionStorage.removeItem(key)
+            sessionStorage.removeItem('uname');
+        })
+        clear.addEventListener('click', function () {
+            // sessionStorage.clear()
+            sessionStorage.clear();
+        })
+
+
+        // window.localStorage本地存储 生命周期永久生效，除非手动删除 否则关闭页面也会存在 可以多窗口（页面）共享（同一浏览器可以共享）
+    </script>
+</body>
+
+</html>
