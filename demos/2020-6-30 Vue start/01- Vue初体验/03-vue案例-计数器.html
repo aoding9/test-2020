@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+</head>
+<body>
+ <div id="app">
+   <h2>当前计数：{{counter}}</h2>
+   <!-- v-on:eventtype 事件绑定-->
+   <button type="button" v-on:click=" counter++">+</button>
+   <button type="button" v-on:click=" counter--">-</button>
+   
+   <!-- 语法糖@eventtype v-on也可以调用实例的方法 当方法无需传入参数，或作为为事件回调时，括号可以省略不写 -->
+   <button type="button" @click="increase">+</button>
+   <button type="button" @click="decrease">-</button>
+ </div>
+ <script src="../common/js/vue.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript">
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        counter: 0
+      },
+      // methods属性定义实例的方法
+      methods: {
+        increase() {
+          // counter不是全局变量，是app.data.counter简写为this.counter
+          this.counter++
+        },
+        decrease() {
+          this.counter--
+        }
+      }
+    })
+  </script>
+</body>
+</html>

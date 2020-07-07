@@ -1,0 +1,218 @@
+/* 宽高 */
+.w25 {
+    width: 25px
+}
+
+.h25 {
+    height: 25px
+}
+.w50 {
+    width: 50px
+}
+
+.h50 {
+    height: 50px
+}
+
+.w100 {
+    width: 100px
+}
+
+.h100 {
+    height: 100px
+}
+
+.w200 {
+    width: 200px
+}
+
+.h200 {
+    height: 200px
+}
+
+.w300 {
+    width: 300px
+}
+
+.h500 {
+    height: 500px
+}
+
+.w500 {
+    width: 500px
+}
+
+.h300 {
+    height: 300px
+}
+/* 背景色 */
+.bg-pink {
+    background-color: pink
+}
+
+.bg-skyblue {
+    background-color: skyblue
+}
+
+.bg-purple {
+    background-color: purple
+}
+
+.bg-red {
+    background-color: red
+}
+
+.bg-yellow {
+    background-color: yellow
+}
+
+.bg-green {
+    background-color: green
+}
+
+.bg-ccc {
+    background-color: #ccc
+}
+/* 字体颜色 */
+.ft-white {
+    color: white
+}
+
+.ft-ccc {
+    color: #ccc
+}
+/* 文字居中 */
+.ta-center{
+    text-align: center;
+}
+/* 定位 */
+.pos-relative {
+    position: relative
+}
+
+.pos-absolute {
+    position: absolute
+}
+
+.top50{
+    top: 50px;
+}
+.left50{
+    top: 50px;
+}
+.top100{
+    top: 100px;
+}
+.left100{
+    top: 100px;
+}
+.top200{
+    top: 200px;
+}
+.left200{
+    top: 200px;
+}
+.top500{
+    top: 500px;
+}
+.left500{
+    top: 500px;
+}
+
+
+.flo-left {
+    float: left
+}
+
+.flo-right {
+    float: right
+}
+/* 边框 */
+.bor-style1 {
+    border: solid 1px #666
+}
+
+.bor-solid {
+    border-style: solid
+}
+
+.bor-1 {
+    border-width: 1px
+}
+
+.bor-5 {
+    border-width: 5px
+}
+
+.bor-666 {
+    border-color: #666
+}
+.bor-ccc {
+    border-color: #ccc
+}
+.bor-black {
+    border-color: black
+}
+/* 圆角边框 */
+.bor-radius-5 {
+    border-radius: 5px
+}
+/* 圆形边框 */
+.bor-circle {
+    border-radius: 50%
+}
+/* 三角形 */
+.bor-triangle-bottom::before {
+    content: '';
+    width: 0;
+    height: 0;
+    position: absolute;
+    bottom: -8px;
+    left: 15px;
+    border: 8px solid transparent;
+    border-top-color: #ccc;
+}
+/* margin */
+.mar-X-center {
+    margin-left: auto;
+    margin-right: auto
+}
+
+.mar-top-50 {
+    margin-top: 50px
+}
+
+.mar-top-100 {
+    margin-top: 100px
+}
+/* 水平垂直居中 */
+.pos-XY-center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%)
+}
+/* 显示模式 */
+.dis-none {
+    display: none
+}
+
+.dis-block {
+    display: block
+}
+/* 阴影 */
+.shadow-5 {
+    box-shadow: rgba(0, 0, 0, .2) 0 0 5px;
+}
+
+/* 倒计时 */
+.countDown {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-color: #333;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+}

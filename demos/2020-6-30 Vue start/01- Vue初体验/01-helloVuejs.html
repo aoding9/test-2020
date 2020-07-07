@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+  </head>
+  <body>
+    <div id="vm">
+      {{message}}
+    </div>
+    
+    <script src="../common/js/vue.js"></script>
+    <script type="text/javascript">
+      // 声明式编程 新建一个Vue对象实例
+      const a = new Vue({
+        el: '#vm', // el属性 将这个实例挂载到某个dom元素节点上
+        data: { // data 通常存储一些数据
+          message: 'hellow vue'
+        },        
+      })
+    </script>
+  </body>
+</html>
