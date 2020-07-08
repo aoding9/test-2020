@@ -1,0 +1,52 @@
+<!--
+7-  创建
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <title>Vue学习</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+  <style>
+    .normal {
+      color: black;
+    }
+    .active {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="el1">
+    <ul>
+      <!-- <li class="active">我是红色</li>
+      <li :class="active">我也是红色</li> -->
+      
+      <!-- 用对象键值对来设置是否给他加上某个类名 -->
+      <!-- <li :class="{key1:value1,key2:value2}">我也是红色</li> -->
+      <!-- <li :class="{类名1:true,类名2:boolean}">我也是红色</li> -->
+      <li :class="{normal:true,active:true}">我是红色</li>
+      <li :class="{normal:isNormal,active:isActive}">我是红色</li>
+    </ul>
+    <button @click="fn">切换颜色</button>
+  </div>
+
+  <script src="../common/js/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: '#el1',
+      data: {
+        active: 'active',
+        isNormal: true,
+        isActive: true,
+      },
+      methods: {
+        fn() {
+          this.isActive = !this.isActive
+        }
+      },
+    })
+  </script>
+</body>
+</html>

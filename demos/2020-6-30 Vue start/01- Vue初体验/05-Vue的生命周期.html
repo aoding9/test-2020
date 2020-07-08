@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+  </head>
+  <body>
+    <div id="app">
+      <h2>当前计数：{{counter}}</h2>
+      <button type="button" @click="increase">+</button>
+      <button type="button" @click="decrease">-</button>
+    </div>
+    
+    <script src="../common/js/vue.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+      const vm = new Vue({
+        el: '#app',
+        data: {
+          counter: 0
+        },
+        methods: {
+          increase() {
+            this.counter++
+          },
+          decrease() {
+            this.counter--
+          }
+        },
+        // 生命周期钩子（hook），在vue实例的各种操作阶段进行回调
+        
+        // beforeCreate vue实例创建之前，准备创建时回调
+        beforeCreate: function() {
+          console.log('准备创建')
+        },
+        // created vue实例创建完成时回调
+        created: function() {
+          console.log('创建完成')
+        },
+        // beforeMounte vue实例挂载之前，准备挂载时回调
+        beforeMount: function() {
+          console.log('准备挂载')
+        },
+        // mounted vue实例挂载完成时回调
+        mounted: function() {
+          console.log('挂载完成')
+        },
+        // beforeUpdate vue实例更新之前，准备更新时回调
+        beforeUpdate: function() {
+          console.log('准备更新')
+        },
+        // updated vue实例更新完成时回调
+        updated: function() {
+          console.log('更新完成')
+        },
+        // beforeDestroy vue实例销毁之前，准备销毁时回调
+        beforeDestroy: function() {
+          console.log('准备销毁')
+        },
+        // destroyed vue实例销毁完成时回调
+        destroyed: function() {
+          console.log('销毁完成')
+        }
+      })
+    </script>
+  </body>
+</html>
+

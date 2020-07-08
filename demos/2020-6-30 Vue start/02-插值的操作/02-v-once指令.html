@@ -1,0 +1,33 @@
+<!--
+7-8  创建
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <title>Vue学习</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+  <style></style>
+</head>
+<body>
+  <div id="el1">
+    <h2>{{message}}</h2>
+    <!-- v-once指令 只显示元素第一次的数据，之后不再响应数据的变化 -->
+    <h2 v-once>{{message}}</h2>
+  </div>
+  <script src="../common/js/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: '#el1',
+      data: {
+        message: '你好',
+
+      },
+      methods: {
+        
+      },
+    })
+  </script>
+</body>
+</html>
