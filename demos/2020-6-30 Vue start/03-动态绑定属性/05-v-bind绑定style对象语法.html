@@ -1,0 +1,42 @@
+<!--
+7-10  创建
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <title>Vue学习</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+  <style>
+    .active {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="el1">
+    <!-- 组件化开发时，结构相似样式有差异的东西可以复用，样式不能写死，需要动态绑定 -->
+      <!-- <p :style="{属性名:属性值,...}">{{msg}}</p> -->
+      <!-- 属性值如果不加单引号，会当成变量解析，而我们没有定义这个变量，就会报错 -->
+      <!-- <p :style="{fontSize: 20px}">{{msg}}</p> -->
+      <p :style="{fontSize: '20px'}">{{msg}}</p>
+      <!-- 如果希望动态改变属性值，就用变量来表示他 -->
+      <p :style="{fontSize: fontSize1}">{{msg}}</p>
+  </div>
+
+  <script src="../common/js/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: '#el1',
+      data: {
+        msg: '可以的',
+        fontSize1: 20 + 'px',
+      },
+      methods: {
+       
+      },
+    })
+  </script>
+</body>
+</html>

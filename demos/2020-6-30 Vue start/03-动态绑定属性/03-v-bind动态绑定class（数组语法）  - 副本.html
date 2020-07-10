@@ -1,0 +1,60 @@
+<!--
+7-10  创建
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <title>Vue学习</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+  <style>
+    .normal {
+      color: black;
+    }
+    .active {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="el1">
+    <ul>
+      <!-- 直接写数组，和直接写class效果一样，加单引号就当成字符串，不加单引号就当成变量来解析 -->
+      <li :class="['normal','active']">我是红色</li>
+      <li :class="[normal,active]">我是红色吗</li>
+      <!-- <li :class="{isNormal: true,isActive: true,">我是红色</li> -->
+      
+      <!-- 可以用方法来返回数组，代码看起来更清晰简洁，但是要记得改为this.xxx -->
+      <li :class="getClasses()">我是红色吗</li>
+      <!-- 可以返回一个对象数组，这样就可以动态修改了 -->
+      <li :class="getClasses2()">我是红色</li>
+    </ul>
+    <button @click="fn">切换颜色</button>
+  </div>
+
+  <script src="../common/js/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: '#el1',
+      data: {
+        normal:'不加单引号当变量解析',
+        active:'不加单引号当变量解析',
+        isNormal: true,
+        isActive: true,
+      },
+      methods: {
+        fn() {
+          this.isActive = !this.isActive
+        },
+        getClasses() {
+          return [this.normal,this.active]
+        },
+        getClasses2() {
+          return [{normal:this.isNormal,active:this.isActive}]
+        }
+      },
+    })
+  </script>
+</body>
+</html>

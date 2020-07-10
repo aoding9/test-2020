@@ -28,7 +28,10 @@
       <!-- <li :class="{类名1:true,类名2:boolean}">我也是红色</li> -->
       <li :class="{normal:true,active:true}">我是红色</li>
       <!-- <li :class="{normal:isNormal,active:isActive}">我是红色</li> -->
+      <!-- 可以用方法来返回对象，代码看起来更清晰简洁，但是要记得改为this.xxx -->
       <li :class="getClasses()">我是红色</li>
+      <!-- 不会覆盖原先的class，会共存 -->
+      <li class="normal" :class="{active:true}">我是红色</li>
     </ul>
     <button @click="fn">切换颜色</button>
   </div>
@@ -47,7 +50,7 @@
           this.isActive = !this.isActive
         },
         getClasses() {
-          return {normal:isNormal,active:isActive}
+          return {normal:this.isNormal,active:this.isActive}
         }
       },
     })
