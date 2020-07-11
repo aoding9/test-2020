@@ -1,0 +1,54 @@
+<!--
+7-11	创建
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<title>Vue学习</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+	<style></style>
+</head>
+<body>
+	<div id="el1">
+		<h2>{{fullName}}</h2>
+	</div>
+
+	<script src="../common/js/vue.js"></script>
+	<script>
+		const vm = new Vue({
+			el: '#el1',
+			data: {
+				firstName: '李',
+				lastName: '华'
+			},
+			methods: {
+				
+			},
+			computed: {
+				// 计算属性的完整写法
+				// fullName是一个属性,里面有set方法和get方法,调用这个属性实际是去调用get方法
+				fullName: {
+					// 如果有set方法，那么设置属性值的时候就会调用这个set方法
+					set(newValue) {
+						// console.log('我是set方法，我被调用了---' + newValue);
+						const names = newValue.split(' ');
+						this.firstName = names[0];
+						this.lastName = names[1]
+					},
+					get() {
+						return this.firstName + ' ' + this.lastName
+					}
+				},
+				
+				// 一般不希望别人修改这个属性，所以不写set方法，这样就是一个只读属性
+				// 计算属性的简写形式（没有set方法，只有get方法）
+				// fullName() {
+				// 	return this.firstName + ' ' + this.lastName
+				// }				
+			}
+		})
+	</script>
+</body>
+</html>

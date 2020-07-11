@@ -17,12 +17,15 @@
 <body>
   <div id="el1">
     <!-- 组件化开发时，结构相似样式有差异的东西可以复用，样式不能写死，需要动态绑定 -->
+		<!-- 可以是对象键值对{key:value}写法 -->
       <!-- <p :style="{属性名:属性值,...}">{{msg}}</p> -->
       <!-- 属性值如果不加单引号，会当成变量解析，而我们没有定义这个变量，就会报错 -->
       <!-- <p :style="{fontSize: 20px}">{{msg}}</p> -->
       <p :style="{fontSize: '20px'}">{{msg}}</p>
       <!-- 如果希望动态改变属性值，就用变量来表示他 -->
-      <p :style="{fontSize: fontSize1}">{{msg}}</p>
+      <p :style="{fontSize: fontSize1 + 'px', color: color1}">{{msg}}</p>
+			<!-- 还可以写到方法里面返回 -->
+      <p :style="getStyles()">{{msg}}</p>
   </div>
 
   <script src="../common/js/vue.js"></script>
@@ -31,10 +34,13 @@
       el: '#el1',
       data: {
         msg: '可以的',
-        fontSize1: 20 + 'px',
+        fontSize1: 30,
+				color1: 'red',
       },
       methods: {
-       
+       getStyles() {
+				 return {fontSize: this.fontSize1 + 'px', color: this.color1}
+			 }
       },
     })
   </script>

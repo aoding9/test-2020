@@ -1,0 +1,51 @@
+<!--
+7-11	创建
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<title>Vue学习</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+	<style></style>
+</head>
+<body>
+	<div id="el1">
+		<!-- 三种处理方式：直接mustache拼接 通过methods方法 通过computed计算属性 -->
+		
+		<!-- methods调用一次就会重新计算一次，重复次数多了就比较费资源 -->
+		<h2>{{getFullName()}}</h2>
+		<h2>{{getFullName()}}</h2>
+		<h2>{{getFullName()}}</h2>
+		<!-- computed会缓存计算结果，在下次调用时会判断之前是否有缓存，如果有，再判断计算过程中的变量（这里就是firstName和lastName）是否改变，如果没有改变，就不会重新计算，直接从缓存取过来 -->
+		<h2>{{fullName}}</h2>
+		<h2>{{fullName}}</h2>
+		<h2>{{fullName}}</h2>
+	</div>
+
+	<script src="../common/js/vue.js"></script>
+	<script>
+		const vm = new Vue({
+			el: '#el1',
+			data: {
+				firstName: '李',
+				lastName: '华'
+			},
+			methods: {
+				getFullName() {
+					console.log('getFullName被调用了');
+					return this.firstName + ' ' + this.lastName
+				}	
+			},
+			computed: {
+
+				fullName() {
+					console.log('fullName被调用了');
+					return this.firstName + ' ' + this.lastName
+				}				
+			}
+		})
+	</script>
+</body>
+</html>
