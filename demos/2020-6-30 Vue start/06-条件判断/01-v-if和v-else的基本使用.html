@@ -1,0 +1,37 @@
+<!--
+ * 7-12	创建
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<title>Vue学习</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+	<style></style>
+</head>
+<body>
+	<div id="el1">
+		<button @click="isShow=!isShow">切换</button>
+		<h2 v-if="isShow">if</h2>
+		<h2 v-else>else</h2>
+	</div>
+
+	<script src="../common/js/vue.js"></script>
+	<script>
+		const vm = new Vue({
+			el: '#el1',
+			data: {
+				isShow: true
+			},
+			methods: {
+					
+				
+			},
+			computed: {
+				
+			},
+		})
+	</script>
+</body>
+</html>

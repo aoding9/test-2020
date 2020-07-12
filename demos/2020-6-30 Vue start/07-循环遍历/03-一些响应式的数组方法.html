@@ -1,0 +1,80 @@
+<!--
+ * 7-12	创建
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<title>Vue学习</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+	<style></style>
+</head>
+<body>
+	<div id="el1">
+		<button type="button" @click="btnClick">点我</button>
+		<ul>
+			<li v-for="item in letters">{{item}}</li>
+		</ul>
+	</div>
+
+	<script src="../common/js/vue.js"></script>
+	<script>
+		const vm = new Vue({
+			el: '#el1',
+			data: {
+				letters: ['a','c','b','d','e','f'],
+				aa: 'aa'
+			},
+			methods: {
+				btnClick() {
+					// push() 数组末尾追加
+					// this.letters.push(this.aa);
+					
+					// pop() 数组末尾删除
+					// this.letters.pop();
+					
+					// unshift() 数组开头追加
+					// this.letters.unshift(this.aa);
+					
+					// push() 数组开头删除
+					// this.letters.shift();
+					
+					// splice() 修改数组
+					// 参数1：修改的起始索引位置
+					// 参数2：修改的数组元素个数
+					// 参数3：修改后的值
+					
+					// 用法1：在某个位置插入数组元素
+					// this.letters.splice(1,0,this.aa);
+					
+					// 用法2：在某个位置替换数组元素
+					// this.letters.splice(1,1,this.aa);
+					
+					// 用法3：在某个位置删除数组元素（不写第二个参数就是全部删除）
+					// this.letters.splice(1,1);
+					
+					// sort() 数组元素自动排序
+					// this.letters.sort();
+					
+					// reverse() 数组反转
+					// this.letters.reverse();
+					
+					// 注意，通过数组索引来修改数组元素，不是响应式的
+					// this.letters[0] = 'aa';
+					// console.log(this.letters);
+					
+					// 修改特定位置的数组元素的解决办法
+					// 1.splice()
+					// this.letters.splice(0,1,'aa')
+					// 2.Vue.set(目标数组, 索引值, 修改后的值)
+					Vue.set(this.letters, 0, 'aa')
+				}
+			},
+			computed: {
+				
+			},
+		})
+	</script>
+</body>
+</html>

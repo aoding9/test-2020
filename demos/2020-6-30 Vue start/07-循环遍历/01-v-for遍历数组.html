@@ -1,0 +1,40 @@
+<!--
+ * 7-12	创建
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<title>Vue学习</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+	<style></style>
+</head>
+<body>
+	<div id="el1">
+		<ul>
+			<!-- 情况1，直接使用 -->
+			<!-- <li v-for="item in names">{{item}}</li> -->
+			
+			<!-- 情况2，遍历的同时获取索引值 -->
+			<li v-for="(item,index) in names">{{index+1}}.{{item}}</li>
+		</ul>
+	</div>
+
+	<script src="../common/js/vue.js"></script>
+	<script>
+		const vm = new Vue({
+			el: '#el1',
+			data: {
+				names: ['Bob','Tina','Anne']
+			},
+			methods: {
+				
+			},
+			computed: {
+				
+			},
+		})
+	</script>
+</body>
+</html>

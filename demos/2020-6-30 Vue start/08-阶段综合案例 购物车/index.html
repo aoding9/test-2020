@@ -1,0 +1,52 @@
+<!--
+ * 7-12	创建
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<title>Vue学习</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div id="el1">
+		<div v-if="list.length > 0">
+			<table>
+				<thead>
+					<tr>
+						<th></th>
+						<th>商品名称</th>
+						<th>出版日期</th>
+						<th>单价</th>
+						<th>数量</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<tr v-for="(item,index) in list">
+						<td>{{item.id}}</td>
+						<td>{{item.name}}</td>
+						<td>{{item.date}}</td>
+						<td>{{item.price | showPrice}}</td>
+						<!-- 当count为1时，动态绑定disabled属性，禁用减号按钮 -->
+						<td><button @click="decrease(index)" :disabled="list[index].count <= 1">-</button> {{item.count}} <button @click="increase(index)">+</button></td>
+						<td><button @click="remove(index)">移除</button></td>
+					</tr>
+				</tbody>
+			</table>
+			<h2>总价：{{totalPrice}}</h2>
+		</div>
+		<div v-else>
+			<h2>购物车为空</h2>
+		</div>
+	</div>
+
+	<script src="../common/js/vue.js"></script>
+	<!-- 依赖vuejs，必须写在Vue.js引入下面 -->
+	<script src="main.js"></script>
+
+</body>
+</html>

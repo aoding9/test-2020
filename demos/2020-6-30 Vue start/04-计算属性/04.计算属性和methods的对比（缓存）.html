@@ -34,15 +34,15 @@
 			},
 			methods: {
 				getFullName() {
-					console.log('getFullName被调用了');
+					console.log('getFullName被调用了3次');
 					return this.firstName + ' ' + this.lastName
 				}	
 			},
 			computed: {
 
 				fullName() {
-					console.log('fullName被调用了');
-					return this.firstName + ' ' + this.lastName
+					console.log('fullName被调用了1次');
+					return this.firstName  + ' ' + this.lastName
 				}				
 			}
 		})

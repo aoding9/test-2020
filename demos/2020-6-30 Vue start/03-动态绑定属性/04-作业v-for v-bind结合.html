@@ -17,7 +17,7 @@
 <body>
   <div id="el1">
     <ul>
-      <li v-for="(item,index) in movies" :class="{active:current===index}" @mouseenter="current=index">{{index}}-{{item}}</li>
+      <li v-for="(item, index) in movies" :class="{active:current===index}" @mouseenter="current=index">{{index+1}}.{{item}}</li>
     </ul>
   </div>
 

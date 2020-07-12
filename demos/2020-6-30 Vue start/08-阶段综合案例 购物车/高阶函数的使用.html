@@ -1,0 +1,77 @@
+<!--
+ * 7-12	创建
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<title>Vue学习</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+	<style></style>
+</head>
+<body>
+	<div id="el1">
+		<h2></h2>
+	</div>
+
+	<script src="../common/js/vue.js"></script>
+	<script>
+		
+		// 编程范式：命令式编程、声明式编程
+		// 编程范式：面向对象编程（第一公民：对象）、函数式编程（第一公民：函数）
+		
+		
+		// 假设有这个需求:将数组中所有小于50的数取出来乘以二,然后计算累加的结果
+		const nums = [10, 20, 30, 40, 50 ,60, 70 ,100, 200];
+		
+		
+		// 高阶函数
+		// 1. filter(callbackfn) 过滤
+		// filter() 方法创建一个新的数组，新数组中的元素是通过检查指定数组中符合条件的所有元素。
+		// 具体过程：遍历数组元素，传入回调参数进行判断，符合条件就返回true，否则返回false，将返回true的数组元素放入新数组，最后返回整个新数组
+		let newNums1 = nums.filter(function(currentValue){
+			return currentValue < 50
+		})
+		console.log(newNums1);
+		
+		
+		// 2. map(callbackfn) 映射
+		// map() 方法返回一个新数组，数组中的元素为原始数组元素调用函数处理后的值。
+		let newNums2 = newNums1.map(function(currentValue){
+			return currentValue * 2
+		})
+		console.log(newNums2);
+		
+		// 3. array.reduce(callbackfn[,initialValue]) 累加
+		// reduce() 方法接收一个函数作为累加器,reduce 为数组中的每一个元素依次执行回调函数，不包括数组中被删除或从未被赋值的元素，接受四个参数：初始值（上一次回调的返回值），当前元素值，当前索引，原数组。
+		// previousValue 上一次回调返回的累加值
+		// currentValue 当前元素值
+		// index,arr 当前索引 原数组
+		// initialValue 可选参数 初始值 在第一次回调时，会将他赋值给previousValue
+		let total = newNums2.reduce(function(previousValue,currentValue){
+			return previousValue + currentValue
+		},0)
+		console.log(total);
+		
+		
+		
+		// 可以很容易看到第一公民都是函数
+		// 感觉很牛的写成一坨的写法
+		let total2 = nums.filter(function(n){
+			return n < 50
+		}).map(function(n){
+			return n * 2
+		}).reduce(function(pre,n){
+			return pre + n
+		}, 0)
+		console.log(total2);
+		
+		// 感觉更牛的写成一行的写法 箭头函数
+		let total3 = nums.filter(n => n < 50).map(n => n * 2).reduce((pre,n) => pre + n)
+		console.log(total3);
+		
+		// 更多有关箭头函数的内容:https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions
+	</script>
+</body>
+</html>

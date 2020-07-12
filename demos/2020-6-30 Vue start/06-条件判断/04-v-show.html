@@ -1,0 +1,38 @@
+<!--
+ * 7-12	创建
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<title>Vue学习</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+	<style></style>
+</head>
+<body>
+	<div id="el1">
+		<!-- v-show:boolean可以显示隐藏元素 -->
+		<!-- 他和v-if的区别是，v-show隐藏的元素会被渲染出来，只是增加了行内样式display:none了，而v-if隐藏的元素不会渲染到DOM里面 -->
+		<!-- 所以显示隐藏频率比较高时用v-show效率更高，切换显示隐藏频率低时v-if，方便一些 -->
+		<h2 v-show="false">{{msg}}</h2>
+		<h2 v-if="false">{{msg}}</h2>
+	</div>
+
+	<script src="../common/js/vue.js"></script>
+	<script>
+		const vm = new Vue({
+			el: '#el1',
+			data: {
+				msg: '哈哈哈'
+			},
+			methods: {
+				
+			},
+			computed: {
+				
+			},
+		})
+	</script>
+</body>
+</html>
