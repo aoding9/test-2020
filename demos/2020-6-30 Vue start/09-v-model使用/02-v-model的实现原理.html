@@ -1,0 +1,42 @@
+<!--
+7-13  创建
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <title>Vue学习</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+  <style></style>
+</head>
+<body>
+  <div id="el1">
+    <!-- v-model本质是v-bind和v-on的结合使用 -->
+    <!-- v-model="msg"相当于:value="msg" @input="msg = $event.target.value"的简写 -->
+    <!-- 以下三种写法都可以实现双向绑定，第一种比较简单，一般写这个 -->
+    <input type="text" v-model="msg">
+    <input type="text" :value="msg" @input="msg = $event.target.value">
+    <input type="text" :value="msg" @input="isChange">
+    {{msg}}
+  </div>
+
+  <script src="../common/js/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: '#el1',
+      data: {
+        msg: 'hahah'
+      },
+      methods: {
+        isChange(event) {
+          this.msg = event.target.value
+        }
+      },
+      computed: {
+        
+      },
+    })
+  </script>
+</body>
+</html>

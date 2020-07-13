@@ -1,0 +1,60 @@
+<!--
+7-13  创建
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <title>Vue学习</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+  <style></style>
+</head>
+<body>
+  <div id="el1">
+    <!-- .lazy修饰符 懒绑定？？ -->
+    <!-- v-model默认是input事件会触发数据响应，lazy修饰符可以让数据在失去焦点或回车时才进行更新 -->
+    <input type="text" name="" id="" value="" v-model="msg"/>
+    <p>{{msg}}</p>
+    <input type="text" name="" id="" value="" v-model.lazy="msg"/>
+    <p>{{msg}}</p>
+    <hr><hr>
+    
+    <!-- .number修饰符 -->
+    <!-- 假如我们希望用户输入数字，把input的type改为number，但是他的变量值仍然是字符串类型 -->
+    <!-- v-model给变量赋值时默认赋值为字符串类型，number修饰符可以让数据在响应更新时赋值为数字类型 -->
+    <input type="number" name="" id="" value="" v-model="age"/>
+    <p>{{age}}-{{typeof age}}</p>
+    <input type="number" name="" id="" value="" v-model.number="age"/>
+    <p>{{age}}-{{typeof age}}</p>
+    <hr><hr>
+    
+    <!-- .trim修饰符 -->
+    <!-- trim修饰符可以让数据在响应更新时去掉两边的空格，但不会去掉中间的空格 -->
+    <input type="text" name="" id="" value="" v-model="name" @keyup="log"/>
+    <p>{{name}}</p>
+    <input type="text" name="" id="" value="" v-model.trim="name" @keyup="log"/>
+    <p>{{name}}</p>
+  </div>
+
+  <script src="../common/js/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: '#el1',
+      data: {
+        msg: 'aaa',
+        age: '123',
+        name: '      Ann   e  '
+      },
+      methods: {
+        log(){
+          console.log(vm.name);
+        }
+      },
+      computed: {
+        
+      },
+    })
+  </script>
+</body>
+</html>

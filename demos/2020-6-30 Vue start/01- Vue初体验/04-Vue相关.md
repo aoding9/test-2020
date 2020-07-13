@@ -25,7 +25,8 @@
 
 
 ## 创建Vue实例传入的options
-### 目前掌握这些选项
+### 目前要掌握这些选项
+
 - el：
   - 类型：string|HTMLElement
   - 作用：决定之后Vue实例管理哪个DOM
