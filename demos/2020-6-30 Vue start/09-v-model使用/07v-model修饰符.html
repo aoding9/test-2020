@@ -21,8 +21,8 @@
     <hr><hr>
     
     <!-- .number修饰符 -->
-    <!-- 假如我们希望用户输入数字，把input的type改为number，但是他的变量值仍然是字符串类型 -->
-    <!-- v-model给变量赋值时默认赋值为字符串类型，number修饰符可以让数据在响应更新时赋值为数字类型 -->
+    <!-- 假如我们希望用户输入数字，把input的type改为number，但是他的变量值仍然是字符串类型，这是因为input输入框的值是字符串类型，我们需要将其转换处理 -->
+    <!-- number修饰符可以让数据在响应更新时转换为数字类型 -->
     <input type="number" name="" id="" value="" v-model="age"/>
     <p>{{age}}-{{typeof age}}</p>
     <input type="number" name="" id="" value="" v-model.number="age"/>
