@@ -1,83 +1,37 @@
 {
-  // "editor.formatOnType":true,
-  "editor.formatOnSave": true,
-  "editor.fontSize": 18,
-  "workbench.iconTheme": "vscode-icons",
-  "editor.wordWrap": "on",
-  "vsicons.dontShowNewVersionMessage": true,
-  "workbench.colorTheme": "One Dark Pro",
-  "liveServer.settings.donotShowInfoMsg": true,
-  "[html]": {
-    "editor.defaultFormatter": "HookyQR.beautify"
-  },
-  // "editor.acceptSuggestionOnEnter": "off",
-  // "editor.suggest.snippetsPreventQuickSuggestions": false,
-  "window.zoomLevel": 0,
-  "terminal.integrated.rendererType": "dom",
-  "files.associations": {
-    "*.vue": "html",
-  },
-  "git.autofetch": true,
-  // 代码提示的选中是否通过Enter确认, 建议关闭, 否则在想要换行的时候会触发选中, 只用Tab键选中
-  "editor.acceptSuggestionOnEnter": "off",
-  // 控制是否通过提交字符接收建议, 意思是;(等也会选中提示的代码, 这回造成失误, 建议关闭
-  "editor.acceptSuggestionOnCommitCharacter": false,
-  "cSpell.userWords": [
-    "Arial",
-    "Dreamweaver",
-    "Emment",
-    "Hant",
-    "Heiti",
-    "Helvetica",
-    "Hiragino",
-    "LVHA",
-    "Neue",
-    "Yahei",
-    "autofocus",
-    "autoplay",
-    "bezier",
-    "bgcolor",
-    "bgposition",
-    "bidi",
-    "bitbug",
-    "callout",
-    "cellpadding",
-    "cellspacing",
-    "clearfix",
-    "colspan",
-    "cutterman",
-    "datav",
-    "gitee",
-    "guanggao",
-    "hightlight",
-    "hotwords",
-    "hsla",
-    "icofont",
-    "icomoon",
-    "keyframes",
-    "nbsp",
-    "nowrap",
-    "oldman",
-    "photoshop",
-    "preload",
-    "rcommd",
-    "rgba",
-    "rowspan",
-    "shopcar",
-    "shoping",
-    "snipaste",
-    "stylesheet",
-    "subnav",
-    "tbody",
-    "thead",
-    "webp",
-    "webstorm"
-  ],
-  "diffEditor.renderSideBySide": false,
-  // "files.autoSaveDelay": 60000,
-  "files.autoSave": "onFocusChange",
-  "auto-rename-tag.activationOnLanguage": [
-    "*"
-  ]
-  // "editor.suggest.showWords": false,
+    "cSpell.words": [
+        "mediatype",
+        "subnav"
+    ],
+    {
+        // "editor.formatOnType":true,
+        "editor.formatOnSave": true,
+        "editor.fontSize": 18,
+        "workbench.iconTheme": "vscode-icons",
+        "editor.wordWrap": "on",
+        "vsicons.dontShowNewVersionMessage": true,
+        "files.autoSave": "afterDelay",
+        "workbench.colorTheme": "One Dark Pro",
+        "liveServer.settings.donotShowInfoMsg": true,
+        "[html]": {
+            "editor.defaultFormatter": "HookyQR.beautify"
+        },
+        // "editor.acceptSuggestionOnEnter": "off",
+        // "editor.suggest.snippetsPreventQuickSuggestions": false,
+        "window.zoomLevel": 0,
+        "terminal.integrated.rendererType": "dom",
+        "files.associations": {
+      
+            "*.vue": "html",
+        },
+        "git.autofetch": true,
+        "editor.acceptSuggestionOnEnter": "off",
+        "workbench.editorAssociations": [
+          {
+            "viewType": "default",
+            "filenamePattern": "*.md"
+          }
+        ],
+        // "editor.suggest.showWords": false,
+      }
 }

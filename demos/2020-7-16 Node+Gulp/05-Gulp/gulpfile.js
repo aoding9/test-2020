@@ -32,7 +32,7 @@ gulp.task('first', done => {
 // 要先抽取在压缩，这样效率更高
 
 // 安装html压缩插件
-// npm install gulp-htmlmin --save-dev   (--save-dev表示开发依赖，和--save生成依赖区分开)
+// npm install gulp-htmlmin --save-dev   (--save-dev表示开发依赖，和--save项目依赖区分开)
 // 安装抽取html公共代码插件
 // npm install gulp-file-include --save-dev
 // 引入插件
@@ -64,7 +64,7 @@ const less = require('gulp-less');
 const csso = require('gulp-csso');
 
 gulp.task('cssmin',done => {
-  // 选择css目录下的less和css文件
+  // 选择css目录下的less和css文件，用数组的形式
   gulp.src(['./src/css/*.less','./src/css/*.css'])
   // 将less转换为css
   .pipe(less())
@@ -80,7 +80,7 @@ gulp.task('cssmin',done => {
 // 1.es6代码转换
 // 2.代码压缩
 
-// 下载安装babel插件以及依赖文件
+// 下载安装babel插件以及gulp-babel依赖模块
 // npm install gulp-babel @babel/core @babel/preset-env --save-dev
 // npm install gulp-uglify --save-dev
 // 引入

@@ -4,7 +4,8 @@
   "description": "- 切换到项目根目录，使用npm install gulp下载gulp库文件\r - 在项目根目录建立gulpfile.js\r - 重构项目的文件夹结构 src目录放置源代码文件 dist目录放构建后的文件\r - 在gulpfile.js文件中编写任务\r - 在命令行工具中执行gulp任务",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bie-ming": "echo \"我是命令的别名， 输入npm run bie-ming即可运行我\""
   },
   "author": "",
   "license": "ISC",
