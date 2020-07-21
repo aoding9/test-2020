@@ -16,7 +16,6 @@ app.on('request', (req,res) => {
   let realPath = path.join(__dirname, 'public', pathname);
   // 用第三方插件mime.getType获取资源的类型，包括css js img等
   let type = mime.getType(realPath)
-
   // 读取文件
   fs.readFile(realPath, (error, result)=>{
     // 错误判断
