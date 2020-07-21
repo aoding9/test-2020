@@ -1,0 +1,144 @@
+{
+	//5-19-1	创建
+	// 7-21 修改
+	"code-snippets-common": {
+		"prefix": "!code-snippets-common",
+		"body": [
+			"\t\"$1\": {",
+			"\t\t\"prefix\": \"$2\",",
+			"\t\t\"scope\": \"$3\",",
+			"\t\t\"body\": [",
+			"\t\t\t\"$4\",",
+			"\t\t],",
+			"\t\t\"description\": \"$5\"",
+			"\t},",
+		],
+		"description": "代码片段模板"
+	},
+	"!html1-template1": {
+		"prefix": "!html1-template1",
+		"scope": "html",
+		"body": [
+			"<!DOCTYPE html>",
+			"<html>",
+			"\t<head>",
+			"\t\t<meta charset=\"UTF-8\" />",
+			"\t</head>",
+			"\t<body>",
+			"\t\t$0",
+			"\t</body>",
+			"</html>"
+		],
+		"description": "html模板1"
+	},
+	// 5-9-3	修改版 添加TDK和favicon 注释了网站描述和关键词
+	// 5-12-1	修改版 添加TDK和favicon 注释了网站描述和关键词
+	// 5-13-1	添加理想视口的meta标签
+	// 5-14-1	注释了X-UA-Compatible标签，修改了favicon图标路径
+	// 5-19-1	注释了一些东西，稍微修改
+	// 6-8-1	添加了快速样式easyHtml的css文件
+	// 7-17   修改了日期为7月，注释掉暂时不要的内容
+	"!html2-template1": {
+		"prefix": "!html2-template1",
+		"scope": "html",
+		"body": [
+			"<!--",
+			"————————\n7-$1\t创建",
+			"————————",
+			"-->",
+			"<!DOCTYPE html>",
+			"<html lang=\"zh-CN\">",
+			"<head>",
+			//标题
+			//"\t<title>前端学习</title>", 
+			//favicon"\t<link href=\"images/favicon-1.ico\" rel=\"shortcut icon\">", 
+			"\t<meta charset=\"UTF-8\">",
+			//网站描述 "\t<meta content=\"前端学习\" name=\"description\">",		
+			//网站关键词 "\t<meta content=\"前端学习,巴拉巴拉\" name=\"keyword\">",		
+			//视口标签 禁止缩放
+			//"\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0\">",	
+			//IE=edge告诉IE使用最新的引擎渲染网页，chrome=1则可以激活Chrome Frame
+			//"\t<meta content=\"IE=edge,chrome=1\" http-equiv=\"X-UA-Compatible\">",  
+			//初始化css"<!-- \t<link href=\"css/normalize.css\" rel=\"stylesheet\"> -->", 
+			//自定义初始化css pc端 没有兼容优化"<!-- \t<link href=\"css/base.css\" rel=\"stylesheet\"> -->",
+			//自定义初始化css 移动端"<!-- \t<link href=\"css/mobile.css\" rel=\"stylesheet\"> -->",
+			// 公共css
+			//"<!-- \t<link href=\"../css/6-8-common.css\" rel=\"stylesheet\"> -->", 
+			//"<!-- \t<link href=\"../css/6-8-easyHtml.css\" rel=\"stylesheet\"> -->", 
+			//当前页面css"<!-- <link href=\"css/$2.css\" rel=\"stylesheet\"> -->", 
+			//"\t<style></style>",
+			"</head>",
+			"<body>",
+			"\t$0",
+			//"\t<script></script>",
+			"</body>",
+			"</html>"
+		],
+		"description": "html模板2"
+	},
+	"!bootstrap-template": {
+		"scope": "html",
+		"prefix": "!bootstrap-template",
+		"body": [
+			"<!DOCTYPE html>",
+			"<html lang=\"zh-CN\">",
+			"<head>",
+			"<meta charset=\"utf-8\">",
+			"<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">",
+			"<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">",
+			"<title>$1</title>",
+			"<link href=\"https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css\" rel=\"stylesheet\">",
+			//"<link href=\"bootstrap/css/bootstrap.min.css\" rel=\"stylesheet\">\n$2",
+			"<!--[if lt IE 9]>",
+			"<script src=\"https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js\"></script>",
+			"<script src=\"https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js\"></script>",
+			"<![endif]-->",
+			"</head>",
+			"<body>\n$0",
+			//"<script src=\"https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js\"></script>",
+			//"<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js\"></script>",
+			"</body>",
+			"</html>",
+		],
+		"description": "bootstrap模板"
+	},
+	// vue模板
+	"!vue-template": {
+		"prefix": "!vue-template",
+		"scope": ["html","vue"],
+		"body": [
+			"<!--",
+			"7-$1\t创建",
+			"-->",
+			"<!DOCTYPE html>",
+			"<html>",
+			"<head>",
+			"\t<meta charset=\"UTF-8\">",
+			"</head>",
+			"<body>",
+			"\t<div id=\"app\">",
+			"\t\t$2",
+			"\t</div>\n",
+			//"\t<script src=\"../common/js/vue.js\"></script>",
+			"\t<script src=\"https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js\"></script>",
+			"\t<script>",
+			"\t\tconst vm = new Vue({",
+			"\t\t\tel: '${3:#app}',",
+			"\t\t\tdata: {",
+			"\t\t\t\t$4",
+			"\t\t\t},",
+			"\t\t\tmethods: {",
+			"\t\t\t\t$5",
+			"\t\t\t},",
+			"\t\t\tcomputed: {",
+			"\t\t\t\t",
+			"\t\t\t},",
+			"\t\t})",
+			"\t</script>",
+			"</body>",
+			"</html>"
+		],
+		"description": "Vue模板"
+	}
+
+}
