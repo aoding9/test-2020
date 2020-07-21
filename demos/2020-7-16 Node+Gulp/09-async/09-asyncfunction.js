@@ -14,7 +14,7 @@
 //   console.log(err);
 // })
 
-// await关键字 暂停异步函数向下执行，知道promise返回结果
+// await关键字 暂停异步函数向下执行，直到promise返回结果
 // 只能在异步函数中使用
 // 通过await，可以让异步任务像同步任务那样编程，并且，还可以用return来获取异步任务处理结果
 // async function p1 () {
