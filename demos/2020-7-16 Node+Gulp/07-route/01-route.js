@@ -12,6 +12,7 @@ app.on('request', (req, res) => {
   const method = req.method.toLowerCase();  // method是大写的 为了方便，用toLowerCase()转成小写
   // 获取请求地址
   const pathname = url.parse(req.url).pathname;
+  // const { pathname } = url.parse(req.url); //这样写也可以，对象解构赋值
 
   // 因为写的中文，要改下报头
   res.writeHead(200, {

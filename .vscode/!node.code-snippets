@@ -1,129 +1,144 @@
 {
 	// modules 引入
-	"!mongoose-module": {
-		"prefix": "!mongoose-module",
+	"!require-module-node": {
+		"prefix": "!require-module-node",
+		"scope": "javascript",
+		"body": [
+			"const $0${1:modulename} = require('${1:modulename}');"
+		],
+		"description": "引入模块"
+	},
+	"!mongoose-module-node": {
+		"prefix": "!mongoose-module-node",
 		"scope": "javascript",
 		"body": [
 			"const mongoose = require('mongoose');"
 		],
 		"description": "mongoose 数据库模块"
 	},
-	"!http-module": {
-		"prefix": "!http-module",
+	"!http-module-node": {
+		"prefix": "!http-module-node",
 		"scope": "javascript",
 		"body": [
 			"const http = require('http');"
 		],
 		"description": "http 网站服务器模块"
 	},
-	"!url-module": {
-		"prefix": "!url-module",
+	"!url-module-node": {
+		"prefix": "!url-module-node",
 		"scope": "javascript",
 		"body": [
 			"const url = require('url');"
 		],
 		"description": "url url处理模块"
 	},
-	"!fs-module": {
-		"prefix": "!fs-module",
+	"!fs-module-node": {
+		"prefix": "!fs-module-node",
 		"scope": "javascript",
 		"body": [
 			"const fs = require('fs');"
 		],
 		"description": "fs 文件模块"
 	},
-	"!path-module": {
-		"prefix": "!path-module",
+	"!path-module-node": {
+		"prefix": "!path-module-node",
 		"scope": "javascript",
 		"body": [
 			"const path = require('path');"
 		],
 		"description": "path 路径处理模块"
 	},
-	"!gulp-module": {
-		"prefix": "!gulp-module",
+	"!gulp-module-node": {
+		"prefix": "!gulp-module-node",
 		"scope": "javascript",
 		"body": [
 			"const gulp = require('gulp');"
 		],
 		"description": "gulp 自动化项目重构模块"
 	},
-	"!fileinclude-module": {
-		"prefix": ["!fileinclude-module","!gulp-file-include-module"],
+	"!fileinclude-module-node": {
+		"prefix": ["!fileinclude-module-node","!gulp-file-include-module-node"],
 		"scope": "javascript",
 		"body": [
 			"const fileinclude = require('gulp-file-include');"
 		],
 		"description": "gulp-file-include 自动化公共代码包含模块"
 	},
-	"!htmlmin-module": {
-		"prefix": ["!htmlmin-module","!gulp-htmlmin-module"],
+	"!htmlmin-module-node": {
+		"prefix": ["!htmlmin-module-node","!gulp-htmlmin-module-node"],
 		"scope": "javascript",
 		"body": [
 			"const htmlmin = require('gulp-htmlmin');"
 		],
 		"description": "gulp-htmlmin html压缩模块"
 	},
-	"!less-module": {
-		"prefix": ["!less-module","!gulp-less-module"],
+	"!less-module-node": {
+		"prefix": ["!less-module-node","!gulp-less-module-node"],
 		"scope": "javascript",
 		"body": [
 			"const less = require('gulp-less');"
 		],
 		"description": "gulp-less 自动化less转css模块"
 	},
-	"!csso-module": {
-		"prefix": ["!csso-module","!gulp-csso-module"],
+	"!csso-module-node": {
+		"prefix": ["!csso-module-node","!gulp-csso-module-node"],
 		"scope": "javascript",
 		"body": [
 			"const csso = require('gulp-csso');"
 		],
 		"description": "gulp-csso 自动化css压缩模块"
 	},
-	"!babel-module": {
-		"prefix": ["!babel-module","!gulp-babel-module"],
+	"!babel-module-node": {
+		"prefix": ["!babel-module-node","!gulp-babel-module-node"],
 		"scope": "javascript",
 		"body": [
 			"const babel = require('gulp-babel');"
 		],
 		"description": "gulp-babel 自动化es6转es5模块"
 	},
-	"!uglify-module": {
-		"prefix": ["!uglify-module","!gulp-uglify-module"],
+	"!uglify-module-node": {
+		"prefix": ["!uglify-module-node","!gulp-uglify-module-node"],
 		"scope": "javascript",
 		"body": [
 			"const uglify = require('gulp-uglify');"
 		],
 		"description": "gulp-uglify 自动化js压缩模块"
 	},
-	"!querystring-module": {
-		"prefix": "!querystring-module",
+	"!querystring-module-node": {
+		"prefix": "!querystring-module-node",
 		"scope": "javascript",
 		"body": [
 			"const querystring = require('querystring');"
 		],
 		"description": "query字符串处理模块"
 	},
-	"!mime-module": {
-		"prefix": "!mime-module",
+	"!mime-module-node": {
+		"prefix": "!mime-module-node",
 		"scope": "javascript",
 		"body": [
 			"const querystring = require('querystring');"
 		],
 		"description": "mime类型处理模块"
 	},
-
+	"!art-template-module-node": {
+		"prefix": "!art-template-module-node",
+		"scope": "javascript",
+		"body": [
+			"const template = require('art-template');"
+		],
+		"description": "art-template模板引擎模块"
+	},
 	// http
-	"!createServer-http": {
-		"prefix": "!createServer-http",
+	"!createServer-http-node": {
+		"prefix": "!createServer-http-node",
 		"scope": "javascript",
 		"body": [
 			"const ${1:app} = http.createServer();"
 		],
 		"description": "创建网站服务器实例对象"
 	},
-	"!request-http": {
-		"prefix": "!request-http",
+	"!request-http-node": {
+		"prefix": "!request-http-node",
 		"scope": "javascript",
 		"body": [
 			"${1:app}.on('request', (req, res) => {",
@@ -133,8 +148,8 @@
 		],
 		"description": "服务器对象注册响应事件"
 	},
-	"!listen-http": {
-		"prefix": "!listen-http",
+	"!listen-http-node": {
+		"prefix": "!listen-http-node",
 		"scope": "javascript",
 		"body": [
 			"app.listen(${1:3000});",
@@ -142,23 +157,25 @@
 		],
 		"description": "服务器对象监听端口"
 	},
-	"!writeHead-http": {
-		"prefix": "!writeHead-http",
+	"!writeHead-http-node": {
+		"prefix": "!writeHead-http-node",
 		"scope": "javascript",
 		"body": [
-			"\tres.writeHead(${1:200}, {",
-			"\t\t'content-type': 'text/html;charset=utf8',",
-			"\t});"
+			"res.writeHead(${1:200}, {",
+			"\t${2:'content-type': 'text/html;charset=utf8'},",
+			"\t${3:// Location: '/$4'},",
+			"});",
+			"res.end();"
 		],
 		"description": "写报文头"
 	},
-	"!postParams-http": {
-		"prefix": "!postParams-http",
+	"!postParams-http-node": {
+		"prefix": "!postParams-http-node",
 		"scope": "javascript",
 		"body": [
 			"let postParams = '';",
-   		"req.on('data', params => {",
-      "\tpostParams += params;",
+   		"req.on('data', param => {",
+      "\tpostParams += param;",
    		"});",
    		"req.on('end', () => {",
       "\t$1",
@@ -166,8 +183,8 @@
 		],
 		"description": "接收并拼接post参数"
 	},
-	"!method-http": {
-		"prefix": "!method-http",
+	"!method-http-node": {
+		"prefix": "!method-http-node",
 		"scope": "javascript",
 		"body": [
 			"if(req.method =='POST'){",
@@ -183,8 +200,8 @@
 	
 
 	// fs
-	"!readFile-fs": {
-		"prefix": "!readFile-fs",
+	"!readFile-fs-node": {
+		"prefix": "!readFile-fs-node",
 		"scope": "",
 		"body": [
 			"fs.readFile('${1:路径/文件名}','utf-8',(err, doc) => {",
@@ -203,8 +220,8 @@
 		],
 		"description": "读取文件"
 	},
-	"!writeFile-fs": {
-		"prefix": "!writeFile-fs",
+	"!writeFile-fs-node": {
+		"prefix": "!writeFile-fs-node",
 		"scope": "javascript",
 		"body": [
 			"fs.writeFile('${1:路径/文件名}',${2:文件内容},err => {",
@@ -218,8 +235,8 @@
 		"description": "写入文件"
 	},
 	// url
-	"!parse-url": {
-		"prefix": "!parse-url",
+	"!parse-url-node": {
+		"prefix": "!parse-url-node",
 		"scope": "javascript",
 		"body": [
 			"let {query, pathname} = url.parse(req.url, true);",
@@ -235,8 +252,8 @@
 		"description": "简单路由以及获取get的参数对象query"
 	},
 	//path
-	"!join-path": {
-		"prefix": "!join-path",
+	"!join-path-node": {
+		"prefix": "!join-path-node",
 		"scope": "javascript",
 		"body": [
 			"let realPath = path.join(${1:__dirname}, ${2:'public'}, ${3:pathname});",
@@ -244,8 +261,8 @@
 		"description": "路径拼接"
 	},
 	// mime
-	"!getType-mime": {
-		"prefix": "!getType-mime",
+	"!getType-mime-node": {
+		"prefix": "!getType-mime-node",
 		"scope": "javascript",
 		"body": [
 		  "let type = mime.getType(realPath);"
@@ -253,8 +270,8 @@
 		"description": "获取文件类型"
 	},
 	// gulp
-	"!gulp-htmlmin": {
-		"prefix": "!gulp-htmlmin",
+	"!gulp-htmlmin-node": {
+		"prefix": "!gulp-htmlmin-node",
 		"scope": "javascript",
 		"body": [
 			"const fileinclude = require('gulp-file-include');",
@@ -271,8 +288,8 @@
 		],
 		"description": "gulp-htmlmin"
 	},
-	"!gulp-cssmin": {
-		"prefix": "!gulp-cssmin",
+	"!gulp-cssmin-node": {
+		"prefix": "!gulp-cssmin-node",
 		"scope": "javascript",
 		"body": [
 			"const less = require('gulp-less');",
@@ -287,8 +304,8 @@
 		],
 		"description": "gulp-cssmin"
 	},
-	"!gulp-jsmin": {
-		"prefix": "!gulp-jsmin",
+	"!gulp-jsmin-node": {
+		"prefix": "!gulp-jsmin-node",
 		"scope": "javascript",
 		"body": [
 			"const babel = require('gulp-babel');",
@@ -305,8 +322,8 @@
 		],
 		"description": "gulp-jsmin"
 	},
-	"!gulp-copy": {
-		"prefix": "!gulp-copy",
+	"!gulp-copy-node": {
+		"prefix": "!gulp-copy-node",
 		"scope": "javascript",
 		"body": [
 			"gulp.task('copy', done => {",
@@ -315,10 +332,10 @@
 			"\tdone();",
 		"});"
 		],
-		"description": "gulp-copy"
+		"description": "gulp  copy"
 	},
-	"!gulp-default": {
-		"prefix": "!gulp-default",
+	"!gulp-default-node": {
+		"prefix": "!gulp-default-node",
 		"scope": "javascript",
 		"body": [
 			"gulp.task('default',gulp.series(['htmlmin','cssmin','jsmin','copy']));",
@@ -326,8 +343,8 @@
 		"description": "gulp-default"
 	},
 	// mongoose
-	"!connect-mongoose": {
-		"prefix": "!connect-mongoose",
+	"!connect-mongoose-node": {
+		"prefix": "!connect-mongoose-node",
 		"scope": "javascript",
 		"body": [
 			"mongoose.connect('mongodb://${1:localhost/playground}' ,{",
@@ -340,30 +357,30 @@
 		"description": "连接数据库"
 	},
 
-	"!then-mongoose": {
-		"prefix": "!then-mongoose",
+	"!then-mongoose-node": {
+		"prefix": "!then-mongoose-node",
 		"scope": "javascript",
 		"body": [
 			".then(doc => ${1:console.log(doc)})"
 		],
 		"description": "数据库连接正确的处理"
 	},
-	"!catch-mongoose": {
-		"prefix": "!catch-mongoose",
+	"!catch-mongoose-node": {
+		"prefix": "!catch-mongoose-node",
 		"scope": "javascript",
 		"body": [
 			".catch(err => {",
 			"\tconst errors = err.errors;",
 			"\tfor( let item in errors) {",
-			"\t\tconsole.log(errors[item]['message']);",
+			"\t\tres.end(errors[item]['message']);",
 			"\t}",
 			"});"
 		],
 		"description": "数据库连接错误的处理"
 	},
 
-	"!schema-mongoose": {
-		"prefix": "!schema-mongoose",
+	"!schema-mongoose-node": {
+		"prefix": "!schema-mongoose-node",
 		"scope": "javascript",
 		"body": [
 			"const ${1:my}Schema = new mongoose.Schema({",
@@ -384,8 +401,8 @@
 		],
 		"description": "创建数据库模型，并编译模型"
 	},
-	"!validate-schema-mongoose": {
-		"prefix": "!validate-schema-mongoose",
+	"!validate-schema-mongoose-node": {
+		"prefix": "!validate-schema-mongoose-node",
 		"scope": "javascript",
 		"body": [
 			"validate: {",

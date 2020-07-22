@@ -43,4 +43,8 @@ const Post = mongoose.model('Post', postSchema);
 // })
 //   .then(doc => console.log(doc));
 
-Post.find().then(doc => console.log(doc)).catch(err => console.log(err))
+// 查询
+// Post.find().then(doc => console.log(doc)).catch(err => console.log(err))
+// populate()关联填充 将另一集合的数据引用并填充到本集合的目标位置
+// populate()的详细说明 https://itbilu.com/nodejs/npm/HkAKMTECm.html
+Post.find().populate('author').then(doc => console.log(doc)).catch(err => console.log(err))

@@ -4,6 +4,7 @@
   "description": "本文件夹依赖模块",
   "main": "index.js",
   "dependencies": {
+    "art-template": "^4.13.2",
     "mongoose": "^5.9.25"
   },
   "devDependencies": {},

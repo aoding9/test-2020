@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Document</title>
+</head>
+<body>
+  <!-- 和vue的mustache语法差不多，可以解析变量、表达式等 -->
+  <!-- 标准语法 -->
+  <p> {{ name }} </p>
+  <p> {{ 1+1 }} </p>
+  <p> {{ 1+1==2?'相等':'不相等' }} </p>
+  <p> {{ content }} </p>
+  <!-- 原文输出，解析html标签 -->
+  <!-- {和@之间不能有空格 -->
+  <!-- <p> {{ @ content }} </p> 错误写法-->
+  <p> {{@ content }} </p>
+
+
+  <!-- 原始语法 -->
+  <p> <%= name %> </p>
+  <p> <%= 1+1 %> </p>
+  <p> <%= 1+1==2?'相等':'不相等' %> </p>
+  <p> <%= content %> </p>
+  <p> <%- content %> </p>
+
+</body>
+</html>

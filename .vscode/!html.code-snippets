@@ -17,16 +17,17 @@
 	},
 	"!html1-template1": {
 		"prefix": "!html1-template1",
-		"scope": "html",
+		"scope": ["html","vue","art"],
 		"body": [
 			"<!DOCTYPE html>",
 			"<html>",
-			"\t<head>",
-			"\t\t<meta charset=\"UTF-8\" />",
-			"\t</head>",
-			"\t<body>",
-			"\t\t$0",
-			"\t</body>",
+			"<head>",
+			"\t<meta charset=\"UTF-8\" />",
+			"\t<title>${1:Document}</title>",
+			"</head>",
+			"<body>",
+			"\t$0",
+			"</body>",
 			"</html>"
 		],
 		"description": "html模板1"
@@ -40,7 +41,7 @@
 	// 7-17   修改了日期为7月，注释掉暂时不要的内容
 	"!html2-template1": {
 		"prefix": "!html2-template1",
-		"scope": "html",
+		"scope": ["html","vue","art"],
 		"body": [
 			"<!--",
 			"————————\n7-$1\t创建",
@@ -77,7 +78,7 @@
 		"description": "html模板2"
 	},
 	"!bootstrap-template": {
-		"scope": "html",
+		"scope": ["html","vue","art"],
 		"prefix": "!bootstrap-template",
 		"body": [
 			"<!DOCTYPE html>",
@@ -103,8 +104,42 @@
 		"description": "bootstrap模板"
 	},
 	// vue模板
-	"!vue-template": {
-		"prefix": "!vue-template",
+	"!vue-template1": {
+		"prefix": "!vue-template1",
+		"body": [
+		  "<template>",
+		  "    <div>\n",
+		  "    </div>",
+		  "</template>\n",
+		  "<script>",
+		  "export default {",
+		  "    props: {\n",
+		  "    },",
+		  "    components: {\n",
+		  "    },",
+		  "    watch: {\n",
+		  "    },",
+		  "    data() {",
+		  "        return {\n",
+		  "        };",
+		  "    },",
+		  "    computed: {\n",
+		  "    },",
+		  "    created() {\n",
+		  "    },",
+		  "    mounted() {\n",
+		  "    },",
+		  "    methods: {\n",
+		  "    },",
+		  "};",
+		  "</script>\n",
+		  "<style scoped lang=\"${1:scss}\">\n",
+		  "</style>\n"
+		],
+		"description": "vue模板1"
+	},
+	"!vue-template2": {
+		"prefix": "!vue-template2",
 		"scope": ["html","vue"],
 		"body": [
 			"<!--",
@@ -138,7 +173,7 @@
 			"</body>",
 			"</html>"
 		],
-		"description": "Vue模板"
+		"description": "Vue模板2"
 	}
 
 }

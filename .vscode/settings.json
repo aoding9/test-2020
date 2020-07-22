@@ -1,37 +1,148 @@
 {
-    "cSpell.words": [
-        "mediatype",
-        "subnav"
-    ],
+
+  "editor.formatOnSave": false,
+  "editor.fontSize": 18,
+  "workbench.iconTheme": "vscode-icons",
+  "editor.wordWrap": "on",
+  "vsicons.dontShowNewVersionMessage": true,
+  "files.autoSave": "onFocusChange",
+  "workbench.colorTheme": "One Dark Pro",
+  "liveServer.settings.donotShowInfoMsg": true,
+  
+  "window.zoomLevel": 0,
+  "terminal.integrated.rendererType": "dom",
+  "git.autofetch": true,
+  // 代码提示的选中是否通过Enter确认, 建议关闭, 否则在想要换行的时候会触发选中, 只用Tab键选中
+  "editor.acceptSuggestionOnEnter": "off",
+  // 控制是否通过提交字符接收建议, 意思是;(等也会选中提示的代码, 这会造成失误, 建议关闭
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "workbench.editorAssociations": [{
+    "viewType": "default",
+    "filenamePattern": "*.md"
+  }],
+  // "editor.suggest.showWords": false,
+  "editor.lineNumbers": "on", //开启行数提示
+  "editor.quickSuggestions": {
+    //开启自动显示建议
+    "other": true,
+    "comments": true,
+    "strings": true
+  },
+  "editor.tabSize": 2,
+  // "eslint.autoFixOnSave": true, // 每次保存的时候将代码按eslint格式进行修复
+  // "prettier.eslintIntegration": true, //让prettier使用eslint的代码格式进行校验
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true, //让函数(名)和后面的括号之间加个空格
+  "eslint.validate": [
+    //开启对.vue文件中错误的检查
+    "javascript",
+    "javascriptreact",
     {
-        // "editor.formatOnType":true,
-        "editor.formatOnSave": true,
-        "editor.fontSize": 18,
-        "workbench.iconTheme": "vscode-icons",
-        "editor.wordWrap": "on",
-        "vsicons.dontShowNewVersionMessage": true,
-        "files.autoSave": "afterDelay",
-        "workbench.colorTheme": "One Dark Pro",
-        "liveServer.settings.donotShowInfoMsg": true,
-        "[html]": {
-            "editor.defaultFormatter": "HookyQR.beautify"
-        },
-        // "editor.acceptSuggestionOnEnter": "off",
-        // "editor.suggest.snippetsPreventQuickSuggestions": false,
-        "window.zoomLevel": 0,
-        "terminal.integrated.rendererType": "dom",
-        "files.associations": {
-      
-            "*.vue": "html",
-        },
-        "git.autofetch": true,
-        "editor.acceptSuggestionOnEnter": "off",
-        "workbench.editorAssociations": [
-          {
-            "viewType": "default",
-            "filenamePattern": "*.md"
-          }
-        ],
-        // "editor.suggest.showWords": false,
-      }
+      "language": "html",
+      // "autoFix": true
+    },
+    {
+      "language": "vue",
+      // "autoFix": true
+    }
+  ],
+  "explorer.confirmDelete": false,
+
+  // "emmet.triggerExpansionOnTab": true,
+  // "terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
+  // "workbench.startupEditor": "newUntitledFile",
+  "workbench.editor.enablePreview": false,
+  "prettier.arrowParens": "avoid", //打开文件不覆盖
+  // "search.followSymlinks": false, //关闭rg.exe进程
+  // "editor.minimap.enabled": true, //关闭快速预览
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": false
+    }
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll": false
+  },
+  "cSpell.words": [
+    "mediatype",
+    "subnav",
+    "Arial",
+    "Dreamweaver",
+    "Emment",
+    "Hant",
+    "Heiti",
+    "Helvetica",
+    "Hiragino",
+    "LVHA",
+    "Neue",
+    "Yahei",
+    "arclist",
+    "autofocus",
+    "autoplay",
+    "bezier",
+    "bgcolor",
+    "bgposition",
+    "bidi",
+    "bitbug",
+    "callout",
+    "cellpadding",
+    "cellspacing",
+    "channelartlist",
+    "checkcode",
+    "clearfix",
+    "colspan",
+    "cutterman",
+    "datav",
+    "eyou",
+    "fileinclude",
+    "gitee",
+    "guanggao",
+    "gulpfile",
+    "hightlight",
+    "hotwords",
+    "hsla",
+    "icofont",
+    "icomoon",
+    "jsmin",
+    "keyframes",
+    "listpage",
+    "litpic",
+    "maxlength",
+    "mongoimport",
+    "msubstr",
+    "nbsp",
+    "nowrap",
+    "oldman",
+    "photoshop",
+    "preload",
+    "rcommd",
+    "rgba",
+    "rowspan",
+    "shopcar",
+    "shoping",
+    "snipaste",
+    "stylesheet",
+    "subnav",
+    "tbody",
+    "thead",
+    "titlelen",
+    "vertify",
+    "webp",
+    "webstorm"
+  ],
+  "emmet.includeLanguages": {
+    // .art模板文件启用emmet语法
+    "art": "art",
+    "php": "php"
+  },
+  "files.associations": {
+    "*.vue": "vue",
+    "*.html": "html",
+    // "*.art": "html",
+    "*.php": "php"
+  },
 }
