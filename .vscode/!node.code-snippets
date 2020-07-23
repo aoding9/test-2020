@@ -157,17 +157,38 @@
 		],
 		"description": "服务器对象监听端口"
 	},
-	"!writeHead-http-node": {
-		"prefix": "!writeHead-http-node",
+	"!writeHead200-http-node": {
+		"prefix": "!writeHead200-http-node",
 		"scope": "javascript",
 		"body": [
-			"res.writeHead(${1:200}, {",
-			"\t${2:'content-type': 'text/html;charset=utf8'},",
-			"\t${3:// Location: '/$4'},",
+			"res.writeHead(200, {",
+			"\t${1:'content-type': 'text/html;charset=utf8'},",
 			"});",
 			"res.end();"
 		],
-		"description": "写报文头"
+		"description": "报文头200响应"
+	},
+	"!writeHead301-http-node": {
+		"prefix": "!writeHead301-http-node",
+		"scope": "javascript",
+		"body": [
+			"res.writeHead(301, {",
+			"\t${1:// Location: '/$2'},",
+			"});",
+			"res.end();"
+		],
+		"description": "报文头301响应"
+	},
+	"!writeHead400-http-node": {
+		"prefix": "!writeHead400-http-node",
+		"scope": "javascript",
+		"body": [
+			"res.writeHead(400, {",
+			"\t${1:'content-type': 'text/html;charset=utf8'},",
+			"});",
+			"res.end('响应码：400');"
+		],
+		"description": "报文头400响应"
 	},
 	"!postParams-http-node": {
 		"prefix": "!postParams-http-node",
@@ -178,7 +199,7 @@
       "\tpostParams += param;",
    		"});",
    		"req.on('end', () => {",
-      "\t$1",
+      "\t${1:const objParams = querystring.parse(postParams)}",
    		"});"
 		],
 		"description": "接收并拼接post参数"

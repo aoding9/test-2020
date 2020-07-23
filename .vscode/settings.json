@@ -68,8 +68,6 @@
     "source.fixAll": false
   },
   "cSpell.words": [
-    "mediatype",
-    "subnav",
     "Arial",
     "Dreamweaver",
     "Emment",
@@ -112,6 +110,8 @@
     "listpage",
     "litpic",
     "maxlength",
+    "mediatype",
+    "mkdir",
     "mongoimport",
     "msubstr",
     "nbsp",

@@ -47,7 +47,7 @@
 		"prefix": "!arrow",
 		"scope": "javascript",
 		"body": [
-			"${1:()} => {$0}"
+			"${1:($2)} => {$0}"
 		],
 		"description": "箭头函数"
 	},

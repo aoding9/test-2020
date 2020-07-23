@@ -1,0 +1,7 @@
+{{include './common/header.art'}}
+{{data.msg}}
+{{include './common/footer.art'}}
+
+<% include('./05-common/header.art') %>
+<%= data.msg %>
+<% include('./05-common/footer.art') %>
