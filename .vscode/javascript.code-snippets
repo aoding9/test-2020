@@ -2,8 +2,8 @@
 	//6-4-1	创建
 	//6-5-1	删掉了.length
 	// 7-21 新增es6 for循环
-	"!for1": {
-		"prefix": "!for1",
+	"for1": {
+		"prefix": "for1",
 		"scope": "javascript",
 		"body": [
 			"for (var i = ${1:0} ;i < $2 ;i++) {",
@@ -12,8 +12,8 @@
 		],
 		"description": "for模板1"
 	},
-	"!for2": {
-		"prefix": "!for2",
+	"for2": {
+		"prefix": "for2",
 		"scope": "javascript",
 		"body": [
 			"for (let i = ${1:0} ;i < $2 ;i++) {",
@@ -22,8 +22,8 @@
 		],
 		"description": "for模板2"
 	},
-	"!for3": {
-		"prefix": "!for3",
+	"for3": {
+		"prefix": "for3",
 		"scope": "javascript",
 		"body": [
 			"for (let item in $1) {",
@@ -32,8 +32,8 @@
 		],
 		"description": "for模板3"
 	},
-	"!for4": {
-		"prefix": "!for4",
+	"for4": {
+		"prefix": "for4",
 		"scope": "javascript",
 		"body": [
 			"for (let item of $1) {",
@@ -43,12 +43,20 @@
 		"description": "for模板4"
 	},
 
-	"!arrow": {
-		"prefix": "!arrow",
+	"arrow": {
+		"prefix": "arrow",
 		"scope": "javascript",
 		"body": [
-			"${1:($2)} => {$0}"
+			"${1:async }${2:($3)} => {$0}"
 		],
 		"description": "箭头函数"
+	},
+	"reqs arrow": {
+		"prefix": "reqs arrow",
+		"scope": "javascript",
+		"body": [
+			"${1:async }(${2:err, }${3:req, res}${5:, next}) => {$0}"
+		],
+		"description": "请求事件的回调函数"
 	},
 }

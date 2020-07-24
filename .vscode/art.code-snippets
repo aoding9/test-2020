@@ -1,0 +1,53 @@
+{
+	// art template模板语法
+	"block art template node": {
+		"prefix": "block art template node",
+		"body": [
+			"{{block '${1:骨架模板坑名}'}}{{/block}}",
+		],
+		"description": "骨架模板继承留坑block art template"
+	},
+	"extend art template node": {
+		"prefix": "extend art template node",
+		"body": [
+			"{{extend '${1:骨架模板坑名}'}}",
+			"{{block '${1:骨架模板坑名}'}}{{/block}}",
+		],
+		"description": "骨架模板继承并填坑extend art template"
+	},
+	"include art template node": {
+		"prefix": "include art template node",
+		"body": [
+			"{{include '${1:子模板名}'}}",
+		],
+		"description": "引入子模板"
+	},
+	"yuanshi art template node": {
+		"prefix": "yuanshi art template node",
+		"body": [
+			"<% ${1:jscode} %>$2",
+		],
+		"description": "骨架模板继承留坑block art template node"
+	},
+	"each art template node": {
+		"prefix": "each art template node",
+		"body": [
+			"{{each ${1:target}}}${2:{{$$index}}}${3:{{$$value}}}{{/each}}",
+		],
+		"description": "模板循环{{each}}"
+	},
+	"if art template node": {
+		"prefix": "if art template node",
+		"body": [
+			"{{if ${1:express1}}}$2{{/if}}",
+		],
+		"description": "模板if{{if}}"
+	},
+	"elseif art template node": {
+		"prefix": "elseif art template node",
+		"body": [
+			"{{elseif ${1:express2}}}$2{{else}}$3",
+		],
+		"description": "模板elseif{{elseif}}"
+	},
+}

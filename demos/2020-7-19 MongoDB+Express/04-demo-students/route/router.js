@@ -23,7 +23,6 @@ router.get('/list', async (req, res) => {
   });
   res.end(html);
 })
-
 // 实现学生信息添加功能的路由
 router.post('/add', (req, res) => {
   // 接收数据
