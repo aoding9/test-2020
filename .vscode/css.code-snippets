@@ -1,7 +1,7 @@
 {
 	//5-19-1	创建
-	"css-base": {
-		"prefix": "!css-base",
+	"css base": {
+		"prefix": "css base",
 		"scope": "css",
 		"body": [
 			"HTML,body,div,h1,h2,h3,h4,h5,h6,ul,ol,dl,li,dt,dd,p,blockquote,pre,form,fieldset,table,th,td {",
@@ -59,8 +59,8 @@
 			"description": "css初始化"
 	},
 	//5-19-1	创建
-	"media-common": {
-		"prefix": "!media-common",
+	"media common": {
+		"prefix": "media common",
 		"scope": "css",
 		"body": [
 			"html {font-size: ${1:50}px;}",
@@ -79,8 +79,8 @@
 		"description": "媒体查询 15等份"
 	},
 		//5-19-1	创建
-		"container-width-common": {
-			"prefix": "!container-width-common",
+		"container width common": {
+			"prefix": "container width common",
 			"scope": "css",
 			"body": [
 				"@media screen and (max-width:767px) {.container {width: 100%;}}",

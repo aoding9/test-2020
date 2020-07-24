@@ -1,8 +1,8 @@
 {
 	//5-19-1	创建
 	// 7-21 修改
-	"code-snippets-common": {
-		"prefix": "!code-snippets-common",
+	"code snippets common": {
+		"prefix": "code snippets common",
 		"body": [
 			"\t\"$1\": {",
 			"\t\t\"prefix\": \"$2\",",
@@ -15,11 +15,11 @@
 		],
 		"description": "代码片段模板"
 	},
-	"!html1-template1": {
-		"prefix": "!html1-template1",
+	"html1 template1": {
+		"prefix": "html1 template1",
 		"scope": ["html","vue","art"],
 		"body": [
-			"<!DOCTYPE html>",
+			"<DOCTYPE html>",
 			"<html>",
 			"<head>",
 			"\t<meta charset=\"UTF-8\" />",
@@ -39,15 +39,15 @@
 	// 5-19-1	注释了一些东西，稍微修改
 	// 6-8-1	添加了快速样式easyHtml的css文件
 	// 7-17   修改了日期为7月，注释掉暂时不要的内容
-	"!html2-template1": {
-		"prefix": "!html2-template1",
+	"html2 template1": {
+		"prefix": "html2 template1",
 		"scope": ["html","vue","art"],
 		"body": [
-			"<!--",
+			"<--",
 			"————————\n7-$1\t创建",
 			"————————",
 			"-->",
-			"<!DOCTYPE html>",
+			"<DOCTYPE html>",
 			"<html lang=\"zh-CN\">",
 			"<head>",
 			//标题
@@ -60,13 +60,13 @@
 			//"\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0\">",	
 			//IE=edge告诉IE使用最新的引擎渲染网页，chrome=1则可以激活Chrome Frame
 			//"\t<meta content=\"IE=edge,chrome=1\" http-equiv=\"X-UA-Compatible\">",  
-			//初始化css"<!-- \t<link href=\"css/normalize.css\" rel=\"stylesheet\"> -->", 
-			//自定义初始化css pc端 没有兼容优化"<!-- \t<link href=\"css/base.css\" rel=\"stylesheet\"> -->",
-			//自定义初始化css 移动端"<!-- \t<link href=\"css/mobile.css\" rel=\"stylesheet\"> -->",
+			//初始化css"<-- \t<link href=\"css/normalize.css\" rel=\"stylesheet\"> -->", 
+			//自定义初始化css pc端 没有兼容优化"<-- \t<link href=\"css/base.css\" rel=\"stylesheet\"> -->",
+			//自定义初始化css 移动端"<-- \t<link href=\"css/mobile.css\" rel=\"stylesheet\"> -->",
 			// 公共css
-			//"<!-- \t<link href=\"../css/6-8-common.css\" rel=\"stylesheet\"> -->", 
-			//"<!-- \t<link href=\"../css/6-8-easyHtml.css\" rel=\"stylesheet\"> -->", 
-			//当前页面css"<!-- <link href=\"css/$2.css\" rel=\"stylesheet\"> -->", 
+			//"<-- \t<link href=\"../css/6-8-common.css\" rel=\"stylesheet\"> -->", 
+			//"<-- \t<link href=\"../css/6-8-easyHtml.css\" rel=\"stylesheet\"> -->", 
+			//当前页面css"<-- <link href=\"css/$2.css\" rel=\"stylesheet\"> -->", 
 			//"\t<style></style>",
 			"</head>",
 			"<body>",
@@ -77,11 +77,11 @@
 		],
 		"description": "html模板2"
 	},
-	"!bootstrap-template": {
+	"bootstrap template": {
 		"scope": ["html","vue","art"],
-		"prefix": "!bootstrap-template",
+		"prefix": "bootstrap template",
 		"body": [
-			"<!DOCTYPE html>",
+			"<DOCTYPE html>",
 			"<html lang=\"zh-CN\">",
 			"<head>",
 			"<meta charset=\"utf-8\">",
@@ -90,10 +90,10 @@
 			"<title>$1</title>",
 			"<link href=\"https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css\" rel=\"stylesheet\">",
 			//"<link href=\"bootstrap/css/bootstrap.min.css\" rel=\"stylesheet\">\n$2",
-			"<!--[if lt IE 9]>",
+			"<--[if lt IE 9]>",
 			"<script src=\"https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js\"></script>",
 			"<script src=\"https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js\"></script>",
-			"<![endif]-->",
+			"<[endif]-->",
 			"</head>",
 			"<body>\n$0",
 			//"<script src=\"https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js\"></script>",
@@ -104,8 +104,8 @@
 		"description": "bootstrap模板"
 	},
 	// vue模板
-	"!vue-template1": {
-		"prefix": "!vue-template1",
+	"vue template1": {
+		"prefix": "vue template1",
 		"body": [
 		  "<template>",
 		  "    <div>\n",
@@ -138,14 +138,14 @@
 		],
 		"description": "vue模板1"
 	},
-	"!vue-template2": {
-		"prefix": "!vue-template2",
+	"vue template2": {
+		"prefix": "vue template2",
 		"scope": ["html","vue"],
 		"body": [
-			"<!--",
+			"<--",
 			"7-$1\t创建",
 			"-->",
-			"<!DOCTYPE html>",
+			"<DOCTYPE html>",
 			"<html>",
 			"<head>",
 			"\t<meta charset=\"UTF-8\">",
