@@ -3,7 +3,7 @@
 	"block art template node": {
 		"prefix": "block art template node",
 		"body": [
-			"{{block '${1:骨架模板坑名}'}}{{/block}}",
+			"{{block '${1:骨架模板坑名}'}}{{/block}}\n",
 		],
 		"description": "骨架模板继承留坑block art template"
 	},
@@ -11,14 +11,14 @@
 		"prefix": "extend art template node",
 		"body": [
 			"{{extend '${1:骨架模板坑名}'}}",
-			"{{block '${1:骨架模板坑名}'}}{{/block}}",
+			"{{block '${1:骨架模板坑名}'}}{{/block}}\n",
 		],
 		"description": "骨架模板继承并填坑extend art template"
 	},
 	"include art template node": {
 		"prefix": "include art template node",
 		"body": [
-			"{{include '${1:子模板名}'}}",
+			"{{include '${1:子模板名}'}}\n",
 		],
 		"description": "引入子模板"
 	},
@@ -32,14 +32,14 @@
 	"each art template node": {
 		"prefix": "each art template node",
 		"body": [
-			"{{each ${1:target}}}${2:{{$$index}}}${3:{{$$value}}}{{/each}}",
+			"{{each ${1:target}}}\n\t{{${2:$$index}}}\n\t{{${3:$$value}}}\n{{/each}}",
 		],
 		"description": "模板循环{{each}}"
 	},
 	"if art template node": {
 		"prefix": "if art template node",
 		"body": [
-			"{{if ${1:express1}}}$2{{/if}}",
+			"{{if ${1:express1}}}$2{{/if}}\n",
 		],
 		"description": "模板if{{if}}"
 	},

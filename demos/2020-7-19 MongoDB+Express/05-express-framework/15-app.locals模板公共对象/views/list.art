@@ -1,0 +1,6 @@
+{{msg}}
+<ul>
+  {{each users}}
+    {{$value.name}}-{{$value.age}}
+  {{/each}}
+</ul>
