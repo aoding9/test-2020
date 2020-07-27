@@ -1,0 +1,35 @@
+{{extend './common/layout.art'}}
+{{block 'link'}}
+<style>
+    .bg-danger{
+        margin: 40vh 10vw;
+        line-height: 10vh;
+        text-align: center;
+        font-weight: 700;
+        border-radius: 10px;
+        letter-spacing: .2em;
+        position: relative;
+    }
+    .error::before {
+        content: '!';
+        color: red;
+    }
+
+</style>
+{{/block}}
+{{block 'main'}}
+    <h4 class="bg-danger error">{{msg}}。页面将在<span id="second">3</span>秒后跳转</h4>
+    
+{{/block}}
+{{block 'script'}}
+    <script type="text/javascript">
+        var i = 3;
+        setInterval(function () {
+            i--;
+            console.log($('#second'));
+            document.querySelector('#second').innerHTML = i;
+            if(i <= 0) location.href = '/admin/login';;
+        },1000)
+
+    </script>
+{{/block}}

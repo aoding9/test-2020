@@ -61,11 +61,11 @@
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": false
+      // "source.fixAll.eslint": true
     }
   },
   "editor.codeActionsOnSave": {
-    "source.fixAll": false
+    // "source.fixAll": true
   },
   "cSpell.words": [
     "Arial",
@@ -142,7 +142,15 @@
   "files.associations": {
     "*.vue": "vue",
     "*.html": "html",
-    // "*.art": "html",
+    "*.art": "html",
     "*.php": "php"
   },
+  "emmet.showSuggestionsAsSnippets": true,
+  "cSpell.userWords": [
+    "ITHEIMA",
+    "ckeditor",
+    "glyphicon",
+    "unstyled",
+    "wangjian"
+  ],
 }
