@@ -1,0 +1,91 @@
+[{
+  "_id": {
+    "$oid": "5f1e8c834584d02ea44ec741"
+  },
+  "state": 0,
+  "username": "admin",
+  "email": "admin@qq.com",
+  "password": "$2b$10$hQScdZdvj4afTlsMZr6bLOcCpSXXXw1Q.9Sb8GAmmq4k2eADaFtzO",
+  "role": "admin",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1e914263cbb8ccc805618c"
+  },
+  "state": 0,
+  "username": "444",
+  "email": "444@qq.com",
+  "password": "$2b$10$INPzkhgqYO4UC3NOhXVyfO5YNwEy7DhALlfciJDVB.D0GAFxK7Y1q",
+  "role": "normal",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1e914863cbb8ccc805618d"
+  },
+  "state": 0,
+  "username": "555",
+  "email": "555@qq.com",
+  "password": "$2b$10$uq7Qyi/.cLcUP6eOsc1PC.i9iytYPhA8Q6TWOpbEwZFuu5CTCJc2i",
+  "role": "normal",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1e914e63cbb8ccc805618e"
+  },
+  "state": 0,
+  "username": "666",
+  "email": "666@qq.com",
+  "password": "$2b$10$nb.pF.BxiI0zmjt0m9SQcuahFx/n2PeR48ayFrqOXFFc0viyYfknO",
+  "role": "normal",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1e915363cbb8ccc805618f"
+  },
+  "state": 0,
+  "username": "777",
+  "email": "777@qq.com",
+  "password": "$2b$10$RMkogVQKh21mTyowqWIKp.le7Pd2Y88fWsQaha86qHEHc87mZxtlu",
+  "role": "normal",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1e915863cbb8ccc8056190"
+  },
+  "state": 0,
+  "username": "888",
+  "email": "888@qq.com",
+  "password": "$2b$10$mPh.RrbQe7whAYyyggyOfOAko5dsfU5n.63ZAgKF6ERWw9OwekGzK",
+  "role": "normal",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1e915e63cbb8ccc8056191"
+  },
+  "state": 0,
+  "username": "999",
+  "email": "999@qq.com",
+  "password": "$2b$10$jhXv3pO0wfN/l6KokXaobuD/NZGYoQ1KolFIAM4MPXPzDtLGYGGa.",
+  "role": "normal",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1fce610cae2e0c106fa664"
+  },
+  "state": 1,
+  "username": "法外狂徒张三",
+  "email": "zhangsan@qq.com",
+  "password": "$2b$10$pToOsLWxQhRCPAN9oeWvSu.BW98ot9iVGB9seWY4Nv2OUxMTJu3JS",
+  "role": "admin",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1fce810cae2e0c106fa665"
+  },
+  "state": 0,
+  "username": "王五",
+  "email": "wangwu@qq.com",
+  "password": "$2b$10$B9zdDzeZdiO4pE8FwfNay.4LqyWyXMz1MWyXU8gAVsNxbnoUocrzC",
+  "role": "normal",
+  "__v": 0
+}]

@@ -50,4 +50,11 @@
 		],
 		"description": "模板elseif{{elseif}}"
 	},
+	"value art template node": {
+		"prefix": "value art template node",
+		"body": [
+			"{{$1$$value$2}}",
+		],
+		"description": "{{$value}}"
+	},
 }

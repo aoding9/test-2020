@@ -51,12 +51,21 @@
 		],
 		"description": "箭头函数"
 	},
-	"reqs arrow": {
+	"reqs1 arrow": {
+		"prefix": "reqs arrow",
+		"scope": "javascript",
+		"body": [
+			"(req, res) => {$0}\n"
+		],
+		"description": "请求事件的回调函数 只有req和res"
+	},
+	"reqs2 arrow": {
 		"prefix": "reqs arrow",
 		"scope": "javascript",
 		"body": [
 			"${1:async }(${2:err, }${3:req, res}${5:, next}) => {$0}"
 		],
-		"description": "请求事件的回调函数"
+		"description": "请求事件的回调函数 四个参数"
 	},
+	
 }

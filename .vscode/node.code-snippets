@@ -184,6 +184,23 @@
 		],
 		"description": "dateformat日期格式化模块"
 	},
+	"bcrypt module node": {
+		"prefix": "bcrypt module node",
+		"scope": "javascript",
+		"body": [
+			"const bcrypt = require('bcrypt');\n",
+		],
+		"description": "bcrypt加密模块"
+	},
+	"formidable module node": {
+		"prefix": "formidable module node",
+		"scope": "javascript",
+		"body": [
+			"const formidable = require('formidable');\n",
+		],
+		"description": "formidable表单解析模块 支持二进制"
+	},
+
 	// http
 	"createServer http node": {
 		"prefix": "createServer http node",
@@ -319,7 +336,7 @@
 		"prefix": "join path node",
 		"scope": "javascript",
 		"body": [
-			"let finalPath = path.join(${1:__dirname}, ${2:'public'}, ${3:pathname});\n",
+			"path.join(__dirname, ${1:yourPath})\n",
 		],
 		"description": "路径拼接"
 	},
@@ -410,9 +427,10 @@
 		"prefix": "connect mongoose node",
 		"scope": "javascript",
 		"body": [
-			"mongoose.connect('mongodb://${1:localhost:27017/playground}' ,{",
+			"mongoose.connect('mongodb://${1:localhost:27017/${1:dbname}}' ,{",
 			"\tuseNewUrlParser: true,",
 			"\tuseUnifiedTopology: true",
+			"\tuseCreateIndex: true",
 			"})",
 			"\t.then(() => console.log('数据库连接成功'))",
 			"\t.catch(err => console.log(err, '数据库连接失败'));\n",
@@ -424,7 +442,7 @@
 		"prefix": "then mongoose node",
 		"scope": "javascript",
 		"body": [
-			".then(doc => ${1:console.log(doc)})\n"
+			".then(result => ${1:console.log(result)})\n"
 		],
 		"description": "数据库连接正确的处理"
 	},
@@ -435,15 +453,37 @@
 			".catch(err => {",
 			"\tconst errors = err.errors;",
 			"\tfor( let item in errors) {",
-			"\t\tres.end(errors[item]['message']);",
+			"\t\tres.send(errors[item]['message']);",
 			"\t}",
 			"});\n"
 		],
 		"description": "数据库连接错误的处理"
 	},
-
 	"schema mongoose node": {
 		"prefix": "schema mongoose node",
+		"scope": "javascript",
+		"body": [
+			"const ${1:ColName} = mongoose.model('${1:ColName}', ${2:my}Schema);/n",
+		],
+		"description": "创建并保存集合构造函数"
+	},
+	"modle schema mongoose node": {
+		"prefix": "modle schema mongoose node",
+		"scope": "javascript",
+		"body": [
+			"const ${1:my}Schema = new mongoose.Schema({",
+			"\t${2:key1}: {",
+			"\t\ttype: ${3:String},",
+			"\t},",
+			"\t${4:key2}: {",
+			"\t\ttype: ${5:String},",
+			"\t},",
+			"});",
+		],
+		"description": "创建并保存集合规则"
+	},
+	"easy schema mongoose node": {
+		"prefix": "easy schema mongoose node",
 		"scope": "javascript",
 		"body": [
 			"const ${1:my}Schema = new mongoose.Schema({",
@@ -462,7 +502,7 @@
 			"\t.then(doc => console.log(doc))",
 			"\t.catch(err => console.log(err));\n",
 		],
-		"description": "创建数据库模型，并编译模型"
+		"description": "easy模板 创建数据库模型，并编译模型"
 	},
 	"validate schema mongoose node": {
 		"prefix": "validate schema mongoose node",
@@ -590,6 +630,14 @@
 		],
 		"description": "res.send()"
 	},
+	"redirect express node": {
+		"prefix": "redirect express node",
+		"scope": "javascript",
+		"body": [
+			"res.redirect($1);\n",
+		],
+		"description": "res.redirect() 重定向"
+	},
 	"get express node": {
 		"prefix": "get express node",
 		"scope": "javascript",
@@ -630,6 +678,14 @@
 			"})\n",
 		],
 		"description": "express use简单模板 中间件"
+	},
+	"exports express node": {
+		"prefix": "exports express node",
+		"scope": "javascript",
+		"body": [
+			"module.exports = ${1:(req, res) => \n$2res.send('ok')}",
+		],
+		"description": "module.exports"
 	},
 	// express error 错误处理相关
 	"use err express node": {

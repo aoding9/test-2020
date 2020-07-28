@@ -6,6 +6,11 @@ const path = require('path');
 const bodyParser = require('body-parser');
 // 导入express-session模块
 const session = require('express-session');
+// 导入dateformat第三方日期格式化模块
+const dateFormat = require('dateformat');
+// 导入art-template模板引擎
+const template = require('art-template');
+
 
 // 创建网站服务器
 const app = express();
@@ -26,11 +31,14 @@ app.use(session({
 // 创建user集合以及初始用户，测试一下，之后删掉
 // require('./model/user');
 
+// 模板配置相关
 // 配置默认模板路径和后缀
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'art');
 // 配置当渲染art后缀的模板时，使用的模板引擎
 app.engine('art', require('express-art-template'));
+// 向模板内部导入dateFormat变量
+template.defaults.imports.dateFormat = dateFormat;
 
 // 开放静态资源文件
 app.use(express.static(path.join(__dirname, 'public')));
@@ -48,10 +56,18 @@ app.use('/admin', admin);
 // 错误处理中间件
 app.use((err ,req, res ,next) => {
   // if(err){
+    console.log(err);
     // 将json字符串对象转换为对象类型
     // JSON.parse()
     const result = JSON.parse(err);
-    res.redirect(`${result.path}?message=${result.message}`);
+    // 遍历对象，把他转换为querystring字符串，放到数组里面，然后用&进行拼接
+    let params = [];
+    for (let attr in result) {
+      if (attr != 'path') {
+        params.push(attr + '=' + result[attr]);
+      }
+    }
+    res.redirect(`${result.path}?${params.join('&')}`);
   // }
 })
 

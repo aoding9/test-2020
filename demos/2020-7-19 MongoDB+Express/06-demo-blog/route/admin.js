@@ -19,10 +19,26 @@ admin.get('/user', require('./admin/userPage'));
 admin.get('/logout', require('./admin/logout'));
 
 // 渲染新增用户页面
-admin.get('/user-edit', require('./admin/user-editPage'));
+admin.get('/user-edit', require('./admin/user-edit'));
 
 // 实现新增用户功能
-admin.post('/user-edit', require('./admin/user-edit'));
+admin.post('/user-edit', require('./admin/user-edit-fn'));
+
+// 实现修改用户功能
+admin.post('/user-modify', require('./admin/user-modify'));
+
+// 实现删除用户功能
+admin.get('/delete', require('./admin/delete'));
+
+// 文章列表页路由
+admin.get('/article', require('./admin/article'));
+
+// 文章编辑页路由
+admin.get('/article-edit', require('./admin/article-edit'));
+
+// 实现文章添加功能的路由
+admin.post('/article-add', require('./admin/article-add'))
+
 
 // 将路由对象作为模块成员进行导出
 module.exports = admin;

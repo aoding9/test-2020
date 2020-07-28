@@ -1,0 +1,169 @@
+[{
+  "_id": {
+    "$oid": "5f1ff6bbe2fe25235caddc29"
+  },
+  "publishDate": {
+    "$date": "2020-07-16T00:00:00Z"
+  },
+  "cover": "\\uploads\\upload_0a51d4fd0cb36357367ac88ddf4e1d3a.jpeg",
+  "title": "123123",
+  "author": {
+    "$oid": "5f1e8c834584d02ea44ec741"
+  },
+  "content": "<p>123123123123123</p>",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1ff6bbe2fe25235caddc30"
+  },
+  "publishDate": {
+    "$date": "2020-07-16T00:00:00Z"
+  },
+  "cover": "\\uploads\\upload_0a51d4fd0cb36357367ac88ddf4e1d3a.jpeg",
+  "title": "123123",
+  "author": {
+    "$oid": "5f1e8c834584d02ea44ec741"
+  },
+  "content": "<p>123123123123123</p>",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1ff6bbe2fe25235caddc31"
+  },
+  "publishDate": {
+    "$date": "2020-07-16T00:00:00Z"
+  },
+  "cover": "\\uploads\\upload_0a51d4fd0cb36357367ac88ddf4e1d3a.jpeg",
+  "title": "123123",
+  "author": {
+    "$oid": "5f1e8c834584d02ea44ec741"
+  },
+  "content": "<p>123123123123123</p>",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1ff6bbe2fe25235caddc32"
+  },
+  "publishDate": {
+    "$date": "2020-07-16T00:00:00Z"
+  },
+  "cover": "\\uploads\\upload_0a51d4fd0cb36357367ac88ddf4e1d3a.jpeg",
+  "title": "123123",
+  "author": {
+    "$oid": "5f1e8c834584d02ea44ec741"
+  },
+  "content": "<p>123123123123123</p>",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1ff6bbe2fe25235caddc33"
+  },
+  "publishDate": {
+    "$date": "2020-07-16T00:00:00Z"
+  },
+  "cover": "\\uploads\\upload_0a51d4fd0cb36357367ac88ddf4e1d3a.jpeg",
+  "title": "123123",
+  "author": {
+    "$oid": "5f1e8c834584d02ea44ec741"
+  },
+  "content": "<p>123123123123123</p>",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1ff6bbe2fe25235caddc34"
+  },
+  "publishDate": {
+    "$date": "2020-07-16T00:00:00Z"
+  },
+  "cover": "\\uploads\\upload_0a51d4fd0cb36357367ac88ddf4e1d3a.jpeg",
+  "title": "123123",
+  "author": {
+    "$oid": "5f1e8c834584d02ea44ec741"
+  },
+  "content": "<p>123123123123123</p>",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1ff6bbe2fe25235caddc35"
+  },
+  "publishDate": {
+    "$date": "2020-07-16T00:00:00Z"
+  },
+  "cover": "\\uploads\\upload_0a51d4fd0cb36357367ac88ddf4e1d3a.jpeg",
+  "title": "123123",
+  "author": {
+    "$oid": "5f1e8c834584d02ea44ec741"
+  },
+  "content": "<p>123123123123123</p>",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1ff6bbe2fe25235caddc36"
+  },
+  "publishDate": {
+    "$date": "2020-07-16T00:00:00Z"
+  },
+  "cover": "\\uploads\\upload_0a51d4fd0cb36357367ac88ddf4e1d3a.jpeg",
+  "title": "123123",
+  "author": {
+    "$oid": "5f1e8c834584d02ea44ec741"
+  },
+  "content": "<p>123123123123123</p>",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1ff6bbe2fe25235caddc37"
+  },
+  "publishDate": {
+    "$date": "2020-07-16T00:00:00Z"
+  },
+  "cover": "\\uploads\\upload_0a51d4fd0cb36357367ac88ddf4e1d3a.jpeg",
+  "title": "123123",
+  "author": {
+    "$oid": "5f1e8c834584d02ea44ec741"
+  },
+  "content": "<p>123123123123123</p>",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1ff6bbe2fe25235caddc38"
+  },
+  "publishDate": {
+    "$date": "2020-07-16T00:00:00Z"
+  },
+  "cover": "\\uploads\\upload_0a51d4fd0cb36357367ac88ddf4e1d3a.jpeg",
+  "title": "123123",
+  "author": {
+    "$oid": "5f1e8c834584d02ea44ec741"
+  },
+  "content": "<p>123123123123123</p>",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1ff6bbe2fe25235caddc39"
+  },
+  "publishDate": {
+    "$date": "2020-07-16T00:00:00Z"
+  },
+  "cover": "\\uploads\\upload_0a51d4fd0cb36357367ac88ddf4e1d3a.jpeg",
+  "title": "123123",
+  "author": {
+    "$oid": "5f1e8c834584d02ea44ec741"
+  },
+  "content": "<p>123123123123123</p>",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1ff6bbe2fe25235caddc40"
+  },
+  "publishDate": {
+    "$date": "2020-07-16T00:00:00Z"
+  },
+  "cover": "\\uploads\\upload_0a51d4fd0cb36357367ac88ddf4e1d3a.jpeg",
+  "title": "123123",
+  "author": {
+    "$oid": "5f1e8c834584d02ea44ec741"
+  },
+  "content": "<p>123123123123123</p>",
+  "__v": 0
+}]

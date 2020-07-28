@@ -120,6 +120,7 @@
     "photoshop",
     "preload",
     "rcommd",
+    "resave",
     "rgba",
     "rowspan",
     "shopcar",
@@ -131,8 +132,10 @@
     "thead",
     "titlelen",
     "vertify",
+    "waper",
     "webp",
-    "webstorm"
+    "webstorm",
+    "zhangsan"
   ],
   "emmet.includeLanguages": {
     // .art模板文件启用emmet语法
