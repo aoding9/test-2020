@@ -27,6 +27,12 @@ module.exports = (req, res) => {
       cover: files.cover.path.split('public')[1],
       content
     })
+    .catch(err=>{
+      const errors = err.errors;
+      for( let item in errors) {
+        console.log(errors[item]['message']);
+      }
+    })
   });
   // 添加完后重定向回文章列表页
   res.redirect('/admin/article');

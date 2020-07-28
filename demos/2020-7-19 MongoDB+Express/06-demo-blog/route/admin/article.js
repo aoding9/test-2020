@@ -15,12 +15,11 @@ module.exports = async (req, res) => {
   // const articles = await Article.find().populate('author');
   // 文章分页
   // pagination(目标集合的构造函数).page(当前页码).size(每页条数).display(客户端显示的页码数量).exec(向数据库发送分页请求，不用写参数)
-  const articles = await pagination(Article).find().page(page).size(2).display(3).populate('author').exec();
+  const articles = await pagination(Article).find().page(page).size(15).display(7).populate('author').exec();
   // res.send(articles); //看下查询是否成功
   
   // 渲染文章列表页面模板
   res.render('admin/article.art', {
     articles,
-    link: '/admin'
   });
 }

@@ -46,6 +46,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // 引用模块化路由对象
 const home = require('./route/home');
 const admin = require('./route/admin');
+const { send } = require('process');
 
 // 登录拦截功能，判断用户登录状态
 app.use('/admin', require('./middleware/loginGuard'));
@@ -55,8 +56,13 @@ app.use('/admin', admin);
 
 // 错误处理中间件
 app.use((err ,req, res ,next) => {
-  // if(err){
+  const errType = typeof err;
+  if(errType != 'string'){
+    // err = JSON.stringify(err);
     console.log(err);
+    res.send(err);
+    
+  }else if (errType == 'string'){
     // 将json字符串对象转换为对象类型
     // JSON.parse()
     const result = JSON.parse(err);
@@ -68,7 +74,9 @@ app.use((err ,req, res ,next) => {
       }
     }
     res.redirect(`${result.path}?${params.join('&')}`);
-  // }
+  }else{
+    res.send('不知道啥错误')
+  }
 })
 
 // 监听端口
