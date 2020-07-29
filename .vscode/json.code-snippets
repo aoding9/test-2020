@@ -1,0 +1,20 @@
+{
+  	"json key value ": {
+      "prefix": "json key value ",
+      "scope": ["javascript", "json"],
+      "body": [
+        "\"${1:key}\": \"${2:value}\"${3:,}\n",
+      ],
+      "description": "json \"key\":\"value\","
+    },
+    "json key value obj ": {
+      "prefix": "json key value obj ",
+      "scope": ["javascript", "json"],
+      "body": [
+        "\"${1:key}\": {",
+        "\t\"${2:key}\": \"${3:value}\"${4:,}\n\t$5",
+        "}"
+      ],
+      "description": "json \"key\":\"value\","
+    },
+}

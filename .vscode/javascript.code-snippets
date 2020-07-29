@@ -52,7 +52,7 @@
 		"description": "箭头函数"
 	},
 	"reqs1 arrow": {
-		"prefix": "reqs arrow",
+		"prefix": "reqs1 arrow",
 		"scope": "javascript",
 		"body": [
 			"(req, res) => {$0}\n"
@@ -60,12 +60,40 @@
 		"description": "请求事件的回调函数 只有req和res"
 	},
 	"reqs2 arrow": {
-		"prefix": "reqs arrow",
+		"prefix": "reqs2 arrow",
 		"scope": "javascript",
 		"body": [
 			"${1:async }(${2:err, }${3:req, res}${5:, next}) => {$0}"
 		],
 		"description": "请求事件的回调函数 四个参数"
 	},
-	
+	"then async": {
+		"prefix": "then async",
+		"scope": "javascript",
+		"body": [
+			".then(result => ${1:console.log(result)})\n"
+		],
+		"description": "接收异步函数或promise对象处理正确信息"
+	},
+	"catch async": {
+		"prefix": "catch async",
+		"scope": "javascript",
+		"body": [
+			".catch(err => ${1:console.log(err)})\n"
+		],
+		"description": "接收异步函数或promise对象处理错误信息"
+	},
+	"errors catch async": {
+		"prefix": "errors catch async",
+		"scope": "javascript",
+		"body": [
+			".catch(err => {",
+			"\tconst errors = err.errors;",
+			"\tfor( let item in errors) {",
+			"\t\tres.send(errors[item]['message']);",
+			"\t}",
+			"});\n"
+		],
+		"description": "遍历错误信息 接收异步函数或promise对象处理的错误信息"
+	},
 }

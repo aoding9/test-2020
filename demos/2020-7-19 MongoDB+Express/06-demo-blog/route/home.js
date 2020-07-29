@@ -1,10 +1,13 @@
 // 引用express框架
 const express = require('express');
-// 创建博客前台页面路由
+// 创建博客前台页面路由对象
 const home = express.Router();
-// 设定一级路由
-home.get('/', (req, res) => {
-  res.send('欢迎来到home')
-});
+
+// 博客前台首页的
+home.get('/', require('./home/index'));
+// 博客前台文章详情展示页面
+home.get('/article', require('./home/article'));
+
+
 // 将路由对象作为模块成员进行导出
 module.exports = home;

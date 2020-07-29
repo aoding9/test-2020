@@ -1,0 +1,12 @@
+{
+  "title": "博客管理系统 --- 生产环境",
+  "db": {
+    "user": "admin123",
+    "pwd": "admin123",
+    "host": "localhost",
+    "port": "27017",
+    "name": "blog"
+    
+  }
+  
+}

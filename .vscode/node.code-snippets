@@ -160,8 +160,8 @@
 		],
 		"description": "mime类型处理模块"
 	},
-	"artTemplate module node": {
-		"prefix": "artTemplate module node",
+	"art template module node": {
+		"prefix": "art template module node",
 		"scope": "javascript",
 		"body": [
 			"const template = require('art-template');\n"
@@ -199,6 +199,14 @@
 			"const formidable = require('formidable');\n",
 		],
 		"description": "formidable表单解析模块 支持二进制"
+	},
+	"config module node": {
+		"prefix": "config module node",
+		"scope": "javascript",
+		"body": [
+			"const config = require('config');\n",
+		],
+		"description": "config 根据运行环境读取不同配置的模块"
 	},
 
 	// http
@@ -437,28 +445,6 @@
 		],
 		"description": "连接数据库"
 	},
-
-	"then mongoose node": {
-		"prefix": "then mongoose node",
-		"scope": "javascript",
-		"body": [
-			".then(result => ${1:console.log(result)})\n"
-		],
-		"description": "数据库连接正确的处理"
-	},
-	"catch mongoose node": {
-		"prefix": "catch mongoose node",
-		"scope": "javascript",
-		"body": [
-			".catch(err => {",
-			"\tconst errors = err.errors;",
-			"\tfor( let item in errors) {",
-			"\t\tres.send(errors[item]['message']);",
-			"\t}",
-			"});\n"
-		],
-		"description": "数据库连接错误的处理"
-	},
 	"schema mongoose node": {
 		"prefix": "schema mongoose node",
 		"scope": "javascript",
@@ -516,6 +502,14 @@
 			"}\n",
 		],
 		"description": "schema模型数据自定义验证器"
+	},
+	"collection require mongoose node": {
+		"prefix": "collection require mongoose node",
+		"scope": "javascript",
+		"body": [
+			"const { ${1:ColName} } = require(${2:'../../model/$3'})\n",
+		],
+		"description": "导入集合构造函数"
 	},
 	// router
 	"getRouter router node": {
@@ -591,11 +585,11 @@
 		],
 		"description": "模板变量导入"
 	},
-	"dataRender template node": {
-		"prefix": "dataRender template node",
+	"art template node": {
+		"prefix": "art template node",
 		"scope": "javascript",
 		"body": [
-			"const content = template('${1:模板名}', {",
+			"template('${1:模板名}', {",
 			"\t${2:data: 'value'}",
 			"});\n",
 		],
@@ -758,4 +752,33 @@
 		],
 		"description": "调用promisify() 把异步api包装成promise对象"
 	},
+	// express-art-template模板引擎
+		"set engine art template express node": {
+		"prefix": "set engine art template express node",
+		"scope": "javascript",
+		"body": [
+			"app.set('views', path.join(__dirname, 'views'));",
+			"app.set('view engine', 'art');",
+			"app.engine('art', require('express-art-template'));"
+		],
+		"description": "配置express-art模板引擎"
+	},
+		// express.static
+		"static express node": {
+			"prefix": "static express node",
+			"scope": "javascript",
+			"body": [
+				"app.use(express.static(path.join(__dirname, 'public')));\n"
+			],
+			"description": "express开放静态资源访问 设置static路径"
+		},
+		// express.static
+		"render express node": {
+			"prefix": "render express node",
+			"scope": "javascript",
+			"body": [
+				"res.render('$1'${2:, $3})\n"
+			],
+			"description": "express渲染模板"
+		},
 }

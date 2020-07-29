@@ -112,6 +112,7 @@
     "maxlength",
     "mediatype",
     "mkdir",
+    "mongod",
     "mongoimport",
     "msubstr",
     "nbsp",

@@ -7,10 +7,10 @@ const { Article } = require('../../model/article');
 module.exports = async (req, res) => {
   const id = req.query.id;
   //  查询文章
-  let article = await Article.findOne({_id: id});
+  let article = await Article.findOne({_id: id}).catch((err) => console.log(err));;
   const form = new formidable.IncomingForm();
   form.uploadDir = path.join(__dirname, '../', '../', 'public', 'uploads');
-  form. keepExtensions = true;
+  form.keepExtensions = true;
   form.parse(req, async (err, fields, files) => {
     const { title, publishDate, content } = fields;
     // res.send(files);
@@ -36,7 +36,7 @@ module.exports = async (req, res) => {
       publishDate,
       cover,
       content
-    })
+    }).catch((err) => console.log(err));
   });
   // 添加完后重定向回文章列表页
   res.redirect('/admin/article');

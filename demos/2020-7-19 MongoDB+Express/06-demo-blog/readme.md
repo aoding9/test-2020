@@ -90,4 +90,54 @@
 
 #### 3.代码优化
 
+#### 修改 删除 用户 文章
+
 懒得写了。。。
+
+# 省略若干。。。
+
+#### mongoDB数据库添加账号
+***用默认的账号不安全，实际项目需要创建单独的数据库用户来读写数据库***
+- 管理员运行powershell
+- 连接数据库 mongo
+- 查看数据库 show dbs
+- 切换到admin数据库 use admin
+- 创建超级管理员账户  db.createUser()
+  - db.createUser({user:'root',pwd:'root',roles:['root']})
+- 切换到blog数据 use blog
+- 创建普通账号 db.createUser()
+  - db.createUser({user:'admin123',pwd:'admin123',roles:['readWrite']})
+- 卸载mongodb服务
+  - 停止服务 net stop mongodb
+  - 卸载服务 mongod --remove
+- 创建mongodb服务
+  - mongod --logpath="日志保存目录\文件名" --dbpath="数据保存目录" --install --auth
+  - --auth表示必须要用户密码登录后才允许修改数据库
+  - mongod --logpath="C:\Program Files\MongoDB\Server\4.2\log\mongod.log" --dbpath="C:\Program Files\MongoDB\Server\4.2\data" --install --auth
+- 启动mongodb服务 net start mongoDB
+*此时启动网站服务器，再登录，后台报错，find requires authentication 意思是find()需要身份验证*
+- 在项目中使用账号连接数据库
+  - mongoose.connect('mongodb://user:pass@localhost:port/database')
+
+
+### 开发环境与生产环境
+#### 是什么？
+- 环境就是项目运行的地方，开发阶段在开发人员电脑上，开发完放到服务器上，项目所处就是生产环境
+#### 为什么？
+- 不同环境的配置不一样，需要在项目代码中判断当前项目运行环境，根据不同环境应用不同项目配置
+#### 怎么做
+- 通过电脑操作系统中的系统环境变量区分当前是开发环境还是生产环境
+  - 手动加系统环境变量NODE_ENV:development 或者 set NODE_ENV=development通过命令来添加 // windows使用set，Mac和Linux上set要换export
+  - 修改后要重新打开powershell
+- 通过全局对象process.env.NODE_ENV获取系统环境变量的值，判断环境
+#### morgan第三方模块 打印客户端请求信息
+- app.use(morgan('dev'));
+
+#### config第三方模块 允许将不同运行环境的配置信息抽离到单独文件中，模块自动判断环境并读取配置信息
+- npm install config 
+- 根目录新建config文件夹，新建 default.json development.json production.json
+- 导入模块，用模块的config.get()方法获取配置信息
+- 将敏感信息存储在环境变量中
+  - config目录新建custom-environment-variables.json
+  - 把敏感配置项写到custom里面，属性值写系统环境变量的名字，然后把真正的值写到系统环境变量
+  - 项目运行时config模块会查找系统环境变量，将其值作为当前配置项的值

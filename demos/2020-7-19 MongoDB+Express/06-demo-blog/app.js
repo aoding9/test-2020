@@ -10,6 +10,11 @@ const session = require('express-session');
 const dateFormat = require('dateformat');
 // 导入art-template模板引擎
 const template = require('art-template');
+// 导入morgan模块 打印请求信息
+const morgan = require('morgan');
+// 导入config模块 根据环境自动读取配置
+const config = require('config');
+
 
 
 // 创建网站服务器
@@ -31,6 +36,7 @@ app.use(session({
 // 创建user集合以及初始用户，测试一下，之后删掉
 // require('./model/user');
 
+
 // 模板配置相关
 // 配置默认模板路径和后缀
 app.set('views', path.join(__dirname, 'views'));
@@ -39,14 +45,32 @@ app.set('view engine', 'art');
 app.engine('art', require('express-art-template'));
 // 向模板内部导入dateFormat变量
 template.defaults.imports.dateFormat = dateFormat;
-
 // 开放静态资源文件
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+// 运行环境判断相关
+// 获取系统环境变量 返回值是对象 存储了当前系统的环境变量
+const env = process.env.NODE_ENV;
+console.log(config.get('title'));
+// console.log('当前环境变量NODE_ENV:' + env);
+if(env == 'development') {
+  // 当前是开发环境
+  console.log('当前是开发环境');
+  // 在开发环境中奖客户端发送到服务端的请求信息打印到控制台中
+  app.use(morgan('dev'));
+} else if(env == 'production') {
+  // 当前是生产环境
+  console.log('当前是生产环境');
+} else {
+  console.log('不晓得是啥环境');
+}
+
+
+// 配置路由
 // 引用模块化路由对象
 const home = require('./route/home');
 const admin = require('./route/admin');
-const { send } = require('process');
 
 // 登录拦截功能，判断用户登录状态
 app.use('/admin', require('./middleware/loginGuard'));
@@ -78,6 +102,8 @@ app.use((err ,req, res ,next) => {
     res.send('不知道啥错误')
   }
 })
+
+
 
 // 监听端口
 app.listen(80);
