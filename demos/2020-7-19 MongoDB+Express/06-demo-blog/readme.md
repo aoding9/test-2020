@@ -104,8 +104,8 @@
 - 切换到admin数据库 use admin
 - 创建超级管理员账户  db.createUser()
   - db.createUser({user:'root',pwd:'root',roles:['root']})
-- 切换到blog数据 use blog
-- 创建普通账号 db.createUser()
+- 切换到blog数据库 use blog
+- 为blog数据库创建普通账号 db.createUser()
   - db.createUser({user:'admin123',pwd:'admin123',roles:['readWrite']})
 - 卸载mongodb服务
   - 停止服务 net stop mongodb
@@ -114,7 +114,7 @@
   - mongod --logpath="日志保存目录\文件名" --dbpath="数据保存目录" --install --auth
   - --auth表示必须要用户密码登录后才允许修改数据库
   - mongod --logpath="C:\Program Files\MongoDB\Server\4.2\log\mongod.log" --dbpath="C:\Program Files\MongoDB\Server\4.2\data" --install --auth
-- 启动mongodb服务 net start mongoDB
+- 启动mongodb服务 net start mongodb
 *此时启动网站服务器，再登录，后台报错，find requires authentication 意思是find()需要身份验证*
 - 在项目中使用账号连接数据库
   - mongoose.connect('mongodb://user:pass@localhost:port/database')

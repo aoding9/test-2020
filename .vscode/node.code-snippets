@@ -445,16 +445,16 @@
 		],
 		"description": "连接数据库"
 	},
-	"schema mongoose node": {
-		"prefix": "schema mongoose node",
+	"model schema mongoose node": {
+		"prefix": "model schema mongoose node",
 		"scope": "javascript",
 		"body": [
-			"const ${1:ColName} = mongoose.model('${1:ColName}', ${2:my}Schema);/n",
+			"const ${1:ColName} = mongoose.model('${1:ColName}', ${2:my}Schema);\n",
 		],
 		"description": "创建并保存集合构造函数"
 	},
-	"modle schema mongoose node": {
-		"prefix": "modle schema mongoose node",
+	"new schema mongoose node": {
+		"prefix": "new schema mongoose node",
 		"scope": "javascript",
 		"body": [
 			"const ${1:my}Schema = new mongoose.Schema({",
@@ -507,7 +507,7 @@
 		"prefix": "collection require mongoose node",
 		"scope": "javascript",
 		"body": [
-			"const { ${1:ColName} } = require(${2:'../../model/$3'})\n",
+			"const { ${1:ColName} } = require(${2:'../../model/$3'});\n",
 		],
 		"description": "导入集合构造函数"
 	},
@@ -677,7 +677,7 @@
 		"prefix": "exports express node",
 		"scope": "javascript",
 		"body": [
-			"module.exports = ${1:(req, res) => \n$2res.send('ok')}",
+			"module.exports = ${1:(req, res) => $2res.send('ok')}",
 		],
 		"description": "module.exports"
 	},

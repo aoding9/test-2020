@@ -24,12 +24,19 @@ module.exports = async (req, res) => {
       // 登录成功
       // 将用户名存储在请求对象的session对象中
       req.session.username = user.username;
+      // 用于登录拦截角色判断
+      req.session.role = user.role;
       // 由于很多地方用到username，所以将user信息存到app.locals.userInfo开放给模板
       // req下面有一个app属性，这个app就是app.js里面的app
       req.app.locals.userInfo = user;
       // res.send('登录成功')
-      // 重定向到user页
-      res.redirect('/admin/user');
+      if(user.role == 'admin') {
+        // 重定向到后台的user页
+        res.redirect('/admin/user');
+      } else {
+        // 重定向到前台的user页
+        res.redirect('/home/');
+      }
     } else {
       // 密码错误 登录失败
       res.status(400).render('admin/error', {msg: '邮件地址或者密码错误'});
