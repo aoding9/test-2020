@@ -65,3 +65,4 @@ Course.create({
 // 将MongoDB下的bin目录C:\Program Files\MongoDB\Server\4.2\bin\添加到系统环境变量path，重新打开命令行工具
 // mongoimport -d 数据库名 -c 集合名 --file 要导入的文件
 // mongoimport -d playground -c users --file ./user.json
+// mongoimport -d playground -c users --jsonArray ./user.json 导入json数组用--jsonArray

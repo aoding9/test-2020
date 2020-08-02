@@ -1,0 +1,27 @@
+<!--
+————————
+8-1	创建
+————————
+-->
+<DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <script>
+    var xhr = new XMLHttpRequest();
+    xhr.open('get', 'http://localhost:3000/jsonResponseData');
+    xhr.send();
+    xhr.onload = function () {
+      // json数据传输过来是字符串，需要在客户端转换成对象
+      console.log(xhr.responseText,typeof xhr.responseText);
+      var responseObj = JSON.parse(xhr.responseText)
+      console.log(responseObj);
+      // 将数据拼接并渲染到DOM上
+      var str = '<h2>'+ responseObj.name + '</h2>'
+      document.body.innerHTML = str;
+    }
+  </script>
+</body>
+</html>

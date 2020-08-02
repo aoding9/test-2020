@@ -6,6 +6,7 @@
 	
 {{block 'main'}}
 	{{include './common/header.art'}}
+{{if article}}
 	<!-- 文章框架开始 -->
 	<div class="article">
 		<div class="w1100">
@@ -26,7 +27,7 @@
 					<form class="comment-form" action="/home/comment" method="post">
 						<textarea name="content" class="comment"></textarea>
 						<input type="hidden" name="uid" value="{{@userInfo._id}}">
-						<input type="hidden" name="aid" value="{{@article._id}}">
+						<input type="hidden" name="aid" value="{{@article&&article._id}}">
 						<div class="items">
 							<input type="submit" value="提交">
 						</div>
@@ -55,4 +56,7 @@
 		</div>
 	</div>
 	<!-- 文章框架结束 -->
+	{{else}}
+	<h2>没有查询到id对应的文章</h2>
+	{{/if}}
 {{/block}}

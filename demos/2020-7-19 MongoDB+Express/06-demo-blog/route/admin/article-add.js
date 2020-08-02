@@ -8,7 +8,7 @@ module.exports = (req, res) => {
   const form = new formidable.IncomingForm();
   // 2.配置上传文件的存放位置，需要项目里也新建这个目录，不然会报错
   form.uploadDir = path.join(__dirname, '../', '../', 'public', 'uploads');
-  // 3.配置保留上传文件的后缀，默认是不保留
+  // 3.配置保留上传文件的后缀，默认是false不保留
   form. keepExtensions = true;
   // 4.解析表单
   form.parse(req, async (err, fields, files) => {

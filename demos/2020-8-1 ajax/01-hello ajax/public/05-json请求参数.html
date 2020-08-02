@@ -1,0 +1,32 @@
+<!--
+————————
+8-1	创建
+————————
+-->
+<DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+   <script>
+      var xhr = new XMLHttpRequest();
+      xhr.open('post', 'http://localhost:3000/json');
+      // post提交的数据必须设置报文类型，设置请求头信息
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      var params = {
+        username: 'zhangsan',
+        age: 18
+      }
+      // 请求参数必须以字符串格式传递，需要转换
+      params = JSON.stringify(params);
+      xhr.send(params); 
+      xhr.onload = function () {
+        console.log(xhr.responseText);
+        // 响应回来的仍然是json字符串，需要转换回对象
+        let responseText = JSON.parse(xhr.responseText)
+        console.log(responseText);
+      }
+  </script>
+</body>
+</html>

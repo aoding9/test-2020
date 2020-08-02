@@ -1,0 +1,26 @@
+<!--
+————————
+8-1	创建
+————————
+-->
+<DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <script>
+    // 1.创建ajax对象
+    var xhr = new XMLHttpRequest();
+    // 2.设置ajax要发送的请求方式和请求地址
+    xhr.open('get', 'http://localhost:3000/first');
+    // 3.发送请求
+    xhr.send();
+    // 4.获取服务器响应给客户端的数据
+    // (1)数据响应接收是有一定的时间消耗的，需要用onload监听响应数据接收完毕的事件
+    xhr.onload = function () {
+      console.log(xhr.responseText);
+    }
+  </script>
+</body>
+</html>

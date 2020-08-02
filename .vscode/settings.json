@@ -136,7 +136,12 @@
     "waper",
     "webp",
     "webstorm",
-    "zhangsan"
+    "zhangsan",
+    "ITHEIMA",
+    "ckeditor",
+    "glyphicon",
+    "unstyled",
+    "wangjian"
   ],
   "emmet.includeLanguages": {
     // .art模板文件启用emmet语法
@@ -150,11 +155,15 @@
     "*.php": "php"
   },
   "emmet.showSuggestionsAsSnippets": true,
-  "cSpell.userWords": [
-    "ITHEIMA",
-    "ckeditor",
-    "glyphicon",
-    "unstyled",
-    "wangjian"
-  ],
+  "editor.snippetSuggestions": "top",
+  // 配置emmet对文件类型的支持
+  // "emmet.syntaxProfiles": {
+  //   "vue-html": "html",
+  //   "vue": "html",
+  //   "javascript": "javascriptreact",
+  //   "xml": {
+  //       "attr_quotes": "single"
+  //   }
+  "gitee.gist": "cy57bkjm3tlhvfgxz8q4n34",
+  "gitee.access_token": "cd196fbdd3c030ccca5f4f6c612aefca"
 }

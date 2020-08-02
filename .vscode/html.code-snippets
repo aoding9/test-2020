@@ -43,8 +43,8 @@
 		"prefix": "html2 template1",
 		"scope": ["html","vue","art"],
 		"body": [
-			"<--",
-			"————————\n7-$1\t创建",
+			"<!--",
+			"————————\n8-$1\t创建",
 			"————————",
 			"-->",
 			"<DOCTYPE html>",
@@ -142,8 +142,8 @@
 		"prefix": "vue template2",
 		"scope": ["html","vue"],
 		"body": [
-			"<--",
-			"7-$1\t创建",
+			"<!--",
+			"8-$1\t创建",
 			"-->",
 			"<DOCTYPE html>",
 			"<html>",

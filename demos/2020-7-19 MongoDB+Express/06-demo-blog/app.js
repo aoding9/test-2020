@@ -75,7 +75,7 @@ const admin = require('./route/admin');
 // 登录拦截功能，判断用户登录状态
 app.use('/admin', require('./middleware/loginGuard'));
 // 为路由匹配请求路径，创建一级路由
-app.use('/home', home);
+app.use(['/home','/'], home);
 app.use('/admin', admin);
 
 // 错误处理中间件

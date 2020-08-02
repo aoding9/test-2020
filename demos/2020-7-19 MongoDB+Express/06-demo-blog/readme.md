@@ -132,7 +132,6 @@
 - 通过全局对象process.env.NODE_ENV获取系统环境变量的值，判断环境
 #### morgan第三方模块 打印客户端请求信息
 - app.use(morgan('dev'));
-
 #### config第三方模块 允许将不同运行环境的配置信息抽离到单独文件中，模块自动判断环境并读取配置信息
 - npm install config 
 - 根目录新建config文件夹，新建 default.json development.json production.json

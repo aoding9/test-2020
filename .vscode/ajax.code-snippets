@@ -1,0 +1,68 @@
+{
+  	"xhr new ": {
+      "prefix": "xhr new ",
+      "scope": "javascript",
+      "body": [
+        "var xhr = new XMLHttpRequest();\n",
+      ],
+      "description": "创建ajax对象"
+    },
+    "xhr open ": {
+      "prefix": "xhr open ",
+      "scope": "javascript",
+      "body": [
+        "xhr.open('${1:get}', ${2:'http://localhost:3000/first'});\n",
+      ],
+      "description": "设置ajax请求方式和地址"
+    },
+    "xhr send ": {
+      "prefix": "xhr send ",
+      "scope": "javascript",
+      "body": [
+        "xhr.send($1);\n",
+      ],
+      "description": "发送ajax请求"
+    },
+    "xhr onload ": {
+      "prefix": "xhr onload ",
+      "scope": "javascript",
+      "body": [
+        "xhr.onload = function ($1) {",
+        "  ${2:console.log(xhr.response);}",
+        "}\n"
+      ],
+      "description": "ajax接收响应数据"
+    },
+    "xhr responseText ": {
+      "prefix": "xhr responseText ",
+      "scope": "javascript",
+      "body": [
+        "xhr.responseText",
+      ],
+      "description": "ajax响应报文"
+    },
+    "xhr setRequestHeader ": {
+      "prefix": "xhr setRequestHeader ",
+      "scope": "javascript",
+      "body": [
+        "xhr.setRequestHeader(${1:'Content-Type'}, ${2:'application/x-www-form-urlencoded'});",
+      ],
+      "description": "ajax设置报文头"
+    },
+    "app/urlencoded ": {
+      "prefix": "app/urlencoded ",
+      "scope": "javascript",
+      "body": [
+        "application/x-www-form-urlencoded",
+      ],
+      "description": "请求参数为url编码格式"
+    },
+    "app/json ": {
+      "prefix": "app/json ",
+      "scope": "javascript",
+      "body": [
+        "application/json",
+      ],
+      "description": "请求参数为json格式"
+    }
+}

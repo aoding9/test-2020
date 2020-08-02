@@ -1,0 +1,43 @@
+<!--
+————————
+8-1	创建
+————————
+-->
+<DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <p>
+    <input type="text" name="username" id="username">
+  </p>
+  <p>
+    <input type="text" name="age" id="age">
+  </p>
+  <p>
+    <input type="button" value="提交" id="btn">
+  </p>
+
+  <script>
+    // 获取元素
+    var btn = document.getElementById('btn');
+    var username = document.getElementById('username');
+    var age = document.getElementById('age');
+    // 提交按钮注册点击事件
+    btn.onclick = function () {
+      var xhr = new XMLHttpRequest();
+      var nameValue = username.value;
+      var ageValue = age.value;
+      var params = 'username=' + nameValue + '&age=' + ageValue;
+      xhr.open('post', 'http://localhost:3000/post');
+      // post提交的数据必须设置报文类型，设置请求头信息
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      xhr.send(params); 
+      xhr.onload = function () {
+        console.log(xhr.responseText);
+      }
+    }
+  </script>
+</body>
+</html>

@@ -17,4 +17,20 @@
       ],
       "description": "json \"key\":\"value\","
     },
+    "json parse ": {
+      "prefix": "json parse ",
+      "scope": "javascript",
+      "body": [
+        "JSON.parse($1)",
+      ],
+      "description": "json字符串转对象"
+    },
+    "json stringify ": {
+      "prefix": "json stringify ",
+      "scope": "javascript",
+      "body": [
+        "JSON.stringify($1)",
+      ],
+      "description": "json对象转字符串"
+    },
 }
