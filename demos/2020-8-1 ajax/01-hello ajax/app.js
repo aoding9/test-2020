@@ -33,10 +33,14 @@ app.get('/get', (req, res) => {
 app.post('/post', (req, res) => {
   res.send(req.body);
 })
+// 05
 app.post('/json', (req, res) => {
   res.send(req.body);  
 })
-
+// 06
+app.get('/readyState', (req, res) => {
+  res.send('哈哈哈');  
+})
 
 // 监听3000端口
 app.listen(3000);

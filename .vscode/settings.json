@@ -145,6 +145,7 @@
   ],
   "emmet.includeLanguages": {
     // .art模板文件启用emmet语法
+    "javascript": "javascriptreact",
     "art": "art",
     "php": "php"
   },
