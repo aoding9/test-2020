@@ -1,6 +1,5 @@
 {
-
-  "editor.formatOnSave": false,
+  "editor.formatOnSave": true,
   "editor.fontSize": 18,
   "workbench.iconTheme": "vscode-icons",
   "editor.wordWrap": "on",
@@ -8,7 +7,7 @@
   "files.autoSave": "onFocusChange",
   "workbench.colorTheme": "One Dark Pro",
   "liveServer.settings.donotShowInfoMsg": true,
-  
+
   "window.zoomLevel": 0,
   "terminal.integrated.rendererType": "dom",
   "git.autofetch": true,
@@ -16,10 +15,12 @@
   "editor.acceptSuggestionOnEnter": "off",
   // 控制是否通过提交字符接收建议, 意思是;(等也会选中提示的代码, 这会造成失误, 建议关闭
   "editor.acceptSuggestionOnCommitCharacter": false,
-  "workbench.editorAssociations": [{
-    "viewType": "default",
-    "filenamePattern": "*.md"
-  }],
+  "workbench.editorAssociations": [
+    {
+      "viewType": "default",
+      "filenamePattern": "*.md"
+    }
+  ],
   // "editor.suggest.showWords": false,
   "editor.lineNumbers": "on", //开启行数提示
   "editor.quickSuggestions": {
@@ -37,11 +38,11 @@
     "javascript",
     "javascriptreact",
     {
-      "language": "html",
+      "language": "html"
       // "autoFix": true
     },
     {
-      "language": "vue",
+      "language": "vue"
       // "autoFix": true
     }
   ],
@@ -67,7 +68,35 @@
   "editor.codeActionsOnSave": {
     // "source.fixAll": true
   },
-  "cSpell.words": [
+
+  "emmet.includeLanguages": {
+    // .art模板文件启用emmet语法
+    "art": "art",
+    "php": "php"
+  },
+  "files.associations": {
+    "*.vue": "vue",
+    "*.html": "html",
+    "*.art": "html",
+    "*.php": "php"
+  },
+  "emmet.showSuggestionsAsSnippets": true,
+  "editor.snippetSuggestions": "top",
+  // 配置emmet对文件类型的支持
+  // "emmet.syntaxProfiles": {
+  //   "vue-html": "html",
+  //   "vue": "html",
+  //   "javascript": "javascriptreact",
+  //   "xml": {
+  //       "attr_quotes": "single"
+  //   }
+  "gitee.gist": "cy57bkjm3tlhvfgxz8q4n34",
+  "gitee.access_token": "cd196fbdd3c030ccca5f4f6c612aefca",
+  "explorer.confirmDragAndDrop": false,
+  "todo-tree.tree.showScanModeButton": false,
+  "prettier.printWidth": 200,
+  "cSpell.userWords": [
+    "currentstyle",
     "Arial",
     "Dreamweaver",
     "Emment",
@@ -143,28 +172,11 @@
     "unstyled",
     "wangjian"
   ],
-  "emmet.includeLanguages": {
-    // .art模板文件启用emmet语法
-    "javascript": "javascriptreact",
-    "art": "art",
-    "php": "php"
-  },
-  "files.associations": {
-    "*.vue": "vue",
-    "*.html": "html",
-    "*.art": "html",
-    "*.php": "php"
-  },
-  "emmet.showSuggestionsAsSnippets": true,
-  "editor.snippetSuggestions": "top",
-  // 配置emmet对文件类型的支持
-  // "emmet.syntaxProfiles": {
-  //   "vue-html": "html",
-  //   "vue": "html",
-  //   "javascript": "javascriptreact",
-  //   "xml": {
-  //       "attr_quotes": "single"
-  //   }
-  "gitee.gist": "cy57bkjm3tlhvfgxz8q4n34",
-  "gitee.access_token": "cd196fbdd3c030ccca5f4f6c612aefca"
+  "prettier.semi": true,
+  "prettier.disableLanguages": ["php"],
+  "editor.minimap.renderCharacters": false,
+  "editor.minimap.showSlider": "always",
+  "editor.minimap.maxColumn": 100,
+  "prettier.singleQuote": true, // 使用单引号代替双引号
+  "prettier.bracketSpacing": true // 对象和数组 文字和括号间添加空格
 }

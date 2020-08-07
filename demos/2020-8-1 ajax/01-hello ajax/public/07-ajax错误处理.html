@@ -5,13 +5,39 @@
       <title>Document</title>
     </head>
     <body>
-      <p>
-
-      </p>
-
+      <button id="btn">发送ajax请求</button>
       <script>
+        var btn = document.getElementById('btn');
 
+        btn.onclick = function () {
+          var xhr = new XMLHttpRequest();
+          xhr.open('get', 'http://localhost:3000/error');
+          // xhr.open("get", "http://localhost:3000/error111"); // 请求地址写错了会404
+          xhr.send();
+          xhr.onload = function () {
+            // 错误1：网络畅通，服务器接收到请求，但是返回结果不是预期结果
+            // 解决：根据http状态码判断处理
+            var status = xhr.status;
+            if (status == 400) {
+              console.log('返回结果不是预期结果');
+            }
+            // 错误2：网络畅通，但服务器没有接收到请求，返回404状态码
+            // 解决：检查请求地址是否写错，尽量直接复制文档（或者是服务端没有这个页面
+            else if (status == 404) {
+              console.log('not found，没有这个页面');
+              // 错误3：网络畅通，但服务器收到请求，但是他出错了，返回500状态码
+              // 解决：找后端人员处理
+            } else if (status == 500) {
+              console.log('服务器出现错误');
+            }
+          };
+          // 错误4：网络中断 ，不触发xhr.onload()事件，但会触发xhr.onerror()事件
+          // 解决：在xhr.onerror()事件中分别处理，比如提示用户网络中断
+          xhr.onerror = function () {
+            alert('网络中断，无法发送ajax请求');
+          };
+        };
       </script>
     </body>
-  </html></DOCTYPE
->
+  </html>
+</DOCTYPE>

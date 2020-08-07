@@ -1,0 +1,27 @@
+<DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="UTF-8" />
+      <title>Document</title>
+    </head>
+    <body>
+      <button id="btn">发送ajax请求</button>
+      <script>
+        var btn = document.getElementById('btn');
+        btn.onclick = function () {
+          var xhr = new XMLHttpRequest();
+          // xhr.open('get', 'http://localhost:3000/cache');
+          // 为请求地址添加请求参数，让地址每次都不一样
+          xhr.open('get', 'http://localhost:3000/cache?random' + Math.random());
+          xhr.send();
+          // ie低版本不兼容onload() 要用ajax状态码来接收
+          xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+              alert(xhr.responseText);
+            }
+          };
+        };
+      </script>
+    </body>
+  </html>
+</DOCTYPE>
