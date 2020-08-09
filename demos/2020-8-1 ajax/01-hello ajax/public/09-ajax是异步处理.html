@@ -1,0 +1,25 @@
+<DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="UTF-8" />
+      <title>Document</title>
+    </head>
+    <body>
+      <button id="btn">发送ajax请求</button>
+      <script>
+        var btn = document.getElementById('btn');
+        btn.onclick = function () {
+          var xhr = new XMLHttpRequest();
+          xhr.open('get', 'http://localhost:3000/async');
+          xhr.send();
+          xhr.onload = function () {
+            console.log('2');
+            console.log(xhr.responseText);
+          };
+          console.log('1');
+        };
+        // 可以看到先输出了1，然后点ajax请求和接受完才会输出2，我们故意在服务端设置一秒后才发出响应，这样浏览器一秒后才显示2和3
+      </script>
+    </body>
+  </html>
+</DOCTYPE>

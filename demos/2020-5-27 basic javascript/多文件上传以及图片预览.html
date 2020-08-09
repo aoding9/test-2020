@@ -1,0 +1,26 @@
+<DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="UTF-8" />
+      <title>Document</title>
+    </head>
+    <body>
+      <form action=""><input type="file" multiple name="" id="ipt" /></form>
+      <img src="" alt="" id="preview" />
+      <script>
+        var ipt = document.querySelector('#ipt');
+        var preview = document.querySelector('#preview');
+        ipt.onchange = function () {
+          var reader = new FileReader();
+          reader.readAsDataURL(this.files[0]);
+          // 监听文件读取完成的事件
+          reader.onload = function () {
+            // 将文件读取的结果设置为img的src，从而显示图片
+            preview.src = reader.result;
+          };
+          // console.log(ipt.files);
+        };
+      </script>
+    </body>
+  </html></DOCTYPE
+>

@@ -33,19 +33,19 @@
   // "eslint.autoFixOnSave": true, // 每次保存的时候将代码按eslint格式进行修复
   // "prettier.eslintIntegration": true, //让prettier使用eslint的代码格式进行校验
   "javascript.format.insertSpaceBeforeFunctionParenthesis": true, //让函数(名)和后面的括号之间加个空格
-  "eslint.validate": [
-    //开启对.vue文件中错误的检查
-    "javascript",
-    "javascriptreact",
-    {
-      "language": "html"
-      // "autoFix": true
-    },
-    {
-      "language": "vue"
-      // "autoFix": true
-    }
-  ],
+  // "eslint.validate": [
+  //   //开启对.vue文件中错误的检查
+  //   "javascript",
+  //   "javascriptreact",
+  //   {
+  //     "language": "html"
+  //     // "autoFix": true
+  //   },
+  //   {
+  //     "language": "vue"
+  //     // "autoFix": true
+  //   }
+  // ],
   "explorer.confirmDelete": false,
 
   // "emmet.triggerExpansionOnTab": true,
@@ -94,7 +94,7 @@
   "gitee.access_token": "cd196fbdd3c030ccca5f4f6c612aefca",
   "explorer.confirmDragAndDrop": false,
   "todo-tree.tree.showScanModeButton": false,
-  "prettier.printWidth": 200,
+  "prettier.printWidth": 120,
   "cSpell.userWords": [
     "currentstyle",
     "Arial",
@@ -173,10 +173,61 @@
     "wangjian"
   ],
   "prettier.semi": true,
-  "prettier.disableLanguages": ["php"],
   "editor.minimap.renderCharacters": false,
   "editor.minimap.showSlider": "always",
   "editor.minimap.maxColumn": 100,
-  "prettier.singleQuote": true, // 使用单引号代替双引号
-  "prettier.bracketSpacing": true // 对象和数组 文字和括号间添加空格
+  // "prettier.singleQuote": true, // 使用单引号代替双引号
+  "prettier.bracketSpacing": true, // 对象和数组 文字和括号间添加空格
+  "browser-preview.startUrl": "https://localhost",
+  "better-comments.highlightPlainText": true,
+  "better-comments.tags": [
+    {
+      "tag": "!",
+      "color": "#FF2D00",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "?",
+      "color": "#3498DB",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "//",
+      "color": "#474747",
+      "strikethrough": true,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "todo",
+      "color": "#FF8C00",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "*",
+      "color": "#98C379",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    }
+  ],
+  "prettier.disableLanguages": ["php"],
+  "prettier.singleQuote": true,
+  "editor.renderControlCharacters": false
 }

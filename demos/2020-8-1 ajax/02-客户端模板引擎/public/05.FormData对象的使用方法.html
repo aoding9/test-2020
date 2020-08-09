@@ -1,0 +1,36 @@
+<DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="UTF-8" />
+      <title>Document</title>
+    </head>
+    <body>
+      <!-- 不需要设置action和method -->
+      <form id="form">
+        <input type="text" name="username" />
+        <input type="password" name="password" />
+        <input type="button" id="btn" value="提交" />
+      </form>
+      <script>
+        // 获取元素
+        var btn = document.getElementById('btn');
+        var form = document.getElementById('form');
+        // btn注册点击事件
+        btn.onclick = function () {
+          // 将普通表单转换为表单对象
+          var formData = new FormData(form);
+          // ajax配置
+          var xhr = new XMLHttpRequest();
+          xhr.open('post', 'http://localhost:3000/formData');
+          // 把formData表单对象放到send里面发送，所以必须用post方法
+          xhr.send(formData);
+          xhr.onload = function () {
+            if (xhr.status == 200) {
+              console.log(xhr.responseText);
+            }
+          };
+        };
+      </script>
+    </body>
+  </html></DOCTYPE
+>
