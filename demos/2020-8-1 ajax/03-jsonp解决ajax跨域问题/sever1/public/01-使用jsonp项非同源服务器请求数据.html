@@ -1,0 +1,21 @@
+<DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="UTF-8" />
+      <title>Document</title>
+    </head>
+    <body>
+      <!-- *2.在请求上面定义全局函数，里面有个形参，用于接收下面响应数据的实参 -->
+      <script>
+        function fn(data) {
+          console.log('我被调用啦');
+          console.log(data);
+        }
+      </script>
+
+      <!-- *1.将非同源服务器端的请求地址写在script标签的src属性中 -->
+      <!-- ?script标签不受同源协议限制，所以可以跨域访问，但是他的响应数据必须是合法的JavaScript代码，所以我们在服务端响应一个函数调用的代码，并且将实际要传递的数据作为函数的实际参数，然后再客户端上面部分定义这个函数，当接收到函数调用时就会立即调用函数，并且接收实参，从而获取数据。 -->
+      <!-- !需要注意的是，函数需要用引号转为字符串，不然会在服务器直接执行了，要让客户端收到字符串再解析执行 -->
+      <script src="http://localhost:3001/test"></script>
+    </body></html
+></DOCTYPE>
