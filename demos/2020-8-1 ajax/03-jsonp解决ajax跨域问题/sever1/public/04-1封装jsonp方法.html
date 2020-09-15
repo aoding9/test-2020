@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="UTF-8" />
+      <title>Document</title>
+    </head>
+    <body>
+      <button id="btn">点击发送jsonp请求</button>
+      <script>
+        function fn1 (data) {
+          console.log('我被调用啦');
+          console.log(data);
+        }
+      </script>
+      <script>
+        var btn = document.getElementById('btn');
+          btn.onclick = function () {
+            // 点击按钮时调用jsonp方法
+            jsonp({
+              // 请求地址
+              url: 'http://localhost:3001/better?callback=fn1'
+            })
+        }
+
+
+        // 封装jsonp方法
+        function jsonp (options) {
+          // 动态创建script标签
+          var script = document.createElement('script');
+          // 设置其src
+          script.src = options.url;
+          // 追加节点
+          document.body.appendChild(script);
+          // 加载完成后，删除script节点
+          script.onload = function () {
+            document.body.removeChild(script);
+          }
+        }
+
+        
+        </script>
+    </body>
+  </html>
