@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="UTF-8" />
+      <title>Document</title>
+    </head>
+    <body>
+      <script>
+        function fn1 (data) {
+          console.log('我被调用啦');
+          console.log(data);
+        }
+      </script>
+      <!-- *将函数名称通过参数传递给服务器端，让服务器端自动发送对应的函数 -->
+      <script src="http://localhost:3001/better?callback=fn1"></script>
+    </body>
+  </html>

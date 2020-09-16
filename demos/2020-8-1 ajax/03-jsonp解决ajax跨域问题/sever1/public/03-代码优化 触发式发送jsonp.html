@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="UTF-8" />
+      <title>Document</title>
+    </head>
+    <body>
+      <button id="btn">点击发送jsonp请求</button>
+      <script>
+        function fn1 (data) {
+          console.log('我被调用啦');
+          console.log(data);
+        }
+      </script>
+      <!-- *我们希望在特定的时候再发送jsonp请求，此时不能直接写script标签，而是要用js创建script标签 -->
+      <script>
+        var btn = document.getElementById('btn');
+        btn.onclick = function () {
+          // 创建script标签
+          var script = document.createElement('script');
+          // 设置其src属性
+          script.src = 'http://localhost:3001/better?callback=fn1';
+          // 追加到dom树body节点
+          document.body.appendChild(script);
+          // 有个问题，多次点击会多次追加script标签，我们需要在script标签加载完之后就将其删除掉
+          script.onload = function () {
+            // 删除body中的script节点
+            document.body.removeChild(script);
+          }
+        }
+        </script>
+    </body>
+  </html>
