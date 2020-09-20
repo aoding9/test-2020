@@ -25,11 +25,11 @@ require('./model/connect');
 app.use(bodyParser.urlencoded({extended: false}))
 // 拦截session 配置session对象
 app.use(session({
-  secret: 'secret key', // 让session加密存储到客户端
+  secret: 'secret key', // 必须配置项，设置会话的秘钥，让session加密存储到客户端
   resave: false, // 重新保存，强制没修改会话也重新保存
-    saveUninitialized: false,  // 强制“未初始化”的会话保存到存储默认true，没登录也保存cookie。
-    cookie: {
-        maxAge: 24 *  60 * 60 * 1000, // 过期时间1天
+  saveUninitialized: false,  // 强制“未初始化”的会话保存到存储默认true，没登录也保存cookie。
+  cookie: {
+      maxAge: 24 *  60 * 60 * 1000, // 过期时间1天
     },
 }));
 
