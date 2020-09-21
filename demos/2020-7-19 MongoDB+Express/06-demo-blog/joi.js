@@ -17,6 +17,7 @@ const schema = Joi.object({
 // 验证方法1
 // const { value,error } = schema.validate({ username: 'a'});
 // console.log(value,error.message);
+
 // 验证方法2
 async function run () {
 	try {

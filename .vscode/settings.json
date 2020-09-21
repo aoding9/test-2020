@@ -3,7 +3,7 @@
   "workbench.iconTheme": "vscode-icons",
   "editor.wordWrap": "on",
   "vsicons.dontShowNewVersionMessage": true,
-  "files.autoSave": "onFocusChange",
+  "files.autoSave": "afterDelay",
   "workbench.colorTheme": "One Dark Pro",
   "liveServer.settings.donotShowInfoMsg": true,
 
