@@ -82,6 +82,8 @@
       // 任务列表数组
       var taskAry = [];
       var taskAryAll = [];
+      // 声明一个过滤状态的变量，默认是0（表示all）
+      var filterStatus = 0;
 
       // 发送请求 获取已经存在的任务
       function getTask () {
@@ -136,7 +138,7 @@
         }
       });
 
-      // 先保存一下原数组
+
       // 渲染模板的函数
       function render() {
         // 判断状态，修改任务数组
@@ -258,8 +260,7 @@
       }
 
       // footer下面的按钮功能实现
-      // 声明一个过滤状态的变量，默认是0（表示all）
-      var filterStatus = 0;
+
       // 获取filters里面的按钮
       var filters = $('.filters').find('a');
 
