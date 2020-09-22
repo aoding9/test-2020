@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({extended: false}));
 
 // 数据库连接 需要先去创建数据库以及账号和密码
-mongoose.connect('mongodb://itcast:itcast@localhost:27017/todo', {useNewUrlParser: true, useUnifiedTopology: true  })
+mongoose.connect('mongodb://itcast:itcast@localhost:27017/todo', {useNewUrlParser: true, useUnifiedTopology: true,useFindAndModify: false})
 
 app.get('/base', (req, res) => {
 	res.send({
@@ -60,6 +60,7 @@ app.get('/users', (req, res) => {
 });
 
 // 获取某一个用户具体信息的路由
+// */user/:id，:id就是占位符，有他req.params对象就有id
 app.get('/users/:id', (req, res) => {
 	// 获取客户端传递过来的用户id
 	const id = req.params.id;

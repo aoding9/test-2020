@@ -22,13 +22,14 @@ todoRouter.post('/addTask', async (req, res) => {
 	const { title } = req.body;
 	// 验证规则
 	const schema = Joi.object({
-		title: Joi.string().required().min(2).max(30).error(new Error('报错了哈'))
+		title: Joi.string().required().min(2).max(30)
 	});
 	// 验证客户端传递过来的请求参数 
 	// const { error } = Joi.validate(req.body, schema); 这个是老版本Joi的验证写法，新版要用Joi.object()定义验证规则之后再用validate方法来验证
 	const { error } = schema.validate(req.body);
 	// 验证失败
 	if (error) {
+		console.log(error);
 		// 将错误信息响应给客户端
 		return res.status(400).send({message: error.details[0].message})
 	}
@@ -37,9 +38,10 @@ todoRouter.post('/addTask', async (req, res) => {
 	// 执行插入操作
 	await task.save();
 	// 响应
+	// 为了让进度条动画明显些，故意延迟2秒
 	setTimeout(() => {
 		res.send(task);
-	}, 2000)
+	}, 500)
 });
 
 // 删除任务
