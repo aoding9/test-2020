@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        body {
+            background: #000;
+        }
+        
+        .wrap {
+            margin: 100px auto 0;
+            width: 630px;
+            height: 394px;
+            padding: 10px 0 0 10px;
+            background: #000;
+            overflow: hidden;
+            border: 1px solid #fff;
+        }
+        
+        .wrap li {
+            float: left;
+            margin: 0 10px 10px 0;
+        }
+        
+        .wrap img {
+            display: block;
+            border: 0;
+        }
+    </style>
+    <script src="jquery.min.js"></script>
+    <script>
+        // hover()是mouseover()和mouseout()的结合，第一个参数是mouseover()触发，第二个参数是mouseout()触发，如果只写一个参数，则鼠标移入移出都触发
+        // fadeTo()是修改透明度效果
+        // stop()是停止效果动画，如果快速多次触发动画，会造成动画队列阻塞，先用stop()停掉之前的动画，再开始新的动画
+        $('.wrap li').hover(function(){
+            $(this).siblings().stop().fadeTo(400,0.5);
+        }, function(){
+            $(this).stop().fadeTo(400,1);
+        })
+    </script>
+    <!-- <script>
+        $(function() {
+            //鼠标进入的时候,其他的li标签透明度：0.5
+            $(".wrap li").hover(function() {
+                $(this).siblings().stop().fadeTo(400, 0.5);
+            }, function() {
+                // 鼠标离开，其他li 透明度改为 1
+                $(this).siblings().stop().fadeTo(400, 1);
+            })
+
+        });
+    </script> -->
+</head>
+
+<body>
+    <div class="wrap">
+        <ul>
+            <li>
+                <a href="#"><img src="images/01.jpg" alt="" /></a>
+            </li>
+            <li>
+                <a href="#"><img src="images/02.jpg" alt="" /></a>
+            </li>
+            <li>
+                <a href="#"><img src="images/03.jpg" alt="" /></a>
+            </li>
+            <li>
+                <a href="#"><img src="images/04.jpg" alt="" /></a>
+            </li>
+            <li>
+                <a href="#"><img src="images/05.jpg" alt="" /></a>
+            </li>
+            <li>
+                <a href="#"><img src="images/06.jpg" alt="" /></a>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
