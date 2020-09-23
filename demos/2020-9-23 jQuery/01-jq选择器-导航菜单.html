@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script src="./js/jquery.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      li {
+        list-style: none;
+        width: 100px;
+        height: 50px;
+        background-color: #ccc;
+        border: 1px solid black;
+      }
+      a {
+        display: block;
+        line-height: 50px;
+        color: purple;
+      }
+      .nav > li {
+        float: left;
+      }
+      .nav > li ul {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="nav">
+      <li>
+        <a href="#">一级导航</a>
+        <ul>
+          <li>
+            <a href="#">二级导航</a>
+          </li>
+          <li>
+            <a href="#">二级导航</a>
+          </li>
+          <li>
+            <a href="#">二级导航</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">一级导航</a>
+        <ul>
+          <li>
+            <a href="#">二级导航</a>
+          </li>
+          <li>
+            <a href="#">二级导航</a>
+          </li>
+          <li>
+            <a href="#">二级导航</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">一级导航</a>
+        <ul>
+          <li>
+            <a href="#">二级导航</a>
+          </li>
+          <li>
+            <a href="#">二级导航</a>
+          </li>
+          <li>
+            <a href="#">二级导航</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">一级导航</a>
+        <ul>
+          <li>
+            <a href="#">二级导航</a>
+          </li>
+          <li>
+            <a href="#">二级导航</a>
+          </li>
+          <li>
+            <a href="#">二级导航</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <script>
+      // jq的入口函数
+      $(function () {
+        // 获取nav中的li，隐式迭代添加事件
+        var navLis = $('.nav>li');
+        // jq对象是以伪数组形式存储的，可以通过索引获取到原生DOM元素，也可以通过:eq()选择器获取其中某个
+        // var navLis = $('.nav>li:eq(2)');
+        console.log(navLis);
+        // 鼠标经过
+        navLis.mouseover(function () {
+          // $(this)表示当前jq元素
+          $(this).children('ul').show();
+        });
+        // 鼠标离开
+        navLis.mouseout(function () {
+          $(this).children('ul').hide();
+        });
+      });
+    </script>
+  </body>
+</html>

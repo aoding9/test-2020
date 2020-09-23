@@ -28,7 +28,8 @@
     "comments": true,
     "strings": true
   },
-  "editor.tabSize": 2,
+  // 缩进4空格
+  "editor.tabSize": 4,
   // "eslint.autoFixOnSave": true, // 每次保存的时候将代码按eslint格式进行修复
   // "prettier.eslintIntegration": true, //让prettier使用eslint的代码格式进行校验
   "javascript.format.insertSpaceBeforeFunctionParenthesis": true, //让函数(名)和后面的括号之间加个空格
