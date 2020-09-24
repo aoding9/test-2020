@@ -33,22 +33,25 @@ $(function() {
             // check-cart-item 移除
             $(this).parents(".cart-item").removeClass("check-cart-item");
         }
+        // 修改底部总计数值
+        calcSum();
     })
 
     // 商品数量增减功能
     // 由于用的多，封装一个获取商品数量的函数
     // 为了方便后面统一使用，把siblings获取改为先获取parent在find .itxt的val 因为siblings无法获取自身
-    const getNumber = (item => item.parent().find('.itxt').val());
+    const getNumber = (item => item.parents('.cart-item').find('.itxt').val());
     // 获取单价的函数
     // 截取掉前面的￥符号
-    const getPrice = (item => item.parents('.p-num').siblings('.p-price').html().substr(1));
-    // 计算价格的函数
+    const getPrice = (item => item.parents('.cart-item').find('.p-price').html().substr(1));
+    // 计算商品总价的函数
     // toFixed(2)保留两位小数
-    const getTotalPrice = (item => '￥' + (getNumber(item) * getPrice(item)).toFixed(2));
-    // 页面视图的更新函数
+    const calcGoodsPrice = (item =>  (getNumber(item) * getPrice(item)).toFixed(2));
+    // 视图更新函数
     const refresh = ((item, n) => {
         item.siblings('.itxt').val(n);
-        item.parents('.p-num').siblings('.p-sum').html(getTotalPrice(item));
+        item.parents('.cart-item').find('.p-sum').html('￥' + calcGoodsPrice(item));
+        calcSum();
     });
     
     // 增减
@@ -56,7 +59,7 @@ $(function() {
         var n = getNumber($(this));
         n++;
         // 小计
-        // console.log(getNumber($(this)),getPrice($(this)),getTotalPrice($(this)));
+        // console.log(getNumber($(this)),getPrice($(this)),calcGoodsPrice($(this)));
         refresh($(this), n);
 
     })
@@ -73,10 +76,32 @@ $(function() {
     $('.itxt').on('change', function() {
         // 先获取文本框里的值
         var n = getNumber($(this));
-        console.log(n);
+        // console.log(n);
         // 然后更新数据
         refresh($(this), n);
     })
+
+    // 求总计和总额的函数
+    const calcSum = function () {
+        var count = 0; //总件数
+        var money = 0; //总价格
+        // 先找到商品的item爸爸，再找小儿子itxt和p-sum
+        var checkedItems = $('.j-checkbox:checked').parents('.cart-item');
+        checkedItems.find(".itxt").each(function(index, element){
+            // 循环累加
+            count += parseInt($(element).val());
+        })
+        // 修改已选商品数
+        $('.amount-sum em').text(count);
+        
+        // 计算总价
+        checkedItems.find('.p-sum').each(function (i,e) {
+            money += parseFloat($(e).text().substr(1));
+        })
+        // 修改总价
+        // 浮点数保留两位小数
+        $('.price-sum em').text('￥' + money.toFixed(2));
+    }
 })
 
 
