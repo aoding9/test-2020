@@ -13,12 +13,14 @@ $(function() {
             // check-cart-item 移除
             $(".cart-item").removeClass("check-cart-item");
         }
+
+        calcSum();
     })
 
     // 判断checkbox是否全部选中，如果全部选中，也给checkall勾选
     // 核心算法： .xxxx:checked的长度是否等于.xxxx的长度
     $('.j-checkbox').on('change',function() {
-        // :chekced选择器 可以选出checked为true的项
+        // :checked选择器 可以选出checked为true的项
         if($('.j-checkbox:checked').length === $('.j-checkbox').length) {
             $('.checkall').prop('checked', true)
         } else {
@@ -80,13 +82,13 @@ $(function() {
         // 然后更新数据
         refresh($(this), n);
     })
-
+    var checkedItems;  //  保存一下选中的cart-item便于后面重复使用，每次计算总价时更新
     // 求总计和总额的函数
     const calcSum = function () {
         var count = 0; //总件数
         var money = 0; //总价格
-        // 先找到商品的item爸爸，再找小儿子itxt和p-sum
-        var checkedItems = $('.j-checkbox:checked').parents('.cart-item');
+        checkedItems = $('.j-checkbox:checked').parents('.cart-item');  // 先找到选中商品的item爸爸，再找小儿子itxt和p-sum
+        
         checkedItems.find(".itxt").each(function(index, element){
             // 循环累加
             count += parseInt($(element).val());
@@ -102,6 +104,24 @@ $(function() {
         // 浮点数保留两位小数
         $('.price-sum em').text('￥' + money.toFixed(2));
     }
+    calcSum();
+
+    // 删除商品
+    $('.p-action a').on('click', function() {
+        // 删除当前商品
+        $(this).parents('.cart-item').remove();
+    })
+
+    // 删除选中的商品
+    $('.remove-batch').on('click', function () {
+        checkedItems.remove();
+    })
+
+    // 清理购物车
+    $('.clear-all').on('click',function() {
+        $('.cart-item').remove();
+        calcSum();
+    })
 })
 
 
