@@ -40,20 +40,26 @@
                 if (item.id == id) {
                     // console.log(item);
                     o = item;
+                    // return item;  //  视频里面有这一行，我认为是多余了，由于下面已经返回了o，其实不返回item也可以（因为上一行有o=item，本质上还是返回的item)
                     // 2. 我们想要得里层的数据 11 12 可以利用递归函数
                     // 里面应该有goods这个数组并且数组的长度不为 0 
                 } else if (item.goods && item.goods.length > 0) {
+         
+                    // 由于getID()返回o，所以要计算getID(item.goods,id)的值，进入了第二层调用，这次会遍历goods数组，并且将相应id的对象赋值给o，然后return o，return的o被上一层的o接收到，再次return o，从而拿到内层的数据
                     o = getID(item.goods, id);
+                    // 这里输出了两次空对象：第一层第一项没找到，进入第二层遍历，有冰箱和洗衣机两个项，仍然没找到，进入第三层，仍然没找到，并且没有下一层了，这时if和else if的条件都不满足，直接把初始的空对象o返回给上一层的o，然后输出出来。
+                    // 递归了两次（第一层到第二层，第二层到第三层），这两次都是返回了最内层的空对象
+                    console.log(o);
                 }
-
             });
             return o;
         }
-        console.log(getID(data, 1));
+        // console.log(getID(data, 1));
         console.log(getID(data, 2));
-        console.log(getID(data, 11));
-        console.log(getID(data, 12));
-        console.log(getID(data, 111));
+        // console.log(getID(data, 11));
+        // console.log(getID(data, 12));
+        // console.log(getID(data, 111));
+        // getID(data,11)
     </script>
 </body>
 
