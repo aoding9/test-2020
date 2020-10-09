@@ -1,4 +1,4 @@
-var that;
+/* var that;
 class Tab {
     constructor(id) {
         // 获取元素
@@ -97,4 +97,4 @@ class Tab {
     }
 
 }
-new Tab('#tab');
+new Tab('#tab'); */

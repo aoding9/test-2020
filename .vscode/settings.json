@@ -3,8 +3,8 @@
   "workbench.iconTheme": "vscode-icons",
   "editor.wordWrap": "on",
   "vsicons.dontShowNewVersionMessage": true,
-  "files.autoSave": "afterDelay",
-  "workbench.colorTheme": "HBuilderX Soft Green Light",
+  "files.autoSave": "onFocusChange",
+  "workbench.colorTheme": "Monokai",
   "liveServer.settings.donotShowInfoMsg": true,
 
   "window.zoomLevel": 0,
@@ -29,7 +29,7 @@
     "strings": true
   },
   // 缩进4空格
-  "editor.tabSize": 4,
+  "editor.tabSize": 2,
   // "eslint.autoFixOnSave": true, // 每次保存的时候将代码按eslint格式进行修复
   // "prettier.eslintIntegration": true, //让prettier使用eslint的代码格式进行校验
   "javascript.format.insertSpaceBeforeFunctionParenthesis": true, //让函数(名)和后面的括号之间加个空格
@@ -172,7 +172,7 @@
     "unstyled",
     "wangjian"
   ],
-  "prettier.semi": true,
+  "prettier.semi": false,
   "editor.minimap.renderCharacters": false,
   "editor.minimap.showSlider": "always",
   "editor.minimap.maxColumn": 100,
@@ -229,5 +229,6 @@
   ],
   "prettier.disableLanguages": ["php"],
   "prettier.singleQuote": true,
-  "editor.renderControlCharacters": false
+  "editor.renderControlCharacters": false,
+  "editor.formatOnSave": true
 }

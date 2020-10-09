@@ -1,4 +1,40 @@
 <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Father {
+        constructor(x, y) {
+          this.x = x
+          this.y = y
+        }
+        sum() {
+          console.log(this.x + this.y)
+          console.log(this)
+        }
+      }
+      //   extends关键字表示继承 但是继承的方法里面的this指向的是父类，需要使用super，直接调用父类里面的方法
+      class Son extends Father {
+        constructor(x, y) {
+          //   super关键字（他不是函数，他会被替换成一个调用）直接调用了父类的构造函数，但是this会指向子类自己，相当于call()，可以在有限情况下改变this指向
+          super(x, y)
+          //   另外，构造函数中的super必须在使用this关键字之前使用
+          //   this.x = x
+          //   this.y = y
+        }
+      }
+      var son = new Son(1, 2)
+      son.sum()
+      var son2 = new Son(111, 222)
+      son2.sum()
+    </script>
+  </body>
+</html>
+
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -47,4 +83,4 @@
     </script>
 </body>
 
-</html>
+</html> -->

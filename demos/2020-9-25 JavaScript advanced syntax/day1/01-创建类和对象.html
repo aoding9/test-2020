@@ -1,4 +1,29 @@
-<!DOCTYPE html>
+<DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="UTF-8" />
+      <title>Document</title>
+    </head>
+    <body>
+      <script>
+        // class关键字声明类，不需要小括号，里面的方法定义不需要function关键字，之间也不用加逗号或分号
+        class Star {
+          // 构造函数，必须有，没有也会自动加上
+          constructor(uname, age) {
+            this.uname = uname
+            this.age = age
+          }
+        }
+
+        var ldh = new Star('刘德华', 18)
+        var zxy = new Star('张学友', 20)
+        console.log(ldh, ldh.uname)
+        console.log(zxy, zxy.uname)
+      </script>
+    </body>
+  </html>
+
+  <!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -31,4 +56,5 @@
     </script>
 </body>
 
-</html>
+</html> --></DOCTYPE
+>
