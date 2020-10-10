@@ -1,46 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-  <style type="text/css">
-    .active {
-      border: 1px solid red;
-      width: 100px;
-      height: 100px;
-    }
-    .error {
-      background-color: orange;
-    }
-  </style>
-</head>
-<body>
-  <div id="app">
-    <div v-bind:class="{active: isActive,error: isError}">
-      测试样式
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style type="text/css">
+      .active {
+        border: 1px solid red;
+        width: 100px;
+        height: 100px;
+      }
+      .error {
+        background-color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <!-- *动态绑定class属性可以控制是否显示类名 -->
+      <!-- *如果是对象，可以通过布尔值控制是否添加类 -->
+      <!-- *如果是数组，就会把每一个数组元素添加到class，相较对象形式，可以通过数组方法来修改类名，如果把数组元素赋值为空字符串，就可以取消这个类名了 -->
+      <!-- *动态添加的class不会覆盖原有的class -->
+      <div v-bind:class="{active: isActive,error: isError}">测试样式</div>
+      <button v-on:click="handle">切换</button>
     </div>
-    <button v-on:click='handle'>切换</button>
-  </div>
-  <script type="text/javascript" src="js/vue.js"></script>
-  <script type="text/javascript">
-    /*
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script type="text/javascript">
+      /*
       样式绑定
 
     */
-    var vm = new Vue({
-      el: '#app',
-      data: {
-        isActive: true,
-        isError: true
-      },
-      methods: {
-        handle: function(){
-          // 控制isActive的值在true和false之间进行切换
-          this.isActive = !this.isActive;
-          this.isError = !this.isError;
-        }
-      }
-    });
-  </script>
-</body>
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          isActive: true,
+          isError: true,
+        },
+        methods: {
+          handle: function () {
+            // 控制isActive的值在true和false之间进行切换
+            this.isActive = !this.isActive
+            this.isError = !this.isError
+          },
+        },
+      })
+    </script>
+  </body>
 </html>

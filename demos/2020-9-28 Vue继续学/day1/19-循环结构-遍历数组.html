@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-  
-</head>
-<body>
-  <div id="app">
-    <div>水果列表</div>
-    <ul>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <div>水果列表</div>
+      <!-- *item是自定义的循环变量，fruits是要循环的数组 -->
+      <!-- *如果要获取item对应的索引，可以通过(item, index) in item-->
+      <ul>
+        <li v-for="item in fruits">{{item}}</li>
+        <p>带有索引</p>
+        <li v-for="(item, index) in fruits">{{item+'----'+index}}</li>
+        <p>
+          :key属性可以帮助Vue区分不同元素，从而提高性能，需要绑定唯一的值，比如id或者index（没有key也可以区分，但是算法没有那么高效，所以遍历时尽量加key
+        </p>
+        <li v-for="item in myFruits" :key="item.id">{{item.ename + item.cname}}</li>
+        <li v-for="item in myFruits" :key="item.index">{{item.ename + item.cname}}</li>
+      </ul>
+
+      <!-- <ul>
       <li v-for='item in fruits'>{{item}}</li>
       <li v-for='(item, index) in fruits'>{{item + '---' + index}}</li>
       <li :key='item.id' v-for='(item, index) in myFruits'>
@@ -17,32 +29,36 @@
         <span>{{item.cname}}</span>
       </li>
 
-    </ul>
-  </div>
-  <script type="text/javascript" src="js/vue.js"></script>
-  <script type="text/javascript">
-    /*
+    </ul> -->
+    </div>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script type="text/javascript">
+      /*
       循环结构-遍历数组
     */
-    var vm = new Vue({
-      el: '#app',
-      data: {
-        fruits: ['apple', 'orange', 'banana'],
-        myFruits: [{
-          id: 1,
-          ename: 'apple',
-          cname: '苹果'
-        },{
-          id: 2,
-          ename: 'orange',
-          cname: '橘子'
-        },{
-          id: 3,
-          ename: 'banana',
-          cname: '香蕉'
-        }]
-      }
-    });
-  </script>
-</body>
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          fruits: ['apple', 'orange', 'banana'],
+          myFruits: [
+            {
+              id: 1,
+              ename: 'apple',
+              cname: '苹果',
+            },
+            {
+              id: 2,
+              ename: 'orange',
+              cname: '橘子',
+            },
+            {
+              id: 3,
+              ename: 'banana',
+              cname: '香蕉',
+            },
+          ],
+        },
+      })
+    </script>
+  </body>
 </html>

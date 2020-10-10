@@ -1,16 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-  
-</head>
-<body>
-  <div id="app">
-    <div v-if='v==13' v-for='(v,k,i) in obj'>{{v + '---' + k + '---' + i}}</div>
-  </div>
-  <script type="text/javascript" src="js/vue.js"></script>
-  <script type="text/javascript">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- *使用v-for遍历对象时，用value,key,index三个变量表示每次遍历的值、键、索引，顺序固定，变量名是自定义的 -->
+      <!-- *v-if可以和v-for结合使用 -->
+      <div v-if="v==13" v-for="(v,k,i) in obj">{{v + '---' + k + '---' + i}}</div>
+    </div>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script>
+      var obj = {
+        uname: 'lisi',
+        age: 12,
+        gender: 'male',
+      }
+      // 原生js用for in遍历对象
+      for (var key in obj) {
+        console.log(key, obj[key])
+      }
+      // vue遍历对象 直接v-for指令就可以了
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          obj: {
+            uname: 'zhangsan',
+            age: 13,
+            gender: 'female',
+          },
+        },
+      })
+    </script>
+    <!-- <script type="text/javascript">
     // 使用原生js遍历对象
     var obj = {
       uname: 'lisi',
@@ -33,6 +56,6 @@
         }
       }
     });
-  </script>
-</body>
+  </script> -->
+  </body>
 </html>
