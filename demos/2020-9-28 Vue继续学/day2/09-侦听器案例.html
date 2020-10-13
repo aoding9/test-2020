@@ -1,21 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-</head>
-<body>
-  <div id="app">
-    <div>
-      <span>用户名：</span>
-      <span>
-        <input type="text" v-model.lazy='uname'>
-      </span>
-      <span>{{tip}}</span>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <span>用户名：</span>
+        <span>
+          <!-- *失去焦点触发api，减少压力 -->
+          <input type="text" v-model.lazy="uname" />
+        </span>
+        <span>{{tip}}</span>
+      </div>
     </div>
-  </div>
-  <script type="text/javascript" src="js/vue.js"></script>
-  <script type="text/javascript">
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          uname: '',
+          tip: '',
+        },
+        methods: {
+          checkName(uname) {
+            // 假设这个就是后台接口，用定时器模拟异步的api
+            // 需要修改tip的值，但是定时器里面this不是vue实例，所以要存一下this
+            var that = this
+            setTimeout(function () {
+              if (uname == 'admin') {
+                that.tip = '用户名已经存在，请更换一个'
+              } else {
+                that.tip = '用户名可以使用'
+              }
+            }, 1000)
+          },
+        },
+        // 1用侦听器监听uname变化
+        // 2调用接口判断
+        // 3显示提示信息
+        watch: {
+          uname: function (val) {
+            this.checkName(val)
+            this.tip = '正在验证中。。。。。。。。'
+          },
+        },
+      })
+    </script>
+    <!--   <script type="text/javascript">
     /*      
       侦听器
       1、采用侦听器监听用户名的变化
@@ -52,6 +85,6 @@
       }
     });
 
-  </script>
-</body>
+  </script> -->
+  </body>
 </html>

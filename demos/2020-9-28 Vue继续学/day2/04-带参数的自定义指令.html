@@ -1,15 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-</head>
-<body>
-  <div id="app">
-    <input type="text" v-color='msg'>
-  </div>
-  <script type="text/javascript" src="js/vue.js"></script>
-  <script type="text/javascript">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-color="msg" />
+    </div>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script>
+      Vue.directive('color', {
+        bind: function (el, binding) {
+          el.style.backgroundColor = binding.value.color
+        },
+      })
+
+      // 自定义指令要在使用new Vue创建实例之前
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          // 蓝色
+          msg: { color: 'blue' },
+        },
+      })
+    </script>
+    <!-- <script type="text/javascript">
     /*
       自定义指令-带参数
     */
@@ -33,6 +49,6 @@
         }
       }
     });
-  </script>
-</body>
+  </script> -->
+  </body>
 </html>

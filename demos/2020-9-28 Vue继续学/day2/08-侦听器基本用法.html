@@ -1,27 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-</head>
-<body>
-  <div id="app">
-    <div>
-      <span>名：</span>
-      <span>
-        <input type="text" v-model='firstName'>
-      </span>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <span>名：</span>
+        <span>
+          <input type="text" v-model="firstName" />
+        </span>
+      </div>
+      <div>
+        <span>姓：</span>
+        <span>
+          <input type="text" v-model="lastName" />
+        </span>
+      </div>
+      <div>{{fullName}}</div>
     </div>
-    <div>
-      <span>姓：</span>
-      <span>
-        <input type="text" v-model='lastName'>
-      </span>
-    </div>
-    <div>{{fullName}}</div>
-  </div>
-  <script type="text/javascript" src="js/vue.js"></script>
-  <script type="text/javascript">
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script>
+      /*
+      侦听器
+    */
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          firstName: 'Jim',
+          lastName: 'Green',
+          // fullName: 'Jim Green'
+        },
+        // 计算属性的方式
+        /* computed: {
+          fullName(){
+            return this.firstName+ ' '+ this.lastName
+          }
+        }, */
+        // 对于异步和开销较大的操作，适合用侦听器
+        watch: {
+          // key表示监听哪个数据的改变，后面是改变后的处理，val是新的值
+          firstName: function (val) {
+            this.fullName = val + ' ' + this.lastName
+          },
+          lastName: function (val) {
+            this.fullName = this.firstName + ' ' + val
+          },
+        },
+      })
+    </script>
+    <!--   <script type="text/javascript">
     /*
       侦听器
     */
@@ -46,6 +75,6 @@
         // }
       }
     });
-  </script>
-</body>
+  </script> -->
+  </body>
 </html>

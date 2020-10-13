@@ -49,16 +49,16 @@
       <div class="tab">
         <ul>
           <li
-            :class="currentIndex === index?'active':''"
-            @click="change(index)"
             v-for="(item,index) in list"
             :key="item.id"
+            :class='currentIndex===index?"active":""'
+            @click="change(index)"
           >
             {{item.title}}
           </li>
         </ul>
-        <div :class="currentIndex === index?'current':''" v-for="(item,index) in list" :key="item.id">
-          <img :src="item.path" alt="" />
+        <div :class='currentIndex===index?"current":""' v-for="(item,index) in list" :key="item.id">
+          <img :src="item.path" />
         </div>
       </div>
     </div>
@@ -74,6 +74,38 @@
   </div> -->
     <script type="text/javascript" src="js/vue.js"></script>
     <script>
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          // 数据
+          list: [
+            {
+              id: 1,
+              title: 'apple',
+              path: './img/apple.png',
+            },
+            {
+              id: 2,
+              title: 'orange',
+              path: './img/orange.png',
+            },
+            {
+              id: 3,
+              title: 'lemon',
+              path: './img/lemon.png',
+            },
+          ],
+          // 当前的索引
+          currentIndex: 0,
+        },
+        methods: {
+          change(index) {
+            this.currentIndex = index
+          },
+        },
+      })
+    </script>
+    <!-- <script>
       var vm = new Vue({
         el: '#app',
         data: {
@@ -104,7 +136,7 @@
           },
         },
       })
-    </script>
+    </script> -->
 
     <!-- <script type="text/javascript">
     /*

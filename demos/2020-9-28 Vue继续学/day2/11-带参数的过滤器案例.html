@@ -1,73 +1,113 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-</head>
-<body>
-  <div id="app">
-    <div>{{date | format('yyyy-MM-dd hh:mm:ss')}}</div>
-  </div>
-  <script type="text/javascript" src="js/vue.js"></script>
-  <script type="text/javascript">
-    /*
-      过滤器案例：格式化日期
-      
-    */
-    // Vue.filter('format', function(value, arg) {
-    //   if(arg == 'yyyy-MM-dd') {
-    //     var ret = '';
-    //     ret += value.getFullYear() + '-' + (value.getMonth() + 1) + '-' + value.getDate();
-    //     return ret;
-    //   }
-    //   return value;
-    // })
-    Vue.filter('format', function(value, arg) {
-      function dateFormat(date, format) {
-          if (typeof date === "string") {
-              var mts = date.match(/(\/Date\((\d+)\)\/)/);
-              if (mts && mts.length >= 3) {
-                  date = parseInt(mts[2]);
-              }
-          }
-          date = new Date(date);
-          if (!date || date.toUTCString() == "Invalid Date") {
-              return "";
-          }
-          var map = {
-              "M": date.getMonth() + 1, //月份 
-              "d": date.getDate(), //日 
-              "h": date.getHours(), //小时 
-              "m": date.getMinutes(), //分 
-              "s": date.getSeconds(), //秒 
-              "q": Math.floor((date.getMonth() + 3) / 3), //季度 
-              "S": date.getMilliseconds() //毫秒 
-          };
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <div>{{date | format('yyyy-MM-dd EE hh:mm:ss')}}</div>
+    </div>
+    <script type="text/javascript" src="js/vue.js"></script>
 
-          format = format.replace(/([yMdhmsqS])+/g, function(all, t) {
-              var v = map[t];
-              if (v !== undefined) {
-                  if (all.length > 1) {
-                      v = '0' + v;
-                      v = v.substr(v.length - 2);
-                  }
-                  return v;
-              } else if (t === 'y') {
-                  return (date.getFullYear() + '').substr(4 - all.length);
+    <script type="text/javascript">
+      /*
+        过滤器案例：格式化日期
+
+      */
+      // Vue.filter('format', function(value, arg) {
+      //   if(arg == 'yyyy-MM-dd') {
+      //     var ret = '';
+      //     ret += value.getFullYear() + '-' + (value.getMonth() + 1) + '-' + value.getDate();
+      //     return ret;
+      //   }
+      //   return value;
+      // })
+
+      /*------*/
+      Vue.filter('format', function (value, arg) {
+        function dateFormat(date, format) {
+          // 首先判断date是否为字符串类型
+          if (typeof date === 'string') {
+            // 匹配\/Date(1530104033000)\/这种日期
+            var mts = date.match(/(\/Date\((\d+)\)\/)/)
+            if (mts && mts.length >= 3) {
+              // 转换为数字类型
+              date = parseInt(mts[2])
+            }
+          }
+          // 尝试转换为日期
+          date = new Date(date)
+          // 如果不是日期，或者无法转换为UTC时间，返回空字符
+          if (!date || date.toUTCString() == 'Invalid Date') {
+            return ''
+          }
+          // 计算占位符的映射值
+          var map = {
+            M: date.getMonth() + 1, //月份
+            d: date.getDate(), //日
+            h: date.getHours(), //小时
+            m: date.getMinutes(), //分
+            s: date.getSeconds(), //秒
+            q: Math.floor((date.getMonth() + 3) / 3), //季度
+            S: date.getMilliseconds(), //毫秒
+          }
+          // 星期数对应的数字的中文编码
+          var week = {
+            0: '\u65e5',
+            1: '\u4e00',
+            2: '\u4e8c',
+            3: '\u4e09',
+            4: '\u56db',
+            5: '\u4e94',
+            6: '\u516d',
+          }
+          // 全局匹配占位符，匹配到至少一次的，执行处理函数
+          format = format.replace(/([yEMdhmsqS])+/g, function (all, t) {
+            // all是匹配到的全部占位符，t是匹配到的单个占位符
+            console.log(all, t)
+            // 根据匹配到的占位符t，得到t在map中的映射值，用v保存
+            var v = map[t]
+            // 映射值存在，说明不是year
+            if (v !== undefined) {
+              // 如果匹配的占位符长度大于1，说明位数不足的需要补0
+              if (all.length > 1) {
+                // 先前面拼接1个0，此时v的长度为2或者3，为2说明需要补0，不截取，为3说明不需要补0，把0截取掉，正好是v.length-2
+                v = '0' + v
+                v = v.substr(v.length - 2)
               }
-              return all;
-          });
-          return format;
-      }
-      return dateFormat(value, arg);
-    })
-    var vm = new Vue({
-      el: '#app',
-      data: {
-        date: new Date()
-      }
-    });
-  </script>
-</body>
+              // 将v返回出去，替换掉占位符
+              return v
+              // t为y，计算year，然后根据y的长度进行截取
+            } else if (t === 'y') {
+              return (date.getFullYear() + '').substr(4 - all.length)
+            } else if (t === 'E') {
+              return (all.length > 1 ? (all.length > 2 ? '\u661f\u671f' : '\u5468') : '') + week[date.getDay() + '']
+            }
+            // 替换查找完成，返回
+          })
+          return format
+        }
+        return dateFormat(value, arg)
+      })
+      /* ---- */
+      // Vue.filter('format', function (value, arg) {
+      //   if (arg == 'yyyy-MM-dd') {
+      //     var result = ''
+      //     var y = value.getFullYear()
+      //     // 月是返回值是从0开始，需要手动+1
+      //     var m = value.getMonth() + 1
+      //     var d = value.getDate()
+      //     result = y + '-' + m + '-' + d
+      //     return result
+      //   }
+      // })
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          date: new Date(),
+        },
+      })
+    </script>
+  </body>
 </html>

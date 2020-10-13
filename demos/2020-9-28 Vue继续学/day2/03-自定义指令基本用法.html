@@ -1,16 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-</head>
-<body>
-  <div id="app">
-    <input type="text" v-focus>
-    <input type="text">
-  </div>
-  <script type="text/javascript" src="js/vue.js"></script>
-  <script type="text/javascript">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-focus="'第二个参数接收我'" />
+      <input type="text" />
+    </div>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script>
+      // 第一个参数是指令的名称（name）第二个参数是指令的处理函数，指令钩子函数会被传入一些参数，比如el还有binding，具体更多去官网查
+      Vue.directive('focus', {
+        // 这里是钩子函数，表示什么时候触发指令定义的处理方法
+        inserted: function (el, banding) {
+          // arg
+          console.log(el, banding)
+          // 自动获取焦点
+          el.focus()
+          // 自动设置value属性
+          el.value = arg.value
+        },
+      })
+      var vm = new Vue({
+        el: '#app',
+      })
+    </script>
+
+    <!-- <script type="text/javascript">
     /*
       自定义指令
     */
@@ -31,6 +49,6 @@
         }
       }
     });
-  </script>
-</body>
+  </script> -->
+  </body>
 </html>
