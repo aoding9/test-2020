@@ -176,7 +176,7 @@
   "editor.minimap.renderCharacters": false,
   "editor.minimap.showSlider": "always",
   "editor.minimap.maxColumn": 100,
-  // "prettier.singleQuote": true, // 使用单引号代替双引号
+  "prettier.singleQuote": true, // 使用单引号代替双引号
   "prettier.bracketSpacing": true, // 对象和数组 文字和括号间添加空格
   "browser-preview.startUrl": "https://localhost",
   "better-comments.highlightPlainText": true,
