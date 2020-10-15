@@ -3,27 +3,63 @@
   <head>
     <meta charset="UTF-8" />
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <style type="text/css">
+      .grid {
+        margin: auto;
+        width: 530px;
+        text-align: center;
+      }
+      .grid table {
+        border-top: 1px solid #c2d89a;
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .grid th,
+      td {
+        padding: 10;
+        border: 1px dashed #f3dcab;
+        height: 35px;
+        line-height: 35px;
+      }
+      .grid th {
+        background-color: #f3dcab;
+      }
+      .grid .book {
+        padding-bottom: 10px;
+        padding-top: 5px;
+        background-color: #f3dcab;
+      }
+      .grid .total {
+        height: 30px;
+        line-height: 30px;
+        background-color: #f3dcab;
+        border-top: 1px solid #c2d89a;
+      }
+    </style>
   </head>
   <body>
     <div id="app">
       <div class="grid">
+        <!-- 添加图书 -->
         <div>
           <h1>图书管理</h1>
           <div class="book">
             <div>
               <label for="id"> 编号： </label>
-              <input type="text" id="id" v-model="id" disabled="false" v-focus />
+              <input type="text" id="id" v-model="id" disabled="false" />
               <label for="name"> 名称： </label>
-              <input type="text" id="name" v-model="name" />
+              <input type="text" id="name" v-model="name" @keyup.enter="handle" />
               <button @click="handle" :disabled="submitFlag">提交</button>
             </div>
           </div>
         </div>
+        <!-- 图书总数 -->
+
         <div class="total">
           <span>图书总数：</span>
           <span>{{total}}</span>
         </div>
+        <!-- 图书列表 -->
         <table>
           <thead>
             <tr>
@@ -34,12 +70,12 @@
             </tr>
           </thead>
           <tbody>
-            <tr :key="item.id" v-for="item in books">
+            <tr v-for="item in books" :key="item.id">
               <td>{{item.id}}</td>
               <td>{{item.name}}</td>
-              <td>{{item.date | format('yyyy-MM-dd hh:mm:ss')}}</td>
+              <td>{{item.date|format('yyyy-MM-dd hh:mm:ss')}}</td>
               <td>
-                <a href="" @click.prevent="toEdit(item.id)">修改</a>
+                <a href="" @click.prevent="editBook(item.id)">修改</a>
                 <span>|</span>
                 <a href="" @click.prevent="deleteBook(item.id)">删除</a>
               </td>
@@ -51,22 +87,16 @@
     <script type="text/javascript" src="js/vue.js"></script>
     <script type="text/javascript" src="js/axios.js"></script>
     <script type="text/javascript">
-      /*
-      图书管理-添加图书
-    */
-      axios.defaults.baseURL = 'http://localhost:3000/'
+      // 设置api基准路径
+      axios.default.baseURL = 'http://localhost:3000/'
+      // 响应拦截器，直接返回res里的data
       axios.interceptors.response.use(
-        function (res) {
-          return res.data
-        },
-        function (error) {
-          console.log(error)
-        }
+        res => res.data,
+        err => console.log(err)
       )
-      Vue.directive('focus', {
-        inserted: function (el) {
-          el.focus()
-        },
+      // 自定义指令 获取焦点
+      Vue.directive('focus', function (el) {
+        el.focus()
       })
       Vue.filter('format', function (value, arg) {
         function dateFormat(date, format) {
@@ -109,61 +139,62 @@
       var vm = new Vue({
         el: '#app',
         data: {
-          flag: false,
-          submitFlag: false,
           id: '',
           name: '',
+          flag: false,
+          submitFlag: false,
           books: [],
         },
         methods: {
-          handle: async function () {
+          async handle() {
+            // flag为true说明不是添加操作,也就是编辑操作
             if (this.flag) {
-              // 编辑图书
+              // 需要把name作为参数传递过去
               var ret = await axios.put('books/' + this.id, {
                 name: this.name,
               })
+              // 提交成功则重新获取数据
               if (ret.status == 200) {
-                // 重新加载列表数据
                 this.queryData()
               }
               this.flag = false
             } else {
               // 添加图书
+              // 通过api添加
               var ret = await axios.post('books', {
                 name: this.name,
               })
+              // 判断是否正确响应
               if (ret.status == 200) {
-                // 重新加载列表数据
+                // 添加成功，重新获取图书列表
                 this.queryData()
               }
             }
-            // 清空表单
             this.id = ''
             this.name = ''
           },
-          toEdit: async function (id) {
-            // flag状态位用于区分编辑和添加操作
+          async editBook(id) {
+            // flag用于区分编辑和添加操作
             this.flag = true
-            // 根据id查询出对应的图书信息
+            // 根据id查询图书item
             var ret = await axios.get('books/' + id)
             this.id = ret.id
             this.name = ret.name
           },
-          deleteBook: async function (id) {
-            // 删除图书
+          async deleteBook(id) {
             var ret = await axios.delete('books/' + id)
             if (ret.status == 200) {
-              // 重新加载列表数据
               this.queryData()
             }
           },
-          queryData: async function () {
-            // 调用后台接口获取图书列表数据
-            // var ret = await axios.get('books');
-            // this.books = ret.data;
-
+          // 获取图书列表数据 利用async await简化代码
+          async queryData() {
             this.books = await axios.get('books')
           },
+        },
+        mounted: function () {
+          // 挂载后通过立即获取图书列表的数据
+          this.queryData()
         },
         computed: {
           total: function () {
@@ -172,34 +203,15 @@
           },
         },
         watch: {
-          name: async function (val) {
-            // 验证图书名称是否已经存在
-            // var flag = this.books.some(function(item){
-            //   return item.name == val;
-            // });
-            var ret = await axios.get('/books/book/' + this.name)
-            if (ret.status == 1) {
-              // 图书名称存在
+          async name(val) {
+            // var flag = this.books.some(item => item.name == val)
+            var ret = await axios.get('books/book/' + this.name)
+            if (ret.status === 1) {
               this.submitFlag = true
             } else {
-              // 图书名称不存在
               this.submitFlag = false
             }
           },
-        },
-        mounted: function () {
-          // var that = this;
-          // axios.get('books').then(function(data){
-          //   console.log(data.data)
-          //   that.books = data.data;
-          // })
-
-          // axios.get('books').then((data)=>{
-          //   console.log(data.data)
-          //   this.books = data.data;
-          // })
-
-          this.queryData()
         },
       })
     </script>
