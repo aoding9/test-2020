@@ -1,10 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <button-counter></button-counter>
+      两个组件数据独立
+      <button-counter></button-counter>
+    </div>
+    <script src="./js/vue.js"></script>
+    <script>
+      Vue.component('button-counter', {
+        // 组件的data必须是函数，并且返回一个对象（如果不是返回对象的函数直接写对象，每次生成组件都是新的对象，数据相互独立
+        data: function () {
+          return {
+            count: 0,
+          }
+        },
+        // 组件必须只有一个根元素，如果有多个元素，需要包起来
+        // 模板内容可以是模板字符串，需要浏览器支持ES6语法
+        template: `
+        <div>
+          点击加1<button @click='count++'>点击了{{count}}次</button>
+          点击加2<button @click='handle'>点击了{{count}}次</button>
+        </div>
+        `,
+        methods: {
+          handle() {
+            this.count += 2
+          },
+        },
+      })
+
+      var vm = new Vue({
+        el: '#app',
+        data: {},
+      })
+    </script>
+  </body>
+  <!-- <body>
   <div id="app">
     <button-counter></button-counter>
     <button-counter></button-counter>
@@ -35,5 +71,5 @@
       }
     });
   </script>
-</body>
+</body> -->
 </html>

@@ -1,4 +1,18 @@
 {
-
-
+  "vue new": {
+    "prefix": "vue new",
+    "scope": ["html", "vue"],,
+    "body": [
+      "var vm = new Vue({",
+      "\tel: '#app',",
+      "\tdata: {",
+      "\t\t$1",
+      "\t},",
+      "\tmethods: {",
+      "\t\t$2",
+      "\t},",
+      "})"
+    ],
+    "description": "new Vue模板"
+  }
 }

@@ -1,12 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-</head>
-<body>
-  
-  <script type="text/javascript">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <p>promise对象可以使用链式编程，.then()处理正确结果，.catch捕捉异常结果</p>
+  <p>也可以只用.then()方法，但是里面是两个函数，第一个处理正确结果，第二个处理异常结果</p>
+  <body>
+    <script>
+      const p = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          let flag = false
+          if (flag) {
+            resolve('正常情况传给resolve，用.then接收并处理')
+          } else {
+            reject('异常情况传给reject，用.catch接收并处理(也可以使用.then的第二个参数处理异常结果，和catch是一样的')
+          }
+        }, 500)
+      }).then(
+        // 都用then处理
+        rel => console.log(rel),
+        err => console.log(err)
+      )
+      // 链式编程用.catch处理
+      // .catch(err => console.log(err))
+
+      // 赋值给变量再处理
+      // p.then(result => {
+      //   console.log(result)
+      // },info=>{
+      //   console.log(info);
+      // })
+    </script>
+    <!-- <script type="text/javascript">
     /*
       Promise基本使用
     */
@@ -31,6 +57,6 @@
     },function(info){
       console.log(info)
     });
-  </script>
-</body>
+  </script> -->
+  </body>
 </html>

@@ -90,6 +90,7 @@
   //   "xml": {
   //       "attr_quotes": "single"
   //   }
+  // 设置同步
   "gitee.gist": "cy57bkjm3tlhvfgxz8q4n34",
   "gitee.access_token": "cd196fbdd3c030ccca5f4f6c612aefca",
   "explorer.confirmDragAndDrop": false,
@@ -172,6 +173,7 @@
     "unstyled",
     "wangjian"
   ],
+  // 行末分号
   "prettier.semi": false,
   "editor.minimap.renderCharacters": false,
   "editor.minimap.showSlider": "always",
@@ -230,5 +232,12 @@
   "prettier.disableLanguages": ["php"],
   "prettier.singleQuote": true,
   "editor.renderControlCharacters": false,
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  // 开启模板字符串tab补全
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.showAbbreviationSuggestions": true,
+  "emmet.showExpandedAbbreviation": "always",
+  "emmet.includeLanguages": {
+    "javascript": "html"
+  }
 }

@@ -1,13 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-</head>
-<body>
-  
-  <script type="text/javascript" src="js/axios.js"></script>
-  <script type="text/javascript">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>
+      axios.interceptors.request.use是请求拦截器，发送请求前都会拦截并进行处理<br />
+      <br />
+      axios.interceptors.response.use是响应拦截器，响应的数据都会拦截并进行处理
+    </p>
+    <script type="text/javascript" src="js/axios.js"></script>
+    <script>
+      axios.interceptors.request.use(config => {
+        // 发送请求时，该请求的配置将传入拦截器，用形参接收他，然后再修改，并且返回出去就可以生效了
+        // 比如用config.url判断某些url自动加请求头
+
+        // console.log(config)
+        config.headers.mytoken = 'yourtoken'
+        return config
+      })
+      // 拦截响应，并且进行处理，将处理后的结果返回，返回值才会被请求主体拿到
+      axios.interceptors.response.use(
+        res => {
+          console.log(res)
+          res.data += '我是拦截器加的'
+          // return res
+          // 由于响应的数据在res.data里面，为了方便，可以用拦截器直接返回res.data，后面就不用重复加data了
+          return res.data
+        },
+        err => {
+          console.log(err)
+        }
+      )
+
+      axios.get('http://localhost:3000/adata').then(function (data) {
+        console.log(data)
+      })
+    </script>
+    <!-- <script type="text/javascript">
     /*
       axios拦截器
     */
@@ -29,6 +60,6 @@
     axios.get('http://localhost:3000/adata').then(function(data){
       console.log(data)
     })
-  </script>
-</body>
+  </script> -->
+  </body>
 </html>

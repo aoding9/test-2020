@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-</head>
-<body>
-  
-  <script type="text/javascript" src="js/axios.js"></script>
-  <script type="text/javascript">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script type="text/javascript" src="js/axios.js"></script>
+    <script>
+      axios.get('http://localhost:3000/adata').then(result => {
+        console.log(result)
+        // 响应数据在result.data里面
+        console.log(result.data)
+      })
+    </script>
+    <!-- <script type="text/javascript">
     axios.get('http://localhost:3000/adata').then(function(ret){
       // 注意data属性是固定的用法，用于获取后台的实际数据
       // console.log(ret.data)
       console.log(ret)
     })
-  </script>
-</body>
+  </script> -->
+  </body>
 </html>

@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-</head>
-<body>
-  
-  <script type="text/javascript">
-    /*
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>除了text()方法，fetch还提供了json()方法，作用和JSON.parse(responseText)是一样的</p>
+    <script type="text/javascript">
+      /*
       Fetch响应结果的数据格式
     */
-    fetch('http://localhost:3000/json').then(function(data){
-      // return data.json();
-      return data.text();
-    }).then(function(data){
-      // console.log(data.uname)
-      // console.log(typeof data)
-      var obj = JSON.parse(data);
-      console.log(obj.uname,obj.age,obj.gender)
-    })
-  </script>
-</body>
+      fetch('http://localhost:3000/json')
+        .then(function (data) {
+          // return data.json();
+          return data.text()
+        })
+        .then(function (data) {
+          // console.log(data.uname)
+          // console.log(typeof data)
+          var obj = JSON.parse(data)
+          console.log(obj.uname, obj.age, obj.gender)
+        })
+    </script>
+  </body>
 </html>

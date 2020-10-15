@@ -1,12 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-</head>
-<body>
-  
-  <script type="text/javascript">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const queryData = url => {
+        return new Promise((resolve, reject) => {
+          const xhr = new XMLHttpRequest()
+          xhr.onreadystatechange = () => {
+            // 状态没到4说明数据还没接收完成
+            if (xhr.readyState != 4) return
+            // 判断是否成功
+            if (xhr.readyState == 4 && xhr.status == 200) {
+              resolve(xhr.response)
+            } else {
+              reject('服务器错误')
+            }
+          }
+          xhr.open('get', url)
+          xhr.send()
+        })
+      }
+
+      // Promise可以很方便的发送多个请求并且按照顺序执行，避免回调地狱
+      queryData('http://localhost:3000/data')
+        .then(data => {
+          console.log(data)
+          // 处理正常结果后，再返回一个新的promise对象，就可以链式调用.then方法
+          return queryData('http://localhost:3000/data1')
+        })
+        .then(data => {
+          console.log(data)
+          return queryData('http://localhost:3000/data2')
+        })
+        .then(data => {
+          console.log(data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    </script>
+    <!-- <script type="text/javascript">
     /*
       基于Promise发送Ajax请求
     */
@@ -48,6 +84,6 @@
       .then(function(data){
         console.log(data)
       });
-  </script>
-</body>
+  </script> -->
+  </body>
 </html>

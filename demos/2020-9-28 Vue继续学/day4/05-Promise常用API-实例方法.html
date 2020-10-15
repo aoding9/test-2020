@@ -1,46 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-</head>
-<body>
-  
-  <script type="text/javascript">
-    /*
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="https://blog.csdn.net/ixygj197875/article/details/79188199">关于promise几个常用的API</a>
+    <p>
+      p.then(fulfilled,rejected) 承诺满足，成功完成的处理方法 第二个参数是异步任务执行出现错误的处理方法<br />
+      p.catch 和.then()第二个参数rejected一样，出错的处理，里面有错误信息
+      promise的错误有可能无法被捕捉到（不会冒泡到全局），需要在链的末尾使用.done()捕捉所有可能抛出的错误，向全局抛出，可以像then那样设置回调函数，并且也可以不传回调函数
+      .finally方法用于指定不管 Promise
+      对象最后状态如何，都会执行的操作与done方法的最大区别，它接受一个普通的回调函数作为参数，该函数不管怎样都必须执行。
+    </p>
+    <script type="text/javascript">
+      /*
       Promise常用API-实例方法
     */
-    // console.dir(Promise);
-    function foo() {
-      return new Promise(function(resolve, reject){
-        setTimeout(function(){
-          // resolve(123);
-          reject('error');
-        }, 100);
-      })
-    }
-    // foo()
-    //   .then(function(data){
-    //     console.log(data)
-    //   })
-    //   .catch(function(data){
-    //     console.log(data)
-    //   })
-    //   .finally(function(){
-    //     console.log('finished')
-    //   });
+      // console.dir(Promise);
+      function foo() {
+        return new Promise(function (resolve, reject) {
+          setTimeout(function () {
+            // resolve(123);
+            reject('error')
+          }, 100)
+        })
+      }
+      // foo()
+      //   .then(function(data){
+      //     console.log(data)
+      //   })
+      //   .catch(function(data){
+      //     console.log(data)
+      //   })
+      //   .finally(function(){
+      //     console.log('finished')
+      //   });
 
-    // --------------------------
-    // 两种写法是等效的
-    foo()
-      .then(function(data){
-        console.log(data)
-      },function(data){
-        console.log(data)
-      })
-      .finally(function(){
-        console.log('finished')
-      });
-  </script>
-</body>
+      // --------------------------
+      // 两种写法是等效的
+      foo()
+        .then(
+          function (data) {
+            console.log(data)
+          },
+          function (data) {
+            console.log(data)
+          }
+        )
+        .finally(function () {
+          console.log('finished')
+        })
+    </script>
+  </body>
 </html>

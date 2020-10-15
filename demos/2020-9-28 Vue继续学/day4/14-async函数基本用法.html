@@ -1,41 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-</head>
-<body>
-  
-  <script type="text/javascript" src="js/axios.js"></script>
-  <script type="text/javascript">
-    /*
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>async函数返回值是promise对象，所以也可以链式编程</p>
+    <p>await只能在async函数里面使用，后面跟一个promise实例对象，可以得到异步任务的处理结果</p>
+    <p>通过await关键字，可以像同步任务那样写异步任务，要等待异步任务完成再执行后面的代码</p>
+    <script type="text/javascript" src="js/axios.js"></script>
+    <script type="text/javascript">
+      /*
       async/await 处理异步操作：
       async函数返回一个Promise实例对象
       await后面可以直接跟一个 Promise实例对象
     */
-    axios.defaults.baseURL = 'http:localhost:3000';
-    // axios.get('adata').then(function(ret){
-    //   console.log(ret.data)
-    // })
+      axios.defaults.baseURL = 'http:localhost:3000'
+      // axios.get('adata').then(function(ret){
+      //   console.log(ret.data)
+      // })
 
-    // async function queryData() {
-    //   var ret = await axios.get('adata');
-    //   // console.log(ret.data)
-    //   return ret.data;
-    // }
+      // async function queryData() {
+      //   var ret = await axios.get('adata');
+      //   // console.log(ret.data)
+      //   return ret.data;
+      // }
 
-    async function queryData() {
-      var ret = await new Promise(function(resolve, reject){
-        setTimeout(function(){
-          resolve('nihao')
-        },1000);
+      async function queryData() {
+        var ret = await new Promise(function (resolve, reject) {
+          setTimeout(function () {
+            resolve('nihao')
+          }, 1000)
+        })
+        // console.log(ret.data)
+        return ret
+      }
+      queryData().then(function (data) {
+        console.log(data)
       })
-      // console.log(ret.data)
-      return ret;
-    }
-    queryData().then(function(data){
-      console.log(data)
-    })
-  </script>
-</body>
+    </script>
+  </body>
 </html>

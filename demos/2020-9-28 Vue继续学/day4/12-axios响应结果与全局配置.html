@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-</head>
-<body>
-  
-  <script type="text/javascript" src="js/axios.js"></script>
-  <script type="text/javascript">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>对于json格式的响应数据，axios会自动把json字符串转成json对象</p>
+    <script type="text/javascript" src="js/axios.js"></script>
+    <script>
+      // 对于json格式的响应数据，axios会自动把json字符串转成json对象
+      // axios.get('http://localhost:3000/axios-json').then(ret => console.log(ret.data))
+
+      // axios.defaults配置项
+      // 配置请求基准地址，自动拼接url
+      axios.defaults.baseURL = 'http://localhost:3000/'
+      // 设置请求头，如果跨域了需要服务器允许才可以设置
+      axios.defaults.headers['mytoken'] = 'hello'
+      // 设置超时时间
+      axios.defaults.timeout = 3000
+      axios.get('axios-json').then(ret => console.log(ret))
+    </script>
+    <!-- <script type="text/javascript">
     /*
       axios 响应结果与全局配置
     */
@@ -24,6 +37,6 @@
     })
 
 
-  </script>
-</body>
+  </script> -->
+  </body>
 </html>

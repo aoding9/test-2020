@@ -1,17 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-</head>
-<body>
-  <div id="app">
-    <div>{{pmsg}}</div>
-    <menu-item title='来自父组件的值'></menu-item>
-    <menu-item :title='ptitle' content='hello'></menu-item>
-  </div>
-  <script type="text/javascript" src="js/vue.js"></script>
-  <script type="text/javascript">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <div>{{parentMsg}}</div>
+      <!-- *父组件通过属性给子组件传值 -->
+      <menu-item title="来自父组件的值"></menu-item>
+      <!-- *也可以动态传递值 -->
+      <menu-item :title="ptitle" content="hello"></menu-item>
+    </div>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script>
+      Vue.component('menu-item', {
+        // 子组件用props接收父组件的数据，值是数组
+        props: ['title'],
+        data: function () {
+          return {
+            sonMsg: '子组件的data',
+          }
+        },
+        template: '<div>{{sonMsg}}----{{title}}</div>',
+      })
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          parentMsg: '父组件的data',
+          ptitle: '我是动态的值',
+        },
+      })
+    </script>
+    <!-- <script type="text/javascript">
     /*
       父组件向子组件传值-基本使用
     */
@@ -31,6 +52,6 @@
         ptitle: '动态绑定属性'
       }
     });
-  </script>
-</body>
+  </script> -->
+  </body>
 </html>
