@@ -30,8 +30,9 @@
         </div>`,
         methods: {
           goRegister() {
-            this.$router.push('/register')
-          }
+            console.log(this.$router)
+            // this.$router.push('/register')
+          },
         },
       }
 
@@ -43,8 +44,8 @@
         methods: {
           goBack() {
             this.$router.go(-1)
-          }
-        }
+          },
+        },
       }
 
       // 创建路由实例对象
@@ -57,10 +58,10 @@
             name: 'user',
             path: '/user/:id',
             component: User,
-            props: route => ({ uname: 'zs', age: 20, id: route.params.id })
+            props: route => ({ uname: 'zs', age: 20, id: route.params.id }),
           },
-          { path: '/register', component: Register }
-        ]
+          { path: '/register', component: Register },
+        ],
       })
 
       // 创建 vm 实例对象
@@ -70,7 +71,7 @@
         data: {},
         // 挂载路由实例对象
         // router: router
-        router
+        router,
       })
     </script>
   </body>

@@ -10,6 +10,10 @@
     <script src="./lib/vue-router_3.0.2.js"></script>
   </head>
   <body>
+    <p>
+      设置路由规则的name属性后，router-link标签的to属性可以设置为对象，{name: 'route-name',params:{param1:value}}
+      其中name指定哪个路由规则，params指定参数，参数要和路由规则里面一致
+    </p>
     <!-- 被 vm 实例所控制的区域 -->
     <div id="app">
       <router-link to="/user/1">User1</router-link>
@@ -24,11 +28,11 @@
     <script>
       const User = {
         props: ['id', 'uname', 'age'],
-        template: '<h1>User 组件 -- 用户id为: {{id}} -- 姓名为:{{uname}} -- 年龄为：{{age}}</h1>'
+        template: '<h1>User 组件 -- 用户id为: {{id}} -- 姓名为:{{uname}} -- 年龄为：{{age}}</h1>',
       }
 
       const Register = {
-        template: '<h1>Register 组件</h1>'
+        template: '<h1>Register 组件</h1>',
       }
 
       // 创建路由实例对象
@@ -41,10 +45,10 @@
             name: 'user',
             path: '/user/:id',
             component: User,
-            props: route => ({ uname: 'zs', age: 20, id: route.params.id })
+            props: route => ({ uname: 'zs', age: 20, id: route.params.id }),
           },
-          { path: '/register', component: Register }
-        ]
+          { path: '/register', component: Register },
+        ],
       })
 
       // 创建 vm 实例对象
@@ -54,7 +58,7 @@
         data: {},
         // 挂载路由实例对象
         // router: router
-        router
+        router,
       })
     </script>
   </body>

@@ -10,6 +10,7 @@
     <script src="./lib/vue-router_3.0.2.js"></script>
   </head>
   <body>
+    <p>通过路由规则的redirect属性可以路由重定向</p>
     <!-- 被 vm 实例所控制的区域 -->
     <div id="app">
       <router-link to="/user">User</router-link>
@@ -21,21 +22,21 @@
 
     <script>
       const User = {
-        template: '<h1>User 组件</h1>'
+        template: '<h1>User 组件</h1>',
       }
 
       const Register = {
-        template: '<h1>Register 组件</h1>'
+        template: '<h1>Register 组件</h1>',
       }
 
       // 创建路由实例对象
       const router = new VueRouter({
         // 所有的路由规则
         routes: [
-          { path: '/', redirect: '/user'},
+          { path: '/', redirect: '/user' },
           { path: '/user', component: User },
-          { path: '/register', component: Register }
-        ]
+          { path: '/register', component: Register },
+        ],
       })
 
       // 创建 vm 实例对象
@@ -45,7 +46,7 @@
         data: {},
         // 挂载路由实例对象
         // router: router
-        router
+        router,
       })
     </script>
   </body>

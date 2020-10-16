@@ -10,6 +10,15 @@
     <script src="./lib/vue-router_3.0.2.js"></script>
   </head>
   <body>
+    <a href="https://www.cnblogs.com/jiguiyan/p/10794293.html">vue router的props传参三种模式</a>
+    <p>
+      props配置项：
+      1、将对应路由规则的props属性设为布尔类型，true则开启属性传参，可以快速在组件里用props接收数据，直接使用<br />
+      2、如果处理静态数据，props属性还可设置为对象，直接传递这个对象，但是这样使用url参数无法通过props访问到(/:id)
+      <br />
+      3、props还可以为函数，格式 props: route => ({query: route.query.q})，这个模式静态以及动态参数都可以传 <br />
+      这里的route是形参，用于接收路由对象，里面包含动态参数，可以在返回的对象里面通过route.query拿到url动态参数，然后就可以在组件里接收到了
+    </p>
     <!-- 被 vm 实例所控制的区域 -->
     <div id="app">
       <router-link to="/user/1">User1</router-link>
@@ -24,21 +33,21 @@
     <script>
       const User = {
         props: ['id'],
-        template: '<h1>User 组件 -- 用户id为: {{id}}</h1>'
+        template: '<h1>User 组件 -- 用户id为: {{id}}</h1>',
       }
 
       const Register = {
-        template: '<h1>Register 组件</h1>'
+        template: '<h1>Register 组件</h1>',
       }
 
       // 创建路由实例对象
       const router = new VueRouter({
         // 所有的路由规则
         routes: [
-          { path: '/', redirect: '/user'},
+          { path: '/', redirect: '/user' },
           { path: '/user/:id', component: User, props: true },
-          { path: '/register', component: Register }
-        ]
+          { path: '/register', component: Register },
+        ],
       })
 
       // 创建 vm 实例对象
@@ -48,7 +57,7 @@
         data: {},
         // 挂载路由实例对象
         // router: router
-        router
+        router,
       })
     </script>
   </body>

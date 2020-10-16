@@ -12,17 +12,63 @@
     <!-- 被 vue 实例控制的 div 区域 -->
     <div id="app">
       <!-- 切换组件的超链接 -->
-      <a href="#/zhuye">主页</a> 
-      <a href="#/keji">科技</a> 
+      <a href="#/zhuye">主页</a>
+      <a href="#/keji">科技</a>
       <a href="#/caijing">财经</a>
       <a href="#/yule">娱乐</a>
 
-      <!-- 根据 :is 属性指定的组件名称，把对应的组件渲染到 component 标签所在的位置 -->
-      <!-- 可以把 component 标签当做是【组件的占位符】 -->
+      <!-- *component标签是vue内置标签，可以动态绑定组件，根据 :is 属性指定的组件名称，把对应的组件渲染到 component 标签所在的位置 -->
+      <!-- *可以把 component 标签当做是【组件的占位符】 -->
       <component :is="comName"></component>
     </div>
 
     <script>
+      // 组件
+      const zhuye = {
+        template: `<h1>我是主页</h1>`,
+      }
+      const keji = {
+        template: `<h1>我是科技</h1>`,
+      }
+      const caijing = {
+        template: `<h1>我是财经</h1>`,
+      }
+      const yule = {
+        template: `<h1>我是娱乐</h1>`,
+      }
+
+      const vm = new Vue({
+        el: '#app',
+        data: {
+          comName: 'zhuye',
+        },
+        components: {
+          zhuye,
+          caijing,
+          keji,
+          yule,
+        },
+      })
+      window.onhashchange = () => {
+        console.log(location.hash)
+        switch (location.hash.slice(1)) {
+          case '/zhuye':
+            vm.comName = 'zhuye'
+            break
+          case '/keji':
+            vm.comName = 'keji'
+            break
+          case '/caijing':
+            vm.comName = 'caijing'
+            break
+          case '/yule':
+            vm.comName = 'yule'
+            break
+        }
+      }
+    </script>
+
+    <!-- <script>
       // #region 定义需要被切换的 4 个组件
       // 主页组件
       const zhuye = {
@@ -80,6 +126,6 @@
           break
         }
       }
-    </script>
+    </script> -->
   </body>
 </html>
