@@ -1,34 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-    <!-- <script src="./index.js"></script> -->
-    <!-- <script src="../dist/main.js"></script> -->
-    <!-- <script src="../dist/bundle.js"></script> -->
+    <!-- * 存在兼容性问题<script src="./index.js"></script> -->
+    <!-- * 改用自动打包工具，所以把引用改了<script src="../dist/main.js"></script> -->
+    <!-- *webpack-dev-server会启动服务器，并且在根路径里生成虚拟的bundle.js文件，实际并不存在 -->
     <script src="/bundle.js"></script>
   </head>
   <body>
-    <input type="text" placeholder="ceshi" />
     <ul>
-      <li>这是第1个li</li>
-      <li>这是第2个li</li>
-      <li>这是第3个li</li>
-      <li>这是第4个li</li>
-      <li>这是第5个li</li>
-      <li>这是第6个li</li>
-      <li>这是第7个li</li>
-      <li>这是第8个li</li>
-      <li>这是第9个li</li>
+      <li>第1个li</li>
+      <li>第2个li</li>
+      <li>第3个li</li>
+      <li>第4个li</li>
+      <li>第5个li</li>
+      <li>第6个li</li>
+      <li>第7个li</li>
+      <li>第8个li</li>
+      <li>第9个li</li>
+      <li>第10个li</li>
     </ul>
-
-    <div id="box"></div>
-
-    <hr />
-
-    <!-- 将来要被 vue 控制的区域 -->
-    <div id="app"></div>
+    <script></script>
   </body>
 </html>
