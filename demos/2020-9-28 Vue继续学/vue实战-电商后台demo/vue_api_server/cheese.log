@@ -1,0 +1,8 @@
+[2020-10-18T23:58:10.570] [DEBUG] cheese - login => username:zhangsan,password:123456
+[2020-10-18T23:58:10.572] [DEBUG] cheese - zhangsan
+[2020-10-18T23:58:10.583] [DEBUG] cheese - null
+[2020-10-18T23:58:10.584] [DEBUG] cheese - null
+[2020-10-18T23:58:41.482] [DEBUG] cheese - login => username:admin,password:123456
+[2020-10-18T23:58:41.483] [DEBUG] cheese - admin
+[2020-10-18T23:58:41.488] [DEBUG] cheese - null
+[2020-10-18T23:58:41.489] [DEBUG] cheese - null
