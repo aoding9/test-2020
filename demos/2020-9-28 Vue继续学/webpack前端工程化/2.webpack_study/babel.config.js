@@ -1,4 +1,9 @@
 module.exports = {
   presets: ['@babel/preset-env'],
-  plugins: ['@babel/plugin-transform-runtime', '@babel/plugin-proposal-class-properties']
+  plugins: ['@babel/plugin-transform-runtime', '@babel/plugin-proposal-class-properties'],
 }
+
+// module.exports = {
+//   presets: ['@babel/preset-env'],
+//   plugins: ['@babel/plugin-transform-runtime', '@babel/plugin-proposal-class-properties']
+// }

@@ -5,10 +5,12 @@
     <title>Document</title>
     <!-- * 存在兼容性问题<script src="./index.js"></script> -->
     <!-- * 改用自动打包工具，所以把引用改了<script src="../dist/main.js"></script> -->
-    <!-- *webpack-dev-server会启动服务器，并且在根路径里生成虚拟的bundle.js文件，实际并不存在 -->
+    <!-- *webpack-dev-server会启动服务器，并且在根路径里虚拟出一个bundle.js文件，磁盘上没有，实际是在内存中 -->
     <script src="/bundle.js"></script>
   </head>
   <body>
+    <input type="text" placeholder="哈哈哈" />
+    <div id="box"></div>
     <ul>
       <li>第1个li</li>
       <li>第2个li</li>
@@ -21,6 +23,9 @@
       <li>第9个li</li>
       <li>第10个li</li>
     </ul>
+    <hr />
+    <!-- *vue区域 -->
+    <div id="app"></div>
     <script></script>
   </body>
 </html>

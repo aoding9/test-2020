@@ -1,7 +1,7 @@
 li {
   list-style: none;
 }
-
+/* *兼容性问题，浏览器前缀可以用加载器自动处理 */
 ::placeholder {
   color: red;
 }
@@ -10,5 +10,6 @@ li {
   width: 580px;
   height: 340px;
   background-color: pink;
+  /* *图片字体等文件的路径需要用加载器才能处理 */
   background: url('../images/1.jpg');
 }
