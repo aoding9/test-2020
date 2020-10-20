@@ -256,5 +256,21 @@
   "stylusSupremacy.insertSemicolons": false, // 是否插入分好
   "stylusSupremacy.insertBraces": false, // 是否插入大括号
   "stylusSupremacy.insertNewLineAroundImports": false, // import之后是否换行
-  "stylusSupremacy.insertNewLineAroundBlocks": false // 两个选择器中是否换行
+  "stylusSupremacy.insertNewLineAroundBlocks": false, // 两个选择器中是否换行
+
+  // 自定义代码颜色
+  "editor.tokenColorCustomizations": {
+    "comments": "#b084bd" // 注释
+    // "keywords": "#0a0", // 关键字
+    // "variables": "#f00", // 变量名
+    // "strings": "#e2d75dbd", // 字符串
+    // "functions": "#5b99fcc9", // 函数名
+    // "numbers": "#AE81FF" // 数字
+  },
+  "editor.foldingStrategy": "indentation",
+  "editor.showFoldingControls": "always"
+  // 选中高亮的颜色
+  //    "workbench.colorCustomizations": {
+  //     "editor.selectionBackground": "#aa0000"
+  // }
 }
