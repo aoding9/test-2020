@@ -268,7 +268,8 @@
     // "numbers": "#AE81FF" // 数字
   },
   "editor.foldingStrategy": "indentation",
-  "editor.showFoldingControls": "always"
+  "editor.showFoldingControls": "always",
+  "vetur.validation.template": false
   // 选中高亮的颜色
   //    "workbench.colorCustomizations": {
   //     "editor.selectionBackground": "#aa0000"
