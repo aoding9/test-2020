@@ -269,7 +269,10 @@
   },
   "editor.foldingStrategy": "indentation",
   "editor.showFoldingControls": "always",
-  "vetur.validation.template": false
+  "vetur.validation.template": false,
+  "cSpell.words": [
+    "Submenu"
+  ]
   // 选中高亮的颜色
   //    "workbench.colorCustomizations": {
   //     "editor.selectionBackground": "#aa0000"

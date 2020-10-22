@@ -26,7 +26,10 @@ import {
   Pagination,
   Dialog,
   MessageBox,
-  Tag
+  Tag,
+  Tree,
+  Select,
+  Option
 } from 'element-ui'
 
 // *使用组件
@@ -68,6 +71,11 @@ Vue.use(Pagination)
 Vue.use(Dialog)
 // tag标签组件
 Vue.use(Tag)
+// 树形控件
+Vue.use(Tree)
+// 下拉输入框和下拉选项
+Vue.use(Select)
+Vue.use(Option)
 // Message提示信息要挂载到Vue的原型上 便于使用
 Vue.prototype.$message = Message
 // 消息提示框，和message一样也是要全局挂载
