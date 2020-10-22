@@ -1,0 +1,87 @@
+{
+  //6-4-1	创建
+  //6-5-1	删掉了.length
+  // 7-21 新增es6 for循环
+  "log": {
+    "prefix": "log",
+    "scope": "javascript",
+    "body": ["console.log($1)"],
+    "description": "控制台输出消息"
+  },
+  "for var": {
+    "prefix": "for var",
+    "scope": "javascript",
+    "body": ["for (var i = ${1:0} ;i < $2 ;i++) {", "\t$0", "}"],
+    "description": "for模板 var"
+  },
+  "for let": {
+    "prefix": "for let",
+    "scope": "javascript",
+    "body": ["for (let i = ${1:0} ;i < $2 ;i++) {", "\t$0", "}"],
+    "description": "for模板 let"
+  },
+  "for in": {
+    "prefix": "for in",
+    "scope": "javascript",
+    "body": ["for (let item in $1) {", "\t$0", "}"],
+    "description": "for in"
+  },
+  "for of": {
+    "prefix": "for of",
+    "scope": "javascript",
+    "body": ["for (let item of $1) {", "\t$0", "}"],
+    "description": "for of"
+  },
+
+  "arrow": {
+    "prefix": "arrow",
+    "scope": "javascript",
+    "body": ["${1:async }(${2:fnName}) => {$3}"],
+    "description": "箭头函数"
+  }
+  // "reqs1 arrow": {
+  // 	"prefix": "reqs1 arrow",
+  // 	"scope": "javascript",
+  // 	"body": [
+  // 		"(req, res) => {$0}\n"
+  // 	],
+  // 	"description": "请求事件的回调函数 只有req和res"
+  // },
+  // "reqs2 arrow": {
+  // 	"prefix": "reqs2 arrow",
+  // 	"scope": "javascript",
+  // 	"body": [
+  // 		"${1:async }(${2:err, }${3:req, res}${5:, next}) => {$0}"
+  // 	],
+  // 	"description": "请求事件的回调函数 四个参数"
+  // },
+  // "then async": {
+  // 	"prefix": "then async",
+  // 	"scope": "javascript",
+  // 	"body": [
+  // 		".then(result => ${1:console.log(result)})\n"
+  // 	],
+  // 	"description": "接收异步函数或promise对象处理正确信息"
+  // },
+  // "catch async": {
+  // 	"prefix": "catch async",
+  // 	"scope": "javascript",
+  // 	"body": [
+  // 		".catch(err => ${1:console.log(err)})\n"
+  // 	],
+  // 	"description": "接收异步函数或promise对象处理错误信息"
+  // },
+  // "errors catch async": {
+  // 	"prefix": "errors catch async",
+  // 	"scope": "javascript",
+  // 	"body": [
+  // 		".catch(err => {",
+  // 		"\tconst errors = err.errors;",
+  // 		"\tfor( let item in errors) {",
+  // 		"\t\tres.send(errors[item]['message']);",
+  // 		"\t}",
+  // 		"});\n"
+  // 	],
+  // 	"description": "遍历错误信息 接收异步函数或promise对象处理的错误信息"
+  // },
+}

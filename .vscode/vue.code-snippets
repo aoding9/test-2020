@@ -1,18 +1,48 @@
 {
   "vue new": {
-    "prefix": "vue new",
-    "scope": ["html", "vue"],,
+    "prefix": "vue component",
+    "scope": ["html", "vue"],
     "body": [
-      "var vm = new Vue({",
-      "\tel: '#app',",
-      "\tdata: {",
-      "\t\t$1",
-      "\t},",
-      "\tmethods: {",
-      "\t\t$2",
-      "\t},",
-      "})"
+      "<template>",
+      "  <div>${1:xxx组件}</div>",
+      "</template>",
+      "<script>",
+      "export default {",
+      " data() {",
+      "    return {}",
+      "  },",
+      "  created() {},",
+      "  methods: {}",
+      "}",
+      "</script>",
+      "<style lang='less' scoped>",
+      "\t",
+      "</style>"
     ],
     "description": "new Vue模板"
+  },
+  "vue error message": {
+    "prefix": "vue message error",
+    "scope": ["html", "vue"],
+    "body": ["this.$$message.error('$1')"],
+    "description": "message组件element ui "
+  },
+  "vue success message": {
+    "prefix": "vue message success",
+    "scope": ["html", "vue"],
+    "body": ["this.$$message.success('$1')"],
+    "description": "message组件element ui "
+  },
+  "vue axios http": {
+    "prefix": "vue axios",
+    "scope": ["html", "vue"],
+    "body": ["const {${1:data:res }} = await this.$$http.${2:get}($3)"],
+    "description": "axios http"
+  },
+  "vue axios status200": {
+    "prefix": "vue axios status200",
+    "scope": ["html", "vue"],
+    "body": ["if(${1:res.meta.status}!==200)"],
+    "description": "axios status!==200"
   }
 }
