@@ -29,7 +29,8 @@ import {
   Tag,
   Tree,
   Select,
-  Option
+  Option,
+  Cascader
 } from 'element-ui'
 
 // *使用组件
@@ -76,6 +77,8 @@ Vue.use(Tree)
 // 下拉输入框和下拉选项
 Vue.use(Select)
 Vue.use(Option)
+// 级联选择器
+Vue.use(Cascader)
 // Message提示信息要挂载到Vue的原型上 便于使用
 Vue.prototype.$message = Message
 // 消息提示框，和message一样也是要全局挂载

@@ -25,3 +25,14 @@ body,
 .el-pagination {
   margin-top: 15px;
 }
+/* 解决级联选择器高度过大的bug */
+.el-cascader-menu {
+  height: 300px;
+}
+/* 颜色类 */
+.font-lightgreen {
+  color: lightgreen;
+}
+.font-red {
+  color: red;
+}
