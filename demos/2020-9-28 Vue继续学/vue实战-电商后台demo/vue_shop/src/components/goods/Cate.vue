@@ -64,7 +64,12 @@
       ></el-pagination>
     </el-card>
     <!-- 添加分类的对话框 -->
-    <el-dialog title="添加分类" :visible.sync="addCateDialogVisible" width="50%">
+    <el-dialog
+      title="添加分类"
+      :visible.sync="addCateDialogVisible"
+      width="50%"
+      @close="addCateDialogClosed"
+    >
       <!-- 添加分类的表单 -->
       <el-form
         :model="addCateForm"
@@ -81,6 +86,8 @@
           :options用于指定数据源
           props用于指定级联选择器的配置对象
           v-model将选中的值双向绑定到一个数组中，必须是数组不能是对象
+          clearable 支持清空选项
+          change-on-select 是否允许选中任意一级的选项，默认不允许，只能选最后一级
            -->
           <el-cascader
             expand-trigger="hover"
@@ -88,12 +95,14 @@
             :props="cascaderProps"
             v-model="selectedKeys"
             @change="parentCateChanged"
+            clearable
+            change-on-select
           ></el-cascader>
         </el-form-item>
       </el-form>
       <span slot="footer">
         <el-button @click="addCateDialogVisible = false">取 消</el-button>
-        <el-button @click="addCateDialogVisible = false" type="primary">确 定</el-button>
+        <el-button @click="addCate" type="primary">确 定</el-button>
       </span>
     </el-dialog>
   </div>
@@ -163,10 +172,10 @@ export default {
         // 指定每个选项的名称
         label: 'cat_name',
         // 指定根据数据源的哪个属性进行嵌套
-        children: 'children',
-        // 选中的父级分类的id数组
-        selectedKeys: []
-      }
+        children: 'children'
+      },
+      // 选中的父级分类的id数组
+      selectedKeys: []
     }
   },
   created() {
@@ -214,7 +223,39 @@ export default {
     },
     // 监听级联选择器的选择项改变事件
     parentCateChanged() {
-      console.log(this.selectedKeys)
+      // console.log(this.selectedKeys)
+      // selectedKeys数组长度大于0，说明选中了父级分类，否则没有选父级分类
+      if (this.selectedKeys.length > 0) {
+        // 得到父级分类的id为选中数组的最后一项
+        this.addCateForm.cat_pid = this.selectedKeys[this.selectedKeys.length - 1]
+        // 当前分类的等级与数组长度相同（因为等级是从0开始的）
+        this.addCateForm.cat_level = this.selectedKeys.length
+      } else {
+        // 没有选父级分类，pid为0，等级为0
+        this.addCateForm.cat_pid = 0
+        this.addCateForm.cat_level = 0
+      }
+    },
+    // 点击按钮发送请求，添加新分类
+    addCate() {
+      // console.log(this.addCateForm)
+      // 表单预验证
+      this.$refs.addCateFormRef.validate(async valid => {
+        if (!valid) return
+        const { data: res } = await this.$http.post('categories', this.addCateForm)
+        if (res.meta.status !== 201) return this.$message.error('添加分类失败')
+        // 成功
+        this.$message.success('添加分类成功')
+        this.getCateList()
+        this.addCateDialogVisible = false
+      })
+    },
+    // 关闭对话框清空表单
+    addCateDialogClosed() {
+      this.$refs.addCateFormRef.resetFields()
+      this.selectedKeys = []
+      this.addCateForm.cat_pid = 0
+      this.addCateForm.cat_level = 0
     }
   }
 }
