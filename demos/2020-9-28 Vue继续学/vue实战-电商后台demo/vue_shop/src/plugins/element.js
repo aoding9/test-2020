@@ -30,7 +30,10 @@ import {
   Tree,
   Select,
   Option,
-  Cascader
+  Cascader,
+  Alert,
+  Tabs,
+  TabPane
 } from 'element-ui'
 
 // *使用组件
@@ -79,6 +82,11 @@ Vue.use(Select)
 Vue.use(Option)
 // 级联选择器
 Vue.use(Cascader)
+// alert提示组件
+Vue.use(Alert)
+// tab页签
+Vue.use(Tabs)
+Vue.use(TabPane)
 // Message提示信息要挂载到Vue的原型上 便于使用
 Vue.prototype.$message = Message
 // 消息提示框，和message一样也是要全局挂载

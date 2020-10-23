@@ -33,11 +33,17 @@
     "description": "for of"
   },
 
-  "arrow": {
-    "prefix": "arrow",
+  "arrow fn": {
+    "prefix": "arrow fn",
     "scope": "javascript",
-    "body": ["${1:async }(${2:fnName}) => {$3}"],
+    "body": ["${1:async }(${2:arg}) => {$3}"],
     "description": "箭头函数"
+  },
+  "async fn": {
+    "prefix": "async fn",
+    "scope": "javascript",
+    "body": ["async ${0:fnName}(){}"],
+    "description": "异步函数"
   }
   // "reqs1 arrow": {
   // 	"prefix": "reqs1 arrow",

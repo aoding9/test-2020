@@ -36,8 +36,8 @@
   "vue axios http": {
     "prefix": "vue axios",
     "scope": ["html", "vue"],
-    "body": ["const {${1:data:res }} = await this.$$http.${2:get}($3)"],
-    "description": "axios http"
+    "body": ["const {${1:data:res}} = await this.\\$http.${2:get}($3)"],
+    "description": "axios get"
   },
   "vue axios status200": {
     "prefix": "vue axios status200",
