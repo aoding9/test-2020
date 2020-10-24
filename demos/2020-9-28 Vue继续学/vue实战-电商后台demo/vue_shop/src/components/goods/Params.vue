@@ -46,7 +46,33 @@
           <!-- 动态参数表格 -->
           <el-table :data="manyTabelData" border stripe>
             <!-- 展开行 -->
-            <el-table-column type="expand"></el-table-column>
+            <el-table-column type="expand">
+              <template slot-scope="scope">
+                <!-- 循环渲染tag -->
+                <el-tag
+                  v-for="(item, i) in scope.row.attr_vals"
+                  type="primary"
+                  :key="i"
+                  closable
+                  @close="handleClose(i, scope.row)"
+                  >{{ item }}
+                </el-tag>
+                <!-- 可编辑的tag -->
+                <el-input
+                  v-if="scope.row.inputVisible"
+                  v-model="scope.row.inputValue"
+                  ref="saveTagInput"
+                  size="small"
+                  @keyup.enter.native="handleInputConfirm(scope.row)"
+                  @blur="handleInputConfirm(scope.row)"
+                  class="input-new-tag"
+                ></el-input>
+                <!-- 添加按钮 -->
+                <el-button v-else class="button-new-tag" size="small" @click="showInput(scope.row)"
+                  >+ New Tag
+                </el-button>
+              </template>
+            </el-table-column>
             <!-- 索引列 -->
             <el-table-column type="index"></el-table-column>
             <el-table-column label="参数名称" prop="attr_name"></el-table-column>
@@ -83,7 +109,33 @@
           <!-- 静态属性表格 -->
           <el-table :data="onlyTabelData" border stripe>
             <!-- 展开行 -->
-            <el-table-column type="expand"></el-table-column>
+            <el-table-column type="expand">
+              <template slot-scope="scope">
+                <!-- 循环渲染tag -->
+                <el-tag
+                  v-for="(item, i) in scope.row.attr_vals"
+                  type="primary"
+                  :key="i"
+                  closable
+                  @close="handleClose(i, scope.row)"
+                  >{{ item }}
+                </el-tag>
+                <!-- 可编辑的tag -->
+                <el-input
+                  v-if="scope.row.inputVisible"
+                  v-model="scope.row.inputValue"
+                  ref="saveTagInput"
+                  size="small"
+                  @keyup.enter.native="handleInputConfirm(scope.row)"
+                  @blur="handleInputConfirm(scope.row)"
+                  class="input-new-tag"
+                ></el-input>
+                <!-- 添加按钮 -->
+                <el-button v-else class="button-new-tag" size="small" @click="showInput(scope.row)"
+                  >+ New Tag
+                </el-button>
+              </template>
+            </el-table-column>
             <!-- 索引列 -->
             <el-table-column type="index"></el-table-column>
             <el-table-column label="属性名称" prop="attr_name"></el-table-column>
@@ -197,10 +249,7 @@ export default {
     // 监听级联选择框值改变事件
     handleChange() {
       console.log(this.selectedCateKeys)
-      // 默认情况下，如果二级分类下没有三级分类，该二级分类也可被选中，但是我们希望只能选三级分类，所以要判断数组长度，如果不等于3就清空数组将其重置
-      if (this.selectedCateKeys.length !== 3) {
-        return (this.selectedCateKeys = [])
-      }
+
       // 获取参数和属性的数据
       this.getParamsData()
     },
@@ -212,11 +261,30 @@ export default {
     },
     // 获取三级分类的参数属性数据
     async getParamsData() {
+      // 默认情况下，如果二级分类下没有三级分类，该二级分类也可被选中，但是我们希望只能选三级分类，所以要判断数组长度，如果不等于3就清空数组将其重置
+      if (this.selectedCateKeys.length !== 3) {
+        this.selectedCateKeys = []
+        // 同时还要清空下面的参数table数据
+        this.manyTabelData = []
+        this.onlyTabelData = []
+        return
+      }
+      // 通过前置判断，发起请求
       const { data: res } = await this.$http.get(`categories/${this.cateId}/attributes`, {
         params: { sel: this.activeName }
       })
 
       if (res.meta.status !== 200) return this.$message.error('获取参数数据失败')
+      // 为了方便展开参数的tag标签，用空格对attr_vals字符串做分割，转成数组，然后用v-for循环渲染tag标签
+      res.data.forEach(item => {
+        // 如果为空，那么不进行分割，直接返回空数组
+        item.attr_vals = item.attr_vals ? item.attr_vals.split(' ') : []
+        // 为item追加独立的额外属性，用于控制+ new tag的按钮和输入框
+        // 控制tag编辑按钮与文本框隐藏显示
+        item.inputVisible = false
+        // tag编辑文本框输入的内容
+        item.inputValue = ''
+      })
       // console.log(res.data)
       // 判断获取的数据是动态还是静态
       if (this.activeName === 'many') {
@@ -302,6 +370,52 @@ export default {
       }
       this.$message.success('删除参数成功')
       this.getParamsData()
+    },
+    // 编辑tag的文本框 失去焦点和按下enter触发
+    handleInputConfirm(row) {
+      // 判断内容是否合法，不合法则清空内容
+      if (row.inputValue.trim().length === 0) {
+        row.inputValue = ''
+        row.inputVisible = false
+        return
+      }
+      // 将输入的内容追加到attr_vals数组中，然后发起请求
+      row.attr_vals.push(row.inputValue.trim())
+      this.saveAttrVals(row)
+      // 失去焦点或按下enter键，切换显示隐藏
+      row.inputValue = ''
+      row.inputVisible = false
+    },
+    // 发起请求保存对参数的修改
+    async saveAttrVals(row) {
+      // api要求attr_vals为空格分隔的字符串，用join做拼接
+      const { data: res } = await this.$http.put(
+        `categories/${this.cateId}/attributes/${row.attr_id}`,
+        {
+          attr_name: row.attr_name,
+          attr_sel: row.attr_sel,
+          attr_vals: row.attr_vals.join(' ')
+        }
+      )
+      if (res.meta.status !== 200) return this.$message.error('修改参数项失败')
+      this.$message.success('修改参数项成功')
+    },
+    // 显示编辑tag的文本框
+    showInput(row) {
+      row.inputVisible = true
+      // 让文本框自动获取焦点
+      // 此时页面元素还未渲染到页面上，需要等待渲染之后再获取文本框焦点
+      // this.$nextTick(callback)，当dom发生变化，更新后执行的回调。当点击按钮，el-input被渲染出来时执行回调，通过this.$refs.saveTagInput获取到el-input的引用对象，然后再$refs.input获取原生dom元素对象input，调用其focus()方法获取焦点
+      // 不过看文档发现有自带的focus()方法，也有效
+      this.$nextTick(_ => {
+        // console.log(this)
+        this.$refs.saveTagInput.focus()
+      })
+    },
+    // 删除参数项
+    handleClose(i, row) {
+      row.attr_vals.splice(i, 1)
+      this.saveAttrVals(row)
     }
   },
   computed: {
@@ -327,5 +441,11 @@ export default {
 <style lang="less" scoped>
 .cap_opt {
   margin: 15px 0;
+}
+.el-tag {
+  margin: 5px;
+}
+.input-new-tag {
+  width: 150px;
 }
 </style>
