@@ -27,6 +27,8 @@ Vue.config.productionTip = false
 
 // 注册全局组件
 Vue.component('tree-table', TreeTable)
+// 日期格式化过滤器
+// Vue.filters('dateFormat')
 
 new Vue({
   // 挂载router实例
