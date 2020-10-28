@@ -65,7 +65,6 @@
   </div>
 </template>
 <script>
-const aaa = 1
 export default {
   data() {
     return {

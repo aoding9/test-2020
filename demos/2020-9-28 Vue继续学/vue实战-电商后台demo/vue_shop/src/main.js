@@ -28,6 +28,7 @@ Vue.config.productionTip = false
 // 注册全局组件
 Vue.component('tree-table', TreeTable)
 // 日期格式化过滤器
+// 这个是简化版的，用正则的更好点
 Vue.filter('dateFormat', function(originVal) {
   const date = new Date(originVal)
   const y = date.getFullYear()
