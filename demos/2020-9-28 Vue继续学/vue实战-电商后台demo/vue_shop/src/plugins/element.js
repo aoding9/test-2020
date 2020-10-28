@@ -33,7 +33,9 @@ import {
   Cascader,
   Alert,
   Tabs,
-  TabPane
+  TabPane,
+  Steps,
+  Step
 } from 'element-ui'
 
 // *使用组件
@@ -87,6 +89,9 @@ Vue.use(Alert)
 // tab页签
 Vue.use(Tabs)
 Vue.use(TabPane)
+// 步骤条组件
+Vue.use(Steps)
+Vue.use(Step)
 // Message提示信息要挂载到Vue的原型上 便于使用
 Vue.prototype.$message = Message
 // 消息提示框，和message一样也是要全局挂载

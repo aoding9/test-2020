@@ -28,7 +28,29 @@ Vue.config.productionTip = false
 // 注册全局组件
 Vue.component('tree-table', TreeTable)
 // 日期格式化过滤器
-// Vue.filters('dateFormat')
+Vue.filter('dateFormat', function(originVal) {
+  const date = new Date(originVal)
+  const y = date.getFullYear()
+  const m = (date.getMonth() + 1).toString().padStart(2, '0')
+  const d = date
+    .getDate()
+    .toString()
+    .padStart(2, '0')
+  const hh = date
+    .getHours()
+    .toString()
+    .padStart(2, '0')
+  const mm = date
+    .getMinutes()
+    .toString()
+    .padStart(2, '0')
+  const ss = date
+    .getSeconds()
+    .toString()
+    .padStart(2, '0')
+
+  return `${y}-${m}-${d} ${hh}:${mm}:${ss}`
+})
 
 new Vue({
   // 挂载router实例
