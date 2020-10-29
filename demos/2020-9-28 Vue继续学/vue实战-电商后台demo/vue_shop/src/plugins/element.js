@@ -35,7 +35,10 @@ import {
   Tabs,
   TabPane,
   Steps,
-  Step
+  Step,
+  CheckboxGroup,
+  Checkbox,
+  Upload
 } from 'element-ui'
 
 // *使用组件
@@ -92,6 +95,11 @@ Vue.use(TabPane)
 // 步骤条组件
 Vue.use(Steps)
 Vue.use(Step)
+// 勾选框组
+Vue.use(CheckboxGroup)
+Vue.use(Checkbox)
+// 上传组件
+Vue.use(Upload)
 // Message提示信息要挂载到Vue的原型上 便于使用
 Vue.prototype.$message = Message
 // 消息提示框，和message一样也是要全局挂载
