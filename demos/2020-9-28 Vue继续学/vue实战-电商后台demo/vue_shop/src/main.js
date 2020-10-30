@@ -6,8 +6,17 @@ import './plugins/element.js'
 import './assets/css/global.css'
 // *导入字体图标
 import './assets/fonts/iconfont.css'
+
 // 导入树形table插件
 import TreeTable from 'vue-table-with-tree-grid'
+
+// 导入富文本编辑器
+import VueQuillEditor from 'vue-quill-editor'
+// 导入富文本编辑器对应样式文件
+import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.snow.css'
+import 'quill/dist/quill.bubble.css'
+
 // 导入axios
 import axios from 'axios'
 // 将axios挂载到Vue的原型上，这样每个组件都可以通过$http使用到axios
@@ -25,8 +34,11 @@ axios.interceptors.request.use(config => {
 // 关闭生产模式的提示信息
 Vue.config.productionTip = false
 
-// 注册全局组件
+// 注册全局组件,必须在所有import后面，不然报错
 Vue.component('tree-table', TreeTable)
+// 将富文本编辑器注册为全局组件
+Vue.use(VueQuillEditor)
+
 // 日期格式化过滤器
 // 这个是简化版的，用正则的更好点
 Vue.filter('dateFormat', function(originVal) {

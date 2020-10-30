@@ -107,7 +107,12 @@
               <el-button size="small" type="primary">点击上传</el-button></el-upload
             >
           </el-tab-pane>
-          <el-tab-pane label="商品内容" name="4">商品内容</el-tab-pane>
+          <el-tab-pane label="商品内容" name="4">
+            <!-- 富文本编辑器 -->
+            <quill-editor v-model="addGoodsForm.goods_introduce"></quill-editor>
+            <!-- 添加商品按钮 -->
+            <el-button type="primary" @click="addGoods" class="addBtn">确定</el-button>
+          </el-tab-pane>
         </el-tabs>
       </el-form>
     </el-card>
@@ -118,12 +123,14 @@
   </div>
 </template>
 <script>
+// 导入lodash插件
+import _ from 'lodash'
 export default {
   data() {
     return {
       // 步骤条激活状态索引
       //
-      activeIndex: '3',
+      activeIndex: '0',
       // 添加商品表单
       addGoodsForm: {
         goods_name: '',
@@ -133,25 +140,29 @@ export default {
         // 商品所属的分类数组，由于api只接受字符串形式，需要在提交时进行处理换
         goods_cat: [1, 3, 6],
         // 图片上传的数组
-        pics: []
+        pics: [],
+        // 商品详情
+        goods_introduce: '',
+        // 商品参数属性的数组
+        attrs: []
       },
       // 添加商品表单验证对象
       addGoodsFormRules: {
         goods_name: [
-          { required: true, message: '请输入商品名称', trigger: 'blur' },
-          { max: 50, message: '最多50个字符', trigger: 'blur' }
+          { required: true, message: '请输入商品名称', trigger: 'blur' }
+          // { max: 50, message: '最多50个字符', trigger: 'blur' }
         ],
         goods_price: [
-          { required: true, message: '请输入商品价格', trigger: 'blur' },
-          { min: 0, message: '大于0', trigger: 'blur' }
+          { required: true, message: '请输入商品价格', trigger: 'blur' }
+          // { min: 0, message: '大于0', trigger: 'blur' }
         ],
         goods_weight: [
-          { required: true, message: '请输入商品重量', trigger: 'blur' },
-          { min: 0, message: '大于0', trigger: 'blur' }
+          { required: true, message: '请输入商品重量', trigger: 'blur' }
+          // { min: 0, message: '大于0', trigger: 'blur' }
         ],
         goods_number: [
-          { required: true, message: '请输入商品数量', trigger: 'blur' },
-          { min: 0, message: '大于0', trigger: 'blur' }
+          { required: true, message: '请输入商品数量', trigger: 'blur' }
+          // { min: 0, message: '大于0', trigger: 'blur' }
         ],
         goods_cat: [{ required: true, message: '请选择商品分类', trigger: 'blur' }]
       },
@@ -222,7 +233,7 @@ export default {
           item.attr_vals = item.attr_vals.length === 0 ? [] : item.attr_vals.split(' ')
         })
         this.manyTableData = res.data
-        console.log(res.data)
+        // console.log(res.data)
       } else if (this.activeIndex === '2') {
         // 点击了静态属性tab
         const { data: res } = await this.$http.get(`categories/${this.cateId}/attributes`, {
@@ -259,6 +270,48 @@ export default {
     // 关闭预览时清空图片
     previewClosed() {
       this.previewPath = ''
+    },
+    // 发起请求，添加商品
+    addGoods() {
+      // 预验证
+      this.$refs.addGoodsFormRef.validate(async valid => {
+        if (!valid) {
+          return this.$message.error('表单验证失败，请填写正确后重试')
+        }
+        // 验证通过，执行添加的业务逻辑
+        // 由于api的goods_cat只接受逗号分割的字符串，所以需要转换，但是goods_cat被绑定到el-cascader，其规定只允许绑定数组，直接转换字符串会报错
+        // 视频中此处使用lodash插件的深拷贝复制了表单，在复制的表单上操作
+        // 可能是为了演示lodash插件吧，不过我觉得也可以将原先的goods_cat改个名，从而解放goods_cat这个属性再复制，由于只有一层的数字元素数组需要复制，不需要用到深拷贝，而虽然表单对象里面多出了一个用于绑定的属性goods_cat2，反正api又不接收他，应该也可以
+        const newForm = _.cloneDeep(this.addGoodsForm)
+        newForm.goods_cat = newForm.goods_cat.join(',')
+        // attrs属性用数组形式保存参数和属性，动态参数需要处理，转化为空格分隔的字符串，并且属性名略有不同
+        this.manyTableData.forEach(item => {
+          const attr = {
+            attr_id: item.attr_id,
+            attr_value: item.attr_vals.join(' ')
+          }
+          this.addGoodsForm.attrs.push(attr)
+        })
+        // 静态属性的vals不需要join，因为动态参数需要用复选框组所以才转成数组，属性不需要就没转
+        this.onlyTableData.forEach(item => {
+          const attr = {
+            attr_id: item.attr_id,
+            attr_value: item.attr_vals
+          }
+          this.addGoodsForm.attrs.push(attr)
+        })
+        newForm.attrs = this.addGoodsForm.attrs
+        // console.log(this.addGoodsForm)
+        // console.log(newForm)
+        const { data: res } = await this.$http.post('goods', newForm)
+        if (res.meta.status !== 201) {
+          // console.log(res)
+          return this.$message.error('添加商品失败 原因:' + res.meta.msg)
+        }
+        // console.log(res)
+        this.$message.success('添加商品成功')
+        this.$router.push('/goods')
+      })
     }
   },
   computed: {
@@ -278,5 +331,8 @@ export default {
 }
 .previewImg {
   width: 100%;
+}
+.addBtn {
+  margin-top: 15px;
 }
 </style>
