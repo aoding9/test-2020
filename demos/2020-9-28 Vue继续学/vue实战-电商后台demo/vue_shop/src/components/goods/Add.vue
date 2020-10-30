@@ -90,11 +90,12 @@
           <el-tab-pane label="商品图片" name="3">
             <!-- 上传组件el-upload
             action图片要上传的地址，upload组件内部封装的ajax请求不能被axios的配置处理，所以要写完整的地址
-            :on-preview点击图片显示预览的钩子 :on-remove 点击删除图片的钩子
+            :on-preview点击图片显示预览的钩子，形参可以接收到将要预览的图片信息对象，其中有response属性保存了服务器返回的数据，其中可以拿到tmp_path
+            :on-remove 点击删除图片的钩子，形参可以接收到将要移除的图片信息对象，同上
             :file-list文件列表绑定
             list-type上传组件的列表类型
             :headers设置组件上传的请求头，为对象类型
-            :on-success上传更改的钩子 -->
+            :on-success上传更改的钩子，可以用形参接收到服务器返回的response -->
             <el-upload
               :action="uploadURL"
               :on-preview="handlePreview"
@@ -110,6 +111,10 @@
         </el-tabs>
       </el-form>
     </el-card>
+    <!-- 图片预览对话框 -->
+    <el-dialog @close="previewClosed" title="图片预览" :visible.sync="previewVisible" width="50%">
+      <img :src="previewPath" alt="图片预览" class="previewImg" />
+    </el-dialog>
   </div>
 </template>
 <script>
@@ -126,8 +131,9 @@ export default {
         goods_weight: 0,
         goods_number: 0,
         // 商品所属的分类数组，由于api只接受字符串形式，需要在提交时进行处理换
-        goods_cat: [1, 3, 6]
-        // 图片上传成功后返回的远程地址
+        goods_cat: [1, 3, 6],
+        // 图片上传的数组
+        pics: []
       },
       // 添加商品表单验证对象
       addGoodsFormRules: {
@@ -166,7 +172,11 @@ export default {
       // 图片上传的请求头
       headerObj: {
         Authorization: window.sessionStorage.getItem('token')
-      }
+      },
+      // 图片预览的url
+      previewPath: '',
+      // 图片预览是否可见
+      previewVisible: false
     }
   },
   created() {
@@ -223,9 +233,33 @@ export default {
       }
     },
     // 处理图片预览效果
-    handlePreview() {},
+    handlePreview(file) {
+      console.log(file)
+      this.previewPath = file.response.data.url
+      this.previewVisible = true
+    },
     // 处理图片删除
-    handleRemove() {}
+    handleRemove(file) {
+      // 1.获取将要删除的图片的临时路径
+      // 2.从Pics数组中找到这个图片的索引值，
+      // 3.用数组splice方法移除这个对象
+      const filePath = file.response.data.tmp_path
+      const index = this.addGoodsForm.pics.findIndex(item => item.tmp_path === filePath)
+      this.addGoodsForm.pics.splice(index, 1)
+    },
+    // 图片上传成功的钩子
+    handleSuccess(response) {
+      // console.log(response)
+      // 1.先将图片信息保存为api规定格式的对象
+      // 2.再将图片对象添加到数组中
+      const picInfo = { pic: response.data.tmp_path }
+      this.addGoodsForm.pics.push(picInfo)
+      console.log(this.addGoodsForm)
+    },
+    // 关闭预览时清空图片
+    previewClosed() {
+      this.previewPath = ''
+    }
   },
   computed: {
     // 为了便于使用，将分类的id用计算属性表示
@@ -241,5 +275,8 @@ export default {
 <style lang="less" scoped>
 .el-checkbox {
   margin: 0 10px 0 0 !important;
+}
+.previewImg {
+  width: 100%;
 }
 </style>
