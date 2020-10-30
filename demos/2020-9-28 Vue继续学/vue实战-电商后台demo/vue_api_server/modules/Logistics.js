@@ -4,12 +4,22 @@ const request = require('request')
 // 自动匹配运单号所属的物流公司
 function autoComNumber(orderno) {
   const url = `https://www.kuaidi100.com/autonumber/autoComNum?resultv2=1&text=${orderno}`
-  return new Promise(function(resolve, reject) {
-    request(url, (err, response, body) => {
+  // const url = `https://www.kuaidi100.com/autonumber/autoComNum?resultv2=1&text=804909574412544580`
+  // 接口需要设置headers的User-Agent才行，可能是改了吧。。。
+  const options = {
+    url,
+    headers: {
+      'User-Agent':
+        'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4195.1 Safari/537.36',
+    },
+  }
+  return new Promise(function (resolve, reject) {
+    request(options, (err, response, body) => {
       if (err) return reject({ status: 500, msg: err.message })
-      // resolve(body)
       // console.log(body.num)
+      // console.log(err, response, body)
       body = JSON.parse(body)
+      // console.log(body)
       if (body.auto.length <= 0) return reject({ status: 501, msg: '无对应的物流公司' })
       resolve({ status: 200, msg: body.auto[0], comCode: body.auto[0].comCode })
     })
@@ -23,8 +33,8 @@ async function getLogisticsInfo(req, res) {
     return {
       meta: {
         status: 500,
-        message: '获取物流信息失败！'
-      }
+        message: '获取物流信息失败！',
+      },
     }
   }
 
@@ -34,21 +44,21 @@ async function getLogisticsInfo(req, res) {
       return res.send({
         meta: {
           status: 501,
-          message: '获取物流信息失败！'
-        }
+          message: '获取物流信息失败！',
+        },
       })
     }
     // 获取物流信息成功
     return res.send({
       meta: {
         status: 200,
-        message: '获取物流信息成功！'
+        message: '获取物流信息成功！',
       },
-      data: (JSON.parse(body)).data
+      data: JSON.parse(body).data,
     })
   })
 }
 
 module.exports = {
-  getLogisticsInfo
+  getLogisticsInfo,
 }
