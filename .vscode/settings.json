@@ -271,8 +271,11 @@
   "editor.showFoldingControls": "always",
   "vetur.validation.template": false,
   "cSpell.words": [
+    "Prograss",
     "Submenu",
-    "cascader"
+    "cascader",
+    "echarts",
+    "nprogress"
   ]
   // 选中高亮的颜色
   //    "workbench.colorCustomizations": {
