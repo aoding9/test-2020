@@ -64,10 +64,10 @@ export default {
     // *4.准备数据和配置项
     // api获取的数据
     var reportData = await this.getReportData()
-    // console.log(reportData)
+    console.log(reportData)
     // 将数据与配置合并
     const result = _.merge(reportData, this.options)
-
+    console.log(result)
     // *5.应用数据和配置项，展示数据
     myChart.setOption(result)
   },
