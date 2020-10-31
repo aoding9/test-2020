@@ -104,7 +104,16 @@
       width="50%"
       @close="progressDialogClosed"
     >
-      哈哈哈
+      <!-- 时间线 -->
+      <el-timeline>
+        <el-timeline-item
+          v-for="(activity, index) in progressData"
+          :key="index"
+          :timestamp="activity.time"
+        >
+          {{ activity.context }}
+        </el-timeline-item>
+      </el-timeline>
     </el-dialog>
   </div>
 </template>
@@ -182,15 +191,7 @@ export default {
     editAddress() {},
 
     // *物流进度相关
-    // async getProgressData() {
-    //   const { data: res } = await this.$http.get('/kuaidi/804909574412544580')
-    //   if (res.meta.status !== 200) {
-    //     return this.$message.error('获取物流进度失败')
-    //   }
-    //   console.log(res.data)
-    //   // this.progressData = res.data
-    //   // console.log(this.progressData)
-    // },
+
     async showProgressDialog(row) {
       // 拿到row之后根据id查询数据并保存到绑定的属性上，同时将其保存到单独的data供确定按钮提交修改
       // 查询物流数据，后台调用的快递100接口，由于年代久远，接口改了，要带ua才允许获取，坑呀，，，
@@ -208,6 +209,9 @@ export default {
 }
 </script>
 <style lang="less" scoped>
+// 注意此处课件里面timeline/src/item.vue的名字多了个（1），需要改回来
+@import '../../plugins/timeline/timeline.css';
+@import '../../plugins/timeline-item/timeline-item.css';
 .el-cascader {
   width: 100%;
 }

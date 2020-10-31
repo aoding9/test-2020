@@ -40,7 +40,9 @@ import {
   Checkbox,
   Upload
 } from 'element-ui'
-
+// 由于vue可视化面板安装的element管理插件版本比较旧，timeline是2.6.0以后才有，所以要手动复制导入
+import Timeline from './timeline/index.js'
+import TimelineItem from './timeline-item/index.js'
 // *使用组件
 // 按钮
 Vue.use(Button)
@@ -100,6 +102,9 @@ Vue.use(CheckboxGroup)
 Vue.use(Checkbox)
 // 上传组件
 Vue.use(Upload)
+// 时间线组件，需要2.6.0以上
+Vue.use(Timeline)
+Vue.use(TimelineItem)
 // Message提示信息要挂载到Vue的原型上 便于使用
 Vue.prototype.$message = Message
 // 消息提示框，和message一样也是要全局挂载
