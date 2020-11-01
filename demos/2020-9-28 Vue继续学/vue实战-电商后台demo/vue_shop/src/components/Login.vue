@@ -10,13 +10,7 @@
       <!-- 表单区域 -->
       <!-- 通过:model绑定model属性到data里面定义的表单对象，然后input用v-model双向绑定表单对象的属性 -->
       <!-- 通过:rules绑定表单验证规则对象，需要在data定义规则对象 -->
-      <el-form
-        :model="loginForm"
-        :rules="loginFormRules"
-        ref="loginFormRef"
-        label-width="0px"
-        class="login_form"
-      >
+      <el-form :model="loginForm" :rules="loginFormRules" ref="loginFormRef" label-width="0px" class="login_form">
         <!-- 用户名区域 -->
         <!-- 验证规则需要为el-form-item添加prop属性，指定使用哪个验证规则 -->
         <el-form-item prop="username">
@@ -24,11 +18,7 @@
         </el-form-item>
         <!-- 密码区域 -->
         <el-form-item prop="password">
-          <el-input
-            prefix-icon="iconfont icon-3702mima"
-            v-model="loginForm.password"
-            type="password"
-          ></el-input>
+          <el-input prefix-icon="iconfont icon-3702mima" v-model="loginForm.password" type="password"></el-input>
         </el-form-item>
         <!-- 按钮区域 -->
         <el-form-item class="btns">

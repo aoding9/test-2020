@@ -12,19 +12,23 @@ module.exports = {
         .add('./src/main-prod.js')
       // 用externals配置cdn资源引入，打包时先判断window对象下是否已经存在，如果存在则不参与打包
       config.set('externals', {
-        Vue: 'Vue',
+        // !卧槽！！！这个地方我tm找了一天，，，，xxxxx！
+        // Vue: 'Vue',import Vue from 'vue'
+        // 这个地方属性是小写，值是大写   import Vue from 'vue'
+        vue: 'Vue',
         'vue-router': 'VueRouter',
         axios: 'axios',
         lodash: '_',
         echarts: 'echarts',
         nprogress: 'NProgress',
         'vue-quill-editor': 'VueQuillEditor'
+        // 'element-ui': 'ELEMENT'
       })
       // 这个html插件指的就是html-webpack-plugin插件，可以动态生成html文件，貌似是模板语法
       // 具体看这里https://www.webpackjs.com/plugins/html-webpack-plugin/
       // 这里设置了一个参数isProd，根据他判断如何生成生产模式和开发模式的html
       config.plugin('html').tap(args => {
-        args[0].isProd = false
+        args[0].isProd = true
         return args
       })
     })
@@ -34,6 +38,11 @@ module.exports = {
         .entry('app')
         .clear()
         .add('./src/main-dev.js')
+
+      config.plugin('html').tap(args => {
+        args[0].isProd = true
+        return args
+      })
     })
   }
 }

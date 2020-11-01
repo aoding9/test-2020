@@ -1,4 +1,6 @@
 import Vue from 'vue'
+// import ElementUI from 'element-ui'
+// Vue.use(ElementUI)
 // *按需导入组件
 import {
   Button,
@@ -38,11 +40,13 @@ import {
   Step,
   CheckboxGroup,
   Checkbox,
-  Upload
+  Upload,
+  Timeline,
+  TimelineItem
 } from 'element-ui'
-// 由于vue可视化面板安装的element管理插件版本比较旧，timeline是2.6.0以后才有，所以要手动复制导入
-import Timeline from './timeline/index.js'
-import TimelineItem from './timeline-item/index.js'
+// 视频中vue可视化面板安装的element版本比较旧，timeline是2.6.0以后才有，所以要手动复制导入，不过现在不需要了
+// import Timeline from './timeline/index.js'
+// import TimelineItem from './timeline-item/index.js'
 // *使用组件
 // 按钮
 Vue.use(Button)

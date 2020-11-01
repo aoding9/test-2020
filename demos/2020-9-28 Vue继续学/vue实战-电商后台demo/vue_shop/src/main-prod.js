@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 // 按需导入element-ui
-// 由于elementui比较占体积，所以也使用cdn加载，做法是直接在骨架头部引入
+// 由于element-ui比较占体积，所以也使用cdn加载，做法是直接在骨架头部引入，然后注释掉这里的import
 // import './plugins/element.js'
 // *导入全局样式
 import './assets/css/global.css'

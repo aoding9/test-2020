@@ -37,12 +37,7 @@
       :tab-postion设置标签所在位置
       v-model保存了当前tab的name属性，将其设为步骤条的激活索引，但是此处是字符串类型，上面却是数字类型，要给上面的转成数字类型
       :@before-leave='function(activeName,oldActiveName)'切换标签之前的钩子，若返回false或者返回Promise并且被reject，则阻止切换 -->
-        <el-tabs
-          :tab-position="'left'"
-          v-model="activeIndex"
-          :before-leave="beforeLeaveTab"
-          @tab-click="tabClicked"
-        >
+        <el-tabs :tab-position="'left'" v-model="activeIndex" :before-leave="beforeLeaveTab" @tab-click="tabClicked">
           <el-tab-pane label="基本信息" name="0">
             <el-form-item label="商品名称" prop="goods_name">
               <el-input v-model="addGoodsForm.goods_name"></el-input>
@@ -72,12 +67,7 @@
             <el-form-item v-for="item in manyTableData" :label="item.attr_name" :key="item.attr_id">
               <!-- 复选框组，适用于多个勾选框绑定到同一个数组的情景 -->
               <el-checkbox-group v-model="item.attr_vals">
-                <el-checkbox
-                  :label="cb"
-                  v-for="(cb, i) in item.attr_vals"
-                  :key="i"
-                  border
-                ></el-checkbox>
+                <el-checkbox :label="cb" v-for="(cb, i) in item.attr_vals" :key="i" border></el-checkbox>
               </el-checkbox-group>
             </el-form-item>
           </el-tab-pane>
@@ -138,7 +128,7 @@ export default {
         goods_weight: 0,
         goods_number: 0,
         // 商品所属的分类数组，由于api只接受字符串形式，需要在提交时进行处理换
-        goods_cat: [1, 3, 6],
+        goods_cat: [],
         // 图片上传的数组
         pics: [],
         // 商品详情
