@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 面包屑导航区域 -->
-    <el-breadcrumb separator="/">
+    <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
       <el-breadcrumb-item>用户管理</el-breadcrumb-item>
       <el-breadcrumb-item>用户列表</el-breadcrumb-item>
@@ -18,12 +18,7 @@
           <!-- el-input
           添加clearable属性 为输入框渲染清空按钮，
           @clear事件，当点击清空按钮清除内容时触发，点击后重新获取用户列表 -->
-          <el-input
-            placeholder="请输入内容"
-            v-model="queryInfo.query"
-            clearable
-            @clear="getUserList"
-          >
+          <el-input placeholder="请输入内容" v-model="queryInfo.query" clearable @clear="getUserList">
             <el-button slot="append" icon="el-icon-search" @click="getUserList"></el-button>
           </el-input>
         </el-col>
@@ -46,22 +41,14 @@
         <!-- switch状态改变时触发change事件，通过回调函数可以拿到新状态的值，然后将其更新到数据库中 -->
         <el-table-column label="状态">
           <template slot-scope="scope">
-            <el-switch
-              v-model="scope.row.mg_state"
-              @change="userStateChanged(scope.row)"
-            ></el-switch>
+            <el-switch v-model="scope.row.mg_state" @change="userStateChanged(scope.row)"></el-switch>
           </template>
         </el-table-column>
         <el-table-column label="操作" width="180px">
           <template slot-scope="scope">
             <!-- 通过作用域插槽自定义操作按钮 -->
             <!-- 修改按钮 -->
-            <el-button
-              type="primary"
-              icon="el-icon-edit"
-              size="mini"
-              @click="showEditDialog(scope.row.id)"
-            ></el-button>
+            <el-button type="primary" icon="el-icon-edit" size="mini" @click="showEditDialog(scope.row.id)"></el-button>
             <!-- 删除按钮 -->
             <el-button
               type="dangger"
@@ -76,12 +63,7 @@
             placement是提示框位置，
             enterable是鼠标能否进入提示框-->
             <el-tooltip effect="dark" content="分配角色" placement="top" :enterable="false">
-              <el-button
-                type="warning"
-                icon="el-icon-setting"
-                size="mini"
-                @click="setRole(scope.row)"
-              ></el-button>
+              <el-button type="warning" icon="el-icon-setting" size="mini" @click="setRole(scope.row)"></el-button>
             </el-tooltip>
           </template>
         </el-table-column>
@@ -113,12 +95,7 @@
     :before-close在关闭对话框前触发的回调函数
     @close监听dialog对话框关闭事件
      -->
-    <el-dialog
-      title="添加用户"
-      :visible.sync="addDialogVisible"
-      width="50%"
-      @close="addDilalogClosed"
-    >
+    <el-dialog title="添加用户" :visible.sync="addDialogVisible" width="50%" @close="addDilalogClosed">
       <!-- 对话框主体区域 -->
       <!-- el-form表单
       :model指定绑定的数据对象，
@@ -150,12 +127,7 @@
     </el-dialog>
 
     <!-- 修改用户的对话框 -->
-    <el-dialog
-      title="修改用户"
-      :visible.sync="editDialogVisible"
-      width="50%"
-      @close="editDialogClosed"
-    >
+    <el-dialog title="修改用户" :visible.sync="editDialogVisible" width="50%" @close="editDialogClosed">
       <el-form :model="editForm" :rules="editFormRules" ref="editFormRef" label-width="70px">
         <el-form-item label="用户名">
           <el-input v-model="editForm.username" disabled></el-input>
@@ -175,12 +147,7 @@
       </span>
     </el-dialog>
     <!-- 分配角色的对话框-->
-    <el-dialog
-      title="分配角色"
-      :visible.sync="setRoleDialogVisible"
-      width="50%"
-      @close="setRoleDialogClosed"
-    >
+    <el-dialog title="分配角色" :visible.sync="setRoleDialogVisible" width="50%" @close="setRoleDialogClosed">
       <p>当前用户：{{ userInfo.username }}</p>
       <p>当前角色：{{ userInfo.role_name }}</p>
       <!-- el-option
@@ -189,12 +156,7 @@
       <p>
         分配新角色
         <el-select v-model="selectedRoleId" placeholder="请选择">
-          <el-option
-            v-for="item in rolesList"
-            :key="item.id"
-            :label="item.roleName"
-            :value="item.id"
-          ></el-option>
+          <el-option v-for="item in rolesList" :key="item.id" :label="item.roleName" :value="item.id"></el-option>
         </el-select>
       </p>
       <span slot="footer">

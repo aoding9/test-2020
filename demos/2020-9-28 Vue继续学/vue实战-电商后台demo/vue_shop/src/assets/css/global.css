@@ -27,7 +27,7 @@ body,
 }
 /* 解决级联选择器高度过大的bug */
 .el-cascader-menu {
-  height: 300px;
+  height: 184px;
 }
 /* 颜色类 */
 .font-lightgreen {
