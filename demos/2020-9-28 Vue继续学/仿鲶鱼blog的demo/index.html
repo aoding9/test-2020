@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="./assets/elementUI/index.css" />
+    <!-- <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" /> -->
+    <!-- <link rel="stylesheet" href="http://127.0.0.1/index.css" /> -->
+    <link rel="stylesheet" href="./index.css" />
+    <!-- 引入vue -->
+    <script src="./assets/vue.js"></script>
+    <!-- 引入组件库 -->
+    <script src="./assets/elementUI/index.js"></script>
+    <!-- vue实例 -->
+  </head>
+  <body>
+    <!-- 根组件 -->
+    <div id="app" class="app">
+      <el-container>
+        <el-header height="490px">
+          <!-- 头像和webTitle -->
+          <div class="avatar">
+            <img :src="avatarPath" alt="头像" />
+          </div>
+          <h1>{{webTitle}}</h1>
+          <span>{{webDescription}}</span>
+        </el-header>
+        <el-main>
+          <el-card v-for="item in articles">
+            <div class="arc-title">{{item.title}}</div>
+            <div class="arc-con" v-html="item.content"></div>
+            <div class="arc-info">
+              <span><i class="el-icon-user"></i>{{item.author}} <i class="el-icon-time"></i>{{item.date}}</span>
+              <span><i class="el-icon-view"></i>{{item.click}}</span>
+            </div>
+          </el-card>
+        </el-main>
+        <!-- 底部footer区域 -->
+        <el-footer height="80px">
+          <el-card>
+            <span>备案号：xxxx</span>
+            <span>天维网络建站支持</span></el-card
+          >
+        </el-footer>
+      </el-container>
+      <!-- 返回顶部，不知道怎么显示不出来，等下再研究看看 -->
+      <!-- <template>
+        <el-backtop target=".app" visibility-height="10">up</el-backtop>
+      </template> -->
+    </div>
+
+    <script src="./index.js"></script>
+  </body>
+</html>
