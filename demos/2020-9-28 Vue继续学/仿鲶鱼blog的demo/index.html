@@ -3,17 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>防骗小灵通 - 2020防骗指南</title>
     <!-- 引入样式 -->
-    <link rel="stylesheet" href="./assets/elementUI/index.css" />
-    <!-- <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" /> -->
-    <!-- <link rel="stylesheet" href="http://127.0.0.1/index.css" /> -->
+    <!-- <link rel="stylesheet" href="./assets/elementUI/index.css" /> -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" />
     <link rel="stylesheet" href="./index.css" />
     <!-- 引入vue -->
-    <script src="./assets/vue.js"></script>
+    <!-- <script src="./assets/vue.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <!-- 引入组件库 -->
-    <script src="./assets/elementUI/index.js"></script>
-    <!-- vue实例 -->
+    <!-- <script src="./assets/elementUI/index.js"></script> -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
   </head>
   <body>
     <!-- 根组件 -->
@@ -28,27 +28,69 @@
           <span>{{webDescription}}</span>
         </el-header>
         <el-main>
-          <el-card v-for="item in articles">
-            <div class="arc-title">{{item.title}}</div>
-            <div class="arc-con" v-html="item.content"></div>
-            <div class="arc-info">
-              <span><i class="el-icon-user"></i>{{item.author}} <i class="el-icon-time"></i>{{item.date}}</span>
-              <span><i class="el-icon-view"></i>{{item.click}}</span>
-            </div>
+          <el-row :gutter="20">
+            <el-col :span="4"></el-col>
+            <el-col :span='14' class="arc-col">
+              <el-card v-for="item in articles" :key="item.id">
+                <div class="arc-title">{{item.title}}</div>
+                <div class="arc-con">{{item.description}}</div>
+                
+                <div class="arc-info">
+                  <span
+                  ><i class="el-icon-user"></i>{{item.author}}
+                  <i class="el-icon-time"></i>
+                  {{item.date|dateFormat('yyyy-MM-dd hh:mm:ss')}}
+                  <!-- {{new Date()|dateFormat('yyyy-MM-dd hh:mm')}} -->
+                  <i class="el-icon-view"></i>{{item.click}}</span
+                  >
+                  <span><el-button @click="showDialog(item)" type="primary"> 查看详情 </el-button></span>
+                </div>
+              </el-col>
+              <el-col :span="4" class="left-aside-col">
+                <el-card>
+                  <!-- 搜索 -->
+                  <el-input placeholder="请输入搜索内容" v-model='query' @keyup.enter.native='searchInfo'>
+                    <el-button slot="append" icon="el-icon-search" type="primary" @click='searchInfo'></el-button>
+                  </el-input>
+                  <!-- 评分 -->
+                  <div>
+                    <span>欢迎为我们打分：</span>
+                    <el-rate
+                    v-model="rateValue" :colors="['#99A9BF', '#F7BA2A', '#FF9900']" show-text >
+                  </el-rate>
+                </div>
+                </el-card>
+              </el-col>
+            </el-row>
           </el-card>
         </el-main>
         <!-- 底部footer区域 -->
         <el-footer height="80px">
           <el-card>
-            <span>备案号：xxxx</span>
-            <span>天维网络建站支持</span></el-card
-          >
+            <a href="https://beian.miit.gov.cn/" target="_blank">备案号：{{record}}</a>
+            <!-- <span>天维网络建站支持</span> -->
+          </el-card>
         </el-footer>
       </el-container>
+      <!-- 抽屉 -->
+
+      <el-dialog ref='arcDialogRef' :title="dialogItem.title" :visible.sync="dialogVisible" @close="handleDialogClose" width="60%" top='5vh' center>
+        <div class="dialog-arc-info">
+          <span
+            ><i class="el-icon-user"></i>{{dialogItem.author}}
+            <i class="el-icon-time"></i>
+            {{dialogItem.date|dateFormat('yyyy-MM-dd hh:mm:ss')}}
+            <!-- {{new Date()|dateFormat('yyyy-MM-dd hh:mm')}} -->
+            <i class="el-icon-view"></i>{{dialogItem.click}}</span
+          >
+        </div>
+        <div v-html="dialogItem.content"></div>
+      </el-dialog>
+
       <!-- 返回顶部，不知道怎么显示不出来，等下再研究看看 -->
-      <!-- <template>
-        <el-backtop target=".app" visibility-height="10">up</el-backtop>
-      </template> -->
+      <!-- <el-backtop target=".app">
+        <i class="el-icon-caret-top"></i>
+     </el-backtop> -->
     </div>
 
     <script src="./index.js"></script>
