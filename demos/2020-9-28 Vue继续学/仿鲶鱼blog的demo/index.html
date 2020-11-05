@@ -29,7 +29,7 @@
         </el-header>
         <el-main>
           <el-row :gutter="20">
-            <el-col :span="4"></el-col>
+            <el-col :span="4" class="left-aside-col"></el-col>
             <el-col :span='14' class="arc-col">
               <el-card v-for="item in articles" :key="item.id">
                 <div class="arc-title">{{item.title}}</div>
@@ -46,7 +46,7 @@
                   <span><el-button @click="showDialog(item)" type="primary"> 查看详情 </el-button></span>
                 </div>
               </el-col>
-              <el-col :span="4" class="left-aside-col">
+              <el-col :span="4" class="right-aside-col">
                 <el-card>
                   <!-- 搜索 -->
                   <el-input placeholder="请输入搜索内容" v-model='query' @keyup.enter.native='searchInfo'>

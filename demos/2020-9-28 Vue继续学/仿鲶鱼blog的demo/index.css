@@ -66,11 +66,11 @@ body {
   display: flex;
   justify-content: center;
 }
-/* 左侧边栏 */
-.el-main .left-aside-col .el-card {
+/* 侧边栏 */
+.el-main .right-aside-col .el-card {
   padding: 20px;
 }
-.left-aside-col .el-card .el-input {
+.right-aside-col .el-card .el-input {
   margin-bottom: 20px;
 }
 /* 文章列表 */
