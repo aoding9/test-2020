@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>防骗小灵通 - 2020防骗指南</title>
+    <title>吴瀚园</title>
     <!-- 引入样式 -->
     <!-- <link rel="stylesheet" href="./assets/elementUI/index.css" /> -->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" />
     <link rel="stylesheet" href="./index.css" />
     <!-- 引入vue -->
     <!-- <script src="./assets/vue.js"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <!-- 引入组件库 -->
     <!-- <script src="./assets/elementUI/index.js"></script> -->
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
@@ -29,9 +29,21 @@
         </el-header>
         <el-main>
           <el-row :gutter="20">
-            
-            <el-col :span="4" class="left-aside-col"></el-col>
-
+            <el-col :span="4" class="left-aside-col">
+              <el-card>
+                <!-- 搜索 -->
+                <el-input placeholder="请输入搜索内容" v-model='query' @keyup.enter.native='searchInfo'>
+                  <el-button slot="append" icon="el-icon-search" type="info" @click='searchInfo'></el-button>
+                </el-input>
+                <!-- 评分 -->
+                <div>
+                  <span>欢迎为我们打分：</span>
+                  <el-rate
+                  v-model="rateValue" :colors="['#99A9BF', '#F7BA2A', '#FF9900']" show-text >
+                </el-rate>
+              </div>
+              </el-card>
+            </el-col>
             <el-col :span='14' class="arc-col">
               <el-card v-for="item in articles" :key="item.id">
                 <div class="arc-title">{{item.title}}</div>
@@ -42,27 +54,13 @@
                   ><i class="el-icon-user"></i>{{item.author}}
                   <i class="el-icon-time"></i>
                   {{item.date|dateFormat('yyyy-MM-dd hh:mm:ss')}}
-                  <!-- {{new Date()|dateFormat('yyyy-MM-dd hh:mm')}} -->
                   <i class="el-icon-view"></i>{{item.click}}</span
                   >
-                  <span><el-button @click="showDialog(item)" type="primary"> 查看详情 </el-button></span>
+                  <span><el-button @click="showDialog(item)" type="info"> 查看详情 </el-button></span>
                 </div>
               </el-col>
-
               <el-col :span="4" class="right-aside-col">
-                <el-card>
-                  <!-- 搜索 -->
-                  <el-input placeholder="请输入搜索内容" v-model='query' @keyup.enter.native='searchInfo'>
-                    <el-button slot="append" icon="el-icon-search" type="primary" @click='searchInfo'></el-button>
-                  </el-input>
-                  <!-- 评分 -->
-                  <div>
-                    <span>欢迎为我们打分：</span>
-                    <el-rate
-                    v-model="rateValue" :colors="['#99A9BF', '#F7BA2A', '#FF9900']" show-text >
-                  </el-rate>
-                </div>
-                </el-card>
+                
               </el-col>
             </el-row>
           </el-card>
@@ -75,25 +73,20 @@
           </el-card>
         </el-footer>
       </el-container>
-      <!-- 对话框 -->
 
-      <el-dialog ref='arcDialogRef' :title="dialogItem.title" :visible.sync="dialogVisible" @close="handleDialogClose" width="60%" top='5vh' center>
+      <!-- 文章详情对话框 -->
+      <el-dialog ref='arcDialogRef' :title="dialogItem.title" :visible.sync="dialogVisible" @close="handleDialogClose" @closed='handleDialogClosed' width="60%" top='5vh' center>
         <div class="dialog-arc-info">
           <span
             ><i class="el-icon-user"></i>{{dialogItem.author}}
             <i class="el-icon-time"></i>
             {{dialogItem.date|dateFormat('yyyy-MM-dd hh:mm:ss')}}
-            <!-- {{new Date()|dateFormat('yyyy-MM-dd hh:mm')}} -->
             <i class="el-icon-view"></i>{{dialogItem.click}}</span
           >
         </div>
         <div v-html="dialogItem.content"></div>
       </el-dialog>
 
-      <!-- 返回顶部，不知道怎么显示不出来，等下再研究看看 -->
-      <!-- <el-backtop target=".app">
-        <i class="el-icon-caret-top"></i>
-     </el-backtop> -->
     </div>
 
     <script src="./index.js"></script>
