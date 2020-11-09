@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <div id="app"><cpn></cpn><cpn2></cpn2></div>
+
+    <script src="../vue.js"></script>
+    <script>
+      Vue.component('cpn', {
+        template: `<div>语法糖写法：直接把对象放这里，但是内部还是用了extend </div>`
+      })
+      const vm = new Vue({
+        el: '#app',
+        // 局部组件也可以这么写
+        components: {
+          cpn2: {
+            template: `<div>cpn2 局部组件也是</div>`
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

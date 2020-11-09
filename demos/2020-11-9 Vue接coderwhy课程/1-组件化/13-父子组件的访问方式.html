@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- $refs获取引用 需要先给标签加ref属性，然后就可以拿到了 -->
+      <cpn ref="cpn"></cpn>
+      <!-- 但是不推荐使用，组件耦合度问题 -->
+      <button @click="btnClick2">父组件通过$children访问子组件引用对象</button>
+    </div>
+    <template id="cpn">
+      <div>
+        <button @click="btnClick1">子组件通过$parent访问父组件引用对象</button>
+      </div>
+    </template>
+    <script src="../vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: '#app',
+        data: {
+          hhh: 'ahahahh'
+        },
+        methods: {
+          btnClick2() {
+            // $children是数组
+            console.log(this.$children[0].showMsg)
+            console.log(this.$refs.cpn)
+          }
+        },
+        components: {
+          cpn: {
+            template: '#cpn',
+            methods: {
+              btnClick1() {
+                console.log(this.$parent.hhh)
+              },
+              showMsg() {
+                console.log('hhhh')
+              }
+            }
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

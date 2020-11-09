@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- 注意驼峰问题 -->
+      <cpn @item-click="cpnClick"></cpn>
+    </div>
+    <template id="cpn">
+      <div>
+        <!-- 首先通过事件将信息传给子组件自己的处理函数 -->
+        <button v-for="item in cateList" @click="btnClick(item)">{{item.name}}</button>
+      </div>
+    </template>
+    <script src="../vue.js"></script>
+    <script>
+      const cpn = {
+        template: '#cpn',
+        data() {
+          return {
+            cateList: [
+              { id: 1, name: '热门推荐' },
+              { id: 2, name: '手机数码' },
+              { id: 3, name: '家用电器' },
+              { id: 4, name: '电脑办公' }
+            ]
+          }
+        },
+        methods: {
+          btnClick(item) {
+            // 子组件拿到所需信息后，再用自定义事件$emit发送给父组件,第二个参数是所要传的数据
+            this.$emit('item-click', item)
+          }
+        }
+      }
+      const vm = new Vue({
+        el: '#app',
+        components: {
+          cpn
+        },
+        methods: {
+          // 在父组件的方法中接收数据并处理
+          cpnClick(item) {
+            console.log(item.id, item.name)
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

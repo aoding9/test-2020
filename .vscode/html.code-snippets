@@ -1,6 +1,4 @@
 {
-  //5-19-1	创建
-  // 7-21 修改
   "code snippets common": {
     "prefix": "code snippets common",
     "body": [
@@ -35,21 +33,10 @@
     ],
     "description": "html模板1"
   },
-  // 5-9-3	修改版 添加TDK和favicon 注释了网站描述和关键词
-  // 5-12-1	修改版 添加TDK和favicon 注释了网站描述和关键词
-  // 5-13-1	添加理想视口的meta标签
-  // 5-14-1	注释了X-UA-Compatible标签，修改了favicon图标路径
-  // 5-19-1	注释了一些东西，稍微修改
-  // 6-8-1	添加了快速样式easyHtml的css文件
-  // 7-17   修改了日期为7月，注释掉暂时不要的内容
   "html2 template1": {
     "prefix": "html2 template1",
     "scope": ["html", "vue", "art"],
     "body": [
-      "<!--",
-      "————————\n8-$1\t创建",
-      "————————",
-      "-->",
       "<!DOCTYPE html>",
       "<html lang=\"zh-CN\">",
       "<head>",
@@ -136,7 +123,7 @@
       "    },",
       "};",
       "</script>\n",
-      "<style scoped lang=\"${1:scss}\">\n",
+      "<style scoped lang=\"${1:less}\">\n",
       "</style>\n"
     ],
     "description": "vue模板1"
@@ -145,9 +132,6 @@
     "prefix": "vue template2",
     "scope": ["html", "vue"],
     "body": [
-      "<!--",
-      "8-$1\t创建",
-      "-->",
       "<!DOCTYPE html>",
       "<html>",
       "<head>",
@@ -160,16 +144,13 @@
       //"\t<script src=\"../common/js/vue.js\"></script>",
       "\t<script src=\"https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js\"></script>",
       "\t<script>",
-      "\t\tconst vm = new Vue({",
+      "\t\tconst app = new Vue({",
       "\t\t\tel: '${3:#app}',",
       "\t\t\tdata: {",
       "\t\t\t\t$4",
       "\t\t\t},",
       "\t\t\tmethods: {",
       "\t\t\t\t$5",
-      "\t\t\t},",
-      "\t\t\tcomputed: {",
-      "\t\t\t\t",
       "\t\t\t},",
       "\t\t})",
       "\t</script>",

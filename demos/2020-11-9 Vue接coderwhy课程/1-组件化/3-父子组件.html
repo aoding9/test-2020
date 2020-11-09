@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <div id="app">
+      <cpn2></cpn2>
+    </div>
+
+    <script src="../vue.js"></script>
+    <script>
+      const cpnC1 = Vue.extend({
+        template: `<div>cpn1</div>`
+      })
+      const cpnC2 = Vue.extend({
+        // 在某个组件里面注册组件，二者为父子关系，使用父组件时里面就可以用子组件
+        // 但是根组件中没有注册cpn1，如果要直接在根组件中使用他，需要在根组件中再注册
+        template: `
+        <div>
+          <div>cpn2</div><cpn1></cpn1>
+        </div>
+        `,
+        components: {
+          cpn1: cpnC1
+        }
+      })
+      const vm = new Vue({
+        el: '#app',
+        components: {
+          cpn2: cpnC2
+        }
+      })
+    </script>
+  </body>
+</html>

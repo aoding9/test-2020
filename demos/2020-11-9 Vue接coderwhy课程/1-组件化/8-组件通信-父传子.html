@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <!-- 2.根据props，给子组件设置属性绑定，通过属性绑定的值，将父组件的data传给子组件 -->
+    <div id="app">
+      <!-- *关于驼峰命名：由于html属性自动大写转为小写，无法正确识别驼峰，vue会自动把驼峰转为短横线分隔的形式 -->
+      <!-- <cpn :msgMy="msg"></cpn> -->
+      <cpn :msg-my="msg"></cpn>
+    </div>
+    <template id="cpn">
+      <!-- 3.模板中就可以使用了 -->
+      <div>{{msgMy}}</div>
+    </template>
+    <script src="../vue.js"></script>
+    <script>
+      const cpn = {
+        // 1.给子组件配置props属性，若值为数组，表示接收数组中父组件传的值
+        // props: ['msg'],
+        // 若为对象，可以限定属性值的类型
+        props: {
+          // 配置对象
+          msgMy: {
+            // 数据类型验证，支持String,Number,Boolean,Array,Object,Function,Symbol也可以是自定义的类
+            type: String,
+            // 默认值，默认值类型为对象或数组时，必须为工厂函数，返回对象或数组
+            // default: '默认哈哈哈',
+            default: function () {
+              return {}
+            },
+            // 必传值
+            required: true
+          }
+        },
+        template: '#cpn'
+      }
+      const vm = new Vue({
+        el: '#app',
+        data: {
+          msg: '哈哈哈'
+        },
+        // 局部组件也可以这么写
+        components: {
+          cpn
+        }
+      })
+    </script>
+  </body>
+</html>

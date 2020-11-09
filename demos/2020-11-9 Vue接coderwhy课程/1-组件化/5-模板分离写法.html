@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <div id="app"><cpn1></cpn1><cpn2></cpn2></div>
+
+    <!-- *分离写法1 script标签text/x-template -->
+    <script type="text/x-template" id="cpn1">
+      <div>将模板写到单独的标签里，然后用id与组件注册关联起来</div>
+    </script>
+    <!-- *分离写法2 template标签 -->
+    <template id="cpn2">
+      <div>哈哈哈2222</div>
+    </template>
+    <script src="../vue.js"></script>
+    <script>
+      Vue.component('cpn1', {
+        template: '#cpn1'
+      })
+      Vue.component('cpn2', {
+        template: '#cpn2'
+      })
+      const vm = new Vue({
+        el: '#app'
+      })
+    </script>
+  </body>
+</html>

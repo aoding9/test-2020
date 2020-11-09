@@ -1,7 +1,4 @@
 {
-  //6-4-1	创建
-  //6-5-1	删掉了.length
-  // 7-21 新增es6 for循环
   "log": {
     "prefix": "log",
     "scope": "javascript",
