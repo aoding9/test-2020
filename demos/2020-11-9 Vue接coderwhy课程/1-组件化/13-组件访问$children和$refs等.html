@@ -8,7 +8,8 @@
       <!-- $refs获取引用 需要先给标签加ref属性，然后就可以拿到了 -->
       <cpn ref="cpn"></cpn>
       <!-- 但是不推荐使用，组件耦合度问题 -->
-      <button @click="btnClick2">父组件通过$children访问子组件引用对象</button>
+      <button @click="btnClick2">父组件通过$children访问子组件</button>
+      <button @click="btnClick3">子组件通过$root访问Vue根组件</button>
     </div>
     <template id="cpn">
       <div>
@@ -26,7 +27,9 @@
           btnClick2() {
             // $children是数组
             console.log(this.$children[0].showMsg)
-            console.log(this.$refs.cpn)
+          },
+          btnClick3() {
+            console.log(this.$root)
           }
         },
         components: {
@@ -35,6 +38,8 @@
             methods: {
               btnClick1() {
                 console.log(this.$parent.hhh)
+                // 直接访问Vue实例根组件
+                console.log(this.$root)
               },
               showMsg() {
                 console.log('hhhh')

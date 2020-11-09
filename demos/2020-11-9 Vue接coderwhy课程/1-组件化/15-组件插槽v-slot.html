@@ -1,0 +1,49 @@
+<!-- 课程里面讲的slot已经废弃，现在用v-slot来取代了 -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <!-- 
+      1.匿名插槽(也叫默认插槽): 没有name命名,有且只有一个，虽然没命名，但是有隐含名字default，可以通过v-slot:default来填充
+      2.具名插槽: 相对匿名插槽组件slot标签带name命名的,通过v-slot匹配填充
+      3.作用域插槽: 子组件内数据可以被父页面拿到(解决了数据只能从父页面传递给子组件) -->
+    <!-- template标签外的内容会被填充到默认插槽，里面的内容则根据v-slot指令填充到具名插槽 -->
+    <div id="app">
+      <!-- 当被提供的内容**只有**默认插槽时，组件的标签才可以被当作插槽的模板来使用。这样我们就可以把 v-slot 直接用在组件上，并且可以省略default名称 -->
+      <cpn v-slot:left>此时不能和具名插槽混用，会导致警告，作用域不明确</cpn>
+
+      <!-- 只要出现多个插槽，请始终为所有的插槽使用完整的基于 <template> 的语法 -->
+      <cpn>
+        template外面的内容填充到默认插槽
+        <template #left> 用template标签的v-slot指令来填充具名插槽 并且他有语法糖，为# </template>
+        <template #center>我是center插槽</template>
+      </cpn>
+
+      <cpn>没有指定v-slot，这里会填充到默认插槽，其他插槽因为有默认值并且没填充，则显示默认值</cpn>
+    </div>
+    <template id="cpn">
+      <div>
+        <slot></slot>
+        <slot name="left"><span>默认内容1</span></slot>
+        <slot name="center"><span>默认内容2</span></slot>
+      </div>
+    </template>
+    <script src="../vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: '#app',
+        data: {
+          hhh: 'ahahahh'
+        },
+
+        components: {
+          cpn: {
+            template: '#cpn'
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
