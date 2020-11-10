@@ -1,0 +1,38 @@
+<!-- 课程里面讲的slot已经废弃，现在用v-slot来取代了 -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- isShow是写在父级组件的模板里的，编译时变量的作用域为父级作用域，所以isShow为true -->
+      <cpn v-show="isShow"></cpn>
+    </div>
+
+    <template id="cpn">
+      <div>哈哈哈</div>
+    </template>
+
+    <script src="../vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: '#app',
+        data: {
+          isShow: true
+        },
+
+        components: {
+          cpn: {
+            template: '#cpn',
+            data() {
+              return {
+                isShow: false
+              }
+            }
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

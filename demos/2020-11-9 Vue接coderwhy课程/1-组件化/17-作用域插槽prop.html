@@ -1,0 +1,64 @@
+<!-- 课程里面讲的slot已经废弃，现在用v-slot来取代了 -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- 作用域插槽可以将子组件的作用域扩展到父组件上，这样父组件就可以通过插槽prop访问子组件的data，简单理解就是让父组件填充的模板里可以直接展示子组件的数据 -->
+      <!-- <cpn #goods='goods'> 如果只有默认插槽，就可以这么缩写-->
+      <cpn>
+        <!-- *在v-slot:name='xxx'的等号后面写上要获取的数据就可以 -->
+        <!-- <template  v-slot:default='slotProp'> -->
+        <template #default="slotProp">
+          {{slotProp}}
+          <hr />
+          计算属性或者methods也可以传，但是methods需要加括号调用，不然无法正确展示{{slotProp.hh}}----{{slotProp.em()}}
+          <hr />
+          <span v-for="item in slotProp.goods">--{{item}}--</span>
+        </template>
+      </cpn>
+    </div>
+
+    <template id="cpn">
+      <div>
+        <!-- *要使用插槽prop，需要先在子组件slot标签中通过v-bind绑定数据，然后父组件通过v-slot:name='xxx'获取到v-bind绑定的数据，这个xxx名字是自定义的，其含有v-bind绑定的值 -->
+        <slot :goods="goods" :hh="hh" :em="em">
+          <button v-for="item in goods">{{item}}</button>
+        </slot>
+      </div>
+    </template>
+
+    <script src="../vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: '#app',
+        data: {
+          isShow: true
+        },
+
+        components: {
+          cpn: {
+            template: '#cpn',
+            data() {
+              return {
+                goods: ['手机', '电脑', '电器']
+              }
+            },
+            methods: {
+              em() {
+                return 'em'
+              }
+            },
+            computed: {
+              hh() {
+                return 'hh'
+              }
+            }
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
