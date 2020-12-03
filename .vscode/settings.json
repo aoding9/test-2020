@@ -77,7 +77,7 @@
   "gitee.gist": "cy57bkjm3tlhvfgxz8q4n34",
   "gitee.access_token": "cd196fbdd3c030ccca5f4f6c612aefca",
   "explorer.confirmDragAndDrop": false,
-  "todo-tree.tree.showScanModeButton": false,
+  // "todo-tree.tree.showScanModeButton": false,
   "prettier.printWidth": 120,
   "cSpell.userWords": [
     "currentstyle",
@@ -160,7 +160,7 @@
   "editor.minimap.showSlider": "always",
   "editor.minimap.maxColumn": 100,
   "prettier.bracketSpacing": true, // 对象和数组 文字和括号间添加空格
-  "browser-preview.startUrl": "https://localhost",
+  // "browser-preview.startUrl": "https://localhost",
   "better-comments.highlightPlainText": true,
   "better-comments.tags": [
     {
@@ -190,15 +190,15 @@
       "bold": false,
       "italic": false
     },
-    {
-      "tag": "todo",
-      "color": "#FF8C00",
-      "strikethrough": false,
-      "underline": false,
-      "backgroundColor": "transparent",
-      "bold": false,
-      "italic": false
-    },
+    // {
+    //   "tag": "todo",
+    //   "color": "#FF8C00",
+    //   "strikethrough": false,
+    //   "underline": false,
+    //   "backgroundColor": "transparent",
+    //   "bold": false,
+    //   "italic": false
+    // },
     {
       "tag": "*",
       "color": "#98C379",
@@ -221,18 +221,18 @@
   // 重新设定tabsize
   "editor.tabSize": 2,
   // #每次保存的时候自动格式化
-  "editor.formatOnSave": true,
+  // "editor.formatOnSave": true,
   // #每次保存的时候将代码按eslint格式进行修复
-  "eslint.autoFixOnSave": true,
+  // "eslint.autoFixOnSave": true,
   // 添加 vue 支持
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    {
-      "language": "vue",
-      "autoFix": true
-    }
-  ],
+  // "eslint.validate": [
+  //   "javascript",
+  //   "javascriptreact",
+  //   {
+  //     "language": "vue",
+  //     "autoFix": true
+  //   }
+  // ],
   // #让prettier使用eslint的代码格式进行校验
   "prettier.eslintIntegration": true,
   // #去掉代码结尾的分号
@@ -252,35 +252,28 @@
     }
   },
   // 格式化stylus, 需安装Manta's Stylus Supremacy插件
-  "stylusSupremacy.insertColons": false, // 是否插入冒号
-  "stylusSupremacy.insertSemicolons": false, // 是否插入分好
-  "stylusSupremacy.insertBraces": false, // 是否插入大括号
-  "stylusSupremacy.insertNewLineAroundImports": false, // import之后是否换行
-  "stylusSupremacy.insertNewLineAroundBlocks": false, // 两个选择器中是否换行
+  // "stylusSupremacy.insertColons": false, // 是否插入冒号
+  // "stylusSupremacy.insertSemicolons": false, // 是否插入分好
+  // "stylusSupremacy.insertBraces": false, // 是否插入大括号
+  // "stylusSupremacy.insertNewLineAroundImports": false, // import之后是否换行
+  // "stylusSupremacy.insertNewLineAroundBlocks": false, // 两个选择器中是否换行
 
+  "workbench.colorCustomizations": {
+    "editor.selectionBackground": "#b94deb7e", //选中高亮
+    "editor.background": "#111111" //背景颜色
+  },
   // 自定义代码颜色
   "editor.tokenColorCustomizations": {
-    "comments": "#b084bd" // 注释
-    // "keywords": "#0a0", // 关键字
-    // "variables": "#f00", // 变量名
-    // "strings": "#e2d75dbd", // 字符串
-    // "functions": "#5b99fcc9", // 函数名
-    // "numbers": "#AE81FF" // 数字
+    "comments": "#77744a", // 注释
+    "keywords": "#f38e54", // 关键字
+    "variables": "#db6db6", // 变量名
+    "strings": "#d3c95abd", // 字符串
+    "functions": "#eaf36ce3", // 函数名
+    "numbers": "#72a1f7" // 数字
   },
   "editor.foldingStrategy": "indentation",
   "editor.showFoldingControls": "always",
   "vetur.validation.template": false,
-  "cSpell.words": [
-    "Prograss",
-    "Submenu",
-    "Vuex",
-    "cascader",
-    "echarts",
-    "nprogress"
-  ],
+  "cSpell.words": ["Prograss", "Submenu", "Vuex", "cascader", "echarts", "nprogress"],
   "prettier.trailingComma": "none"
-  // 选中高亮的颜色
-  //    "workbench.colorCustomizations": {
-  //     "editor.selectionBackground": "#aa0000"
-  // }
 }
